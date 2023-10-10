@@ -1,36 +1,103 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# gg-test-repo
 
-## Getting Started
+Deployed URL: [https://d2bzov16kbbu92.cloudfront.net/](https://d2bzov16kbbu92.cloudfront.net/)
 
-First, run the development server:
+A Next.js project configured to use SST for AWS deployments.
+
+## Table of Contents
+
+- [gg-test-repo](#gg-test-repo)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development](#development)
+  - [Features](#features)
+    - [File Uploads](#file-uploads)
+    - [Cron Job](#cron-job)
+  - [Deployment](#deployment)
+
+## Prerequisites
+
+- Node.js version 16.6 or higher
+- npm version 7 or higher
+- AWS account with configured AWS credentials
+- Install pnpm (`npm install -g pnpm`)
+
+## Installation
+
+1. Create a new Next.js app:
+
+   ```bash
+   pnpm create next-app
+   ```
+
+2. Initialize SST in the root directory of your project:
+
+   ```bash
+   cd your-app-directory
+   pnpm create sst
+   ```
+
+## Development
+
+1. Start the local SST development environment:
+
+   ```bash
+   pnpm sst dev
+   ```
+
+2. Start the Next.js development server:
+
+   ```bash
+   pnpm run dev
+   ```
+
+> Note: When running `sst dev`, SST does not deploy your Next.js app. You are meant to run Next.js locally.
+
+## Features
+
+### File Uploads
+
+1. Add an S3 bucket in `sst.config.ts`:
+
+   ```typescript
+   const bucket = new Bucket(stack, 'public');
+   ```
+
+2. Bind the S3 bucket to your Next.js app:
+
+   ```typescript
+   const site = new NextjsSite(stack, 'site', {
+     bind: [bucket],
+   });
+   ```
+
+3. Generate a presigned URL for uploads. See example code in `pages/index.tsx`.
+
+### Cron Job
+
+1. Add a cron job to delete files daily. Add this to `sst.config.ts`:
+
+   ```typescript
+   new Cron(stack, 'cron', {
+     schedule: 'rate(1 day)',
+     job: {
+       function: {
+         bind: [bucket],
+         handler: 'functions/delete.handler',
+       },
+     },
+   });
+   ```
+
+2. Create a function in `functions/delete.ts` to delete all files in the bucket.
+
+## Deployment
+
+Deploy your application to production using the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm sst deploy --stage prod
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+> Note: The `sst deploy` command internally uses OpenNext to build your app.
