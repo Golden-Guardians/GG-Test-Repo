@@ -1,6 +1,6 @@
 # gg-test-repo
 
-Vercel Deployed URL: [https://gg-test-repo-hh2t.vercel.app/](https://gg-test-repo-hh2t.vercel.app/)
+Vercel Deployed URL: [https://gg-test-repo.vercel.app/](https://gg-test-repo.vercel.app/)
 
 SST Deployed URL: [https://d2bzov16kbbu92.cloudfront.net/](https://d2bzov16kbbu92.cloudfront.net/)
 
