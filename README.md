@@ -1,6 +1,8 @@
 # gg-test-repo
 
-Deployed URL: [https://d2bzov16kbbu92.cloudfront.net/](https://d2bzov16kbbu92.cloudfront.net/)
+Vercel Deployed URL: [https://gg-test-repo-hh2t.vercel.app/](https://gg-test-repo-hh2t.vercel.app/)
+
+SST Deployed URL: [https://d2bzov16kbbu92.cloudfront.net/](https://d2bzov16kbbu92.cloudfront.net/)
 
 A Next.js project configured to use SST for AWS deployments.
 
@@ -63,15 +65,15 @@ A Next.js project configured to use SST for AWS deployments.
 1. Add an S3 bucket in `sst.config.ts`:
 
    ```typescript
-   const bucket = new Bucket(stack, 'public');
+   const bucket = new Bucket(stack, "public")
    ```
 
 2. Bind the S3 bucket to your Next.js app:
 
    ```typescript
-   const site = new NextjsSite(stack, 'site', {
+   const site = new NextjsSite(stack, "site", {
      bind: [bucket],
-   });
+   })
    ```
 
 3. Generate a presigned URL for uploads. See example code in `pages/index.tsx`.
@@ -81,15 +83,15 @@ A Next.js project configured to use SST for AWS deployments.
 1. Add a cron job to delete files daily. Add this to `sst.config.ts`:
 
    ```typescript
-   new Cron(stack, 'cron', {
-     schedule: 'rate(1 day)',
+   new Cron(stack, "cron", {
+     schedule: "rate(1 day)",
      job: {
        function: {
          bind: [bucket],
-         handler: 'functions/delete.handler',
+         handler: "functions/delete.handler",
        },
      },
-   });
+   })
    ```
 
 2. Create a function in `functions/delete.ts` to delete all files in the bucket.
