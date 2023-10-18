@@ -32,6 +32,10 @@ export default {
         ],
       })
 
+      if (app.stage !== "prod") {
+        app.setDefaultRemovalPolicy("destroy")
+      }
+
       stack.addOutputs({
         SiteUrl: site.url,
       })
