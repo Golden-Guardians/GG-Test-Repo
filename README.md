@@ -2,7 +2,7 @@
 
 Vercel Deployed URL: [https://gg-test-repo.vercel.app/](https://gg-test-repo.vercel.app/)
 
-SST Deployed URL: [https://d2bzov16kbbu92.cloudfront.net/](https://d2bzov16kbbu92.cloudfront.net/)
+SST Deployed URL: [https://d2vp238439bu7d.cloudfront.net](https://d2vp238439bu7d.cloudfront.net)
 
 A Next.js project configured to use SST for AWS deployments.
 

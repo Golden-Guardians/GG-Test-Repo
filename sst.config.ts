@@ -21,6 +21,7 @@ export default {
         "GITHUB_CLIENT_SECRET"
       )
       const DATABASE_URL = new Config.Secret(stack, "DATABASE_URL")
+      const NEXTAUTH_URL = new Config.Secret(stack, "NEXTAUTH_URL")
 
       const site = new NextjsSite(stack, "site", {
         bind: [
@@ -29,6 +30,7 @@ export default {
           GITHUB_CLIENT_ID,
           GITHUB_CLIENT_SECRET,
           DATABASE_URL,
+          NEXTAUTH_URL,
         ],
       })
 
