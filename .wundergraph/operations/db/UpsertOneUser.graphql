@@ -1,0 +1,90 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation db_upsertOneUser_mutation($where: db_UserWhereUniqueInput!, $create: db_UserCreateInput!, $update: db_UserUpdateInput!, $db_upsertOneUser_accounts_where: db_AccountWhereInput, $db_upsertOneUser_accounts_orderBy: [db_AccountOrderByWithRelationInput], $db_upsertOneUser_accounts_cursor: db_AccountWhereUniqueInput, $db_upsertOneUser_accounts_take: Int, $db_upsertOneUser_accounts_skip: Int, $db_upsertOneUser_accounts_distinct: [db_AccountScalarFieldEnum], $db_upsertOneUser_sessions_where: db_SessionWhereInput, $db_upsertOneUser_sessions_orderBy: [db_SessionOrderByWithRelationInput], $db_upsertOneUser_sessions_cursor: db_SessionWhereUniqueInput, $db_upsertOneUser_sessions_take: Int, $db_upsertOneUser_sessions_skip: Int, $db_upsertOneUser_sessions_distinct: [db_SessionScalarFieldEnum], $db_upsertOneUser_Post_where: db_PostWhereInput, $db_upsertOneUser_Post_orderBy: [db_PostOrderByWithRelationInput], $db_upsertOneUser_Post_cursor: db_PostWhereUniqueInput, $db_upsertOneUser_Post_take: Int, $db_upsertOneUser_Post_skip: Int, $db_upsertOneUser_Post_distinct: [db_PostScalarFieldEnum], $db_upsertOneUser_Todo_where: db_TodoWhereInput, $db_upsertOneUser_Todo_orderBy: [db_TodoOrderByWithRelationInput], $db_upsertOneUser_Todo_cursor: db_TodoWhereUniqueInput, $db_upsertOneUser_Todo_take: Int, $db_upsertOneUser_Todo_skip: Int, $db_upsertOneUser_Todo_distinct: [db_TodoScalarFieldEnum]) {
+  db_upsertOneUser(where: $where, create: $create, update: $update) {
+    id
+    name
+    email
+    emailVerified
+    image
+    createdAt
+    updatedAt
+    stripeCustomerId
+    stripeSubscriptionId
+    stripePriceId
+    stripeCurrentPeriodEnd
+    accounts(
+      where: $db_upsertOneUser_accounts_where
+      orderBy: $db_upsertOneUser_accounts_orderBy
+      cursor: $db_upsertOneUser_accounts_cursor
+      take: $db_upsertOneUser_accounts_take
+      skip: $db_upsertOneUser_accounts_skip
+      distinct: $db_upsertOneUser_accounts_distinct
+    ) {
+      id
+      userId
+      type
+      provider
+      providerAccountId
+      refresh_token
+      access_token
+      expires_at
+      token_type
+      scope
+      id_token
+      session_state
+      createdAt
+      updatedAt
+    }
+    sessions(
+      where: $db_upsertOneUser_sessions_where
+      orderBy: $db_upsertOneUser_sessions_orderBy
+      cursor: $db_upsertOneUser_sessions_cursor
+      take: $db_upsertOneUser_sessions_take
+      skip: $db_upsertOneUser_sessions_skip
+      distinct: $db_upsertOneUser_sessions_distinct
+    ) {
+      id
+      sessionToken
+      userId
+      expires
+    }
+    Post(
+      where: $db_upsertOneUser_Post_where
+      orderBy: $db_upsertOneUser_Post_orderBy
+      cursor: $db_upsertOneUser_Post_cursor
+      take: $db_upsertOneUser_Post_take
+      skip: $db_upsertOneUser_Post_skip
+      distinct: $db_upsertOneUser_Post_distinct
+    ) {
+      id
+      title
+      content
+      published
+      createdAt
+      updatedAt
+      authorId
+    }
+    Todo(
+      where: $db_upsertOneUser_Todo_where
+      orderBy: $db_upsertOneUser_Todo_orderBy
+      cursor: $db_upsertOneUser_Todo_cursor
+      take: $db_upsertOneUser_Todo_take
+      skip: $db_upsertOneUser_Todo_skip
+      distinct: $db_upsertOneUser_Todo_distinct
+    ) {
+      id
+      text
+      isCompleted
+      createdAt
+      updatedAt
+      userId
+    }
+    _count {
+      accounts
+      sessions
+      Post
+      Todo
+    }
+  }
+}

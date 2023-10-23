@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation db_updateManySession_mutation($data: db_SessionUpdateManyMutationInput!, $where: db_SessionWhereInput) {
+  db_updateManySession(data: $data, where: $where) {
+    count
+  }
+}

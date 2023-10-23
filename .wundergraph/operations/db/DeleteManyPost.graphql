@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation db_deleteManyPost_mutation($where: db_PostWhereInput) {
+  db_deleteManyPost(where: $where) {
+    count
+  }
+}
