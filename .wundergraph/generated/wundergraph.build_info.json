@@ -1,5 +1,5 @@
 {
-  "success": false,
+  "success": true,
   "sdk": {
     "version": "0.179.3"
   },
@@ -19,7 +19,7 @@
   "stats": {
     "totalApis": 3,
     "hasUploadProvider": false,
-    "totalOperations": 0,
+    "totalOperations": 77,
     "totalWebhooks": 0,
     "hasAuthenticationProvider": false
   }

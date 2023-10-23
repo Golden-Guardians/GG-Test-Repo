@@ -5545,26 +5545,6 @@ export interface UsersGetAllUsersResponseData {
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
 		stripeCurrentPeriodEnd?: string;
-		accounts?: {
-			id: string;
-			type: string;
-			provider: string;
-			providerAccountId: string;
-			refresh_token?: string;
-			access_token?: string;
-			expires_at?: number;
-			token_type?: string;
-			scope?: string;
-			id_token?: string;
-			session_state?: string;
-			createdAt: string;
-			updatedAt: string;
-		}[];
-		sessions?: {
-			id: string;
-			sessionToken: string;
-			expires: string;
-		}[];
 	}[];
 }
 

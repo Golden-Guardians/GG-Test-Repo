@@ -400,7 +400,7 @@
 "operation_name": "UsersGetAllUsers",
 "api_mount_path": "users/GetAllUsers",
 "file_path": "users/GetAllUsers.graphql",
-"content": ""
+"content": "query UsersGetAllUsers {db_findManyUser {id name email emailVerified image createdAt updatedAt stripeCustomerId stripeSubscriptionId stripePriceId stripeCurrentPeriodEnd}}"
 },
 {
 "operation_name": "WeatherGetCityById",
@@ -464,11 +464,5 @@
 "file_path": "users/update.ts",
 "module_path": "generated/bundle/operations/users/update"
 }
-],
-"invalid": [
-"UsersGetAllUsers"
-],
-"errors": [
-"could not parse operation 'UsersGetAllUsers': external: unexpected token - got: EOF want one of: [RBRACE IDENT SPREAD], locations: [{Line:0 Column:0}], path: []"
 ]
 }
