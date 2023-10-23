@@ -1,0 +1,83 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation db_createOneSession_mutation($data: db_SessionCreateInput!, $db_createOneSession_user_user_accounts_where: db_AccountWhereInput, $db_createOneSession_user_user_accounts_orderBy: [db_AccountOrderByWithRelationInput], $db_createOneSession_user_user_accounts_cursor: db_AccountWhereUniqueInput, $db_createOneSession_user_user_accounts_take: Int, $db_createOneSession_user_user_accounts_skip: Int, $db_createOneSession_user_user_accounts_distinct: [db_AccountScalarFieldEnum], $db_createOneSession_user_user_Post_where: db_PostWhereInput, $db_createOneSession_user_user_Post_orderBy: [db_PostOrderByWithRelationInput], $db_createOneSession_user_user_Post_cursor: db_PostWhereUniqueInput, $db_createOneSession_user_user_Post_take: Int, $db_createOneSession_user_user_Post_skip: Int, $db_createOneSession_user_user_Post_distinct: [db_PostScalarFieldEnum], $db_createOneSession_user_user_Todo_where: db_TodoWhereInput, $db_createOneSession_user_user_Todo_orderBy: [db_TodoOrderByWithRelationInput], $db_createOneSession_user_user_Todo_cursor: db_TodoWhereUniqueInput, $db_createOneSession_user_user_Todo_take: Int, $db_createOneSession_user_user_Todo_skip: Int, $db_createOneSession_user_user_Todo_distinct: [db_TodoScalarFieldEnum]) {
+  db_createOneSession(data: $data) {
+    id
+    sessionToken
+    userId
+    expires
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      accounts(
+        where: $db_createOneSession_user_user_accounts_where
+        orderBy: $db_createOneSession_user_user_accounts_orderBy
+        cursor: $db_createOneSession_user_user_accounts_cursor
+        take: $db_createOneSession_user_user_accounts_take
+        skip: $db_createOneSession_user_user_accounts_skip
+        distinct: $db_createOneSession_user_user_accounts_distinct
+      ) {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        createdAt
+        updatedAt
+      }
+      Post(
+        where: $db_createOneSession_user_user_Post_where
+        orderBy: $db_createOneSession_user_user_Post_orderBy
+        cursor: $db_createOneSession_user_user_Post_cursor
+        take: $db_createOneSession_user_user_Post_take
+        skip: $db_createOneSession_user_user_Post_skip
+        distinct: $db_createOneSession_user_user_Post_distinct
+      ) {
+        id
+        title
+        content
+        published
+        createdAt
+        updatedAt
+        authorId
+      }
+      Todo(
+        where: $db_createOneSession_user_user_Todo_where
+        orderBy: $db_createOneSession_user_user_Todo_orderBy
+        cursor: $db_createOneSession_user_user_Todo_cursor
+        take: $db_createOneSession_user_user_Todo_take
+        skip: $db_createOneSession_user_user_Todo_skip
+        distinct: $db_createOneSession_user_user_Todo_distinct
+      ) {
+        id
+        text
+        isCompleted
+        createdAt
+        updatedAt
+        userId
+      }
+      _count {
+        accounts
+        sessions
+        Post
+        Todo
+      }
+    }
+  }
+}

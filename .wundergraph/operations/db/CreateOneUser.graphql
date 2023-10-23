@@ -1,0 +1,90 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation db_createOneUser_mutation($data: db_UserCreateInput!, $db_createOneUser_accounts_where: db_AccountWhereInput, $db_createOneUser_accounts_orderBy: [db_AccountOrderByWithRelationInput], $db_createOneUser_accounts_cursor: db_AccountWhereUniqueInput, $db_createOneUser_accounts_take: Int, $db_createOneUser_accounts_skip: Int, $db_createOneUser_accounts_distinct: [db_AccountScalarFieldEnum], $db_createOneUser_sessions_where: db_SessionWhereInput, $db_createOneUser_sessions_orderBy: [db_SessionOrderByWithRelationInput], $db_createOneUser_sessions_cursor: db_SessionWhereUniqueInput, $db_createOneUser_sessions_take: Int, $db_createOneUser_sessions_skip: Int, $db_createOneUser_sessions_distinct: [db_SessionScalarFieldEnum], $db_createOneUser_Post_where: db_PostWhereInput, $db_createOneUser_Post_orderBy: [db_PostOrderByWithRelationInput], $db_createOneUser_Post_cursor: db_PostWhereUniqueInput, $db_createOneUser_Post_take: Int, $db_createOneUser_Post_skip: Int, $db_createOneUser_Post_distinct: [db_PostScalarFieldEnum], $db_createOneUser_Todo_where: db_TodoWhereInput, $db_createOneUser_Todo_orderBy: [db_TodoOrderByWithRelationInput], $db_createOneUser_Todo_cursor: db_TodoWhereUniqueInput, $db_createOneUser_Todo_take: Int, $db_createOneUser_Todo_skip: Int, $db_createOneUser_Todo_distinct: [db_TodoScalarFieldEnum]) {
+  db_createOneUser(data: $data) {
+    id
+    name
+    email
+    emailVerified
+    image
+    createdAt
+    updatedAt
+    stripeCustomerId
+    stripeSubscriptionId
+    stripePriceId
+    stripeCurrentPeriodEnd
+    accounts(
+      where: $db_createOneUser_accounts_where
+      orderBy: $db_createOneUser_accounts_orderBy
+      cursor: $db_createOneUser_accounts_cursor
+      take: $db_createOneUser_accounts_take
+      skip: $db_createOneUser_accounts_skip
+      distinct: $db_createOneUser_accounts_distinct
+    ) {
+      id
+      userId
+      type
+      provider
+      providerAccountId
+      refresh_token
+      access_token
+      expires_at
+      token_type
+      scope
+      id_token
+      session_state
+      createdAt
+      updatedAt
+    }
+    sessions(
+      where: $db_createOneUser_sessions_where
+      orderBy: $db_createOneUser_sessions_orderBy
+      cursor: $db_createOneUser_sessions_cursor
+      take: $db_createOneUser_sessions_take
+      skip: $db_createOneUser_sessions_skip
+      distinct: $db_createOneUser_sessions_distinct
+    ) {
+      id
+      sessionToken
+      userId
+      expires
+    }
+    Post(
+      where: $db_createOneUser_Post_where
+      orderBy: $db_createOneUser_Post_orderBy
+      cursor: $db_createOneUser_Post_cursor
+      take: $db_createOneUser_Post_take
+      skip: $db_createOneUser_Post_skip
+      distinct: $db_createOneUser_Post_distinct
+    ) {
+      id
+      title
+      content
+      published
+      createdAt
+      updatedAt
+      authorId
+    }
+    Todo(
+      where: $db_createOneUser_Todo_where
+      orderBy: $db_createOneUser_Todo_orderBy
+      cursor: $db_createOneUser_Todo_cursor
+      take: $db_createOneUser_Todo_take
+      skip: $db_createOneUser_Todo_skip
+      distinct: $db_createOneUser_Todo_distinct
+    ) {
+      id
+      text
+      isCompleted
+      createdAt
+      updatedAt
+      userId
+    }
+    _count {
+      accounts
+      sessions
+      Post
+      Todo
+    }
+  }
+}

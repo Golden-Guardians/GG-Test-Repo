@@ -1,0 +1,44 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query db_groupByTodo_query($where: db_TodoWhereInput, $orderBy: [db_TodoOrderByWithAggregationInput], $by: [db_TodoScalarFieldEnum]!, $having: db_TodoScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  db_groupByTodo(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    text
+    isCompleted
+    createdAt
+    updatedAt
+    userId
+    _count {
+      id
+      text
+      isCompleted
+      createdAt
+      updatedAt
+      userId
+      _all
+    }
+    _min {
+      id
+      text
+      isCompleted
+      createdAt
+      updatedAt
+      userId
+    }
+    _max {
+      id
+      text
+      isCompleted
+      createdAt
+      updatedAt
+      userId
+    }
+  }
+}
