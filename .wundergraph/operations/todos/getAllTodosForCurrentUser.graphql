@@ -1,7 +1,0 @@
-query getAllTodosForCurrentUser($userId: String!) {
-  db_findManyTodo(where: { userId: { equals: $userId } }) {
-    id
-    text
-    isCompleted
-  }
-}

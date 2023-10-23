@@ -178,8 +178,6 @@ export interface db_UserWhereInput {
 	stripeCurrentPeriodEnd?: db_DateTimeNullableFilter;
 	accounts?: db_AccountListRelationFilter;
 	sessions?: db_SessionListRelationFilter;
-	Post?: db_PostListRelationFilter;
-	Todo?: db_TodoListRelationFilter;
 }
 
 export interface db_DateTimeNullableFilter {
@@ -227,71 +225,6 @@ export interface db_SessionWhereInput {
 	user?: db_UserRelationFilter;
 }
 
-export interface db_PostListRelationFilter {
-	every?: db_PostWhereInput;
-	some?: db_PostWhereInput;
-	none?: db_PostWhereInput;
-}
-
-export interface db_PostWhereInput {
-	AND?: db_PostWhereInput;
-	OR?: db_PostWhereInput[];
-	NOT?: db_PostWhereInput;
-	id?: db_StringFilter;
-	title?: db_StringFilter;
-	content?: db_JsonNullableFilter;
-	published?: db_BoolFilter;
-	createdAt?: db_DateTimeFilter;
-	updatedAt?: db_DateTimeFilter;
-	authorId?: db_StringFilter;
-	author?: db_UserRelationFilter;
-}
-
-export interface db_JsonNullableFilter {
-	equals?: JSONValue;
-	path?: string;
-	string_contains?: string;
-	string_starts_with?: string;
-	string_ends_with?: string;
-	array_contains?: JSONValue;
-	array_starts_with?: JSONValue;
-	array_ends_with?: JSONValue;
-	lt?: JSONValue;
-	lte?: JSONValue;
-	gt?: JSONValue;
-	gte?: JSONValue;
-	not?: JSONValue;
-}
-
-export interface db_BoolFilter {
-	equals?: boolean;
-	not?: db_NestedBoolFilter;
-}
-
-export interface db_NestedBoolFilter {
-	equals?: boolean;
-	not?: db_NestedBoolFilter;
-}
-
-export interface db_TodoListRelationFilter {
-	every?: db_TodoWhereInput;
-	some?: db_TodoWhereInput;
-	none?: db_TodoWhereInput;
-}
-
-export interface db_TodoWhereInput {
-	AND?: db_TodoWhereInput;
-	OR?: db_TodoWhereInput[];
-	NOT?: db_TodoWhereInput;
-	id?: db_StringFilter;
-	text?: db_StringFilter;
-	isCompleted?: db_BoolFilter;
-	createdAt?: db_DateTimeFilter;
-	updatedAt?: db_DateTimeFilter;
-	userId?: db_StringFilter;
-	user?: db_UserRelationFilter;
-}
-
 export interface db_AccountOrderByWithRelationInput {
 	id?: db_SortOrderValues;
 	userId?: db_SortOrderValues;
@@ -324,8 +257,6 @@ export interface db_UserOrderByWithRelationInput {
 	stripeCurrentPeriodEnd?: db_SortOrderValues;
 	accounts?: db_AccountOrderByRelationAggregateInput;
 	sessions?: db_SessionOrderByRelationAggregateInput;
-	Post?: db_PostOrderByRelationAggregateInput;
-	Todo?: db_TodoOrderByRelationAggregateInput;
 }
 
 export interface db_AccountOrderByRelationAggregateInput {
@@ -333,14 +264,6 @@ export interface db_AccountOrderByRelationAggregateInput {
 }
 
 export interface db_SessionOrderByRelationAggregateInput {
-	_count?: db_SortOrderValues;
-}
-
-export interface db_PostOrderByRelationAggregateInput {
-	_count?: db_SortOrderValues;
-}
-
-export interface db_TodoOrderByRelationAggregateInput {
 	_count?: db_SortOrderValues;
 }
 
@@ -354,21 +277,6 @@ export interface db_AccountProviderProviderAccountIdCompoundUniqueInput {
 	providerAccountId?: string;
 }
 
-export interface db_PostOrderByWithRelationInput {
-	id?: db_SortOrderValues;
-	title?: db_SortOrderValues;
-	content?: db_SortOrderValues;
-	published?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	authorId?: db_SortOrderValues;
-	author?: db_UserOrderByWithRelationInput;
-}
-
-export interface db_PostWhereUniqueInput {
-	id?: string;
-}
-
 export interface db_SessionOrderByWithRelationInput {
 	id?: db_SortOrderValues;
 	sessionToken?: db_SortOrderValues;
@@ -380,20 +288,6 @@ export interface db_SessionOrderByWithRelationInput {
 export interface db_SessionWhereUniqueInput {
 	id?: string;
 	sessionToken?: string;
-}
-
-export interface db_TodoOrderByWithRelationInput {
-	id?: db_SortOrderValues;
-	text?: db_SortOrderValues;
-	isCompleted?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	userId?: db_SortOrderValues;
-	user?: db_UserOrderByWithRelationInput;
-}
-
-export interface db_TodoWhereUniqueInput {
-	id?: string;
 }
 
 export interface db_UserWhereUniqueInput {
@@ -445,30 +339,11 @@ export interface db_AccountCreateManyInput {
 	updatedAt?: string;
 }
 
-export interface db_PostCreateManyInput {
-	id?: string;
-	title?: string;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-	authorId?: string;
-}
-
 export interface db_SessionCreateManyInput {
 	id?: string;
 	sessionToken?: string;
 	userId?: string;
 	expires?: string;
-}
-
-export interface db_TodoCreateManyInput {
-	id?: string;
-	text?: string;
-	isCompleted?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-	userId?: string;
 }
 
 export interface db_UserCreateManyInput {
@@ -527,8 +402,6 @@ export interface db_UserCreateWithoutAccountsInput {
 	stripePriceId?: string;
 	stripeCurrentPeriodEnd?: string;
 	sessions?: db_SessionCreateNestedManyWithoutUserInput;
-	Post?: db_PostCreateNestedManyWithoutAuthorInput;
-	Todo?: db_TodoCreateNestedManyWithoutUserInput;
 }
 
 export interface db_SessionCreateNestedManyWithoutUserInput {
@@ -560,96 +433,25 @@ export interface db_SessionCreateManyUserInput {
 	expires: string;
 }
 
-export interface db_PostCreateNestedManyWithoutAuthorInput {
-	create?: db_PostCreateWithoutAuthorInput;
-	connectOrCreate?: db_PostCreateOrConnectWithoutAuthorInput;
-	createMany?: db_PostCreateManyAuthorInputEnvelope;
-	connect?: db_PostWhereUniqueInput;
-}
-
-export interface db_PostCreateWithoutAuthorInput {
-	id?: string;
-	title?: string;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-}
-
-export interface db_PostCreateOrConnectWithoutAuthorInput {
-	where?: db_PostWhereUniqueInput;
-	create?: db_PostCreateWithoutAuthorInput;
-}
-
-export interface db_PostCreateManyAuthorInputEnvelope {
-	data?: db_PostCreateManyAuthorInput;
-	skipDuplicates?: boolean;
-}
-
-export interface db_PostCreateManyAuthorInput {
-	id?: string;
-	title: string;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-}
-
-export interface db_TodoCreateNestedManyWithoutUserInput {
-	create?: db_TodoCreateWithoutUserInput;
-	connectOrCreate?: db_TodoCreateOrConnectWithoutUserInput;
-	createMany?: db_TodoCreateManyUserInputEnvelope;
-	connect?: db_TodoWhereUniqueInput;
-}
-
-export interface db_TodoCreateWithoutUserInput {
-	id?: string;
-	text?: string;
-	isCompleted?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-}
-
-export interface db_TodoCreateOrConnectWithoutUserInput {
-	where?: db_TodoWhereUniqueInput;
-	create?: db_TodoCreateWithoutUserInput;
-}
-
-export interface db_TodoCreateManyUserInputEnvelope {
-	data?: db_TodoCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface db_TodoCreateManyUserInput {
-	id?: string;
-	text: string;
-	isCompleted?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-}
-
 export interface db_UserCreateOrConnectWithoutAccountsInput {
 	where?: db_UserWhereUniqueInput;
 	create?: db_UserCreateWithoutAccountsInput;
 }
 
-export interface db_PostCreateInput {
+export interface db_SessionCreateInput {
 	id?: string;
-	title: string;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-	author: db_UserCreateNestedOneWithoutPostInput;
+	sessionToken: string;
+	expires: string;
+	user: db_UserCreateNestedOneWithoutSessionsInput;
 }
 
-export interface db_UserCreateNestedOneWithoutPostInput {
-	create?: db_UserCreateWithoutPostInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutPostInput;
+export interface db_UserCreateNestedOneWithoutSessionsInput {
+	create?: db_UserCreateWithoutSessionsInput;
+	connectOrCreate?: db_UserCreateOrConnectWithoutSessionsInput;
 	connect?: db_UserWhereUniqueInput;
 }
 
-export interface db_UserCreateWithoutPostInput {
+export interface db_UserCreateWithoutSessionsInput {
 	id?: string;
 	name?: string;
 	email?: string;
@@ -662,8 +464,6 @@ export interface db_UserCreateWithoutPostInput {
 	stripePriceId?: string;
 	stripeCurrentPeriodEnd?: string;
 	accounts?: db_AccountCreateNestedManyWithoutUserInput;
-	sessions?: db_SessionCreateNestedManyWithoutUserInput;
-	Todo?: db_TodoCreateNestedManyWithoutUserInput;
 }
 
 export interface db_AccountCreateNestedManyWithoutUserInput {
@@ -715,81 +515,9 @@ export interface db_AccountCreateManyUserInput {
 	updatedAt?: string;
 }
 
-export interface db_UserCreateOrConnectWithoutPostInput {
-	where?: db_UserWhereUniqueInput;
-	create?: db_UserCreateWithoutPostInput;
-}
-
-export interface db_SessionCreateInput {
-	id?: string;
-	sessionToken: string;
-	expires: string;
-	user: db_UserCreateNestedOneWithoutSessionsInput;
-}
-
-export interface db_UserCreateNestedOneWithoutSessionsInput {
-	create?: db_UserCreateWithoutSessionsInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutSessionsInput;
-	connect?: db_UserWhereUniqueInput;
-}
-
-export interface db_UserCreateWithoutSessionsInput {
-	id?: string;
-	name?: string;
-	email?: string;
-	emailVerified?: string;
-	image?: string;
-	createdAt?: string;
-	updatedAt?: string;
-	stripeCustomerId?: string;
-	stripeSubscriptionId?: string;
-	stripePriceId?: string;
-	stripeCurrentPeriodEnd?: string;
-	accounts?: db_AccountCreateNestedManyWithoutUserInput;
-	Post?: db_PostCreateNestedManyWithoutAuthorInput;
-	Todo?: db_TodoCreateNestedManyWithoutUserInput;
-}
-
 export interface db_UserCreateOrConnectWithoutSessionsInput {
 	where?: db_UserWhereUniqueInput;
 	create?: db_UserCreateWithoutSessionsInput;
-}
-
-export interface db_TodoCreateInput {
-	id?: string;
-	text: string;
-	isCompleted?: boolean;
-	createdAt?: string;
-	updatedAt?: string;
-	user: db_UserCreateNestedOneWithoutTodoInput;
-}
-
-export interface db_UserCreateNestedOneWithoutTodoInput {
-	create?: db_UserCreateWithoutTodoInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutTodoInput;
-	connect?: db_UserWhereUniqueInput;
-}
-
-export interface db_UserCreateWithoutTodoInput {
-	id?: string;
-	name?: string;
-	email?: string;
-	emailVerified?: string;
-	image?: string;
-	createdAt?: string;
-	updatedAt?: string;
-	stripeCustomerId?: string;
-	stripeSubscriptionId?: string;
-	stripePriceId?: string;
-	stripeCurrentPeriodEnd?: string;
-	accounts?: db_AccountCreateNestedManyWithoutUserInput;
-	sessions?: db_SessionCreateNestedManyWithoutUserInput;
-	Post?: db_PostCreateNestedManyWithoutAuthorInput;
-}
-
-export interface db_UserCreateOrConnectWithoutTodoInput {
-	where?: db_UserWhereUniqueInput;
-	create?: db_UserCreateWithoutTodoInput;
 }
 
 export interface db_UserCreateInput {
@@ -806,8 +534,6 @@ export interface db_UserCreateInput {
 	stripeCurrentPeriodEnd?: string;
 	accounts?: db_AccountCreateNestedManyWithoutUserInput;
 	sessions?: db_SessionCreateNestedManyWithoutUserInput;
-	Post?: db_PostCreateNestedManyWithoutAuthorInput;
-	Todo?: db_TodoCreateNestedManyWithoutUserInput;
 }
 
 export interface db_VerificationTokenCreateInput {
@@ -1067,111 +793,6 @@ export interface db_NestedDateTimeWithAggregatesFilter {
 	_max?: db_NestedDateTimeFilter;
 }
 
-export interface db_PostOrderByWithAggregationInput {
-	id?: db_SortOrderValues;
-	title?: db_SortOrderValues;
-	content?: db_SortOrderValues;
-	published?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	authorId?: db_SortOrderValues;
-	_count?: db_PostCountOrderByAggregateInput;
-	_max?: db_PostMaxOrderByAggregateInput;
-	_min?: db_PostMinOrderByAggregateInput;
-}
-
-export interface db_PostCountOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	title?: db_SortOrderValues;
-	content?: db_SortOrderValues;
-	published?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	authorId?: db_SortOrderValues;
-}
-
-export interface db_PostMaxOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	title?: db_SortOrderValues;
-	published?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	authorId?: db_SortOrderValues;
-}
-
-export interface db_PostMinOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	title?: db_SortOrderValues;
-	published?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	authorId?: db_SortOrderValues;
-}
-
-export interface db_PostScalarWhereWithAggregatesInput {
-	AND?: db_PostScalarWhereWithAggregatesInput;
-	OR?: db_PostScalarWhereWithAggregatesInput[];
-	NOT?: db_PostScalarWhereWithAggregatesInput;
-	id?: db_StringWithAggregatesFilter;
-	title?: db_StringWithAggregatesFilter;
-	content?: db_JsonNullableWithAggregatesFilter;
-	published?: db_BoolWithAggregatesFilter;
-	createdAt?: db_DateTimeWithAggregatesFilter;
-	updatedAt?: db_DateTimeWithAggregatesFilter;
-	authorId?: db_StringWithAggregatesFilter;
-}
-
-export interface db_JsonNullableWithAggregatesFilter {
-	equals?: JSONValue;
-	path?: string;
-	string_contains?: string;
-	string_starts_with?: string;
-	string_ends_with?: string;
-	array_contains?: JSONValue;
-	array_starts_with?: JSONValue;
-	array_ends_with?: JSONValue;
-	lt?: JSONValue;
-	lte?: JSONValue;
-	gt?: JSONValue;
-	gte?: JSONValue;
-	not?: JSONValue;
-	_count?: db_NestedIntNullableFilter;
-	_min?: db_NestedJsonNullableFilter;
-	_max?: db_NestedJsonNullableFilter;
-}
-
-export interface db_NestedJsonNullableFilter {
-	equals?: JSONValue;
-	path?: string;
-	string_contains?: string;
-	string_starts_with?: string;
-	string_ends_with?: string;
-	array_contains?: JSONValue;
-	array_starts_with?: JSONValue;
-	array_ends_with?: JSONValue;
-	lt?: JSONValue;
-	lte?: JSONValue;
-	gt?: JSONValue;
-	gte?: JSONValue;
-	not?: JSONValue;
-}
-
-export interface db_BoolWithAggregatesFilter {
-	equals?: boolean;
-	not?: db_NestedBoolWithAggregatesFilter;
-	_count?: db_NestedIntFilter;
-	_min?: db_NestedBoolFilter;
-	_max?: db_NestedBoolFilter;
-}
-
-export interface db_NestedBoolWithAggregatesFilter {
-	equals?: boolean;
-	not?: db_NestedBoolWithAggregatesFilter;
-	_count?: db_NestedIntFilter;
-	_min?: db_NestedBoolFilter;
-	_max?: db_NestedBoolFilter;
-}
-
 export interface db_SessionOrderByWithAggregationInput {
 	id?: db_SortOrderValues;
 	sessionToken?: db_SortOrderValues;
@@ -1211,57 +832,6 @@ export interface db_SessionScalarWhereWithAggregatesInput {
 	sessionToken?: db_StringWithAggregatesFilter;
 	userId?: db_StringWithAggregatesFilter;
 	expires?: db_DateTimeWithAggregatesFilter;
-}
-
-export interface db_TodoOrderByWithAggregationInput {
-	id?: db_SortOrderValues;
-	text?: db_SortOrderValues;
-	isCompleted?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	userId?: db_SortOrderValues;
-	_count?: db_TodoCountOrderByAggregateInput;
-	_max?: db_TodoMaxOrderByAggregateInput;
-	_min?: db_TodoMinOrderByAggregateInput;
-}
-
-export interface db_TodoCountOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	text?: db_SortOrderValues;
-	isCompleted?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	userId?: db_SortOrderValues;
-}
-
-export interface db_TodoMaxOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	text?: db_SortOrderValues;
-	isCompleted?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	userId?: db_SortOrderValues;
-}
-
-export interface db_TodoMinOrderByAggregateInput {
-	id?: db_SortOrderValues;
-	text?: db_SortOrderValues;
-	isCompleted?: db_SortOrderValues;
-	createdAt?: db_SortOrderValues;
-	updatedAt?: db_SortOrderValues;
-	userId?: db_SortOrderValues;
-}
-
-export interface db_TodoScalarWhereWithAggregatesInput {
-	AND?: db_TodoScalarWhereWithAggregatesInput;
-	OR?: db_TodoScalarWhereWithAggregatesInput[];
-	NOT?: db_TodoScalarWhereWithAggregatesInput;
-	id?: db_StringWithAggregatesFilter;
-	text?: db_StringWithAggregatesFilter;
-	isCompleted?: db_BoolWithAggregatesFilter;
-	createdAt?: db_DateTimeWithAggregatesFilter;
-	updatedAt?: db_DateTimeWithAggregatesFilter;
-	userId?: db_StringWithAggregatesFilter;
 }
 
 export interface db_UserOrderByWithAggregationInput {
@@ -1440,31 +1010,10 @@ export interface db_DateTimeFieldUpdateOperationsInput {
 	set?: string;
 }
 
-export interface db_PostUpdateManyMutationInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	title?: db_StringFieldUpdateOperationsInput;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface db_BoolFieldUpdateOperationsInput {
-	set?: boolean;
-}
-
 export interface db_SessionUpdateManyMutationInput {
 	id?: db_StringFieldUpdateOperationsInput;
 	sessionToken?: db_StringFieldUpdateOperationsInput;
 	expires?: db_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface db_TodoUpdateManyMutationInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	text?: db_StringFieldUpdateOperationsInput;
-	isCompleted?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
 }
 
 export interface db_UserUpdateManyMutationInput {
@@ -1534,8 +1083,6 @@ export interface db_UserUpdateWithoutAccountsInput {
 	stripePriceId?: db_NullableStringFieldUpdateOperationsInput;
 	stripeCurrentPeriodEnd?: db_NullableDateTimeFieldUpdateOperationsInput;
 	sessions?: db_SessionUpdateManyWithoutUserNestedInput;
-	Post?: db_PostUpdateManyWithoutAuthorNestedInput;
-	Todo?: db_TodoUpdateManyWithoutUserNestedInput;
 }
 
 export interface db_SessionUpdateManyWithoutUserNestedInput {
@@ -1584,132 +1131,27 @@ export interface db_SessionScalarWhereInput {
 	expires?: db_DateTimeFilter;
 }
 
-export interface db_PostUpdateManyWithoutAuthorNestedInput {
-	create?: db_PostCreateWithoutAuthorInput;
-	connectOrCreate?: db_PostCreateOrConnectWithoutAuthorInput;
-	upsert?: db_PostUpsertWithWhereUniqueWithoutAuthorInput;
-	createMany?: db_PostCreateManyAuthorInputEnvelope;
-	set?: db_PostWhereUniqueInput;
-	disconnect?: db_PostWhereUniqueInput;
-	delete?: db_PostWhereUniqueInput;
-	connect?: db_PostWhereUniqueInput;
-	update?: db_PostUpdateWithWhereUniqueWithoutAuthorInput;
-	updateMany?: db_PostUpdateManyWithWhereWithoutAuthorInput;
-	deleteMany?: db_PostScalarWhereInput;
-}
-
-export interface db_PostUpsertWithWhereUniqueWithoutAuthorInput {
-	where?: db_PostWhereUniqueInput;
-	update?: db_PostUpdateWithoutAuthorInput;
-	create?: db_PostCreateWithoutAuthorInput;
-}
-
-export interface db_PostUpdateWithoutAuthorInput {
+export interface db_SessionUpdateInput {
 	id?: db_StringFieldUpdateOperationsInput;
-	title?: db_StringFieldUpdateOperationsInput;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
+	sessionToken?: db_StringFieldUpdateOperationsInput;
+	expires?: db_DateTimeFieldUpdateOperationsInput;
+	user?: db_UserUpdateOneRequiredWithoutSessionsNestedInput;
 }
 
-export interface db_PostUpdateWithWhereUniqueWithoutAuthorInput {
-	where?: db_PostWhereUniqueInput;
-	data?: db_PostUpdateWithoutAuthorInput;
-}
-
-export interface db_PostUpdateManyWithWhereWithoutAuthorInput {
-	where?: db_PostScalarWhereInput;
-	data?: db_PostUpdateManyMutationInput;
-}
-
-export interface db_PostScalarWhereInput {
-	AND?: db_PostScalarWhereInput;
-	OR?: db_PostScalarWhereInput[];
-	NOT?: db_PostScalarWhereInput;
-	id?: db_StringFilter;
-	title?: db_StringFilter;
-	content?: db_JsonNullableFilter;
-	published?: db_BoolFilter;
-	createdAt?: db_DateTimeFilter;
-	updatedAt?: db_DateTimeFilter;
-	authorId?: db_StringFilter;
-}
-
-export interface db_TodoUpdateManyWithoutUserNestedInput {
-	create?: db_TodoCreateWithoutUserInput;
-	connectOrCreate?: db_TodoCreateOrConnectWithoutUserInput;
-	upsert?: db_TodoUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: db_TodoCreateManyUserInputEnvelope;
-	set?: db_TodoWhereUniqueInput;
-	disconnect?: db_TodoWhereUniqueInput;
-	delete?: db_TodoWhereUniqueInput;
-	connect?: db_TodoWhereUniqueInput;
-	update?: db_TodoUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: db_TodoUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: db_TodoScalarWhereInput;
-}
-
-export interface db_TodoUpsertWithWhereUniqueWithoutUserInput {
-	where?: db_TodoWhereUniqueInput;
-	update?: db_TodoUpdateWithoutUserInput;
-	create?: db_TodoCreateWithoutUserInput;
-}
-
-export interface db_TodoUpdateWithoutUserInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	text?: db_StringFieldUpdateOperationsInput;
-	isCompleted?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface db_TodoUpdateWithWhereUniqueWithoutUserInput {
-	where?: db_TodoWhereUniqueInput;
-	data?: db_TodoUpdateWithoutUserInput;
-}
-
-export interface db_TodoUpdateManyWithWhereWithoutUserInput {
-	where?: db_TodoScalarWhereInput;
-	data?: db_TodoUpdateManyMutationInput;
-}
-
-export interface db_TodoScalarWhereInput {
-	AND?: db_TodoScalarWhereInput;
-	OR?: db_TodoScalarWhereInput[];
-	NOT?: db_TodoScalarWhereInput;
-	id?: db_StringFilter;
-	text?: db_StringFilter;
-	isCompleted?: db_BoolFilter;
-	createdAt?: db_DateTimeFilter;
-	updatedAt?: db_DateTimeFilter;
-	userId?: db_StringFilter;
-}
-
-export interface db_PostUpdateInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	title?: db_StringFieldUpdateOperationsInput;
-	content?: db_NullableJsonNullValueInputValues;
-	published?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-	author?: db_UserUpdateOneRequiredWithoutPostNestedInput;
-}
-
-export interface db_UserUpdateOneRequiredWithoutPostNestedInput {
-	create?: db_UserCreateWithoutPostInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutPostInput;
-	upsert?: db_UserUpsertWithoutPostInput;
+export interface db_UserUpdateOneRequiredWithoutSessionsNestedInput {
+	create?: db_UserCreateWithoutSessionsInput;
+	connectOrCreate?: db_UserCreateOrConnectWithoutSessionsInput;
+	upsert?: db_UserUpsertWithoutSessionsInput;
 	connect?: db_UserWhereUniqueInput;
-	update?: db_UserUpdateWithoutPostInput;
+	update?: db_UserUpdateWithoutSessionsInput;
 }
 
-export interface db_UserUpsertWithoutPostInput {
-	update?: db_UserUpdateWithoutPostInput;
-	create?: db_UserCreateWithoutPostInput;
+export interface db_UserUpsertWithoutSessionsInput {
+	update?: db_UserUpdateWithoutSessionsInput;
+	create?: db_UserCreateWithoutSessionsInput;
 }
 
-export interface db_UserUpdateWithoutPostInput {
+export interface db_UserUpdateWithoutSessionsInput {
 	id?: db_StringFieldUpdateOperationsInput;
 	name?: db_NullableStringFieldUpdateOperationsInput;
 	email?: db_NullableStringFieldUpdateOperationsInput;
@@ -1722,8 +1164,6 @@ export interface db_UserUpdateWithoutPostInput {
 	stripePriceId?: db_NullableStringFieldUpdateOperationsInput;
 	stripeCurrentPeriodEnd?: db_NullableDateTimeFieldUpdateOperationsInput;
 	accounts?: db_AccountUpdateManyWithoutUserNestedInput;
-	sessions?: db_SessionUpdateManyWithoutUserNestedInput;
-	Todo?: db_TodoUpdateManyWithoutUserNestedInput;
 }
 
 export interface db_AccountUpdateManyWithoutUserNestedInput {
@@ -1792,82 +1232,6 @@ export interface db_AccountScalarWhereInput {
 	updatedAt?: db_DateTimeFilter;
 }
 
-export interface db_SessionUpdateInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	sessionToken?: db_StringFieldUpdateOperationsInput;
-	expires?: db_DateTimeFieldUpdateOperationsInput;
-	user?: db_UserUpdateOneRequiredWithoutSessionsNestedInput;
-}
-
-export interface db_UserUpdateOneRequiredWithoutSessionsNestedInput {
-	create?: db_UserCreateWithoutSessionsInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutSessionsInput;
-	upsert?: db_UserUpsertWithoutSessionsInput;
-	connect?: db_UserWhereUniqueInput;
-	update?: db_UserUpdateWithoutSessionsInput;
-}
-
-export interface db_UserUpsertWithoutSessionsInput {
-	update?: db_UserUpdateWithoutSessionsInput;
-	create?: db_UserCreateWithoutSessionsInput;
-}
-
-export interface db_UserUpdateWithoutSessionsInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	name?: db_NullableStringFieldUpdateOperationsInput;
-	email?: db_NullableStringFieldUpdateOperationsInput;
-	emailVerified?: db_NullableDateTimeFieldUpdateOperationsInput;
-	image?: db_NullableStringFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-	stripeCustomerId?: db_NullableStringFieldUpdateOperationsInput;
-	stripeSubscriptionId?: db_NullableStringFieldUpdateOperationsInput;
-	stripePriceId?: db_NullableStringFieldUpdateOperationsInput;
-	stripeCurrentPeriodEnd?: db_NullableDateTimeFieldUpdateOperationsInput;
-	accounts?: db_AccountUpdateManyWithoutUserNestedInput;
-	Post?: db_PostUpdateManyWithoutAuthorNestedInput;
-	Todo?: db_TodoUpdateManyWithoutUserNestedInput;
-}
-
-export interface db_TodoUpdateInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	text?: db_StringFieldUpdateOperationsInput;
-	isCompleted?: db_BoolFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-	user?: db_UserUpdateOneRequiredWithoutTodoNestedInput;
-}
-
-export interface db_UserUpdateOneRequiredWithoutTodoNestedInput {
-	create?: db_UserCreateWithoutTodoInput;
-	connectOrCreate?: db_UserCreateOrConnectWithoutTodoInput;
-	upsert?: db_UserUpsertWithoutTodoInput;
-	connect?: db_UserWhereUniqueInput;
-	update?: db_UserUpdateWithoutTodoInput;
-}
-
-export interface db_UserUpsertWithoutTodoInput {
-	update?: db_UserUpdateWithoutTodoInput;
-	create?: db_UserCreateWithoutTodoInput;
-}
-
-export interface db_UserUpdateWithoutTodoInput {
-	id?: db_StringFieldUpdateOperationsInput;
-	name?: db_NullableStringFieldUpdateOperationsInput;
-	email?: db_NullableStringFieldUpdateOperationsInput;
-	emailVerified?: db_NullableDateTimeFieldUpdateOperationsInput;
-	image?: db_NullableStringFieldUpdateOperationsInput;
-	createdAt?: db_DateTimeFieldUpdateOperationsInput;
-	updatedAt?: db_DateTimeFieldUpdateOperationsInput;
-	stripeCustomerId?: db_NullableStringFieldUpdateOperationsInput;
-	stripeSubscriptionId?: db_NullableStringFieldUpdateOperationsInput;
-	stripePriceId?: db_NullableStringFieldUpdateOperationsInput;
-	stripeCurrentPeriodEnd?: db_NullableDateTimeFieldUpdateOperationsInput;
-	accounts?: db_AccountUpdateManyWithoutUserNestedInput;
-	sessions?: db_SessionUpdateManyWithoutUserNestedInput;
-	Post?: db_PostUpdateManyWithoutAuthorNestedInput;
-}
-
 export interface db_UserUpdateInput {
 	id?: db_StringFieldUpdateOperationsInput;
 	name?: db_NullableStringFieldUpdateOperationsInput;
@@ -1882,8 +1246,6 @@ export interface db_UserUpdateInput {
 	stripeCurrentPeriodEnd?: db_NullableDateTimeFieldUpdateOperationsInput;
 	accounts?: db_AccountUpdateManyWithoutUserNestedInput;
 	sessions?: db_SessionUpdateManyWithoutUserNestedInput;
-	Post?: db_PostUpdateManyWithoutAuthorNestedInput;
-	Todo?: db_TodoUpdateManyWithoutUserNestedInput;
 }
 
 export interface db_VerificationTokenUpdateInput {
@@ -1908,14 +1270,6 @@ export const db_SortOrder = {
 
 export type db_SortOrderValues = (typeof db_SortOrder)[keyof typeof db_SortOrder];
 
-export const db_NullableJsonNullValueInput = {
-	DbNull: "DbNull",
-	JsonNull: "JsonNull",
-} as const;
-
-export type db_NullableJsonNullValueInputValues =
-	(typeof db_NullableJsonNullValueInput)[keyof typeof db_NullableJsonNullValueInput];
-
 export const db_SessionScalarFieldEnum = {
 	id: "id",
 	sessionToken: "sessionToken",
@@ -1925,29 +1279,6 @@ export const db_SessionScalarFieldEnum = {
 
 export type db_SessionScalarFieldEnumValues =
 	(typeof db_SessionScalarFieldEnum)[keyof typeof db_SessionScalarFieldEnum];
-
-export const db_PostScalarFieldEnum = {
-	id: "id",
-	title: "title",
-	content: "content",
-	published: "published",
-	createdAt: "createdAt",
-	updatedAt: "updatedAt",
-	authorId: "authorId",
-} as const;
-
-export type db_PostScalarFieldEnumValues = (typeof db_PostScalarFieldEnum)[keyof typeof db_PostScalarFieldEnum];
-
-export const db_TodoScalarFieldEnum = {
-	id: "id",
-	text: "text",
-	isCompleted: "isCompleted",
-	createdAt: "createdAt",
-	updatedAt: "updatedAt",
-	userId: "userId",
-} as const;
-
-export type db_TodoScalarFieldEnumValues = (typeof db_TodoScalarFieldEnum)[keyof typeof db_TodoScalarFieldEnum];
 
 export const db_AccountScalarFieldEnum = {
 	id: "id",
@@ -2096,26 +1427,10 @@ export interface DbAggregateAccountInput {
 	skip?: number;
 }
 
-export interface DbAggregatePostInput {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbAggregateSessionInput {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithRelationInput[];
 	cursor?: db_SessionWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbAggregateTodoInput {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
 	take?: number;
 	skip?: number;
 }
@@ -2141,18 +1456,8 @@ export interface DbCreateManyAccountInput {
 	skipDuplicates?: boolean;
 }
 
-export interface DbCreateManyPostInput {
-	data: db_PostCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
 export interface DbCreateManySessionInput {
 	data: db_SessionCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface DbCreateManyTodoInput {
-	data: db_TodoCreateManyInput[];
 	skipDuplicates?: boolean;
 }
 
@@ -2174,40 +1479,6 @@ export interface DbCreateOneAccountInput {
 	db_createOneAccount_user_user_sessions_take?: number;
 	db_createOneAccount_user_user_sessions_skip?: number;
 	db_createOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_createOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneAccount_user_user_Post_take?: number;
-	db_createOneAccount_user_user_Post_skip?: number;
-	db_createOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneAccount_user_user_Todo_take?: number;
-	db_createOneAccount_user_user_Todo_skip?: number;
-	db_createOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOnePostInput {
-	data: db_PostCreateInput;
-	db_createOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_createOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOnePost_author_author_accounts_take?: number;
-	db_createOnePost_author_author_accounts_skip?: number;
-	db_createOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_createOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOnePost_author_author_sessions_take?: number;
-	db_createOnePost_author_author_sessions_skip?: number;
-	db_createOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_createOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOnePost_author_author_Todo_take?: number;
-	db_createOnePost_author_author_Todo_skip?: number;
-	db_createOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneSessionInput {
@@ -2218,40 +1489,6 @@ export interface DbCreateOneSessionInput {
 	db_createOneSession_user_user_accounts_take?: number;
 	db_createOneSession_user_user_accounts_skip?: number;
 	db_createOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_createOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneSession_user_user_Post_take?: number;
-	db_createOneSession_user_user_Post_skip?: number;
-	db_createOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneSession_user_user_Todo_take?: number;
-	db_createOneSession_user_user_Todo_skip?: number;
-	db_createOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOneTodoInput {
-	data: db_TodoCreateInput;
-	db_createOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_createOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOneTodo_user_user_accounts_take?: number;
-	db_createOneTodo_user_user_accounts_skip?: number;
-	db_createOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_createOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOneTodo_user_user_sessions_take?: number;
-	db_createOneTodo_user_user_sessions_skip?: number;
-	db_createOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_createOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneTodo_user_user_Post_take?: number;
-	db_createOneTodo_user_user_Post_skip?: number;
-	db_createOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneUserInput {
@@ -2268,18 +1505,6 @@ export interface DbCreateOneUserInput {
 	db_createOneUser_sessions_take?: number;
 	db_createOneUser_sessions_skip?: number;
 	db_createOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneUser_Post_where?: db_PostWhereInput;
-	db_createOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneUser_Post_take?: number;
-	db_createOneUser_Post_skip?: number;
-	db_createOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneUser_Todo_where?: db_TodoWhereInput;
-	db_createOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneUser_Todo_take?: number;
-	db_createOneUser_Todo_skip?: number;
-	db_createOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneVerificationTokenInput {
@@ -2290,16 +1515,8 @@ export interface DbDeleteManyAccountInput {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbDeleteManyPostInput {
-	where?: db_PostWhereInput;
-}
-
 export interface DbDeleteManySessionInput {
 	where?: db_SessionWhereInput;
-}
-
-export interface DbDeleteManyTodoInput {
-	where?: db_TodoWhereInput;
 }
 
 export interface DbDeleteManyUserInput {
@@ -2318,40 +1535,6 @@ export interface DbDeleteOneAccountInput {
 	db_deleteOneAccount_user_user_sessions_take?: number;
 	db_deleteOneAccount_user_user_sessions_skip?: number;
 	db_deleteOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneAccount_user_user_Post_take?: number;
-	db_deleteOneAccount_user_user_Post_skip?: number;
-	db_deleteOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneAccount_user_user_Todo_take?: number;
-	db_deleteOneAccount_user_user_Todo_skip?: number;
-	db_deleteOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOnePostInput {
-	where: db_PostWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_deleteOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_take?: number;
-	db_deleteOnePost_author_author_accounts_skip?: number;
-	db_deleteOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_deleteOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOnePost_author_author_sessions_take?: number;
-	db_deleteOnePost_author_author_sessions_skip?: number;
-	db_deleteOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_deleteOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOnePost_author_author_Todo_take?: number;
-	db_deleteOnePost_author_author_Todo_skip?: number;
-	db_deleteOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneSessionInput {
@@ -2362,40 +1545,6 @@ export interface DbDeleteOneSessionInput {
 	db_deleteOneSession_user_user_accounts_take?: number;
 	db_deleteOneSession_user_user_accounts_skip?: number;
 	db_deleteOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneSession_user_user_Post_take?: number;
-	db_deleteOneSession_user_user_Post_skip?: number;
-	db_deleteOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneSession_user_user_Todo_take?: number;
-	db_deleteOneSession_user_user_Todo_skip?: number;
-	db_deleteOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOneTodoInput {
-	where: db_TodoWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_deleteOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_take?: number;
-	db_deleteOneTodo_user_user_accounts_skip?: number;
-	db_deleteOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_deleteOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOneTodo_user_user_sessions_take?: number;
-	db_deleteOneTodo_user_user_sessions_skip?: number;
-	db_deleteOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneTodo_user_user_Post_take?: number;
-	db_deleteOneTodo_user_user_Post_skip?: number;
-	db_deleteOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneUserInput {
@@ -2412,18 +1561,6 @@ export interface DbDeleteOneUserInput {
 	db_deleteOneUser_sessions_take?: number;
 	db_deleteOneUser_sessions_skip?: number;
 	db_deleteOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneUser_Post_where?: db_PostWhereInput;
-	db_deleteOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneUser_Post_take?: number;
-	db_deleteOneUser_Post_skip?: number;
-	db_deleteOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneUser_Todo_where?: db_TodoWhereInput;
-	db_deleteOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneUser_Todo_take?: number;
-	db_deleteOneUser_Todo_skip?: number;
-	db_deleteOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneVerificationTokenInput {
@@ -2448,18 +1585,6 @@ export interface DbFindFirstAccountInput {
 	db_findFirstAccount_user_user_sessions_take?: number;
 	db_findFirstAccount_user_user_sessions_skip?: number;
 	db_findFirstAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccount_user_user_Post_take?: number;
-	db_findFirstAccount_user_user_Post_skip?: number;
-	db_findFirstAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccount_user_user_Todo_take?: number;
-	db_findFirstAccount_user_user_Todo_skip?: number;
-	db_findFirstAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstAccountOrThrowInput {
@@ -2475,72 +1600,6 @@ export interface DbFindFirstAccountOrThrowInput {
 	db_findFirstAccountOrThrow_user_user_sessions_take?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_skip?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Post_take?: number;
-	db_findFirstAccountOrThrow_user_user_Post_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Todo_take?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostInput {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPost_author_author_accounts_take?: number;
-	db_findFirstPost_author_author_accounts_skip?: number;
-	db_findFirstPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPost_author_author_sessions_take?: number;
-	db_findFirstPost_author_author_sessions_skip?: number;
-	db_findFirstPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPost_author_author_Todo_take?: number;
-	db_findFirstPost_author_author_Todo_skip?: number;
-	db_findFirstPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostOrThrowInput {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_accounts_take?: number;
-	db_findFirstPostOrThrow_author_author_accounts_skip?: number;
-	db_findFirstPostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_sessions_take?: number;
-	db_findFirstPostOrThrow_author_author_sessions_skip?: number;
-	db_findFirstPostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_Todo_take?: number;
-	db_findFirstPostOrThrow_author_author_Todo_skip?: number;
-	db_findFirstPostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionInput {
@@ -2556,18 +1615,6 @@ export interface DbFindFirstSessionInput {
 	db_findFirstSession_user_user_accounts_take?: number;
 	db_findFirstSession_user_user_accounts_skip?: number;
 	db_findFirstSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSession_user_user_Post_take?: number;
-	db_findFirstSession_user_user_Post_skip?: number;
-	db_findFirstSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSession_user_user_Todo_take?: number;
-	db_findFirstSession_user_user_Todo_skip?: number;
-	db_findFirstSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionOrThrowInput {
@@ -2583,72 +1630,6 @@ export interface DbFindFirstSessionOrThrowInput {
 	db_findFirstSessionOrThrow_user_user_accounts_take?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_skip?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Post_take?: number;
-	db_findFirstSessionOrThrow_user_user_Post_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Todo_take?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoInput {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodo_user_user_accounts_take?: number;
-	db_findFirstTodo_user_user_accounts_skip?: number;
-	db_findFirstTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodo_user_user_sessions_take?: number;
-	db_findFirstTodo_user_user_sessions_skip?: number;
-	db_findFirstTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodo_user_user_Post_take?: number;
-	db_findFirstTodo_user_user_Post_skip?: number;
-	db_findFirstTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoOrThrowInput {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_accounts_take?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_skip?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_sessions_take?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_skip?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_Post_take?: number;
-	db_findFirstTodoOrThrow_user_user_Post_skip?: number;
-	db_findFirstTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserInput {
@@ -2670,18 +1651,6 @@ export interface DbFindFirstUserInput {
 	db_findFirstUser_sessions_take?: number;
 	db_findFirstUser_sessions_skip?: number;
 	db_findFirstUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUser_Post_where?: db_PostWhereInput;
-	db_findFirstUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUser_Post_take?: number;
-	db_findFirstUser_Post_skip?: number;
-	db_findFirstUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUser_Todo_where?: db_TodoWhereInput;
-	db_findFirstUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUser_Todo_take?: number;
-	db_findFirstUser_Todo_skip?: number;
-	db_findFirstUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserOrThrowInput {
@@ -2703,18 +1672,6 @@ export interface DbFindFirstUserOrThrowInput {
 	db_findFirstUserOrThrow_sessions_take?: number;
 	db_findFirstUserOrThrow_sessions_skip?: number;
 	db_findFirstUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findFirstUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUserOrThrow_Post_take?: number;
-	db_findFirstUserOrThrow_Post_skip?: number;
-	db_findFirstUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findFirstUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUserOrThrow_Todo_take?: number;
-	db_findFirstUserOrThrow_Todo_skip?: number;
-	db_findFirstUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstVerificationTokenInput {
@@ -2748,45 +1705,6 @@ export interface DbFindManyAccountInput {
 	db_findManyAccount_user_user_sessions_take?: number;
 	db_findManyAccount_user_user_sessions_skip?: number;
 	db_findManyAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findManyAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyAccount_user_user_Post_take?: number;
-	db_findManyAccount_user_user_Post_skip?: number;
-	db_findManyAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManyAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyAccount_user_user_Todo_take?: number;
-	db_findManyAccount_user_user_Todo_skip?: number;
-	db_findManyAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyPostInput {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findManyPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyPost_author_author_accounts_take?: number;
-	db_findManyPost_author_author_accounts_skip?: number;
-	db_findManyPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findManyPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyPost_author_author_sessions_take?: number;
-	db_findManyPost_author_author_sessions_skip?: number;
-	db_findManyPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findManyPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyPost_author_author_Todo_take?: number;
-	db_findManyPost_author_author_Todo_skip?: number;
-	db_findManyPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManySessionInput {
@@ -2802,45 +1720,6 @@ export interface DbFindManySessionInput {
 	db_findManySession_user_user_accounts_take?: number;
 	db_findManySession_user_user_accounts_skip?: number;
 	db_findManySession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManySession_user_user_Post_where?: db_PostWhereInput;
-	db_findManySession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManySession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManySession_user_user_Post_take?: number;
-	db_findManySession_user_user_Post_skip?: number;
-	db_findManySession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManySession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManySession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManySession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManySession_user_user_Todo_take?: number;
-	db_findManySession_user_user_Todo_skip?: number;
-	db_findManySession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyTodoInput {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findManyTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findManyTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyTodo_user_user_accounts_take?: number;
-	db_findManyTodo_user_user_accounts_skip?: number;
-	db_findManyTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findManyTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyTodo_user_user_sessions_take?: number;
-	db_findManyTodo_user_user_sessions_skip?: number;
-	db_findManyTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findManyTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyTodo_user_user_Post_take?: number;
-	db_findManyTodo_user_user_Post_skip?: number;
-	db_findManyTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindManyUserInput {
@@ -2862,18 +1741,6 @@ export interface DbFindManyUserInput {
 	db_findManyUser_sessions_take?: number;
 	db_findManyUser_sessions_skip?: number;
 	db_findManyUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyUser_Post_where?: db_PostWhereInput;
-	db_findManyUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyUser_Post_take?: number;
-	db_findManyUser_Post_skip?: number;
-	db_findManyUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyUser_Todo_where?: db_TodoWhereInput;
-	db_findManyUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyUser_Todo_take?: number;
-	db_findManyUser_Todo_skip?: number;
-	db_findManyUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManyVerificationTokenInput {
@@ -2893,18 +1760,6 @@ export interface DbFindUniqueAccountInput {
 	db_findUniqueAccount_user_user_sessions_take?: number;
 	db_findUniqueAccount_user_user_sessions_skip?: number;
 	db_findUniqueAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccount_user_user_Post_take?: number;
-	db_findUniqueAccount_user_user_Post_skip?: number;
-	db_findUniqueAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccount_user_user_Todo_take?: number;
-	db_findUniqueAccount_user_user_Todo_skip?: number;
-	db_findUniqueAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueAccountOrThrowInput {
@@ -2915,62 +1770,6 @@ export interface DbFindUniqueAccountOrThrowInput {
 	db_findUniqueAccountOrThrow_user_user_sessions_take?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_skip?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Post_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostInput {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_take?: number;
-	db_findUniquePost_author_author_accounts_skip?: number;
-	db_findUniquePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePost_author_author_sessions_take?: number;
-	db_findUniquePost_author_author_sessions_skip?: number;
-	db_findUniquePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePost_author_author_Todo_take?: number;
-	db_findUniquePost_author_author_Todo_skip?: number;
-	db_findUniquePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostOrThrowInput {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_take?: number;
-	db_findUniquePostOrThrow_author_author_accounts_skip?: number;
-	db_findUniquePostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_sessions_take?: number;
-	db_findUniquePostOrThrow_author_author_sessions_skip?: number;
-	db_findUniquePostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_Todo_take?: number;
-	db_findUniquePostOrThrow_author_author_Todo_skip?: number;
-	db_findUniquePostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionInput {
@@ -2981,18 +1780,6 @@ export interface DbFindUniqueSessionInput {
 	db_findUniqueSession_user_user_accounts_take?: number;
 	db_findUniqueSession_user_user_accounts_skip?: number;
 	db_findUniqueSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSession_user_user_Post_take?: number;
-	db_findUniqueSession_user_user_Post_skip?: number;
-	db_findUniqueSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSession_user_user_Todo_take?: number;
-	db_findUniqueSession_user_user_Todo_skip?: number;
-	db_findUniqueSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionOrThrowInput {
@@ -3003,62 +1790,6 @@ export interface DbFindUniqueSessionOrThrowInput {
 	db_findUniqueSessionOrThrow_user_user_accounts_take?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_skip?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Post_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoInput {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_take?: number;
-	db_findUniqueTodo_user_user_accounts_skip?: number;
-	db_findUniqueTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodo_user_user_sessions_take?: number;
-	db_findUniqueTodo_user_user_sessions_skip?: number;
-	db_findUniqueTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodo_user_user_Post_take?: number;
-	db_findUniqueTodo_user_user_Post_skip?: number;
-	db_findUniqueTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoOrThrowInput {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_take?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_take?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_Post_take?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserInput {
@@ -3075,18 +1806,6 @@ export interface DbFindUniqueUserInput {
 	db_findUniqueUser_sessions_take?: number;
 	db_findUniqueUser_sessions_skip?: number;
 	db_findUniqueUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUser_Post_where?: db_PostWhereInput;
-	db_findUniqueUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUser_Post_take?: number;
-	db_findUniqueUser_Post_skip?: number;
-	db_findUniqueUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUser_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUser_Todo_take?: number;
-	db_findUniqueUser_Todo_skip?: number;
-	db_findUniqueUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserOrThrowInput {
@@ -3103,18 +1822,6 @@ export interface DbFindUniqueUserOrThrowInput {
 	db_findUniqueUserOrThrow_sessions_take?: number;
 	db_findUniqueUserOrThrow_sessions_skip?: number;
 	db_findUniqueUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findUniqueUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUserOrThrow_Post_take?: number;
-	db_findUniqueUserOrThrow_Post_skip?: number;
-	db_findUniqueUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUserOrThrow_Todo_take?: number;
-	db_findUniqueUserOrThrow_Todo_skip?: number;
-	db_findUniqueUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueVerificationTokenInput {
@@ -3134,29 +1841,11 @@ export interface DbGroupByAccountInput {
 	skip?: number;
 }
 
-export interface DbGroupByPostInput {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithAggregationInput[];
-	by: db_PostScalarFieldEnumValues[];
-	having?: db_PostScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbGroupBySessionInput {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithAggregationInput[];
 	by: db_SessionScalarFieldEnumValues[];
 	having?: db_SessionScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbGroupByTodoInput {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithAggregationInput[];
-	by: db_TodoScalarFieldEnumValues[];
-	having?: db_TodoScalarWhereWithAggregatesInput;
 	take?: number;
 	skip?: number;
 }
@@ -3194,19 +1883,9 @@ export interface DbUpdateManyAccountInput {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbUpdateManyPostInput {
-	data: db_PostUpdateManyMutationInput;
-	where?: db_PostWhereInput;
-}
-
 export interface DbUpdateManySessionInput {
 	data: db_SessionUpdateManyMutationInput;
 	where?: db_SessionWhereInput;
-}
-
-export interface DbUpdateManyTodoInput {
-	data: db_TodoUpdateManyMutationInput;
-	where?: db_TodoWhereInput;
 }
 
 export interface DbUpdateManyUserInput {
@@ -3228,41 +1907,6 @@ export interface DbUpdateOneAccountInput {
 	db_updateOneAccount_user_user_sessions_take?: number;
 	db_updateOneAccount_user_user_sessions_skip?: number;
 	db_updateOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneAccount_user_user_Post_take?: number;
-	db_updateOneAccount_user_user_Post_skip?: number;
-	db_updateOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneAccount_user_user_Todo_take?: number;
-	db_updateOneAccount_user_user_Todo_skip?: number;
-	db_updateOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOnePostInput {
-	data: db_PostUpdateInput;
-	where: db_PostWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_updateOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_take?: number;
-	db_updateOnePost_author_author_accounts_skip?: number;
-	db_updateOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_updateOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOnePost_author_author_sessions_take?: number;
-	db_updateOnePost_author_author_sessions_skip?: number;
-	db_updateOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_updateOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOnePost_author_author_Todo_take?: number;
-	db_updateOnePost_author_author_Todo_skip?: number;
-	db_updateOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneSessionInput {
@@ -3274,41 +1918,6 @@ export interface DbUpdateOneSessionInput {
 	db_updateOneSession_user_user_accounts_take?: number;
 	db_updateOneSession_user_user_accounts_skip?: number;
 	db_updateOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneSession_user_user_Post_take?: number;
-	db_updateOneSession_user_user_Post_skip?: number;
-	db_updateOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneSession_user_user_Todo_take?: number;
-	db_updateOneSession_user_user_Todo_skip?: number;
-	db_updateOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOneTodoInput {
-	data: db_TodoUpdateInput;
-	where: db_TodoWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_updateOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_take?: number;
-	db_updateOneTodo_user_user_accounts_skip?: number;
-	db_updateOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_updateOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOneTodo_user_user_sessions_take?: number;
-	db_updateOneTodo_user_user_sessions_skip?: number;
-	db_updateOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneTodo_user_user_Post_take?: number;
-	db_updateOneTodo_user_user_Post_skip?: number;
-	db_updateOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneUserInput {
@@ -3326,18 +1935,6 @@ export interface DbUpdateOneUserInput {
 	db_updateOneUser_sessions_take?: number;
 	db_updateOneUser_sessions_skip?: number;
 	db_updateOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneUser_Post_where?: db_PostWhereInput;
-	db_updateOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneUser_Post_take?: number;
-	db_updateOneUser_Post_skip?: number;
-	db_updateOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneUser_Todo_where?: db_TodoWhereInput;
-	db_updateOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneUser_Todo_take?: number;
-	db_updateOneUser_Todo_skip?: number;
-	db_updateOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneVerificationTokenInput {
@@ -3355,42 +1952,6 @@ export interface DbUpsertOneAccountInput {
 	db_upsertOneAccount_user_user_sessions_take?: number;
 	db_upsertOneAccount_user_user_sessions_skip?: number;
 	db_upsertOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneAccount_user_user_Post_take?: number;
-	db_upsertOneAccount_user_user_Post_skip?: number;
-	db_upsertOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneAccount_user_user_Todo_take?: number;
-	db_upsertOneAccount_user_user_Todo_skip?: number;
-	db_upsertOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOnePostInput {
-	where: db_PostWhereUniqueInput;
-	create: db_PostCreateInput;
-	update: db_PostUpdateInput;
-	db_upsertOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_upsertOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOnePost_author_author_accounts_take?: number;
-	db_upsertOnePost_author_author_accounts_skip?: number;
-	db_upsertOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_upsertOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOnePost_author_author_sessions_take?: number;
-	db_upsertOnePost_author_author_sessions_skip?: number;
-	db_upsertOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_upsertOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOnePost_author_author_Todo_take?: number;
-	db_upsertOnePost_author_author_Todo_skip?: number;
-	db_upsertOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneSessionInput {
@@ -3403,42 +1964,6 @@ export interface DbUpsertOneSessionInput {
 	db_upsertOneSession_user_user_accounts_take?: number;
 	db_upsertOneSession_user_user_accounts_skip?: number;
 	db_upsertOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneSession_user_user_Post_take?: number;
-	db_upsertOneSession_user_user_Post_skip?: number;
-	db_upsertOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneSession_user_user_Todo_take?: number;
-	db_upsertOneSession_user_user_Todo_skip?: number;
-	db_upsertOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOneTodoInput {
-	where: db_TodoWhereUniqueInput;
-	create: db_TodoCreateInput;
-	update: db_TodoUpdateInput;
-	db_upsertOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_upsertOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOneTodo_user_user_accounts_take?: number;
-	db_upsertOneTodo_user_user_accounts_skip?: number;
-	db_upsertOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_upsertOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOneTodo_user_user_sessions_take?: number;
-	db_upsertOneTodo_user_user_sessions_skip?: number;
-	db_upsertOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneTodo_user_user_Post_take?: number;
-	db_upsertOneTodo_user_user_Post_skip?: number;
-	db_upsertOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneUserInput {
@@ -3457,39 +1982,12 @@ export interface DbUpsertOneUserInput {
 	db_upsertOneUser_sessions_take?: number;
 	db_upsertOneUser_sessions_skip?: number;
 	db_upsertOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneUser_Post_where?: db_PostWhereInput;
-	db_upsertOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneUser_Post_take?: number;
-	db_upsertOneUser_Post_skip?: number;
-	db_upsertOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneUser_Todo_where?: db_TodoWhereInput;
-	db_upsertOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneUser_Todo_take?: number;
-	db_upsertOneUser_Todo_skip?: number;
-	db_upsertOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneVerificationTokenInput {
 	where: db_VerificationTokenWhereUniqueInput;
 	create: db_VerificationTokenCreateInput;
 	update: db_VerificationTokenUpdateInput;
-}
-
-export interface TodosAddTodoInput {
-	text: string;
-	userId: string;
-}
-
-export interface TodosGetAllTodosForCurrentUserInput {
-	userId: string;
-}
-
-export interface TodosUpdateTodoInput {
-	id: string;
-	text: string;
-	isCompleted: boolean;
 }
 
 export interface WeatherGetCityByIdInput {
@@ -3559,26 +2057,10 @@ export interface DbAggregateAccountInputInternal {
 	skip?: number;
 }
 
-export interface DbAggregatePostInputInternal {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbAggregateSessionInputInternal {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithRelationInput[];
 	cursor?: db_SessionWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbAggregateTodoInputInternal {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
 	take?: number;
 	skip?: number;
 }
@@ -3604,18 +2086,8 @@ export interface DbCreateManyAccountInputInternal {
 	skipDuplicates?: boolean;
 }
 
-export interface DbCreateManyPostInputInternal {
-	data: db_PostCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
 export interface DbCreateManySessionInputInternal {
 	data: db_SessionCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface DbCreateManyTodoInputInternal {
-	data: db_TodoCreateManyInput[];
 	skipDuplicates?: boolean;
 }
 
@@ -3637,40 +2109,6 @@ export interface DbCreateOneAccountInputInternal {
 	db_createOneAccount_user_user_sessions_take?: number;
 	db_createOneAccount_user_user_sessions_skip?: number;
 	db_createOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_createOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneAccount_user_user_Post_take?: number;
-	db_createOneAccount_user_user_Post_skip?: number;
-	db_createOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneAccount_user_user_Todo_take?: number;
-	db_createOneAccount_user_user_Todo_skip?: number;
-	db_createOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOnePostInputInternal {
-	data: db_PostCreateInput;
-	db_createOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_createOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOnePost_author_author_accounts_take?: number;
-	db_createOnePost_author_author_accounts_skip?: number;
-	db_createOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_createOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOnePost_author_author_sessions_take?: number;
-	db_createOnePost_author_author_sessions_skip?: number;
-	db_createOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_createOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOnePost_author_author_Todo_take?: number;
-	db_createOnePost_author_author_Todo_skip?: number;
-	db_createOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneSessionInputInternal {
@@ -3681,40 +2119,6 @@ export interface DbCreateOneSessionInputInternal {
 	db_createOneSession_user_user_accounts_take?: number;
 	db_createOneSession_user_user_accounts_skip?: number;
 	db_createOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_createOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneSession_user_user_Post_take?: number;
-	db_createOneSession_user_user_Post_skip?: number;
-	db_createOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneSession_user_user_Todo_take?: number;
-	db_createOneSession_user_user_Todo_skip?: number;
-	db_createOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOneTodoInputInternal {
-	data: db_TodoCreateInput;
-	db_createOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_createOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOneTodo_user_user_accounts_take?: number;
-	db_createOneTodo_user_user_accounts_skip?: number;
-	db_createOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_createOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOneTodo_user_user_sessions_take?: number;
-	db_createOneTodo_user_user_sessions_skip?: number;
-	db_createOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_createOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneTodo_user_user_Post_take?: number;
-	db_createOneTodo_user_user_Post_skip?: number;
-	db_createOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneUserInputInternal {
@@ -3731,18 +2135,6 @@ export interface DbCreateOneUserInputInternal {
 	db_createOneUser_sessions_take?: number;
 	db_createOneUser_sessions_skip?: number;
 	db_createOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneUser_Post_where?: db_PostWhereInput;
-	db_createOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneUser_Post_take?: number;
-	db_createOneUser_Post_skip?: number;
-	db_createOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneUser_Todo_where?: db_TodoWhereInput;
-	db_createOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneUser_Todo_take?: number;
-	db_createOneUser_Todo_skip?: number;
-	db_createOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneVerificationTokenInputInternal {
@@ -3753,16 +2145,8 @@ export interface DbDeleteManyAccountInputInternal {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbDeleteManyPostInputInternal {
-	where?: db_PostWhereInput;
-}
-
 export interface DbDeleteManySessionInputInternal {
 	where?: db_SessionWhereInput;
-}
-
-export interface DbDeleteManyTodoInputInternal {
-	where?: db_TodoWhereInput;
 }
 
 export interface DbDeleteManyUserInputInternal {
@@ -3781,40 +2165,6 @@ export interface DbDeleteOneAccountInputInternal {
 	db_deleteOneAccount_user_user_sessions_take?: number;
 	db_deleteOneAccount_user_user_sessions_skip?: number;
 	db_deleteOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneAccount_user_user_Post_take?: number;
-	db_deleteOneAccount_user_user_Post_skip?: number;
-	db_deleteOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneAccount_user_user_Todo_take?: number;
-	db_deleteOneAccount_user_user_Todo_skip?: number;
-	db_deleteOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOnePostInputInternal {
-	where: db_PostWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_deleteOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_take?: number;
-	db_deleteOnePost_author_author_accounts_skip?: number;
-	db_deleteOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_deleteOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOnePost_author_author_sessions_take?: number;
-	db_deleteOnePost_author_author_sessions_skip?: number;
-	db_deleteOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_deleteOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOnePost_author_author_Todo_take?: number;
-	db_deleteOnePost_author_author_Todo_skip?: number;
-	db_deleteOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneSessionInputInternal {
@@ -3825,40 +2175,6 @@ export interface DbDeleteOneSessionInputInternal {
 	db_deleteOneSession_user_user_accounts_take?: number;
 	db_deleteOneSession_user_user_accounts_skip?: number;
 	db_deleteOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneSession_user_user_Post_take?: number;
-	db_deleteOneSession_user_user_Post_skip?: number;
-	db_deleteOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneSession_user_user_Todo_take?: number;
-	db_deleteOneSession_user_user_Todo_skip?: number;
-	db_deleteOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOneTodoInputInternal {
-	where: db_TodoWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_deleteOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_take?: number;
-	db_deleteOneTodo_user_user_accounts_skip?: number;
-	db_deleteOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_deleteOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOneTodo_user_user_sessions_take?: number;
-	db_deleteOneTodo_user_user_sessions_skip?: number;
-	db_deleteOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneTodo_user_user_Post_take?: number;
-	db_deleteOneTodo_user_user_Post_skip?: number;
-	db_deleteOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneUserInputInternal {
@@ -3875,18 +2191,6 @@ export interface DbDeleteOneUserInputInternal {
 	db_deleteOneUser_sessions_take?: number;
 	db_deleteOneUser_sessions_skip?: number;
 	db_deleteOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneUser_Post_where?: db_PostWhereInput;
-	db_deleteOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneUser_Post_take?: number;
-	db_deleteOneUser_Post_skip?: number;
-	db_deleteOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneUser_Todo_where?: db_TodoWhereInput;
-	db_deleteOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneUser_Todo_take?: number;
-	db_deleteOneUser_Todo_skip?: number;
-	db_deleteOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneVerificationTokenInputInternal {
@@ -3911,18 +2215,6 @@ export interface DbFindFirstAccountInputInternal {
 	db_findFirstAccount_user_user_sessions_take?: number;
 	db_findFirstAccount_user_user_sessions_skip?: number;
 	db_findFirstAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccount_user_user_Post_take?: number;
-	db_findFirstAccount_user_user_Post_skip?: number;
-	db_findFirstAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccount_user_user_Todo_take?: number;
-	db_findFirstAccount_user_user_Todo_skip?: number;
-	db_findFirstAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstAccountOrThrowInputInternal {
@@ -3938,72 +2230,6 @@ export interface DbFindFirstAccountOrThrowInputInternal {
 	db_findFirstAccountOrThrow_user_user_sessions_take?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_skip?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Post_take?: number;
-	db_findFirstAccountOrThrow_user_user_Post_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Todo_take?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostInputInternal {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPost_author_author_accounts_take?: number;
-	db_findFirstPost_author_author_accounts_skip?: number;
-	db_findFirstPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPost_author_author_sessions_take?: number;
-	db_findFirstPost_author_author_sessions_skip?: number;
-	db_findFirstPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPost_author_author_Todo_take?: number;
-	db_findFirstPost_author_author_Todo_skip?: number;
-	db_findFirstPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostOrThrowInputInternal {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_accounts_take?: number;
-	db_findFirstPostOrThrow_author_author_accounts_skip?: number;
-	db_findFirstPostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_sessions_take?: number;
-	db_findFirstPostOrThrow_author_author_sessions_skip?: number;
-	db_findFirstPostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_Todo_take?: number;
-	db_findFirstPostOrThrow_author_author_Todo_skip?: number;
-	db_findFirstPostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionInputInternal {
@@ -4019,18 +2245,6 @@ export interface DbFindFirstSessionInputInternal {
 	db_findFirstSession_user_user_accounts_take?: number;
 	db_findFirstSession_user_user_accounts_skip?: number;
 	db_findFirstSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSession_user_user_Post_take?: number;
-	db_findFirstSession_user_user_Post_skip?: number;
-	db_findFirstSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSession_user_user_Todo_take?: number;
-	db_findFirstSession_user_user_Todo_skip?: number;
-	db_findFirstSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionOrThrowInputInternal {
@@ -4046,72 +2260,6 @@ export interface DbFindFirstSessionOrThrowInputInternal {
 	db_findFirstSessionOrThrow_user_user_accounts_take?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_skip?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Post_take?: number;
-	db_findFirstSessionOrThrow_user_user_Post_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Todo_take?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoInputInternal {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodo_user_user_accounts_take?: number;
-	db_findFirstTodo_user_user_accounts_skip?: number;
-	db_findFirstTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodo_user_user_sessions_take?: number;
-	db_findFirstTodo_user_user_sessions_skip?: number;
-	db_findFirstTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodo_user_user_Post_take?: number;
-	db_findFirstTodo_user_user_Post_skip?: number;
-	db_findFirstTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoOrThrowInputInternal {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_accounts_take?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_skip?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_sessions_take?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_skip?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_Post_take?: number;
-	db_findFirstTodoOrThrow_user_user_Post_skip?: number;
-	db_findFirstTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserInputInternal {
@@ -4133,18 +2281,6 @@ export interface DbFindFirstUserInputInternal {
 	db_findFirstUser_sessions_take?: number;
 	db_findFirstUser_sessions_skip?: number;
 	db_findFirstUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUser_Post_where?: db_PostWhereInput;
-	db_findFirstUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUser_Post_take?: number;
-	db_findFirstUser_Post_skip?: number;
-	db_findFirstUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUser_Todo_where?: db_TodoWhereInput;
-	db_findFirstUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUser_Todo_take?: number;
-	db_findFirstUser_Todo_skip?: number;
-	db_findFirstUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserOrThrowInputInternal {
@@ -4166,18 +2302,6 @@ export interface DbFindFirstUserOrThrowInputInternal {
 	db_findFirstUserOrThrow_sessions_take?: number;
 	db_findFirstUserOrThrow_sessions_skip?: number;
 	db_findFirstUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findFirstUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUserOrThrow_Post_take?: number;
-	db_findFirstUserOrThrow_Post_skip?: number;
-	db_findFirstUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findFirstUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUserOrThrow_Todo_take?: number;
-	db_findFirstUserOrThrow_Todo_skip?: number;
-	db_findFirstUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstVerificationTokenInputInternal {
@@ -4211,45 +2335,6 @@ export interface DbFindManyAccountInputInternal {
 	db_findManyAccount_user_user_sessions_take?: number;
 	db_findManyAccount_user_user_sessions_skip?: number;
 	db_findManyAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findManyAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyAccount_user_user_Post_take?: number;
-	db_findManyAccount_user_user_Post_skip?: number;
-	db_findManyAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManyAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyAccount_user_user_Todo_take?: number;
-	db_findManyAccount_user_user_Todo_skip?: number;
-	db_findManyAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyPostInputInternal {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findManyPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyPost_author_author_accounts_take?: number;
-	db_findManyPost_author_author_accounts_skip?: number;
-	db_findManyPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findManyPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyPost_author_author_sessions_take?: number;
-	db_findManyPost_author_author_sessions_skip?: number;
-	db_findManyPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findManyPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyPost_author_author_Todo_take?: number;
-	db_findManyPost_author_author_Todo_skip?: number;
-	db_findManyPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManySessionInputInternal {
@@ -4265,45 +2350,6 @@ export interface DbFindManySessionInputInternal {
 	db_findManySession_user_user_accounts_take?: number;
 	db_findManySession_user_user_accounts_skip?: number;
 	db_findManySession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManySession_user_user_Post_where?: db_PostWhereInput;
-	db_findManySession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManySession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManySession_user_user_Post_take?: number;
-	db_findManySession_user_user_Post_skip?: number;
-	db_findManySession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManySession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManySession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManySession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManySession_user_user_Todo_take?: number;
-	db_findManySession_user_user_Todo_skip?: number;
-	db_findManySession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyTodoInputInternal {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findManyTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findManyTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyTodo_user_user_accounts_take?: number;
-	db_findManyTodo_user_user_accounts_skip?: number;
-	db_findManyTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findManyTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyTodo_user_user_sessions_take?: number;
-	db_findManyTodo_user_user_sessions_skip?: number;
-	db_findManyTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findManyTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyTodo_user_user_Post_take?: number;
-	db_findManyTodo_user_user_Post_skip?: number;
-	db_findManyTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindManyUserInputInternal {
@@ -4325,18 +2371,6 @@ export interface DbFindManyUserInputInternal {
 	db_findManyUser_sessions_take?: number;
 	db_findManyUser_sessions_skip?: number;
 	db_findManyUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyUser_Post_where?: db_PostWhereInput;
-	db_findManyUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyUser_Post_take?: number;
-	db_findManyUser_Post_skip?: number;
-	db_findManyUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyUser_Todo_where?: db_TodoWhereInput;
-	db_findManyUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyUser_Todo_take?: number;
-	db_findManyUser_Todo_skip?: number;
-	db_findManyUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManyVerificationTokenInputInternal {
@@ -4356,18 +2390,6 @@ export interface DbFindUniqueAccountInputInternal {
 	db_findUniqueAccount_user_user_sessions_take?: number;
 	db_findUniqueAccount_user_user_sessions_skip?: number;
 	db_findUniqueAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccount_user_user_Post_take?: number;
-	db_findUniqueAccount_user_user_Post_skip?: number;
-	db_findUniqueAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccount_user_user_Todo_take?: number;
-	db_findUniqueAccount_user_user_Todo_skip?: number;
-	db_findUniqueAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueAccountOrThrowInputInternal {
@@ -4378,62 +2400,6 @@ export interface DbFindUniqueAccountOrThrowInputInternal {
 	db_findUniqueAccountOrThrow_user_user_sessions_take?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_skip?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Post_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostInputInternal {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_take?: number;
-	db_findUniquePost_author_author_accounts_skip?: number;
-	db_findUniquePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePost_author_author_sessions_take?: number;
-	db_findUniquePost_author_author_sessions_skip?: number;
-	db_findUniquePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePost_author_author_Todo_take?: number;
-	db_findUniquePost_author_author_Todo_skip?: number;
-	db_findUniquePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostOrThrowInputInternal {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_take?: number;
-	db_findUniquePostOrThrow_author_author_accounts_skip?: number;
-	db_findUniquePostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_sessions_take?: number;
-	db_findUniquePostOrThrow_author_author_sessions_skip?: number;
-	db_findUniquePostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_Todo_take?: number;
-	db_findUniquePostOrThrow_author_author_Todo_skip?: number;
-	db_findUniquePostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionInputInternal {
@@ -4444,18 +2410,6 @@ export interface DbFindUniqueSessionInputInternal {
 	db_findUniqueSession_user_user_accounts_take?: number;
 	db_findUniqueSession_user_user_accounts_skip?: number;
 	db_findUniqueSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSession_user_user_Post_take?: number;
-	db_findUniqueSession_user_user_Post_skip?: number;
-	db_findUniqueSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSession_user_user_Todo_take?: number;
-	db_findUniqueSession_user_user_Todo_skip?: number;
-	db_findUniqueSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionOrThrowInputInternal {
@@ -4466,62 +2420,6 @@ export interface DbFindUniqueSessionOrThrowInputInternal {
 	db_findUniqueSessionOrThrow_user_user_accounts_take?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_skip?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Post_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoInputInternal {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_take?: number;
-	db_findUniqueTodo_user_user_accounts_skip?: number;
-	db_findUniqueTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodo_user_user_sessions_take?: number;
-	db_findUniqueTodo_user_user_sessions_skip?: number;
-	db_findUniqueTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodo_user_user_Post_take?: number;
-	db_findUniqueTodo_user_user_Post_skip?: number;
-	db_findUniqueTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoOrThrowInputInternal {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_take?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_take?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_Post_take?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserInputInternal {
@@ -4538,18 +2436,6 @@ export interface DbFindUniqueUserInputInternal {
 	db_findUniqueUser_sessions_take?: number;
 	db_findUniqueUser_sessions_skip?: number;
 	db_findUniqueUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUser_Post_where?: db_PostWhereInput;
-	db_findUniqueUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUser_Post_take?: number;
-	db_findUniqueUser_Post_skip?: number;
-	db_findUniqueUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUser_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUser_Todo_take?: number;
-	db_findUniqueUser_Todo_skip?: number;
-	db_findUniqueUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserOrThrowInputInternal {
@@ -4566,18 +2452,6 @@ export interface DbFindUniqueUserOrThrowInputInternal {
 	db_findUniqueUserOrThrow_sessions_take?: number;
 	db_findUniqueUserOrThrow_sessions_skip?: number;
 	db_findUniqueUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findUniqueUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUserOrThrow_Post_take?: number;
-	db_findUniqueUserOrThrow_Post_skip?: number;
-	db_findUniqueUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUserOrThrow_Todo_take?: number;
-	db_findUniqueUserOrThrow_Todo_skip?: number;
-	db_findUniqueUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueVerificationTokenInputInternal {
@@ -4597,29 +2471,11 @@ export interface DbGroupByAccountInputInternal {
 	skip?: number;
 }
 
-export interface DbGroupByPostInputInternal {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithAggregationInput[];
-	by: db_PostScalarFieldEnumValues[];
-	having?: db_PostScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbGroupBySessionInputInternal {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithAggregationInput[];
 	by: db_SessionScalarFieldEnumValues[];
 	having?: db_SessionScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbGroupByTodoInputInternal {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithAggregationInput[];
-	by: db_TodoScalarFieldEnumValues[];
-	having?: db_TodoScalarWhereWithAggregatesInput;
 	take?: number;
 	skip?: number;
 }
@@ -4657,19 +2513,9 @@ export interface DbUpdateManyAccountInputInternal {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbUpdateManyPostInputInternal {
-	data: db_PostUpdateManyMutationInput;
-	where?: db_PostWhereInput;
-}
-
 export interface DbUpdateManySessionInputInternal {
 	data: db_SessionUpdateManyMutationInput;
 	where?: db_SessionWhereInput;
-}
-
-export interface DbUpdateManyTodoInputInternal {
-	data: db_TodoUpdateManyMutationInput;
-	where?: db_TodoWhereInput;
 }
 
 export interface DbUpdateManyUserInputInternal {
@@ -4691,41 +2537,6 @@ export interface DbUpdateOneAccountInputInternal {
 	db_updateOneAccount_user_user_sessions_take?: number;
 	db_updateOneAccount_user_user_sessions_skip?: number;
 	db_updateOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneAccount_user_user_Post_take?: number;
-	db_updateOneAccount_user_user_Post_skip?: number;
-	db_updateOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneAccount_user_user_Todo_take?: number;
-	db_updateOneAccount_user_user_Todo_skip?: number;
-	db_updateOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOnePostInputInternal {
-	data: db_PostUpdateInput;
-	where: db_PostWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_updateOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_take?: number;
-	db_updateOnePost_author_author_accounts_skip?: number;
-	db_updateOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_updateOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOnePost_author_author_sessions_take?: number;
-	db_updateOnePost_author_author_sessions_skip?: number;
-	db_updateOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_updateOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOnePost_author_author_Todo_take?: number;
-	db_updateOnePost_author_author_Todo_skip?: number;
-	db_updateOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneSessionInputInternal {
@@ -4737,41 +2548,6 @@ export interface DbUpdateOneSessionInputInternal {
 	db_updateOneSession_user_user_accounts_take?: number;
 	db_updateOneSession_user_user_accounts_skip?: number;
 	db_updateOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneSession_user_user_Post_take?: number;
-	db_updateOneSession_user_user_Post_skip?: number;
-	db_updateOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneSession_user_user_Todo_take?: number;
-	db_updateOneSession_user_user_Todo_skip?: number;
-	db_updateOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOneTodoInputInternal {
-	data: db_TodoUpdateInput;
-	where: db_TodoWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_updateOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_take?: number;
-	db_updateOneTodo_user_user_accounts_skip?: number;
-	db_updateOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_updateOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOneTodo_user_user_sessions_take?: number;
-	db_updateOneTodo_user_user_sessions_skip?: number;
-	db_updateOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneTodo_user_user_Post_take?: number;
-	db_updateOneTodo_user_user_Post_skip?: number;
-	db_updateOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneUserInputInternal {
@@ -4789,18 +2565,6 @@ export interface DbUpdateOneUserInputInternal {
 	db_updateOneUser_sessions_take?: number;
 	db_updateOneUser_sessions_skip?: number;
 	db_updateOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneUser_Post_where?: db_PostWhereInput;
-	db_updateOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneUser_Post_take?: number;
-	db_updateOneUser_Post_skip?: number;
-	db_updateOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneUser_Todo_where?: db_TodoWhereInput;
-	db_updateOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneUser_Todo_take?: number;
-	db_updateOneUser_Todo_skip?: number;
-	db_updateOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneVerificationTokenInputInternal {
@@ -4818,42 +2582,6 @@ export interface DbUpsertOneAccountInputInternal {
 	db_upsertOneAccount_user_user_sessions_take?: number;
 	db_upsertOneAccount_user_user_sessions_skip?: number;
 	db_upsertOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneAccount_user_user_Post_take?: number;
-	db_upsertOneAccount_user_user_Post_skip?: number;
-	db_upsertOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneAccount_user_user_Todo_take?: number;
-	db_upsertOneAccount_user_user_Todo_skip?: number;
-	db_upsertOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOnePostInputInternal {
-	where: db_PostWhereUniqueInput;
-	create: db_PostCreateInput;
-	update: db_PostUpdateInput;
-	db_upsertOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_upsertOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOnePost_author_author_accounts_take?: number;
-	db_upsertOnePost_author_author_accounts_skip?: number;
-	db_upsertOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_upsertOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOnePost_author_author_sessions_take?: number;
-	db_upsertOnePost_author_author_sessions_skip?: number;
-	db_upsertOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_upsertOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOnePost_author_author_Todo_take?: number;
-	db_upsertOnePost_author_author_Todo_skip?: number;
-	db_upsertOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneSessionInputInternal {
@@ -4866,42 +2594,6 @@ export interface DbUpsertOneSessionInputInternal {
 	db_upsertOneSession_user_user_accounts_take?: number;
 	db_upsertOneSession_user_user_accounts_skip?: number;
 	db_upsertOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneSession_user_user_Post_take?: number;
-	db_upsertOneSession_user_user_Post_skip?: number;
-	db_upsertOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneSession_user_user_Todo_take?: number;
-	db_upsertOneSession_user_user_Todo_skip?: number;
-	db_upsertOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOneTodoInputInternal {
-	where: db_TodoWhereUniqueInput;
-	create: db_TodoCreateInput;
-	update: db_TodoUpdateInput;
-	db_upsertOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_upsertOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOneTodo_user_user_accounts_take?: number;
-	db_upsertOneTodo_user_user_accounts_skip?: number;
-	db_upsertOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_upsertOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOneTodo_user_user_sessions_take?: number;
-	db_upsertOneTodo_user_user_sessions_skip?: number;
-	db_upsertOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneTodo_user_user_Post_take?: number;
-	db_upsertOneTodo_user_user_Post_skip?: number;
-	db_upsertOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneUserInputInternal {
@@ -4920,39 +2612,12 @@ export interface DbUpsertOneUserInputInternal {
 	db_upsertOneUser_sessions_take?: number;
 	db_upsertOneUser_sessions_skip?: number;
 	db_upsertOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneUser_Post_where?: db_PostWhereInput;
-	db_upsertOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneUser_Post_take?: number;
-	db_upsertOneUser_Post_skip?: number;
-	db_upsertOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneUser_Todo_where?: db_TodoWhereInput;
-	db_upsertOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneUser_Todo_take?: number;
-	db_upsertOneUser_Todo_skip?: number;
-	db_upsertOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneVerificationTokenInputInternal {
 	where: db_VerificationTokenWhereUniqueInput;
 	create: db_VerificationTokenCreateInput;
 	update: db_VerificationTokenUpdateInput;
-}
-
-export interface TodosAddTodoInputInternal {
-	text: string;
-	userId: string;
-}
-
-export interface TodosGetAllTodosForCurrentUserInputInternal {
-	userId: string;
-}
-
-export interface TodosUpdateTodoInputInternal {
-	id: string;
-	text: string;
-	isCompleted: boolean;
 }
 
 export interface WeatherGetCityByIdInputInternal {
@@ -5040,26 +2705,10 @@ export interface DbAggregateAccountInputInjected {
 	skip?: number;
 }
 
-export interface DbAggregatePostInputInjected {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbAggregateSessionInputInjected {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithRelationInput[];
 	cursor?: db_SessionWhereUniqueInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbAggregateTodoInputInjected {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
 	take?: number;
 	skip?: number;
 }
@@ -5085,18 +2734,8 @@ export interface DbCreateManyAccountInputInjected {
 	skipDuplicates?: boolean;
 }
 
-export interface DbCreateManyPostInputInjected {
-	data: db_PostCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
 export interface DbCreateManySessionInputInjected {
 	data: db_SessionCreateManyInput[];
-	skipDuplicates?: boolean;
-}
-
-export interface DbCreateManyTodoInputInjected {
-	data: db_TodoCreateManyInput[];
 	skipDuplicates?: boolean;
 }
 
@@ -5118,40 +2757,6 @@ export interface DbCreateOneAccountInputInjected {
 	db_createOneAccount_user_user_sessions_take?: number;
 	db_createOneAccount_user_user_sessions_skip?: number;
 	db_createOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_createOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneAccount_user_user_Post_take?: number;
-	db_createOneAccount_user_user_Post_skip?: number;
-	db_createOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneAccount_user_user_Todo_take?: number;
-	db_createOneAccount_user_user_Todo_skip?: number;
-	db_createOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOnePostInputInjected {
-	data: db_PostCreateInput;
-	db_createOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_createOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOnePost_author_author_accounts_take?: number;
-	db_createOnePost_author_author_accounts_skip?: number;
-	db_createOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_createOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOnePost_author_author_sessions_take?: number;
-	db_createOnePost_author_author_sessions_skip?: number;
-	db_createOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_createOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOnePost_author_author_Todo_take?: number;
-	db_createOnePost_author_author_Todo_skip?: number;
-	db_createOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneSessionInputInjected {
@@ -5162,40 +2767,6 @@ export interface DbCreateOneSessionInputInjected {
 	db_createOneSession_user_user_accounts_take?: number;
 	db_createOneSession_user_user_accounts_skip?: number;
 	db_createOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_createOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneSession_user_user_Post_take?: number;
-	db_createOneSession_user_user_Post_skip?: number;
-	db_createOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_createOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneSession_user_user_Todo_take?: number;
-	db_createOneSession_user_user_Todo_skip?: number;
-	db_createOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbCreateOneTodoInputInjected {
-	data: db_TodoCreateInput;
-	db_createOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_createOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_createOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_createOneTodo_user_user_accounts_take?: number;
-	db_createOneTodo_user_user_accounts_skip?: number;
-	db_createOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_createOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_createOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_createOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_createOneTodo_user_user_sessions_take?: number;
-	db_createOneTodo_user_user_sessions_skip?: number;
-	db_createOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_createOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneTodo_user_user_Post_take?: number;
-	db_createOneTodo_user_user_Post_skip?: number;
-	db_createOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneUserInputInjected {
@@ -5212,18 +2783,6 @@ export interface DbCreateOneUserInputInjected {
 	db_createOneUser_sessions_take?: number;
 	db_createOneUser_sessions_skip?: number;
 	db_createOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_createOneUser_Post_where?: db_PostWhereInput;
-	db_createOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_createOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_createOneUser_Post_take?: number;
-	db_createOneUser_Post_skip?: number;
-	db_createOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_createOneUser_Todo_where?: db_TodoWhereInput;
-	db_createOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_createOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_createOneUser_Todo_take?: number;
-	db_createOneUser_Todo_skip?: number;
-	db_createOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbCreateOneVerificationTokenInputInjected {
@@ -5234,16 +2793,8 @@ export interface DbDeleteManyAccountInputInjected {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbDeleteManyPostInputInjected {
-	where?: db_PostWhereInput;
-}
-
 export interface DbDeleteManySessionInputInjected {
 	where?: db_SessionWhereInput;
-}
-
-export interface DbDeleteManyTodoInputInjected {
-	where?: db_TodoWhereInput;
 }
 
 export interface DbDeleteManyUserInputInjected {
@@ -5262,40 +2813,6 @@ export interface DbDeleteOneAccountInputInjected {
 	db_deleteOneAccount_user_user_sessions_take?: number;
 	db_deleteOneAccount_user_user_sessions_skip?: number;
 	db_deleteOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneAccount_user_user_Post_take?: number;
-	db_deleteOneAccount_user_user_Post_skip?: number;
-	db_deleteOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneAccount_user_user_Todo_take?: number;
-	db_deleteOneAccount_user_user_Todo_skip?: number;
-	db_deleteOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOnePostInputInjected {
-	where: db_PostWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_deleteOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOnePost_author_author_accounts_take?: number;
-	db_deleteOnePost_author_author_accounts_skip?: number;
-	db_deleteOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_deleteOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOnePost_author_author_sessions_take?: number;
-	db_deleteOnePost_author_author_sessions_skip?: number;
-	db_deleteOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_deleteOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOnePost_author_author_Todo_take?: number;
-	db_deleteOnePost_author_author_Todo_skip?: number;
-	db_deleteOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneSessionInputInjected {
@@ -5306,40 +2823,6 @@ export interface DbDeleteOneSessionInputInjected {
 	db_deleteOneSession_user_user_accounts_take?: number;
 	db_deleteOneSession_user_user_accounts_skip?: number;
 	db_deleteOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneSession_user_user_Post_take?: number;
-	db_deleteOneSession_user_user_Post_skip?: number;
-	db_deleteOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_deleteOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneSession_user_user_Todo_take?: number;
-	db_deleteOneSession_user_user_Todo_skip?: number;
-	db_deleteOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbDeleteOneTodoInputInjected {
-	where: db_TodoWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_deleteOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_deleteOneTodo_user_user_accounts_take?: number;
-	db_deleteOneTodo_user_user_accounts_skip?: number;
-	db_deleteOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_deleteOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_deleteOneTodo_user_user_sessions_take?: number;
-	db_deleteOneTodo_user_user_sessions_skip?: number;
-	db_deleteOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_deleteOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneTodo_user_user_Post_take?: number;
-	db_deleteOneTodo_user_user_Post_skip?: number;
-	db_deleteOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneUserInputInjected {
@@ -5356,18 +2839,6 @@ export interface DbDeleteOneUserInputInjected {
 	db_deleteOneUser_sessions_take?: number;
 	db_deleteOneUser_sessions_skip?: number;
 	db_deleteOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_deleteOneUser_Post_where?: db_PostWhereInput;
-	db_deleteOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_deleteOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_deleteOneUser_Post_take?: number;
-	db_deleteOneUser_Post_skip?: number;
-	db_deleteOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_deleteOneUser_Todo_where?: db_TodoWhereInput;
-	db_deleteOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_deleteOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_deleteOneUser_Todo_take?: number;
-	db_deleteOneUser_Todo_skip?: number;
-	db_deleteOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbDeleteOneVerificationTokenInputInjected {
@@ -5392,18 +2863,6 @@ export interface DbFindFirstAccountInputInjected {
 	db_findFirstAccount_user_user_sessions_take?: number;
 	db_findFirstAccount_user_user_sessions_skip?: number;
 	db_findFirstAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccount_user_user_Post_take?: number;
-	db_findFirstAccount_user_user_Post_skip?: number;
-	db_findFirstAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccount_user_user_Todo_take?: number;
-	db_findFirstAccount_user_user_Todo_skip?: number;
-	db_findFirstAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstAccountOrThrowInputInjected {
@@ -5419,72 +2878,6 @@ export interface DbFindFirstAccountOrThrowInputInjected {
 	db_findFirstAccountOrThrow_user_user_sessions_take?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_skip?: number;
 	db_findFirstAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Post_take?: number;
-	db_findFirstAccountOrThrow_user_user_Post_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstAccountOrThrow_user_user_Todo_take?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_skip?: number;
-	db_findFirstAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostInputInjected {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPost_author_author_accounts_take?: number;
-	db_findFirstPost_author_author_accounts_skip?: number;
-	db_findFirstPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPost_author_author_sessions_take?: number;
-	db_findFirstPost_author_author_sessions_skip?: number;
-	db_findFirstPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPost_author_author_Todo_take?: number;
-	db_findFirstPost_author_author_Todo_skip?: number;
-	db_findFirstPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstPostOrThrowInputInjected {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findFirstPostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_accounts_take?: number;
-	db_findFirstPostOrThrow_author_author_accounts_skip?: number;
-	db_findFirstPostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findFirstPostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_sessions_take?: number;
-	db_findFirstPostOrThrow_author_author_sessions_skip?: number;
-	db_findFirstPostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstPostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findFirstPostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstPostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstPostOrThrow_author_author_Todo_take?: number;
-	db_findFirstPostOrThrow_author_author_Todo_skip?: number;
-	db_findFirstPostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionInputInjected {
@@ -5500,18 +2893,6 @@ export interface DbFindFirstSessionInputInjected {
 	db_findFirstSession_user_user_accounts_take?: number;
 	db_findFirstSession_user_user_accounts_skip?: number;
 	db_findFirstSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSession_user_user_Post_take?: number;
-	db_findFirstSession_user_user_Post_skip?: number;
-	db_findFirstSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSession_user_user_Todo_take?: number;
-	db_findFirstSession_user_user_Todo_skip?: number;
-	db_findFirstSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstSessionOrThrowInputInjected {
@@ -5527,72 +2908,6 @@ export interface DbFindFirstSessionOrThrowInputInjected {
 	db_findFirstSessionOrThrow_user_user_accounts_take?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_skip?: number;
 	db_findFirstSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Post_take?: number;
-	db_findFirstSessionOrThrow_user_user_Post_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findFirstSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstSessionOrThrow_user_user_Todo_take?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_skip?: number;
-	db_findFirstSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoInputInjected {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodo_user_user_accounts_take?: number;
-	db_findFirstTodo_user_user_accounts_skip?: number;
-	db_findFirstTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodo_user_user_sessions_take?: number;
-	db_findFirstTodo_user_user_sessions_skip?: number;
-	db_findFirstTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodo_user_user_Post_take?: number;
-	db_findFirstTodo_user_user_Post_skip?: number;
-	db_findFirstTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindFirstTodoOrThrowInputInjected {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findFirstTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_accounts_take?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_skip?: number;
-	db_findFirstTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findFirstTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_sessions_take?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_skip?: number;
-	db_findFirstTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findFirstTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstTodoOrThrow_user_user_Post_take?: number;
-	db_findFirstTodoOrThrow_user_user_Post_skip?: number;
-	db_findFirstTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserInputInjected {
@@ -5614,18 +2929,6 @@ export interface DbFindFirstUserInputInjected {
 	db_findFirstUser_sessions_take?: number;
 	db_findFirstUser_sessions_skip?: number;
 	db_findFirstUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUser_Post_where?: db_PostWhereInput;
-	db_findFirstUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUser_Post_take?: number;
-	db_findFirstUser_Post_skip?: number;
-	db_findFirstUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUser_Todo_where?: db_TodoWhereInput;
-	db_findFirstUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUser_Todo_take?: number;
-	db_findFirstUser_Todo_skip?: number;
-	db_findFirstUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstUserOrThrowInputInjected {
@@ -5647,18 +2950,6 @@ export interface DbFindFirstUserOrThrowInputInjected {
 	db_findFirstUserOrThrow_sessions_take?: number;
 	db_findFirstUserOrThrow_sessions_skip?: number;
 	db_findFirstUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findFirstUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findFirstUserOrThrow_Post_take?: number;
-	db_findFirstUserOrThrow_Post_skip?: number;
-	db_findFirstUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findFirstUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findFirstUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findFirstUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findFirstUserOrThrow_Todo_take?: number;
-	db_findFirstUserOrThrow_Todo_skip?: number;
-	db_findFirstUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindFirstVerificationTokenInputInjected {
@@ -5692,45 +2983,6 @@ export interface DbFindManyAccountInputInjected {
 	db_findManyAccount_user_user_sessions_take?: number;
 	db_findManyAccount_user_user_sessions_skip?: number;
 	db_findManyAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findManyAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyAccount_user_user_Post_take?: number;
-	db_findManyAccount_user_user_Post_skip?: number;
-	db_findManyAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManyAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyAccount_user_user_Todo_take?: number;
-	db_findManyAccount_user_user_Todo_skip?: number;
-	db_findManyAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyPostInputInjected {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithRelationInput[];
-	cursor?: db_PostWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyPost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findManyPost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyPost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyPost_author_author_accounts_take?: number;
-	db_findManyPost_author_author_accounts_skip?: number;
-	db_findManyPost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyPost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findManyPost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyPost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyPost_author_author_sessions_take?: number;
-	db_findManyPost_author_author_sessions_skip?: number;
-	db_findManyPost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyPost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findManyPost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyPost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyPost_author_author_Todo_take?: number;
-	db_findManyPost_author_author_Todo_skip?: number;
-	db_findManyPost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManySessionInputInjected {
@@ -5746,45 +2998,6 @@ export interface DbFindManySessionInputInjected {
 	db_findManySession_user_user_accounts_take?: number;
 	db_findManySession_user_user_accounts_skip?: number;
 	db_findManySession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManySession_user_user_Post_where?: db_PostWhereInput;
-	db_findManySession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManySession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManySession_user_user_Post_take?: number;
-	db_findManySession_user_user_Post_skip?: number;
-	db_findManySession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManySession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findManySession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManySession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManySession_user_user_Todo_take?: number;
-	db_findManySession_user_user_Todo_skip?: number;
-	db_findManySession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindManyTodoInputInjected {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithRelationInput[];
-	cursor?: db_TodoWhereUniqueInput;
-	take?: number;
-	skip?: number;
-	distinct?: db_TodoScalarFieldEnumValues[];
-	db_findManyTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findManyTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findManyTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findManyTodo_user_user_accounts_take?: number;
-	db_findManyTodo_user_user_accounts_skip?: number;
-	db_findManyTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findManyTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findManyTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findManyTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findManyTodo_user_user_sessions_take?: number;
-	db_findManyTodo_user_user_sessions_skip?: number;
-	db_findManyTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findManyTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyTodo_user_user_Post_take?: number;
-	db_findManyTodo_user_user_Post_skip?: number;
-	db_findManyTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindManyUserInputInjected {
@@ -5806,18 +3019,6 @@ export interface DbFindManyUserInputInjected {
 	db_findManyUser_sessions_take?: number;
 	db_findManyUser_sessions_skip?: number;
 	db_findManyUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findManyUser_Post_where?: db_PostWhereInput;
-	db_findManyUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findManyUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findManyUser_Post_take?: number;
-	db_findManyUser_Post_skip?: number;
-	db_findManyUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findManyUser_Todo_where?: db_TodoWhereInput;
-	db_findManyUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findManyUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findManyUser_Todo_take?: number;
-	db_findManyUser_Todo_skip?: number;
-	db_findManyUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindManyVerificationTokenInputInjected {
@@ -5837,18 +3038,6 @@ export interface DbFindUniqueAccountInputInjected {
 	db_findUniqueAccount_user_user_sessions_take?: number;
 	db_findUniqueAccount_user_user_sessions_skip?: number;
 	db_findUniqueAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccount_user_user_Post_take?: number;
-	db_findUniqueAccount_user_user_Post_skip?: number;
-	db_findUniqueAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccount_user_user_Todo_take?: number;
-	db_findUniqueAccount_user_user_Todo_skip?: number;
-	db_findUniqueAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueAccountOrThrowInputInjected {
@@ -5859,62 +3048,6 @@ export interface DbFindUniqueAccountOrThrowInputInjected {
 	db_findUniqueAccountOrThrow_user_user_sessions_take?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_skip?: number;
 	db_findUniqueAccountOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Post_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueAccountOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueAccountOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueAccountOrThrow_user_user_Todo_take?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueAccountOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostInputInjected {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePost_author_author_accounts_take?: number;
-	db_findUniquePost_author_author_accounts_skip?: number;
-	db_findUniquePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePost_author_author_sessions_take?: number;
-	db_findUniquePost_author_author_sessions_skip?: number;
-	db_findUniquePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePost_author_author_Todo_take?: number;
-	db_findUniquePost_author_author_Todo_skip?: number;
-	db_findUniquePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniquePostOrThrowInputInjected {
-	where: db_PostWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_where?: db_AccountWhereInput;
-	db_findUniquePostOrThrow_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_accounts_take?: number;
-	db_findUniquePostOrThrow_author_author_accounts_skip?: number;
-	db_findUniquePostOrThrow_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_sessions_where?: db_SessionWhereInput;
-	db_findUniquePostOrThrow_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_sessions_take?: number;
-	db_findUniquePostOrThrow_author_author_sessions_skip?: number;
-	db_findUniquePostOrThrow_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniquePostOrThrow_author_author_Todo_where?: db_TodoWhereInput;
-	db_findUniquePostOrThrow_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniquePostOrThrow_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniquePostOrThrow_author_author_Todo_take?: number;
-	db_findUniquePostOrThrow_author_author_Todo_skip?: number;
-	db_findUniquePostOrThrow_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionInputInjected {
@@ -5925,18 +3058,6 @@ export interface DbFindUniqueSessionInputInjected {
 	db_findUniqueSession_user_user_accounts_take?: number;
 	db_findUniqueSession_user_user_accounts_skip?: number;
 	db_findUniqueSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSession_user_user_Post_take?: number;
-	db_findUniqueSession_user_user_Post_skip?: number;
-	db_findUniqueSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSession_user_user_Todo_take?: number;
-	db_findUniqueSession_user_user_Todo_skip?: number;
-	db_findUniqueSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueSessionOrThrowInputInjected {
@@ -5947,62 +3068,6 @@ export interface DbFindUniqueSessionOrThrowInputInjected {
 	db_findUniqueSessionOrThrow_user_user_accounts_take?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_skip?: number;
 	db_findUniqueSessionOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Post_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueSessionOrThrow_user_user_Todo_where?: db_TodoWhereInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueSessionOrThrow_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueSessionOrThrow_user_user_Todo_take?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_skip?: number;
-	db_findUniqueSessionOrThrow_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoInputInjected {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodo_user_user_accounts_take?: number;
-	db_findUniqueTodo_user_user_accounts_skip?: number;
-	db_findUniqueTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodo_user_user_sessions_take?: number;
-	db_findUniqueTodo_user_user_sessions_skip?: number;
-	db_findUniqueTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodo_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodo_user_user_Post_take?: number;
-	db_findUniqueTodo_user_user_Post_skip?: number;
-	db_findUniqueTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-}
-
-export interface DbFindUniqueTodoOrThrowInputInjected {
-	where: db_TodoWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_where?: db_AccountWhereInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_accounts_take?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_sessions_where?: db_SessionWhereInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_sessions_take?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueTodoOrThrow_user_user_Post_where?: db_PostWhereInput;
-	db_findUniqueTodoOrThrow_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueTodoOrThrow_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueTodoOrThrow_user_user_Post_take?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_skip?: number;
-	db_findUniqueTodoOrThrow_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserInputInjected {
@@ -6019,18 +3084,6 @@ export interface DbFindUniqueUserInputInjected {
 	db_findUniqueUser_sessions_take?: number;
 	db_findUniqueUser_sessions_skip?: number;
 	db_findUniqueUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUser_Post_where?: db_PostWhereInput;
-	db_findUniqueUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUser_Post_take?: number;
-	db_findUniqueUser_Post_skip?: number;
-	db_findUniqueUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUser_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUser_Todo_take?: number;
-	db_findUniqueUser_Todo_skip?: number;
-	db_findUniqueUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueUserOrThrowInputInjected {
@@ -6047,18 +3100,6 @@ export interface DbFindUniqueUserOrThrowInputInjected {
 	db_findUniqueUserOrThrow_sessions_take?: number;
 	db_findUniqueUserOrThrow_sessions_skip?: number;
 	db_findUniqueUserOrThrow_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Post_where?: db_PostWhereInput;
-	db_findUniqueUserOrThrow_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Post_cursor?: db_PostWhereUniqueInput;
-	db_findUniqueUserOrThrow_Post_take?: number;
-	db_findUniqueUserOrThrow_Post_skip?: number;
-	db_findUniqueUserOrThrow_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_findUniqueUserOrThrow_Todo_where?: db_TodoWhereInput;
-	db_findUniqueUserOrThrow_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_findUniqueUserOrThrow_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_findUniqueUserOrThrow_Todo_take?: number;
-	db_findUniqueUserOrThrow_Todo_skip?: number;
-	db_findUniqueUserOrThrow_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbFindUniqueVerificationTokenInputInjected {
@@ -6078,29 +3119,11 @@ export interface DbGroupByAccountInputInjected {
 	skip?: number;
 }
 
-export interface DbGroupByPostInputInjected {
-	where?: db_PostWhereInput;
-	orderBy?: db_PostOrderByWithAggregationInput[];
-	by: db_PostScalarFieldEnumValues[];
-	having?: db_PostScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
 export interface DbGroupBySessionInputInjected {
 	where?: db_SessionWhereInput;
 	orderBy?: db_SessionOrderByWithAggregationInput[];
 	by: db_SessionScalarFieldEnumValues[];
 	having?: db_SessionScalarWhereWithAggregatesInput;
-	take?: number;
-	skip?: number;
-}
-
-export interface DbGroupByTodoInputInjected {
-	where?: db_TodoWhereInput;
-	orderBy?: db_TodoOrderByWithAggregationInput[];
-	by: db_TodoScalarFieldEnumValues[];
-	having?: db_TodoScalarWhereWithAggregatesInput;
 	take?: number;
 	skip?: number;
 }
@@ -6138,19 +3161,9 @@ export interface DbUpdateManyAccountInputInjected {
 	where?: db_AccountWhereInput;
 }
 
-export interface DbUpdateManyPostInputInjected {
-	data: db_PostUpdateManyMutationInput;
-	where?: db_PostWhereInput;
-}
-
 export interface DbUpdateManySessionInputInjected {
 	data: db_SessionUpdateManyMutationInput;
 	where?: db_SessionWhereInput;
-}
-
-export interface DbUpdateManyTodoInputInjected {
-	data: db_TodoUpdateManyMutationInput;
-	where?: db_TodoWhereInput;
 }
 
 export interface DbUpdateManyUserInputInjected {
@@ -6172,41 +3185,6 @@ export interface DbUpdateOneAccountInputInjected {
 	db_updateOneAccount_user_user_sessions_take?: number;
 	db_updateOneAccount_user_user_sessions_skip?: number;
 	db_updateOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneAccount_user_user_Post_take?: number;
-	db_updateOneAccount_user_user_Post_skip?: number;
-	db_updateOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneAccount_user_user_Todo_take?: number;
-	db_updateOneAccount_user_user_Todo_skip?: number;
-	db_updateOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOnePostInputInjected {
-	data: db_PostUpdateInput;
-	where: db_PostWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_updateOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOnePost_author_author_accounts_take?: number;
-	db_updateOnePost_author_author_accounts_skip?: number;
-	db_updateOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_updateOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOnePost_author_author_sessions_take?: number;
-	db_updateOnePost_author_author_sessions_skip?: number;
-	db_updateOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_updateOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOnePost_author_author_Todo_take?: number;
-	db_updateOnePost_author_author_Todo_skip?: number;
-	db_updateOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneSessionInputInjected {
@@ -6218,41 +3196,6 @@ export interface DbUpdateOneSessionInputInjected {
 	db_updateOneSession_user_user_accounts_take?: number;
 	db_updateOneSession_user_user_accounts_skip?: number;
 	db_updateOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneSession_user_user_Post_take?: number;
-	db_updateOneSession_user_user_Post_skip?: number;
-	db_updateOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_updateOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneSession_user_user_Todo_take?: number;
-	db_updateOneSession_user_user_Todo_skip?: number;
-	db_updateOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpdateOneTodoInputInjected {
-	data: db_TodoUpdateInput;
-	where: db_TodoWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_updateOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_updateOneTodo_user_user_accounts_take?: number;
-	db_updateOneTodo_user_user_accounts_skip?: number;
-	db_updateOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_updateOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_updateOneTodo_user_user_sessions_take?: number;
-	db_updateOneTodo_user_user_sessions_skip?: number;
-	db_updateOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_updateOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneTodo_user_user_Post_take?: number;
-	db_updateOneTodo_user_user_Post_skip?: number;
-	db_updateOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneUserInputInjected {
@@ -6270,18 +3213,6 @@ export interface DbUpdateOneUserInputInjected {
 	db_updateOneUser_sessions_take?: number;
 	db_updateOneUser_sessions_skip?: number;
 	db_updateOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_updateOneUser_Post_where?: db_PostWhereInput;
-	db_updateOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_updateOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_updateOneUser_Post_take?: number;
-	db_updateOneUser_Post_skip?: number;
-	db_updateOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_updateOneUser_Todo_where?: db_TodoWhereInput;
-	db_updateOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_updateOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_updateOneUser_Todo_take?: number;
-	db_updateOneUser_Todo_skip?: number;
-	db_updateOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpdateOneVerificationTokenInputInjected {
@@ -6299,42 +3230,6 @@ export interface DbUpsertOneAccountInputInjected {
 	db_upsertOneAccount_user_user_sessions_take?: number;
 	db_upsertOneAccount_user_user_sessions_skip?: number;
 	db_upsertOneAccount_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneAccount_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneAccount_user_user_Post_take?: number;
-	db_upsertOneAccount_user_user_Post_skip?: number;
-	db_upsertOneAccount_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneAccount_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneAccount_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneAccount_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneAccount_user_user_Todo_take?: number;
-	db_upsertOneAccount_user_user_Todo_skip?: number;
-	db_upsertOneAccount_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOnePostInputInjected {
-	where: db_PostWhereUniqueInput;
-	create: db_PostCreateInput;
-	update: db_PostUpdateInput;
-	db_upsertOnePost_author_author_accounts_where?: db_AccountWhereInput;
-	db_upsertOnePost_author_author_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOnePost_author_author_accounts_take?: number;
-	db_upsertOnePost_author_author_accounts_skip?: number;
-	db_upsertOnePost_author_author_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_sessions_where?: db_SessionWhereInput;
-	db_upsertOnePost_author_author_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOnePost_author_author_sessions_take?: number;
-	db_upsertOnePost_author_author_sessions_skip?: number;
-	db_upsertOnePost_author_author_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOnePost_author_author_Todo_where?: db_TodoWhereInput;
-	db_upsertOnePost_author_author_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOnePost_author_author_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOnePost_author_author_Todo_take?: number;
-	db_upsertOnePost_author_author_Todo_skip?: number;
-	db_upsertOnePost_author_author_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneSessionInputInjected {
@@ -6347,42 +3242,6 @@ export interface DbUpsertOneSessionInputInjected {
 	db_upsertOneSession_user_user_accounts_take?: number;
 	db_upsertOneSession_user_user_accounts_skip?: number;
 	db_upsertOneSession_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneSession_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneSession_user_user_Post_take?: number;
-	db_upsertOneSession_user_user_Post_skip?: number;
-	db_upsertOneSession_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneSession_user_user_Todo_where?: db_TodoWhereInput;
-	db_upsertOneSession_user_user_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneSession_user_user_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneSession_user_user_Todo_take?: number;
-	db_upsertOneSession_user_user_Todo_skip?: number;
-	db_upsertOneSession_user_user_Todo_distinct?: db_TodoScalarFieldEnumValues[];
-}
-
-export interface DbUpsertOneTodoInputInjected {
-	where: db_TodoWhereUniqueInput;
-	create: db_TodoCreateInput;
-	update: db_TodoUpdateInput;
-	db_upsertOneTodo_user_user_accounts_where?: db_AccountWhereInput;
-	db_upsertOneTodo_user_user_accounts_orderBy?: db_AccountOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_accounts_cursor?: db_AccountWhereUniqueInput;
-	db_upsertOneTodo_user_user_accounts_take?: number;
-	db_upsertOneTodo_user_user_accounts_skip?: number;
-	db_upsertOneTodo_user_user_accounts_distinct?: db_AccountScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_sessions_where?: db_SessionWhereInput;
-	db_upsertOneTodo_user_user_sessions_orderBy?: db_SessionOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_sessions_cursor?: db_SessionWhereUniqueInput;
-	db_upsertOneTodo_user_user_sessions_take?: number;
-	db_upsertOneTodo_user_user_sessions_skip?: number;
-	db_upsertOneTodo_user_user_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneTodo_user_user_Post_where?: db_PostWhereInput;
-	db_upsertOneTodo_user_user_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneTodo_user_user_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneTodo_user_user_Post_take?: number;
-	db_upsertOneTodo_user_user_Post_skip?: number;
-	db_upsertOneTodo_user_user_Post_distinct?: db_PostScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneUserInputInjected {
@@ -6401,39 +3260,12 @@ export interface DbUpsertOneUserInputInjected {
 	db_upsertOneUser_sessions_take?: number;
 	db_upsertOneUser_sessions_skip?: number;
 	db_upsertOneUser_sessions_distinct?: db_SessionScalarFieldEnumValues[];
-	db_upsertOneUser_Post_where?: db_PostWhereInput;
-	db_upsertOneUser_Post_orderBy?: db_PostOrderByWithRelationInput[];
-	db_upsertOneUser_Post_cursor?: db_PostWhereUniqueInput;
-	db_upsertOneUser_Post_take?: number;
-	db_upsertOneUser_Post_skip?: number;
-	db_upsertOneUser_Post_distinct?: db_PostScalarFieldEnumValues[];
-	db_upsertOneUser_Todo_where?: db_TodoWhereInput;
-	db_upsertOneUser_Todo_orderBy?: db_TodoOrderByWithRelationInput[];
-	db_upsertOneUser_Todo_cursor?: db_TodoWhereUniqueInput;
-	db_upsertOneUser_Todo_take?: number;
-	db_upsertOneUser_Todo_skip?: number;
-	db_upsertOneUser_Todo_distinct?: db_TodoScalarFieldEnumValues[];
 }
 
 export interface DbUpsertOneVerificationTokenInputInjected {
 	where: db_VerificationTokenWhereUniqueInput;
 	create: db_VerificationTokenCreateInput;
 	update: db_VerificationTokenUpdateInput;
-}
-
-export interface TodosAddTodoInputInjected {
-	text: string;
-	userId: string;
-}
-
-export interface TodosGetAllTodosForCurrentUserInputInjected {
-	userId: string;
-}
-
-export interface TodosUpdateTodoInputInjected {
-	id: string;
-	text: string;
-	isCompleted: boolean;
 }
 
 export interface WeatherGetCityByIdInputInjected {
@@ -6487,18 +3319,8 @@ export interface DbAggregateAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbAggregatePostResponse {
-	data?: DbAggregatePostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbAggregateSessionResponse {
 	data?: DbAggregateSessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbAggregateTodoResponse {
-	data?: DbAggregateTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6517,18 +3339,8 @@ export interface DbCreateManyAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbCreateManyPostResponse {
-	data?: DbCreateManyPostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbCreateManySessionResponse {
 	data?: DbCreateManySessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbCreateManyTodoResponse {
-	data?: DbCreateManyTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6547,18 +3359,8 @@ export interface DbCreateOneAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbCreateOnePostResponse {
-	data?: DbCreateOnePostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbCreateOneSessionResponse {
 	data?: DbCreateOneSessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbCreateOneTodoResponse {
-	data?: DbCreateOneTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6577,18 +3379,8 @@ export interface DbDeleteManyAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbDeleteManyPostResponse {
-	data?: DbDeleteManyPostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbDeleteManySessionResponse {
 	data?: DbDeleteManySessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbDeleteManyTodoResponse {
-	data?: DbDeleteManyTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6607,18 +3399,8 @@ export interface DbDeleteOneAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbDeleteOnePostResponse {
-	data?: DbDeleteOnePostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbDeleteOneSessionResponse {
 	data?: DbDeleteOneSessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbDeleteOneTodoResponse {
-	data?: DbDeleteOneTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6647,16 +3429,6 @@ export interface DbFindFirstAccountOrThrowResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbFindFirstPostResponse {
-	data?: DbFindFirstPostResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindFirstPostOrThrowResponse {
-	data?: DbFindFirstPostOrThrowResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbFindFirstSessionResponse {
 	data?: DbFindFirstSessionResponseData;
 	errors?: GraphQLError[];
@@ -6664,16 +3436,6 @@ export interface DbFindFirstSessionResponse {
 
 export interface DbFindFirstSessionOrThrowResponse {
 	data?: DbFindFirstSessionOrThrowResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindFirstTodoResponse {
-	data?: DbFindFirstTodoResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindFirstTodoOrThrowResponse {
-	data?: DbFindFirstTodoOrThrowResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6702,18 +3464,8 @@ export interface DbFindManyAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbFindManyPostResponse {
-	data?: DbFindManyPostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbFindManySessionResponse {
 	data?: DbFindManySessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindManyTodoResponse {
-	data?: DbFindManyTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6737,16 +3489,6 @@ export interface DbFindUniqueAccountOrThrowResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbFindUniquePostResponse {
-	data?: DbFindUniquePostResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindUniquePostOrThrowResponse {
-	data?: DbFindUniquePostOrThrowResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbFindUniqueSessionResponse {
 	data?: DbFindUniqueSessionResponseData;
 	errors?: GraphQLError[];
@@ -6754,16 +3496,6 @@ export interface DbFindUniqueSessionResponse {
 
 export interface DbFindUniqueSessionOrThrowResponse {
 	data?: DbFindUniqueSessionOrThrowResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindUniqueTodoResponse {
-	data?: DbFindUniqueTodoResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbFindUniqueTodoOrThrowResponse {
-	data?: DbFindUniqueTodoOrThrowResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6792,18 +3524,8 @@ export interface DbGroupByAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbGroupByPostResponse {
-	data?: DbGroupByPostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbGroupBySessionResponse {
 	data?: DbGroupBySessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbGroupByTodoResponse {
-	data?: DbGroupByTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6832,18 +3554,8 @@ export interface DbUpdateManyAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbUpdateManyPostResponse {
-	data?: DbUpdateManyPostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbUpdateManySessionResponse {
 	data?: DbUpdateManySessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbUpdateManyTodoResponse {
-	data?: DbUpdateManyTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6862,18 +3574,8 @@ export interface DbUpdateOneAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbUpdateOnePostResponse {
-	data?: DbUpdateOnePostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbUpdateOneSessionResponse {
 	data?: DbUpdateOneSessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbUpdateOneTodoResponse {
-	data?: DbUpdateOneTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6892,18 +3594,8 @@ export interface DbUpsertOneAccountResponse {
 	errors?: GraphQLError[];
 }
 
-export interface DbUpsertOnePostResponse {
-	data?: DbUpsertOnePostResponseData;
-	errors?: GraphQLError[];
-}
-
 export interface DbUpsertOneSessionResponse {
 	data?: DbUpsertOneSessionResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface DbUpsertOneTodoResponse {
-	data?: DbUpsertOneTodoResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -6917,18 +3609,8 @@ export interface DbUpsertOneVerificationTokenResponse {
 	errors?: GraphQLError[];
 }
 
-export interface TodosAddTodoResponse {
-	data?: TodosAddTodoResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface TodosGetAllTodosForCurrentUserResponse {
-	data?: TodosGetAllTodosForCurrentUserResponseData;
-	errors?: GraphQLError[];
-}
-
-export interface TodosUpdateTodoResponse {
-	data?: TodosUpdateTodoResponseData;
+export interface UsersGetAllUsersResponse {
+	data?: UsersGetAllUsersResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -7209,37 +3891,6 @@ export interface DbAggregateAccountResponseData {
 	};
 }
 
-export interface DbAggregatePostResponseData {
-	db_aggregatePost: {
-		_count?: {
-			id: number;
-			title: number;
-			content: number;
-			published: number;
-			createdAt: number;
-			updatedAt: number;
-			authorId: number;
-			_all: number;
-		};
-		_min?: {
-			id?: string;
-			title?: string;
-			published?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			authorId?: string;
-		};
-		_max?: {
-			id?: string;
-			title?: string;
-			published?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			authorId?: string;
-		};
-	};
-}
-
 export interface DbAggregateSessionResponseData {
 	db_aggregateSession: {
 		_count?: {
@@ -7260,36 +3911,6 @@ export interface DbAggregateSessionResponseData {
 			sessionToken?: string;
 			userId?: string;
 			expires?: string;
-		};
-	};
-}
-
-export interface DbAggregateTodoResponseData {
-	db_aggregateTodo: {
-		_count?: {
-			id: number;
-			text: number;
-			isCompleted: number;
-			createdAt: number;
-			updatedAt: number;
-			userId: number;
-			_all: number;
-		};
-		_min?: {
-			id?: string;
-			text?: string;
-			isCompleted?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			userId?: string;
-		};
-		_max?: {
-			id?: string;
-			text?: string;
-			isCompleted?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			userId?: string;
 		};
 	};
 }
@@ -7366,20 +3987,8 @@ export interface DbCreateManyAccountResponseData {
 	};
 }
 
-export interface DbCreateManyPostResponseData {
-	db_createManyPost?: {
-		count: number;
-	};
-}
-
 export interface DbCreateManySessionResponseData {
 	db_createManySession?: {
-		count: number;
-	};
-}
-
-export interface DbCreateManyTodoResponseData {
-	db_createManyTodo?: {
 		count: number;
 	};
 }
@@ -7430,89 +4039,9 @@ export interface DbCreateOneAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbCreateOnePostResponseData {
-	db_createOnePost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -7552,89 +4081,9 @@ export interface DbCreateOneSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbCreateOneTodoResponseData {
-	db_createOneTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -7675,28 +4124,9 @@ export interface DbCreateOneUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -7715,20 +4145,8 @@ export interface DbDeleteManyAccountResponseData {
 	};
 }
 
-export interface DbDeleteManyPostResponseData {
-	db_deleteManyPost?: {
-		count: number;
-	};
-}
-
 export interface DbDeleteManySessionResponseData {
 	db_deleteManySession?: {
-		count: number;
-	};
-}
-
-export interface DbDeleteManyTodoResponseData {
-	db_deleteManyTodo?: {
 		count: number;
 	};
 }
@@ -7779,89 +4197,9 @@ export interface DbDeleteOneAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbDeleteOnePostResponseData {
-	db_deleteOnePost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -7901,89 +4239,9 @@ export interface DbDeleteOneSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbDeleteOneTodoResponseData {
-	db_deleteOneTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -8024,28 +4282,9 @@ export interface DbDeleteOneUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -8096,28 +4335,9 @@ export interface DbFindFirstAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -8157,150 +4377,9 @@ export interface DbFindFirstAccountOrThrowResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindFirstPostResponseData {
-	db_findFirstPost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindFirstPostOrThrowResponseData {
-	db_findFirstPostOrThrow?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -8340,28 +4419,9 @@ export interface DbFindFirstSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -8401,150 +4461,9 @@ export interface DbFindFirstSessionOrThrowResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindFirstTodoResponseData {
-	db_findFirstTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindFirstTodoOrThrowResponseData {
-	db_findFirstTodoOrThrow?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -8585,28 +4504,9 @@ export interface DbFindFirstUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -8646,28 +4546,9 @@ export interface DbFindFirstUserOrThrowResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -8722,89 +4603,9 @@ export interface DbFindManyAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	}[];
-}
-
-export interface DbFindManyPostResponseData {
-	db_findManyPost: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	}[];
@@ -8844,89 +4645,9 @@ export interface DbFindManySessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	}[];
-}
-
-export interface DbFindManyTodoResponseData {
-	db_findManyTodo: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	}[];
@@ -8967,28 +4688,9 @@ export interface DbFindManyUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	}[];
 }
@@ -9035,28 +4737,9 @@ export interface DbFindUniqueAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -9096,150 +4779,9 @@ export interface DbFindUniqueAccountOrThrowResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindUniquePostResponseData {
-	db_findUniquePost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindUniquePostOrThrowResponseData {
-	db_findUniquePostOrThrow?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -9279,28 +4821,9 @@ export interface DbFindUniqueSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -9340,150 +4863,9 @@ export interface DbFindUniqueSessionOrThrowResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindUniqueTodoResponseData {
-	db_findUniqueTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbFindUniqueTodoOrThrowResponseData {
-	db_findUniqueTodoOrThrow?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -9524,28 +4906,9 @@ export interface DbFindUniqueUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -9585,28 +4948,9 @@ export interface DbFindUniqueUserOrThrowResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -9701,44 +5045,6 @@ export interface DbGroupByAccountResponseData {
 	}[];
 }
 
-export interface DbGroupByPostResponseData {
-	db_groupByPost: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		_count?: {
-			id: number;
-			title: number;
-			content: number;
-			published: number;
-			createdAt: number;
-			updatedAt: number;
-			authorId: number;
-			_all: number;
-		};
-		_min?: {
-			id?: string;
-			title?: string;
-			published?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			authorId?: string;
-		};
-		_max?: {
-			id?: string;
-			title?: string;
-			published?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			authorId?: string;
-		};
-	}[];
-}
-
 export interface DbGroupBySessionResponseData {
 	db_groupBySession: {
 		id: string;
@@ -9763,42 +5069,6 @@ export interface DbGroupBySessionResponseData {
 			sessionToken?: string;
 			userId?: string;
 			expires?: string;
-		};
-	}[];
-}
-
-export interface DbGroupByTodoResponseData {
-	db_groupByTodo: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		_count?: {
-			id: number;
-			text: number;
-			isCompleted: number;
-			createdAt: number;
-			updatedAt: number;
-			userId: number;
-			_all: number;
-		};
-		_min?: {
-			id?: string;
-			text?: string;
-			isCompleted?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			userId?: string;
-		};
-		_max?: {
-			id?: string;
-			text?: string;
-			isCompleted?: boolean;
-			createdAt?: string;
-			updatedAt?: string;
-			userId?: string;
 		};
 	}[];
 }
@@ -9976,20 +5246,8 @@ export interface DbUpdateManyAccountResponseData {
 	};
 }
 
-export interface DbUpdateManyPostResponseData {
-	db_updateManyPost?: {
-		count: number;
-	};
-}
-
 export interface DbUpdateManySessionResponseData {
 	db_updateManySession?: {
-		count: number;
-	};
-}
-
-export interface DbUpdateManyTodoResponseData {
-	db_updateManyTodo?: {
 		count: number;
 	};
 }
@@ -10040,89 +5298,9 @@ export interface DbUpdateOneAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbUpdateOnePostResponseData {
-	db_updateOnePost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -10162,89 +5340,9 @@ export interface DbUpdateOneSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbUpdateOneTodoResponseData {
-	db_updateOneTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -10285,28 +5383,9 @@ export interface DbUpdateOneUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -10353,89 +5432,9 @@ export interface DbUpsertOneAccountResponseData {
 				userId: string;
 				expires: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbUpsertOnePostResponseData {
-	db_upsertOnePost?: {
-		id: string;
-		title: string;
-		content?: JSONValue;
-		published: boolean;
-		createdAt: string;
-		updatedAt: string;
-		authorId: string;
-		author: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -10475,89 +5474,9 @@ export interface DbUpsertOneSessionResponseData {
 				createdAt: string;
 				updatedAt: string;
 			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			Todo?: {
-				id: string;
-				text: string;
-				isCompleted: boolean;
-				createdAt: string;
-				updatedAt: string;
-				userId: string;
-			}[];
 			_count: {
 				accounts: number;
 				sessions: number;
-				Post: number;
-				Todo: number;
-			};
-		};
-	};
-}
-
-export interface DbUpsertOneTodoResponseData {
-	db_upsertOneTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-		createdAt: string;
-		updatedAt: string;
-		userId: string;
-		user: {
-			id: string;
-			name?: string;
-			email?: string;
-			emailVerified?: string;
-			image?: string;
-			createdAt: string;
-			updatedAt: string;
-			stripeCustomerId?: string;
-			stripeSubscriptionId?: string;
-			stripePriceId?: string;
-			stripeCurrentPeriodEnd?: string;
-			accounts?: {
-				id: string;
-				userId: string;
-				type: string;
-				provider: string;
-				providerAccountId: string;
-				refresh_token?: string;
-				access_token?: string;
-				expires_at?: number;
-				token_type?: string;
-				scope?: string;
-				id_token?: string;
-				session_state?: string;
-				createdAt: string;
-				updatedAt: string;
-			}[];
-			sessions?: {
-				id: string;
-				sessionToken: string;
-				userId: string;
-				expires: string;
-			}[];
-			Post?: {
-				id: string;
-				title: string;
-				content?: JSONValue;
-				published: boolean;
-				createdAt: string;
-				updatedAt: string;
-				authorId: string;
-			}[];
-			_count: {
-				accounts: number;
-				sessions: number;
-				Post: number;
-				Todo: number;
 			};
 		};
 	};
@@ -10598,28 +5517,9 @@ export interface DbUpsertOneUserResponseData {
 			userId: string;
 			expires: string;
 		}[];
-		Post?: {
-			id: string;
-			title: string;
-			content?: JSONValue;
-			published: boolean;
-			createdAt: string;
-			updatedAt: string;
-			authorId: string;
-		}[];
-		Todo?: {
-			id: string;
-			text: string;
-			isCompleted: boolean;
-			createdAt: string;
-			updatedAt: string;
-			userId: string;
-		}[];
 		_count: {
 			accounts: number;
 			sessions: number;
-			Post: number;
-			Todo: number;
 		};
 	};
 }
@@ -10632,31 +5532,40 @@ export interface DbUpsertOneVerificationTokenResponseData {
 	};
 }
 
-export interface TodosAddTodoResponseData {
-	db_createOneTodo?: {
+export interface UsersGetAllUsersResponseData {
+	db_findManyUser: {
 		id: string;
-		text: string;
-		user: {
+		name?: string;
+		email?: string;
+		emailVerified?: string;
+		image?: string;
+		createdAt: string;
+		updatedAt: string;
+		stripeCustomerId?: string;
+		stripeSubscriptionId?: string;
+		stripePriceId?: string;
+		stripeCurrentPeriodEnd?: string;
+		accounts?: {
 			id: string;
-			name?: string;
-		};
-	};
-}
-
-export interface TodosGetAllTodosForCurrentUserResponseData {
-	db_findManyTodo: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
+			type: string;
+			provider: string;
+			providerAccountId: string;
+			refresh_token?: string;
+			access_token?: string;
+			expires_at?: number;
+			token_type?: string;
+			scope?: string;
+			id_token?: string;
+			session_state?: string;
+			createdAt: string;
+			updatedAt: string;
+		}[];
+		sessions?: {
+			id: string;
+			sessionToken: string;
+			expires: string;
+		}[];
 	}[];
-}
-
-export interface TodosUpdateTodoResponseData {
-	db_updateOneTodo?: {
-		id: string;
-		text: string;
-		isCompleted: boolean;
-	};
 }
 
 export interface WeatherGetCityByIdResponseData {

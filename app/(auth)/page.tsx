@@ -13,10 +13,12 @@ export const metadata: Metadata = {
 }
 
 export default async function LoginPage() {
-  const user = await getCurrentUser()
+  if (process.env.NODE_ENV === "production") {
+    const user = await getCurrentUser()
 
-  if (user) {
-    return redirect("/overview/dashboard")
+    if (user) {
+      return redirect("/overview/dashboard")
+    }
   }
 
   return (

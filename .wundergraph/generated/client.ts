@@ -46,15 +46,9 @@ import type {
 	DbAggregateAccountResponse,
 	DbAggregateAccountInput,
 	DbAggregateAccountResponseData,
-	DbAggregatePostResponse,
-	DbAggregatePostInput,
-	DbAggregatePostResponseData,
 	DbAggregateSessionResponse,
 	DbAggregateSessionInput,
 	DbAggregateSessionResponseData,
-	DbAggregateTodoResponse,
-	DbAggregateTodoInput,
-	DbAggregateTodoResponseData,
 	DbAggregateUserResponse,
 	DbAggregateUserInput,
 	DbAggregateUserResponseData,
@@ -64,15 +58,9 @@ import type {
 	DbCreateManyAccountResponse,
 	DbCreateManyAccountInput,
 	DbCreateManyAccountResponseData,
-	DbCreateManyPostResponse,
-	DbCreateManyPostInput,
-	DbCreateManyPostResponseData,
 	DbCreateManySessionResponse,
 	DbCreateManySessionInput,
 	DbCreateManySessionResponseData,
-	DbCreateManyTodoResponse,
-	DbCreateManyTodoInput,
-	DbCreateManyTodoResponseData,
 	DbCreateManyUserResponse,
 	DbCreateManyUserInput,
 	DbCreateManyUserResponseData,
@@ -82,15 +70,9 @@ import type {
 	DbCreateOneAccountResponse,
 	DbCreateOneAccountInput,
 	DbCreateOneAccountResponseData,
-	DbCreateOnePostResponse,
-	DbCreateOnePostInput,
-	DbCreateOnePostResponseData,
 	DbCreateOneSessionResponse,
 	DbCreateOneSessionInput,
 	DbCreateOneSessionResponseData,
-	DbCreateOneTodoResponse,
-	DbCreateOneTodoInput,
-	DbCreateOneTodoResponseData,
 	DbCreateOneUserResponse,
 	DbCreateOneUserInput,
 	DbCreateOneUserResponseData,
@@ -100,15 +82,9 @@ import type {
 	DbDeleteManyAccountResponse,
 	DbDeleteManyAccountInput,
 	DbDeleteManyAccountResponseData,
-	DbDeleteManyPostResponse,
-	DbDeleteManyPostInput,
-	DbDeleteManyPostResponseData,
 	DbDeleteManySessionResponse,
 	DbDeleteManySessionInput,
 	DbDeleteManySessionResponseData,
-	DbDeleteManyTodoResponse,
-	DbDeleteManyTodoInput,
-	DbDeleteManyTodoResponseData,
 	DbDeleteManyUserResponse,
 	DbDeleteManyUserInput,
 	DbDeleteManyUserResponseData,
@@ -118,15 +94,9 @@ import type {
 	DbDeleteOneAccountResponse,
 	DbDeleteOneAccountInput,
 	DbDeleteOneAccountResponseData,
-	DbDeleteOnePostResponse,
-	DbDeleteOnePostInput,
-	DbDeleteOnePostResponseData,
 	DbDeleteOneSessionResponse,
 	DbDeleteOneSessionInput,
 	DbDeleteOneSessionResponseData,
-	DbDeleteOneTodoResponse,
-	DbDeleteOneTodoInput,
-	DbDeleteOneTodoResponseData,
 	DbDeleteOneUserResponse,
 	DbDeleteOneUserInput,
 	DbDeleteOneUserResponseData,
@@ -142,24 +112,12 @@ import type {
 	DbFindFirstAccountOrThrowResponse,
 	DbFindFirstAccountOrThrowInput,
 	DbFindFirstAccountOrThrowResponseData,
-	DbFindFirstPostResponse,
-	DbFindFirstPostInput,
-	DbFindFirstPostResponseData,
-	DbFindFirstPostOrThrowResponse,
-	DbFindFirstPostOrThrowInput,
-	DbFindFirstPostOrThrowResponseData,
 	DbFindFirstSessionResponse,
 	DbFindFirstSessionInput,
 	DbFindFirstSessionResponseData,
 	DbFindFirstSessionOrThrowResponse,
 	DbFindFirstSessionOrThrowInput,
 	DbFindFirstSessionOrThrowResponseData,
-	DbFindFirstTodoResponse,
-	DbFindFirstTodoInput,
-	DbFindFirstTodoResponseData,
-	DbFindFirstTodoOrThrowResponse,
-	DbFindFirstTodoOrThrowInput,
-	DbFindFirstTodoOrThrowResponseData,
 	DbFindFirstUserResponse,
 	DbFindFirstUserInput,
 	DbFindFirstUserResponseData,
@@ -175,15 +133,9 @@ import type {
 	DbFindManyAccountResponse,
 	DbFindManyAccountInput,
 	DbFindManyAccountResponseData,
-	DbFindManyPostResponse,
-	DbFindManyPostInput,
-	DbFindManyPostResponseData,
 	DbFindManySessionResponse,
 	DbFindManySessionInput,
 	DbFindManySessionResponseData,
-	DbFindManyTodoResponse,
-	DbFindManyTodoInput,
-	DbFindManyTodoResponseData,
 	DbFindManyUserResponse,
 	DbFindManyUserInput,
 	DbFindManyUserResponseData,
@@ -196,24 +148,12 @@ import type {
 	DbFindUniqueAccountOrThrowResponse,
 	DbFindUniqueAccountOrThrowInput,
 	DbFindUniqueAccountOrThrowResponseData,
-	DbFindUniquePostResponse,
-	DbFindUniquePostInput,
-	DbFindUniquePostResponseData,
-	DbFindUniquePostOrThrowResponse,
-	DbFindUniquePostOrThrowInput,
-	DbFindUniquePostOrThrowResponseData,
 	DbFindUniqueSessionResponse,
 	DbFindUniqueSessionInput,
 	DbFindUniqueSessionResponseData,
 	DbFindUniqueSessionOrThrowResponse,
 	DbFindUniqueSessionOrThrowInput,
 	DbFindUniqueSessionOrThrowResponseData,
-	DbFindUniqueTodoResponse,
-	DbFindUniqueTodoInput,
-	DbFindUniqueTodoResponseData,
-	DbFindUniqueTodoOrThrowResponse,
-	DbFindUniqueTodoOrThrowInput,
-	DbFindUniqueTodoOrThrowResponseData,
 	DbFindUniqueUserResponse,
 	DbFindUniqueUserInput,
 	DbFindUniqueUserResponseData,
@@ -229,15 +169,9 @@ import type {
 	DbGroupByAccountResponse,
 	DbGroupByAccountInput,
 	DbGroupByAccountResponseData,
-	DbGroupByPostResponse,
-	DbGroupByPostInput,
-	DbGroupByPostResponseData,
 	DbGroupBySessionResponse,
 	DbGroupBySessionInput,
 	DbGroupBySessionResponseData,
-	DbGroupByTodoResponse,
-	DbGroupByTodoInput,
-	DbGroupByTodoResponseData,
 	DbGroupByUserResponse,
 	DbGroupByUserInput,
 	DbGroupByUserResponseData,
@@ -253,15 +187,9 @@ import type {
 	DbUpdateManyAccountResponse,
 	DbUpdateManyAccountInput,
 	DbUpdateManyAccountResponseData,
-	DbUpdateManyPostResponse,
-	DbUpdateManyPostInput,
-	DbUpdateManyPostResponseData,
 	DbUpdateManySessionResponse,
 	DbUpdateManySessionInput,
 	DbUpdateManySessionResponseData,
-	DbUpdateManyTodoResponse,
-	DbUpdateManyTodoInput,
-	DbUpdateManyTodoResponseData,
 	DbUpdateManyUserResponse,
 	DbUpdateManyUserInput,
 	DbUpdateManyUserResponseData,
@@ -271,15 +199,9 @@ import type {
 	DbUpdateOneAccountResponse,
 	DbUpdateOneAccountInput,
 	DbUpdateOneAccountResponseData,
-	DbUpdateOnePostResponse,
-	DbUpdateOnePostInput,
-	DbUpdateOnePostResponseData,
 	DbUpdateOneSessionResponse,
 	DbUpdateOneSessionInput,
 	DbUpdateOneSessionResponseData,
-	DbUpdateOneTodoResponse,
-	DbUpdateOneTodoInput,
-	DbUpdateOneTodoResponseData,
 	DbUpdateOneUserResponse,
 	DbUpdateOneUserInput,
 	DbUpdateOneUserResponseData,
@@ -289,30 +211,17 @@ import type {
 	DbUpsertOneAccountResponse,
 	DbUpsertOneAccountInput,
 	DbUpsertOneAccountResponseData,
-	DbUpsertOnePostResponse,
-	DbUpsertOnePostInput,
-	DbUpsertOnePostResponseData,
 	DbUpsertOneSessionResponse,
 	DbUpsertOneSessionInput,
 	DbUpsertOneSessionResponseData,
-	DbUpsertOneTodoResponse,
-	DbUpsertOneTodoInput,
-	DbUpsertOneTodoResponseData,
 	DbUpsertOneUserResponse,
 	DbUpsertOneUserInput,
 	DbUpsertOneUserResponseData,
 	DbUpsertOneVerificationTokenResponse,
 	DbUpsertOneVerificationTokenInput,
 	DbUpsertOneVerificationTokenResponseData,
-	TodosAddTodoResponse,
-	TodosAddTodoInput,
-	TodosAddTodoResponseData,
-	TodosGetAllTodosForCurrentUserResponse,
-	TodosGetAllTodosForCurrentUserInput,
-	TodosGetAllTodosForCurrentUserResponseData,
-	TodosUpdateTodoResponse,
-	TodosUpdateTodoInput,
-	TodosUpdateTodoResponseData,
+	UsersGetAllUsersResponse,
+	UsersGetAllUsersResponseData,
 	WeatherGetCityByIdResponse,
 	WeatherGetCityByIdInput,
 	WeatherGetCityByIdResponseData,
@@ -350,7 +259,7 @@ export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = false;
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "2e59971a",
+	applicationHash: "bab81d34",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.179.3",
 };
@@ -380,13 +289,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/AggregateAccount": {
 		requiresAuthentication: false,
 	},
-	"db/AggregatePost": {
-		requiresAuthentication: false,
-	},
 	"db/AggregateSession": {
-		requiresAuthentication: false,
-	},
-	"db/AggregateTodo": {
 		requiresAuthentication: false,
 	},
 	"db/AggregateUser": {
@@ -398,13 +301,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/CreateManyAccount": {
 		requiresAuthentication: false,
 	},
-	"db/CreateManyPost": {
-		requiresAuthentication: false,
-	},
 	"db/CreateManySession": {
-		requiresAuthentication: false,
-	},
-	"db/CreateManyTodo": {
 		requiresAuthentication: false,
 	},
 	"db/CreateManyUser": {
@@ -416,13 +313,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/CreateOneAccount": {
 		requiresAuthentication: false,
 	},
-	"db/CreateOnePost": {
-		requiresAuthentication: false,
-	},
 	"db/CreateOneSession": {
-		requiresAuthentication: false,
-	},
-	"db/CreateOneTodo": {
 		requiresAuthentication: false,
 	},
 	"db/CreateOneUser": {
@@ -434,13 +325,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/DeleteManyAccount": {
 		requiresAuthentication: false,
 	},
-	"db/DeleteManyPost": {
-		requiresAuthentication: false,
-	},
 	"db/DeleteManySession": {
-		requiresAuthentication: false,
-	},
-	"db/DeleteManyTodo": {
 		requiresAuthentication: false,
 	},
 	"db/DeleteManyUser": {
@@ -452,13 +337,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/DeleteOneAccount": {
 		requiresAuthentication: false,
 	},
-	"db/DeleteOnePost": {
-		requiresAuthentication: false,
-	},
 	"db/DeleteOneSession": {
-		requiresAuthentication: false,
-	},
-	"db/DeleteOneTodo": {
 		requiresAuthentication: false,
 	},
 	"db/DeleteOneUser": {
@@ -476,22 +355,10 @@ export const operationMetadata: OperationMetadata = {
 	"db/FindFirstAccountOrThrow": {
 		requiresAuthentication: false,
 	},
-	"db/FindFirstPost": {
-		requiresAuthentication: false,
-	},
-	"db/FindFirstPostOrThrow": {
-		requiresAuthentication: false,
-	},
 	"db/FindFirstSession": {
 		requiresAuthentication: false,
 	},
 	"db/FindFirstSessionOrThrow": {
-		requiresAuthentication: false,
-	},
-	"db/FindFirstTodo": {
-		requiresAuthentication: false,
-	},
-	"db/FindFirstTodoOrThrow": {
 		requiresAuthentication: false,
 	},
 	"db/FindFirstUser": {
@@ -509,13 +376,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/FindManyAccount": {
 		requiresAuthentication: false,
 	},
-	"db/FindManyPost": {
-		requiresAuthentication: false,
-	},
 	"db/FindManySession": {
-		requiresAuthentication: false,
-	},
-	"db/FindManyTodo": {
 		requiresAuthentication: false,
 	},
 	"db/FindManyUser": {
@@ -530,22 +391,10 @@ export const operationMetadata: OperationMetadata = {
 	"db/FindUniqueAccountOrThrow": {
 		requiresAuthentication: false,
 	},
-	"db/FindUniquePost": {
-		requiresAuthentication: false,
-	},
-	"db/FindUniquePostOrThrow": {
-		requiresAuthentication: false,
-	},
 	"db/FindUniqueSession": {
 		requiresAuthentication: false,
 	},
 	"db/FindUniqueSessionOrThrow": {
-		requiresAuthentication: false,
-	},
-	"db/FindUniqueTodo": {
-		requiresAuthentication: false,
-	},
-	"db/FindUniqueTodoOrThrow": {
 		requiresAuthentication: false,
 	},
 	"db/FindUniqueUser": {
@@ -563,13 +412,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/GroupByAccount": {
 		requiresAuthentication: false,
 	},
-	"db/GroupByPost": {
-		requiresAuthentication: false,
-	},
 	"db/GroupBySession": {
-		requiresAuthentication: false,
-	},
-	"db/GroupByTodo": {
 		requiresAuthentication: false,
 	},
 	"db/GroupByUser": {
@@ -587,13 +430,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/UpdateManyAccount": {
 		requiresAuthentication: false,
 	},
-	"db/UpdateManyPost": {
-		requiresAuthentication: false,
-	},
 	"db/UpdateManySession": {
-		requiresAuthentication: false,
-	},
-	"db/UpdateManyTodo": {
 		requiresAuthentication: false,
 	},
 	"db/UpdateManyUser": {
@@ -605,13 +442,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/UpdateOneAccount": {
 		requiresAuthentication: false,
 	},
-	"db/UpdateOnePost": {
-		requiresAuthentication: false,
-	},
 	"db/UpdateOneSession": {
-		requiresAuthentication: false,
-	},
-	"db/UpdateOneTodo": {
 		requiresAuthentication: false,
 	},
 	"db/UpdateOneUser": {
@@ -623,13 +454,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/UpsertOneAccount": {
 		requiresAuthentication: false,
 	},
-	"db/UpsertOnePost": {
-		requiresAuthentication: false,
-	},
 	"db/UpsertOneSession": {
-		requiresAuthentication: false,
-	},
-	"db/UpsertOneTodo": {
 		requiresAuthentication: false,
 	},
 	"db/UpsertOneUser": {
@@ -638,13 +463,7 @@ export const operationMetadata: OperationMetadata = {
 	"db/UpsertOneVerificationToken": {
 		requiresAuthentication: false,
 	},
-	"todos/addTodo": {
-		requiresAuthentication: false,
-	},
-	"todos/getAllTodosForCurrentUser": {
-		requiresAuthentication: false,
-	},
-	"todos/updateTodo": {
+	"users/GetAllUsers": {
 		requiresAuthentication: false,
 	},
 	"weather/GetCityById": {
@@ -776,21 +595,9 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"db/AggregatePost": {
-		input: DbAggregatePostInput;
-		response: { data?: DbAggregatePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"db/AggregateSession": {
 		input: DbAggregateSessionInput;
 		response: { data?: DbAggregateSessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/AggregateTodo": {
-		input: DbAggregateTodoInput;
-		response: { data?: DbAggregateTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -818,18 +625,6 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"db/FindFirstPost": {
-		input: DbFindFirstPostInput;
-		response: { data?: DbFindFirstPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindFirstPostOrThrow": {
-		input: DbFindFirstPostOrThrowInput;
-		response: { data?: DbFindFirstPostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"db/FindFirstSession": {
 		input: DbFindFirstSessionInput;
 		response: { data?: DbFindFirstSessionResponse["data"]; error?: ClientOperationErrors };
@@ -839,18 +634,6 @@ export type Queries = {
 	"db/FindFirstSessionOrThrow": {
 		input: DbFindFirstSessionOrThrowInput;
 		response: { data?: DbFindFirstSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindFirstTodo": {
-		input: DbFindFirstTodoInput;
-		response: { data?: DbFindFirstTodoResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindFirstTodoOrThrow": {
-		input: DbFindFirstTodoOrThrowInput;
-		response: { data?: DbFindFirstTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -884,21 +667,9 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"db/FindManyPost": {
-		input: DbFindManyPostInput;
-		response: { data?: DbFindManyPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"db/FindManySession": {
 		input: DbFindManySessionInput;
 		response: { data?: DbFindManySessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindManyTodo": {
-		input: DbFindManyTodoInput;
-		response: { data?: DbFindManyTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -926,18 +697,6 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"db/FindUniquePost": {
-		input: DbFindUniquePostInput;
-		response: { data?: DbFindUniquePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindUniquePostOrThrow": {
-		input: DbFindUniquePostOrThrowInput;
-		response: { data?: DbFindUniquePostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"db/FindUniqueSession": {
 		input: DbFindUniqueSessionInput;
 		response: { data?: DbFindUniqueSessionResponse["data"]; error?: ClientOperationErrors };
@@ -947,18 +706,6 @@ export type Queries = {
 	"db/FindUniqueSessionOrThrow": {
 		input: DbFindUniqueSessionOrThrowInput;
 		response: { data?: DbFindUniqueSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindUniqueTodo": {
-		input: DbFindUniqueTodoInput;
-		response: { data?: DbFindUniqueTodoResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/FindUniqueTodoOrThrow": {
-		input: DbFindUniqueTodoOrThrowInput;
-		response: { data?: DbFindUniqueTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -992,21 +739,9 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"db/GroupByPost": {
-		input: DbGroupByPostInput;
-		response: { data?: DbGroupByPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 	"db/GroupBySession": {
 		input: DbGroupBySessionInput;
 		response: { data?: DbGroupBySessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
-	"db/GroupByTodo": {
-		input: DbGroupByTodoInput;
-		response: { data?: DbGroupByTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -1034,9 +769,9 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"todos/getAllTodosForCurrentUser": {
-		input: TodosGetAllTodosForCurrentUserInput;
-		response: { data?: TodosGetAllTodosForCurrentUserResponse["data"]; error?: ClientOperationErrors };
+	"users/GetAllUsers": {
+		input?: undefined;
+		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -1102,19 +837,9 @@ export type Mutations = {
 		response: { data?: DbCreateManyAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/CreateManyPost": {
-		input: DbCreateManyPostInput;
-		response: { data?: DbCreateManyPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/CreateManySession": {
 		input: DbCreateManySessionInput;
 		response: { data?: DbCreateManySessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/CreateManyTodo": {
-		input: DbCreateManyTodoInput;
-		response: { data?: DbCreateManyTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/CreateManyUser": {
@@ -1132,19 +857,9 @@ export type Mutations = {
 		response: { data?: DbCreateOneAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/CreateOnePost": {
-		input: DbCreateOnePostInput;
-		response: { data?: DbCreateOnePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/CreateOneSession": {
 		input: DbCreateOneSessionInput;
 		response: { data?: DbCreateOneSessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/CreateOneTodo": {
-		input: DbCreateOneTodoInput;
-		response: { data?: DbCreateOneTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/CreateOneUser": {
@@ -1162,19 +877,9 @@ export type Mutations = {
 		response: { data?: DbDeleteManyAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/DeleteManyPost": {
-		input: DbDeleteManyPostInput;
-		response: { data?: DbDeleteManyPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/DeleteManySession": {
 		input: DbDeleteManySessionInput;
 		response: { data?: DbDeleteManySessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/DeleteManyTodo": {
-		input: DbDeleteManyTodoInput;
-		response: { data?: DbDeleteManyTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/DeleteManyUser": {
@@ -1192,19 +897,9 @@ export type Mutations = {
 		response: { data?: DbDeleteOneAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/DeleteOnePost": {
-		input: DbDeleteOnePostInput;
-		response: { data?: DbDeleteOnePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/DeleteOneSession": {
 		input: DbDeleteOneSessionInput;
 		response: { data?: DbDeleteOneSessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/DeleteOneTodo": {
-		input: DbDeleteOneTodoInput;
-		response: { data?: DbDeleteOneTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/DeleteOneUser": {
@@ -1227,19 +922,9 @@ export type Mutations = {
 		response: { data?: DbUpdateManyAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/UpdateManyPost": {
-		input: DbUpdateManyPostInput;
-		response: { data?: DbUpdateManyPostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/UpdateManySession": {
 		input: DbUpdateManySessionInput;
 		response: { data?: DbUpdateManySessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/UpdateManyTodo": {
-		input: DbUpdateManyTodoInput;
-		response: { data?: DbUpdateManyTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/UpdateManyUser": {
@@ -1257,19 +942,9 @@ export type Mutations = {
 		response: { data?: DbUpdateOneAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/UpdateOnePost": {
-		input: DbUpdateOnePostInput;
-		response: { data?: DbUpdateOnePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/UpdateOneSession": {
 		input: DbUpdateOneSessionInput;
 		response: { data?: DbUpdateOneSessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/UpdateOneTodo": {
-		input: DbUpdateOneTodoInput;
-		response: { data?: DbUpdateOneTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/UpdateOneUser": {
@@ -1287,19 +962,9 @@ export type Mutations = {
 		response: { data?: DbUpsertOneAccountResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
-	"db/UpsertOnePost": {
-		input: DbUpsertOnePostInput;
-		response: { data?: DbUpsertOnePostResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
 	"db/UpsertOneSession": {
 		input: DbUpsertOneSessionInput;
 		response: { data?: DbUpsertOneSessionResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"db/UpsertOneTodo": {
-		input: DbUpsertOneTodoInput;
-		response: { data?: DbUpsertOneTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"db/UpsertOneUser": {
@@ -1310,16 +975,6 @@ export type Mutations = {
 	"db/UpsertOneVerificationToken": {
 		input: DbUpsertOneVerificationTokenInput;
 		response: { data?: DbUpsertOneVerificationTokenResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"todos/addTodo": {
-		input: TodosAddTodoInput;
-		response: { data?: TodosAddTodoResponse["data"]; error?: ClientOperationErrors };
-		requiresAuthentication: false;
-	};
-	"todos/updateTodo": {
-		input: TodosUpdateTodoInput;
-		response: { data?: TodosUpdateTodoResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 	};
 	"users/update": {
@@ -1383,21 +1038,9 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/AggregatePost": {
-		input: DbAggregatePostInput;
-		response: { data?: DbAggregatePostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/AggregateSession": {
 		input: DbAggregateSessionInput;
 		response: { data?: DbAggregateSessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/AggregateTodo": {
-		input: DbAggregateTodoInput;
-		response: { data?: DbAggregateTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1425,18 +1068,6 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindFirstPost": {
-		input: DbFindFirstPostInput;
-		response: { data?: DbFindFirstPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstPostOrThrow": {
-		input: DbFindFirstPostOrThrowInput;
-		response: { data?: DbFindFirstPostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindFirstSession": {
 		input: DbFindFirstSessionInput;
 		response: { data?: DbFindFirstSessionResponse["data"]; error?: ClientOperationErrors };
@@ -1446,18 +1077,6 @@ export type Subscriptions = {
 	"db/FindFirstSessionOrThrow": {
 		input: DbFindFirstSessionOrThrowInput;
 		response: { data?: DbFindFirstSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstTodo": {
-		input: DbFindFirstTodoInput;
-		response: { data?: DbFindFirstTodoResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstTodoOrThrow": {
-		input: DbFindFirstTodoOrThrowInput;
-		response: { data?: DbFindFirstTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1491,21 +1110,9 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindManyPost": {
-		input: DbFindManyPostInput;
-		response: { data?: DbFindManyPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindManySession": {
 		input: DbFindManySessionInput;
 		response: { data?: DbFindManySessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindManyTodo": {
-		input: DbFindManyTodoInput;
-		response: { data?: DbFindManyTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1533,18 +1140,6 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindUniquePost": {
-		input: DbFindUniquePostInput;
-		response: { data?: DbFindUniquePostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniquePostOrThrow": {
-		input: DbFindUniquePostOrThrowInput;
-		response: { data?: DbFindUniquePostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindUniqueSession": {
 		input: DbFindUniqueSessionInput;
 		response: { data?: DbFindUniqueSessionResponse["data"]; error?: ClientOperationErrors };
@@ -1554,18 +1149,6 @@ export type Subscriptions = {
 	"db/FindUniqueSessionOrThrow": {
 		input: DbFindUniqueSessionOrThrowInput;
 		response: { data?: DbFindUniqueSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniqueTodo": {
-		input: DbFindUniqueTodoInput;
-		response: { data?: DbFindUniqueTodoResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniqueTodoOrThrow": {
-		input: DbFindUniqueTodoOrThrowInput;
-		response: { data?: DbFindUniqueTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1599,21 +1182,9 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/GroupByPost": {
-		input: DbGroupByPostInput;
-		response: { data?: DbGroupByPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/GroupBySession": {
 		input: DbGroupBySessionInput;
 		response: { data?: DbGroupBySessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/GroupByTodo": {
-		input: DbGroupByTodoInput;
-		response: { data?: DbGroupByTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1641,9 +1212,9 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"todos/getAllTodosForCurrentUser": {
-		input: TodosGetAllTodosForCurrentUserInput;
-		response: { data?: TodosGetAllTodosForCurrentUserResponse["data"]; error?: ClientOperationErrors };
+	"users/GetAllUsers": {
+		input?: undefined;
+		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1746,21 +1317,9 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/AggregatePost": {
-		input: DbAggregatePostInput;
-		response: { data?: DbAggregatePostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/AggregateSession": {
 		input: DbAggregateSessionInput;
 		response: { data?: DbAggregateSessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/AggregateTodo": {
-		input: DbAggregateTodoInput;
-		response: { data?: DbAggregateTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1788,18 +1347,6 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindFirstPost": {
-		input: DbFindFirstPostInput;
-		response: { data?: DbFindFirstPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstPostOrThrow": {
-		input: DbFindFirstPostOrThrowInput;
-		response: { data?: DbFindFirstPostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindFirstSession": {
 		input: DbFindFirstSessionInput;
 		response: { data?: DbFindFirstSessionResponse["data"]; error?: ClientOperationErrors };
@@ -1809,18 +1356,6 @@ export type LiveQueries = {
 	"db/FindFirstSessionOrThrow": {
 		input: DbFindFirstSessionOrThrowInput;
 		response: { data?: DbFindFirstSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstTodo": {
-		input: DbFindFirstTodoInput;
-		response: { data?: DbFindFirstTodoResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindFirstTodoOrThrow": {
-		input: DbFindFirstTodoOrThrowInput;
-		response: { data?: DbFindFirstTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1854,21 +1389,9 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindManyPost": {
-		input: DbFindManyPostInput;
-		response: { data?: DbFindManyPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindManySession": {
 		input: DbFindManySessionInput;
 		response: { data?: DbFindManySessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindManyTodo": {
-		input: DbFindManyTodoInput;
-		response: { data?: DbFindManyTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1896,18 +1419,6 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/FindUniquePost": {
-		input: DbFindUniquePostInput;
-		response: { data?: DbFindUniquePostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniquePostOrThrow": {
-		input: DbFindUniquePostOrThrowInput;
-		response: { data?: DbFindUniquePostOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/FindUniqueSession": {
 		input: DbFindUniqueSessionInput;
 		response: { data?: DbFindUniqueSessionResponse["data"]; error?: ClientOperationErrors };
@@ -1917,18 +1428,6 @@ export type LiveQueries = {
 	"db/FindUniqueSessionOrThrow": {
 		input: DbFindUniqueSessionOrThrowInput;
 		response: { data?: DbFindUniqueSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniqueTodo": {
-		input: DbFindUniqueTodoInput;
-		response: { data?: DbFindUniqueTodoResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/FindUniqueTodoOrThrow": {
-		input: DbFindUniqueTodoOrThrowInput;
-		response: { data?: DbFindUniqueTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -1962,21 +1461,9 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"db/GroupByPost": {
-		input: DbGroupByPostInput;
-		response: { data?: DbGroupByPostResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
 	"db/GroupBySession": {
 		input: DbGroupBySessionInput;
 		response: { data?: DbGroupBySessionResponse["data"]; error?: ClientOperationErrors };
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"db/GroupByTodo": {
-		input: DbGroupByTodoInput;
-		response: { data?: DbGroupByTodoResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
@@ -2004,9 +1491,9 @@ export type LiveQueries = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
-	"todos/getAllTodosForCurrentUser": {
-		input: TodosGetAllTodosForCurrentUserInput;
-		response: { data?: TodosGetAllTodosForCurrentUserResponse["data"]; error?: ClientOperationErrors };
+	"users/GetAllUsers": {
+		input?: undefined;
+		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

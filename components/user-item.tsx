@@ -1,13 +1,15 @@
 import Link from "next/link"
+import { UsersGetAllUsersResponseData } from "@/.wundergraph/generated/models"
 import { User } from "@prisma/client"
 
 import { formatDate } from "@/lib/utils"
 import { Skeleton } from "@/components/ui/skeleton"
 
 interface UserItemProps {
-  user: Pick<User, "id" | "name" | "createdAt">
+  user:
+    | Pick<User, "id" | "name" | "createdAt">
+    | NonNullable<UsersGetAllUsersResponseData["db_findManyUser"]>[0]
 }
-
 export function UserItem({ user }: UserItemProps) {
   return (
     <div className="flex items-center justify-between p-4">
@@ -17,7 +19,7 @@ export function UserItem({ user }: UserItemProps) {
         </Link>
         <div>
           <p className="text-sm text-muted-foreground">
-            Created at: {formatDate(user.createdAt?.toDateString())}
+            Created at: {formatDate(user.createdAt)}
           </p>
         </div>
       </div>

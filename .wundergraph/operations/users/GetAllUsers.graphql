@@ -1,0 +1,14 @@
+query GetAllUsers {
+  db_findManyUser {
+    id
+    name
+    email
+    emailVerified
+    image
+    createdAt
+    updatedAt
+    stripeCustomerId
+    stripeSubscriptionId
+    stripePriceId
+    stripeCurrentPeriodEnd
+}

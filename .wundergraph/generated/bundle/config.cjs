@@ -84,10 +84,12 @@ var db = import_sdk3.introspect.prisma({
       new import_sdk3.EnvironmentVariable("NEXTAUTH_URL"),
       "https://gg-test-repo.vercel.app/",
       "https://d2vp238439bu7d.cloudfront.net",
-      "https://gg-test-repo-production.up.railway.app"
+      "https://gg-test-repo-production.up.railway.app",
+      new import_sdk3.EnvironmentVariable("DATABASE_URL")
     ] : [
       "http://localhost:3000",
-      new import_sdk3.EnvironmentVariable("WG_ALLOWED_ORIGIN")
+      new import_sdk3.EnvironmentVariable("WG_ALLOWED_ORIGIN"),
+      new import_sdk3.EnvironmentVariable("DATABASE_URL")
     ]
   },
   security: {

@@ -95,9 +95,7 @@ interface TargetTypes {
 	countries_State: "code" | "country" | "name" | "_join";
 	countries_Subdivision: "code" | "emoji" | "name" | "_join";
 	db_Session: "id" | "sessionToken" | "userId" | "expires" | "user" | "_join";
-	db_Post: "id" | "title" | "content" | "published" | "createdAt" | "updatedAt" | "authorId" | "author" | "_join";
-	db_Todo: "id" | "text" | "isCompleted" | "createdAt" | "updatedAt" | "userId" | "user" | "_join";
-	db_UserCountOutputType: "accounts" | "sessions" | "Post" | "Todo" | "_join";
+	db_UserCountOutputType: "accounts" | "sessions" | "_join";
 	db_User:
 		| "id"
 		| "name"
@@ -112,8 +110,6 @@ interface TargetTypes {
 		| "stripeCurrentPeriodEnd"
 		| "accounts"
 		| "sessions"
-		| "Post"
-		| "Todo"
 		| "_count"
 		| "_join";
 	db_Account:
@@ -274,54 +270,6 @@ interface TargetTypes {
 	db_VerificationTokenMaxAggregateOutputType: "identifier" | "token" | "expires" | "_join";
 	db_AggregateVerificationToken: "_count" | "_min" | "_max" | "_join";
 	db_VerificationTokenGroupByOutputType: "identifier" | "token" | "expires" | "_count" | "_min" | "_max" | "_join";
-	db_PostCountAggregateOutputType:
-		| "id"
-		| "title"
-		| "content"
-		| "published"
-		| "createdAt"
-		| "updatedAt"
-		| "authorId"
-		| "_all"
-		| "_join";
-	db_PostMinAggregateOutputType: "id" | "title" | "published" | "createdAt" | "updatedAt" | "authorId" | "_join";
-	db_PostMaxAggregateOutputType: "id" | "title" | "published" | "createdAt" | "updatedAt" | "authorId" | "_join";
-	db_AggregatePost: "_count" | "_min" | "_max" | "_join";
-	db_PostGroupByOutputType:
-		| "id"
-		| "title"
-		| "content"
-		| "published"
-		| "createdAt"
-		| "updatedAt"
-		| "authorId"
-		| "_count"
-		| "_min"
-		| "_max"
-		| "_join";
-	db_TodoCountAggregateOutputType:
-		| "id"
-		| "text"
-		| "isCompleted"
-		| "createdAt"
-		| "updatedAt"
-		| "userId"
-		| "_all"
-		| "_join";
-	db_TodoMinAggregateOutputType: "id" | "text" | "isCompleted" | "createdAt" | "updatedAt" | "userId" | "_join";
-	db_TodoMaxAggregateOutputType: "id" | "text" | "isCompleted" | "createdAt" | "updatedAt" | "userId" | "_join";
-	db_AggregateTodo: "_count" | "_min" | "_max" | "_join";
-	db_TodoGroupByOutputType:
-		| "id"
-		| "text"
-		| "isCompleted"
-		| "createdAt"
-		| "updatedAt"
-		| "userId"
-		| "_count"
-		| "_min"
-		| "_max"
-		| "_join";
 	db_AffectedRowsOutput: "count" | "_join";
 	_Row:
 		| "ID"
@@ -549,96 +497,6 @@ interface SourceFields {
 		where: null;
 	};
 	db_findUniqueVerificationTokenOrThrow: {
-		where: null;
-	};
-	db_findFirstPost: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_findFirstPostOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_findManyPost: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_aggregatePost: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	db_groupByPost: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	db_findUniquePost: {
-		where: null;
-	};
-	db_findUniquePostOrThrow: {
-		where: null;
-	};
-	db_findFirstTodo: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_findFirstTodoOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_findManyTodo: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	db_aggregateTodo: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	db_groupByTodo: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	db_findUniqueTodo: {
-		where: null;
-	};
-	db_findUniqueTodoOrThrow: {
 		where: null;
 	};
 	db_queryRaw: {

@@ -42,10 +42,12 @@ configureWunderGraphApplication({
             "https://gg-test-repo.vercel.app/",
             "https://d2vp238439bu7d.cloudfront.net",
             "https://gg-test-repo-production.up.railway.app",
+            new EnvironmentVariable("DATABASE_URL"),
           ]
         : [
             "http://localhost:3000",
             new EnvironmentVariable("WG_ALLOWED_ORIGIN"),
+            new EnvironmentVariable("DATABASE_URL"),
           ],
   },
   security: {

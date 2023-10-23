@@ -358,20 +358,6 @@ type Query {
   db_groupByVerificationToken(where: db_VerificationTokenWhereInput, orderBy: [db_VerificationTokenOrderByWithAggregationInput], by: [db_VerificationTokenScalarFieldEnum]!, having: db_VerificationTokenScalarWhereWithAggregatesInput, take: Int, skip: Int): [db_VerificationTokenGroupByOutputType]!
   db_findUniqueVerificationToken(where: db_VerificationTokenWhereUniqueInput!): db_VerificationToken
   db_findUniqueVerificationTokenOrThrow(where: db_VerificationTokenWhereUniqueInput!): db_VerificationToken
-  db_findFirstPost(where: db_PostWhereInput, orderBy: [db_PostOrderByWithRelationInput], cursor: db_PostWhereUniqueInput, take: Int, skip: Int, distinct: [db_PostScalarFieldEnum]): db_Post
-  db_findFirstPostOrThrow(where: db_PostWhereInput, orderBy: [db_PostOrderByWithRelationInput], cursor: db_PostWhereUniqueInput, take: Int, skip: Int, distinct: [db_PostScalarFieldEnum]): db_Post
-  db_findManyPost(where: db_PostWhereInput, orderBy: [db_PostOrderByWithRelationInput], cursor: db_PostWhereUniqueInput, take: Int, skip: Int, distinct: [db_PostScalarFieldEnum]): [db_Post]!
-  db_aggregatePost(where: db_PostWhereInput, orderBy: [db_PostOrderByWithRelationInput], cursor: db_PostWhereUniqueInput, take: Int, skip: Int): db_AggregatePost!
-  db_groupByPost(where: db_PostWhereInput, orderBy: [db_PostOrderByWithAggregationInput], by: [db_PostScalarFieldEnum]!, having: db_PostScalarWhereWithAggregatesInput, take: Int, skip: Int): [db_PostGroupByOutputType]!
-  db_findUniquePost(where: db_PostWhereUniqueInput!): db_Post
-  db_findUniquePostOrThrow(where: db_PostWhereUniqueInput!): db_Post
-  db_findFirstTodo(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithRelationInput], cursor: db_TodoWhereUniqueInput, take: Int, skip: Int, distinct: [db_TodoScalarFieldEnum]): db_Todo
-  db_findFirstTodoOrThrow(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithRelationInput], cursor: db_TodoWhereUniqueInput, take: Int, skip: Int, distinct: [db_TodoScalarFieldEnum]): db_Todo
-  db_findManyTodo(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithRelationInput], cursor: db_TodoWhereUniqueInput, take: Int, skip: Int, distinct: [db_TodoScalarFieldEnum]): [db_Todo]!
-  db_aggregateTodo(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithRelationInput], cursor: db_TodoWhereUniqueInput, take: Int, skip: Int): db_AggregateTodo!
-  db_groupByTodo(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithAggregationInput], by: [db_TodoScalarFieldEnum]!, having: db_TodoScalarWhereWithAggregatesInput, take: Int, skip: Int): [db_TodoGroupByOutputType]!
-  db_findUniqueTodo(where: db_TodoWhereUniqueInput!): db_Todo
-  db_findUniqueTodoOrThrow(where: db_TodoWhereUniqueInput!): db_Todo
   db_queryRaw(query: String!, parameters: [String]): [_Row!]!
   db_queryRawJSON(query: String!, parameters: [String]): JSON
   weather_getCityById(config: weather_ConfigInput, id: [String!]): [weather_City]
@@ -545,71 +531,6 @@ input db_SessionListRelationFilter {
   none: db_SessionWhereInput
 }
 
-input db_JsonNullableFilter {
-  equals: JSON
-  path: String
-  string_contains: String
-  string_starts_with: String
-  string_ends_with: String
-  array_contains: JSON
-  array_starts_with: JSON
-  array_ends_with: JSON
-  lt: JSON
-  lte: JSON
-  gt: JSON
-  gte: JSON
-  not: JSON
-}
-
-input db_NestedBoolFilter {
-  equals: Boolean
-  not: db_NestedBoolFilter
-}
-
-input db_BoolFilter {
-  equals: Boolean
-  not: db_NestedBoolFilter
-}
-
-input db_PostWhereInput {
-  AND: db_PostWhereInput
-  OR: [db_PostWhereInput]
-  NOT: db_PostWhereInput
-  id: db_StringFilter
-  title: db_StringFilter
-  content: db_JsonNullableFilter
-  published: db_BoolFilter
-  createdAt: db_DateTimeFilter
-  updatedAt: db_DateTimeFilter
-  authorId: db_StringFilter
-  author: db_UserRelationFilter
-}
-
-input db_PostListRelationFilter {
-  every: db_PostWhereInput
-  some: db_PostWhereInput
-  none: db_PostWhereInput
-}
-
-input db_TodoWhereInput {
-  AND: db_TodoWhereInput
-  OR: [db_TodoWhereInput]
-  NOT: db_TodoWhereInput
-  id: db_StringFilter
-  text: db_StringFilter
-  isCompleted: db_BoolFilter
-  createdAt: db_DateTimeFilter
-  updatedAt: db_DateTimeFilter
-  userId: db_StringFilter
-  user: db_UserRelationFilter
-}
-
-input db_TodoListRelationFilter {
-  every: db_TodoWhereInput
-  some: db_TodoWhereInput
-  none: db_TodoWhereInput
-}
-
 input db_UserWhereInput {
   AND: db_UserWhereInput
   OR: [db_UserWhereInput]
@@ -627,8 +548,6 @@ input db_UserWhereInput {
   stripeCurrentPeriodEnd: db_DateTimeNullableFilter
   accounts: db_AccountListRelationFilter
   sessions: db_SessionListRelationFilter
-  Post: db_PostListRelationFilter
-  Todo: db_TodoListRelationFilter
 }
 
 input db_UserRelationFilter {
@@ -670,14 +589,6 @@ input db_SessionOrderByRelationAggregateInput {
   _count: db_SortOrder
 }
 
-input db_PostOrderByRelationAggregateInput {
-  _count: db_SortOrder
-}
-
-input db_TodoOrderByRelationAggregateInput {
-  _count: db_SortOrder
-}
-
 input db_UserOrderByWithRelationInput {
   id: db_SortOrder
   name: db_SortOrder
@@ -692,8 +603,6 @@ input db_UserOrderByWithRelationInput {
   stripeCurrentPeriodEnd: db_SortOrder
   accounts: db_AccountOrderByRelationAggregateInput
   sessions: db_SessionOrderByRelationAggregateInput
-  Post: db_PostOrderByRelationAggregateInput
-  Todo: db_TodoOrderByRelationAggregateInput
 }
 
 input db_AccountOrderByWithRelationInput {
@@ -770,82 +679,9 @@ type db_Session {
   _join: Query!
 }
 
-input db_PostOrderByWithRelationInput {
-  id: db_SortOrder
-  title: db_SortOrder
-  content: db_SortOrder
-  published: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  authorId: db_SortOrder
-  author: db_UserOrderByWithRelationInput
-}
-
-input db_PostWhereUniqueInput {
-  id: String
-}
-
-enum db_PostScalarFieldEnum {
-  id
-  title
-  content
-  published
-  createdAt
-  updatedAt
-  authorId
-}
-
-type db_Post {
-  id: String!
-  title: String!
-  content: JSON
-  published: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  authorId: String!
-  author: db_User!
-  _join: Query!
-}
-
-input db_TodoOrderByWithRelationInput {
-  id: db_SortOrder
-  text: db_SortOrder
-  isCompleted: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  userId: db_SortOrder
-  user: db_UserOrderByWithRelationInput
-}
-
-input db_TodoWhereUniqueInput {
-  id: String
-}
-
-enum db_TodoScalarFieldEnum {
-  id
-  text
-  isCompleted
-  createdAt
-  updatedAt
-  userId
-}
-
-type db_Todo {
-  id: String!
-  text: String!
-  isCompleted: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  userId: String!
-  user: db_User!
-  _join: Query!
-}
-
 type db_UserCountOutputType {
   accounts: Int!
   sessions: Int!
-  Post: Int!
-  Todo: Int!
   _join: Query!
 }
 
@@ -863,8 +699,6 @@ type db_User {
   stripeCurrentPeriodEnd: DateTime
   accounts(where: db_AccountWhereInput, orderBy: [db_AccountOrderByWithRelationInput], cursor: db_AccountWhereUniqueInput, take: Int, skip: Int, distinct: [db_AccountScalarFieldEnum]): [db_Account]
   sessions(where: db_SessionWhereInput, orderBy: [db_SessionOrderByWithRelationInput], cursor: db_SessionWhereUniqueInput, take: Int, skip: Int, distinct: [db_SessionScalarFieldEnum]): [db_Session]
-  Post(where: db_PostWhereInput, orderBy: [db_PostOrderByWithRelationInput], cursor: db_PostWhereUniqueInput, take: Int, skip: Int, distinct: [db_PostScalarFieldEnum]): [db_Post]
-  Todo(where: db_TodoWhereInput, orderBy: [db_TodoOrderByWithRelationInput], cursor: db_TodoWhereUniqueInput, take: Int, skip: Int, distinct: [db_TodoScalarFieldEnum]): [db_Todo]
   _count: db_UserCountOutputType!
   _join: Query!
 }
@@ -1629,266 +1463,6 @@ type db_VerificationTokenGroupByOutputType {
   _join: Query!
 }
 
-type db_PostCountAggregateOutputType {
-  id: Int!
-  title: Int!
-  content: Int!
-  published: Int!
-  createdAt: Int!
-  updatedAt: Int!
-  authorId: Int!
-  _all: Int!
-  _join: Query!
-}
-
-type db_PostMinAggregateOutputType {
-  id: String
-  title: String
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  authorId: String
-  _join: Query!
-}
-
-type db_PostMaxAggregateOutputType {
-  id: String
-  title: String
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  authorId: String
-  _join: Query!
-}
-
-type db_AggregatePost {
-  _count: db_PostCountAggregateOutputType
-  _min: db_PostMinAggregateOutputType
-  _max: db_PostMaxAggregateOutputType
-  _join: Query!
-}
-
-input db_PostCountOrderByAggregateInput {
-  id: db_SortOrder
-  title: db_SortOrder
-  content: db_SortOrder
-  published: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  authorId: db_SortOrder
-}
-
-input db_PostMaxOrderByAggregateInput {
-  id: db_SortOrder
-  title: db_SortOrder
-  published: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  authorId: db_SortOrder
-}
-
-input db_PostMinOrderByAggregateInput {
-  id: db_SortOrder
-  title: db_SortOrder
-  published: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  authorId: db_SortOrder
-}
-
-input db_PostOrderByWithAggregationInput {
-  id: db_SortOrder
-  title: db_SortOrder
-  content: db_SortOrder
-  published: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  authorId: db_SortOrder
-  _count: db_PostCountOrderByAggregateInput
-  _max: db_PostMaxOrderByAggregateInput
-  _min: db_PostMinOrderByAggregateInput
-}
-
-input db_NestedJsonNullableFilter {
-  equals: JSON
-  path: String
-  string_contains: String
-  string_starts_with: String
-  string_ends_with: String
-  array_contains: JSON
-  array_starts_with: JSON
-  array_ends_with: JSON
-  lt: JSON
-  lte: JSON
-  gt: JSON
-  gte: JSON
-  not: JSON
-}
-
-input db_JsonNullableWithAggregatesFilter {
-  equals: JSON
-  path: String
-  string_contains: String
-  string_starts_with: String
-  string_ends_with: String
-  array_contains: JSON
-  array_starts_with: JSON
-  array_ends_with: JSON
-  lt: JSON
-  lte: JSON
-  gt: JSON
-  gte: JSON
-  not: JSON
-  _count: db_NestedIntNullableFilter
-  _min: db_NestedJsonNullableFilter
-  _max: db_NestedJsonNullableFilter
-}
-
-input db_NestedBoolWithAggregatesFilter {
-  equals: Boolean
-  not: db_NestedBoolWithAggregatesFilter
-  _count: db_NestedIntFilter
-  _min: db_NestedBoolFilter
-  _max: db_NestedBoolFilter
-}
-
-input db_BoolWithAggregatesFilter {
-  equals: Boolean
-  not: db_NestedBoolWithAggregatesFilter
-  _count: db_NestedIntFilter
-  _min: db_NestedBoolFilter
-  _max: db_NestedBoolFilter
-}
-
-input db_PostScalarWhereWithAggregatesInput {
-  AND: db_PostScalarWhereWithAggregatesInput
-  OR: [db_PostScalarWhereWithAggregatesInput]
-  NOT: db_PostScalarWhereWithAggregatesInput
-  id: db_StringWithAggregatesFilter
-  title: db_StringWithAggregatesFilter
-  content: db_JsonNullableWithAggregatesFilter
-  published: db_BoolWithAggregatesFilter
-  createdAt: db_DateTimeWithAggregatesFilter
-  updatedAt: db_DateTimeWithAggregatesFilter
-  authorId: db_StringWithAggregatesFilter
-}
-
-type db_PostGroupByOutputType {
-  id: String!
-  title: String!
-  content: JSON
-  published: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  authorId: String!
-  _count: db_PostCountAggregateOutputType
-  _min: db_PostMinAggregateOutputType
-  _max: db_PostMaxAggregateOutputType
-  _join: Query!
-}
-
-type db_TodoCountAggregateOutputType {
-  id: Int!
-  text: Int!
-  isCompleted: Int!
-  createdAt: Int!
-  updatedAt: Int!
-  userId: Int!
-  _all: Int!
-  _join: Query!
-}
-
-type db_TodoMinAggregateOutputType {
-  id: String
-  text: String
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  userId: String
-  _join: Query!
-}
-
-type db_TodoMaxAggregateOutputType {
-  id: String
-  text: String
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  userId: String
-  _join: Query!
-}
-
-type db_AggregateTodo {
-  _count: db_TodoCountAggregateOutputType
-  _min: db_TodoMinAggregateOutputType
-  _max: db_TodoMaxAggregateOutputType
-  _join: Query!
-}
-
-input db_TodoCountOrderByAggregateInput {
-  id: db_SortOrder
-  text: db_SortOrder
-  isCompleted: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  userId: db_SortOrder
-}
-
-input db_TodoMaxOrderByAggregateInput {
-  id: db_SortOrder
-  text: db_SortOrder
-  isCompleted: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  userId: db_SortOrder
-}
-
-input db_TodoMinOrderByAggregateInput {
-  id: db_SortOrder
-  text: db_SortOrder
-  isCompleted: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  userId: db_SortOrder
-}
-
-input db_TodoOrderByWithAggregationInput {
-  id: db_SortOrder
-  text: db_SortOrder
-  isCompleted: db_SortOrder
-  createdAt: db_SortOrder
-  updatedAt: db_SortOrder
-  userId: db_SortOrder
-  _count: db_TodoCountOrderByAggregateInput
-  _max: db_TodoMaxOrderByAggregateInput
-  _min: db_TodoMinOrderByAggregateInput
-}
-
-input db_TodoScalarWhereWithAggregatesInput {
-  AND: db_TodoScalarWhereWithAggregatesInput
-  OR: [db_TodoScalarWhereWithAggregatesInput]
-  NOT: db_TodoScalarWhereWithAggregatesInput
-  id: db_StringWithAggregatesFilter
-  text: db_StringWithAggregatesFilter
-  isCompleted: db_BoolWithAggregatesFilter
-  createdAt: db_DateTimeWithAggregatesFilter
-  updatedAt: db_DateTimeWithAggregatesFilter
-  userId: db_StringWithAggregatesFilter
-}
-
-type db_TodoGroupByOutputType {
-  id: String!
-  text: String!
-  isCompleted: Boolean!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  userId: String!
-  _count: db_TodoCountAggregateOutputType
-  _min: db_TodoMinAggregateOutputType
-  _max: db_TodoMaxAggregateOutputType
-  _join: Query!
-}
-
 input db_SessionCreateWithoutUserInput {
   id: String
   sessionToken: String!
@@ -1918,79 +1492,6 @@ input db_SessionCreateNestedManyWithoutUserInput {
   connect: db_SessionWhereUniqueInput
 }
 
-enum db_NullableJsonNullValueInput {
-  DbNull
-  JsonNull
-}
-
-input db_PostCreateWithoutAuthorInput {
-  id: String
-  title: String!
-  content: db_NullableJsonNullValueInput
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input db_PostCreateOrConnectWithoutAuthorInput {
-  where: db_PostWhereUniqueInput!
-  create: db_PostCreateWithoutAuthorInput!
-}
-
-input db_PostCreateManyAuthorInput {
-  id: String
-  title: String!
-  content: db_NullableJsonNullValueInput
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input db_PostCreateManyAuthorInputEnvelope {
-  data: db_PostCreateManyAuthorInput!
-  skipDuplicates: Boolean
-}
-
-input db_PostCreateNestedManyWithoutAuthorInput {
-  create: db_PostCreateWithoutAuthorInput
-  connectOrCreate: db_PostCreateOrConnectWithoutAuthorInput
-  createMany: db_PostCreateManyAuthorInputEnvelope
-  connect: db_PostWhereUniqueInput
-}
-
-input db_TodoCreateWithoutUserInput {
-  id: String
-  text: String!
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input db_TodoCreateOrConnectWithoutUserInput {
-  where: db_TodoWhereUniqueInput!
-  create: db_TodoCreateWithoutUserInput!
-}
-
-input db_TodoCreateManyUserInput {
-  id: String
-  text: String!
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-input db_TodoCreateManyUserInputEnvelope {
-  data: db_TodoCreateManyUserInput!
-  skipDuplicates: Boolean
-}
-
-input db_TodoCreateNestedManyWithoutUserInput {
-  create: db_TodoCreateWithoutUserInput
-  connectOrCreate: db_TodoCreateOrConnectWithoutUserInput
-  createMany: db_TodoCreateManyUserInputEnvelope
-  connect: db_TodoWhereUniqueInput
-}
-
 input db_UserCreateWithoutAccountsInput {
   id: String
   name: String
@@ -2004,8 +1505,6 @@ input db_UserCreateWithoutAccountsInput {
   stripePriceId: String
   stripeCurrentPeriodEnd: DateTime
   sessions: db_SessionCreateNestedManyWithoutUserInput
-  Post: db_PostCreateNestedManyWithoutAuthorInput
-  Todo: db_TodoCreateNestedManyWithoutUserInput
 }
 
 input db_UserCreateOrConnectWithoutAccountsInput {
@@ -2112,129 +1611,6 @@ input db_SessionUpdateManyWithoutUserNestedInput {
   deleteMany: db_SessionScalarWhereInput
 }
 
-input db_BoolFieldUpdateOperationsInput {
-  set: Boolean
-}
-
-input db_PostUpdateWithoutAuthorInput {
-  id: db_StringFieldUpdateOperationsInput
-  title: db_StringFieldUpdateOperationsInput
-  content: db_NullableJsonNullValueInput
-  published: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-}
-
-input db_PostUpsertWithWhereUniqueWithoutAuthorInput {
-  where: db_PostWhereUniqueInput!
-  update: db_PostUpdateWithoutAuthorInput!
-  create: db_PostCreateWithoutAuthorInput!
-}
-
-input db_PostUpdateWithWhereUniqueWithoutAuthorInput {
-  where: db_PostWhereUniqueInput!
-  data: db_PostUpdateWithoutAuthorInput!
-}
-
-input db_PostScalarWhereInput {
-  AND: db_PostScalarWhereInput
-  OR: [db_PostScalarWhereInput]
-  NOT: db_PostScalarWhereInput
-  id: db_StringFilter
-  title: db_StringFilter
-  content: db_JsonNullableFilter
-  published: db_BoolFilter
-  createdAt: db_DateTimeFilter
-  updatedAt: db_DateTimeFilter
-  authorId: db_StringFilter
-}
-
-input db_PostUpdateManyMutationInput {
-  id: db_StringFieldUpdateOperationsInput
-  title: db_StringFieldUpdateOperationsInput
-  content: db_NullableJsonNullValueInput
-  published: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-}
-
-input db_PostUpdateManyWithWhereWithoutAuthorInput {
-  where: db_PostScalarWhereInput!
-  data: db_PostUpdateManyMutationInput!
-}
-
-input db_PostUpdateManyWithoutAuthorNestedInput {
-  create: db_PostCreateWithoutAuthorInput
-  connectOrCreate: db_PostCreateOrConnectWithoutAuthorInput
-  upsert: db_PostUpsertWithWhereUniqueWithoutAuthorInput
-  createMany: db_PostCreateManyAuthorInputEnvelope
-  set: db_PostWhereUniqueInput
-  disconnect: db_PostWhereUniqueInput
-  delete: db_PostWhereUniqueInput
-  connect: db_PostWhereUniqueInput
-  update: db_PostUpdateWithWhereUniqueWithoutAuthorInput
-  updateMany: db_PostUpdateManyWithWhereWithoutAuthorInput
-  deleteMany: db_PostScalarWhereInput
-}
-
-input db_TodoUpdateWithoutUserInput {
-  id: db_StringFieldUpdateOperationsInput
-  text: db_StringFieldUpdateOperationsInput
-  isCompleted: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-}
-
-input db_TodoUpsertWithWhereUniqueWithoutUserInput {
-  where: db_TodoWhereUniqueInput!
-  update: db_TodoUpdateWithoutUserInput!
-  create: db_TodoCreateWithoutUserInput!
-}
-
-input db_TodoUpdateWithWhereUniqueWithoutUserInput {
-  where: db_TodoWhereUniqueInput!
-  data: db_TodoUpdateWithoutUserInput!
-}
-
-input db_TodoScalarWhereInput {
-  AND: db_TodoScalarWhereInput
-  OR: [db_TodoScalarWhereInput]
-  NOT: db_TodoScalarWhereInput
-  id: db_StringFilter
-  text: db_StringFilter
-  isCompleted: db_BoolFilter
-  createdAt: db_DateTimeFilter
-  updatedAt: db_DateTimeFilter
-  userId: db_StringFilter
-}
-
-input db_TodoUpdateManyMutationInput {
-  id: db_StringFieldUpdateOperationsInput
-  text: db_StringFieldUpdateOperationsInput
-  isCompleted: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-}
-
-input db_TodoUpdateManyWithWhereWithoutUserInput {
-  where: db_TodoScalarWhereInput!
-  data: db_TodoUpdateManyMutationInput!
-}
-
-input db_TodoUpdateManyWithoutUserNestedInput {
-  create: db_TodoCreateWithoutUserInput
-  connectOrCreate: db_TodoCreateOrConnectWithoutUserInput
-  upsert: db_TodoUpsertWithWhereUniqueWithoutUserInput
-  createMany: db_TodoCreateManyUserInputEnvelope
-  set: db_TodoWhereUniqueInput
-  disconnect: db_TodoWhereUniqueInput
-  delete: db_TodoWhereUniqueInput
-  connect: db_TodoWhereUniqueInput
-  update: db_TodoUpdateWithWhereUniqueWithoutUserInput
-  updateMany: db_TodoUpdateManyWithWhereWithoutUserInput
-  deleteMany: db_TodoScalarWhereInput
-}
-
 input db_UserUpdateWithoutAccountsInput {
   id: db_StringFieldUpdateOperationsInput
   name: db_NullableStringFieldUpdateOperationsInput
@@ -2248,8 +1624,6 @@ input db_UserUpdateWithoutAccountsInput {
   stripePriceId: db_NullableStringFieldUpdateOperationsInput
   stripeCurrentPeriodEnd: db_NullableDateTimeFieldUpdateOperationsInput
   sessions: db_SessionUpdateManyWithoutUserNestedInput
-  Post: db_PostUpdateManyWithoutAuthorNestedInput
-  Todo: db_TodoUpdateManyWithoutUserNestedInput
 }
 
 input db_UserUpsertWithoutAccountsInput {
@@ -2382,8 +1756,6 @@ input db_UserCreateWithoutSessionsInput {
   stripePriceId: String
   stripeCurrentPeriodEnd: DateTime
   accounts: db_AccountCreateNestedManyWithoutUserInput
-  Post: db_PostCreateNestedManyWithoutAuthorInput
-  Todo: db_TodoCreateNestedManyWithoutUserInput
 }
 
 input db_UserCreateOrConnectWithoutSessionsInput {
@@ -2483,8 +1855,6 @@ input db_UserUpdateWithoutSessionsInput {
   stripePriceId: db_NullableStringFieldUpdateOperationsInput
   stripeCurrentPeriodEnd: db_NullableDateTimeFieldUpdateOperationsInput
   accounts: db_AccountUpdateManyWithoutUserNestedInput
-  Post: db_PostUpdateManyWithoutAuthorNestedInput
-  Todo: db_TodoUpdateManyWithoutUserNestedInput
 }
 
 input db_UserUpsertWithoutSessionsInput {
@@ -2528,8 +1898,6 @@ input db_UserCreateInput {
   stripeCurrentPeriodEnd: DateTime
   accounts: db_AccountCreateNestedManyWithoutUserInput
   sessions: db_SessionCreateNestedManyWithoutUserInput
-  Post: db_PostCreateNestedManyWithoutAuthorInput
-  Todo: db_TodoCreateNestedManyWithoutUserInput
 }
 
 input db_UserUpdateInput {
@@ -2546,8 +1914,6 @@ input db_UserUpdateInput {
   stripeCurrentPeriodEnd: db_NullableDateTimeFieldUpdateOperationsInput
   accounts: db_AccountUpdateManyWithoutUserNestedInput
   sessions: db_SessionUpdateManyWithoutUserNestedInput
-  Post: db_PostUpdateManyWithoutAuthorNestedInput
-  Todo: db_TodoUpdateManyWithoutUserNestedInput
 }
 
 input db_UserCreateManyInput {
@@ -2602,179 +1968,6 @@ input db_VerificationTokenUpdateManyMutationInput {
   expires: db_DateTimeFieldUpdateOperationsInput
 }
 
-input db_UserCreateWithoutPostInput {
-  id: String
-  name: String
-  email: String
-  emailVerified: DateTime
-  image: String
-  createdAt: DateTime
-  updatedAt: DateTime
-  stripeCustomerId: String
-  stripeSubscriptionId: String
-  stripePriceId: String
-  stripeCurrentPeriodEnd: DateTime
-  accounts: db_AccountCreateNestedManyWithoutUserInput
-  sessions: db_SessionCreateNestedManyWithoutUserInput
-  Todo: db_TodoCreateNestedManyWithoutUserInput
-}
-
-input db_UserCreateOrConnectWithoutPostInput {
-  where: db_UserWhereUniqueInput!
-  create: db_UserCreateWithoutPostInput!
-}
-
-input db_UserCreateNestedOneWithoutPostInput {
-  create: db_UserCreateWithoutPostInput
-  connectOrCreate: db_UserCreateOrConnectWithoutPostInput
-  connect: db_UserWhereUniqueInput
-}
-
-input db_PostCreateInput {
-  id: String
-  title: String!
-  content: db_NullableJsonNullValueInput
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  author: db_UserCreateNestedOneWithoutPostInput!
-}
-
-input db_UserUpdateWithoutPostInput {
-  id: db_StringFieldUpdateOperationsInput
-  name: db_NullableStringFieldUpdateOperationsInput
-  email: db_NullableStringFieldUpdateOperationsInput
-  emailVerified: db_NullableDateTimeFieldUpdateOperationsInput
-  image: db_NullableStringFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-  stripeCustomerId: db_NullableStringFieldUpdateOperationsInput
-  stripeSubscriptionId: db_NullableStringFieldUpdateOperationsInput
-  stripePriceId: db_NullableStringFieldUpdateOperationsInput
-  stripeCurrentPeriodEnd: db_NullableDateTimeFieldUpdateOperationsInput
-  accounts: db_AccountUpdateManyWithoutUserNestedInput
-  sessions: db_SessionUpdateManyWithoutUserNestedInput
-  Todo: db_TodoUpdateManyWithoutUserNestedInput
-}
-
-input db_UserUpsertWithoutPostInput {
-  update: db_UserUpdateWithoutPostInput!
-  create: db_UserCreateWithoutPostInput!
-}
-
-input db_UserUpdateOneRequiredWithoutPostNestedInput {
-  create: db_UserCreateWithoutPostInput
-  connectOrCreate: db_UserCreateOrConnectWithoutPostInput
-  upsert: db_UserUpsertWithoutPostInput
-  connect: db_UserWhereUniqueInput
-  update: db_UserUpdateWithoutPostInput
-}
-
-input db_PostUpdateInput {
-  id: db_StringFieldUpdateOperationsInput
-  title: db_StringFieldUpdateOperationsInput
-  content: db_NullableJsonNullValueInput
-  published: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-  author: db_UserUpdateOneRequiredWithoutPostNestedInput
-}
-
-input db_PostCreateManyInput {
-  id: String
-  title: String!
-  content: db_NullableJsonNullValueInput
-  published: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  authorId: String!
-}
-
-input db_UserCreateWithoutTodoInput {
-  id: String
-  name: String
-  email: String
-  emailVerified: DateTime
-  image: String
-  createdAt: DateTime
-  updatedAt: DateTime
-  stripeCustomerId: String
-  stripeSubscriptionId: String
-  stripePriceId: String
-  stripeCurrentPeriodEnd: DateTime
-  accounts: db_AccountCreateNestedManyWithoutUserInput
-  sessions: db_SessionCreateNestedManyWithoutUserInput
-  Post: db_PostCreateNestedManyWithoutAuthorInput
-}
-
-input db_UserCreateOrConnectWithoutTodoInput {
-  where: db_UserWhereUniqueInput!
-  create: db_UserCreateWithoutTodoInput!
-}
-
-input db_UserCreateNestedOneWithoutTodoInput {
-  create: db_UserCreateWithoutTodoInput
-  connectOrCreate: db_UserCreateOrConnectWithoutTodoInput
-  connect: db_UserWhereUniqueInput
-}
-
-input db_TodoCreateInput {
-  id: String
-  text: String!
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  user: db_UserCreateNestedOneWithoutTodoInput!
-}
-
-input db_UserUpdateWithoutTodoInput {
-  id: db_StringFieldUpdateOperationsInput
-  name: db_NullableStringFieldUpdateOperationsInput
-  email: db_NullableStringFieldUpdateOperationsInput
-  emailVerified: db_NullableDateTimeFieldUpdateOperationsInput
-  image: db_NullableStringFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-  stripeCustomerId: db_NullableStringFieldUpdateOperationsInput
-  stripeSubscriptionId: db_NullableStringFieldUpdateOperationsInput
-  stripePriceId: db_NullableStringFieldUpdateOperationsInput
-  stripeCurrentPeriodEnd: db_NullableDateTimeFieldUpdateOperationsInput
-  accounts: db_AccountUpdateManyWithoutUserNestedInput
-  sessions: db_SessionUpdateManyWithoutUserNestedInput
-  Post: db_PostUpdateManyWithoutAuthorNestedInput
-}
-
-input db_UserUpsertWithoutTodoInput {
-  update: db_UserUpdateWithoutTodoInput!
-  create: db_UserCreateWithoutTodoInput!
-}
-
-input db_UserUpdateOneRequiredWithoutTodoNestedInput {
-  create: db_UserCreateWithoutTodoInput
-  connectOrCreate: db_UserCreateOrConnectWithoutTodoInput
-  upsert: db_UserUpsertWithoutTodoInput
-  connect: db_UserWhereUniqueInput
-  update: db_UserUpdateWithoutTodoInput
-}
-
-input db_TodoUpdateInput {
-  id: db_StringFieldUpdateOperationsInput
-  text: db_StringFieldUpdateOperationsInput
-  isCompleted: db_BoolFieldUpdateOperationsInput
-  createdAt: db_DateTimeFieldUpdateOperationsInput
-  updatedAt: db_DateTimeFieldUpdateOperationsInput
-  user: db_UserUpdateOneRequiredWithoutTodoNestedInput
-}
-
-input db_TodoCreateManyInput {
-  id: String
-  text: String!
-  isCompleted: Boolean
-  createdAt: DateTime
-  updatedAt: DateTime
-  userId: String!
-}
-
 type Mutation {
   db_createOneAccount(data: db_AccountCreateInput!): db_Account
   db_upsertOneAccount(where: db_AccountWhereUniqueInput!, create: db_AccountCreateInput!, update: db_AccountUpdateInput!): db_Account
@@ -2804,20 +1997,6 @@ type Mutation {
   db_updateOneVerificationToken(data: db_VerificationTokenUpdateInput!, where: db_VerificationTokenWhereUniqueInput!): db_VerificationToken
   db_updateManyVerificationToken(data: db_VerificationTokenUpdateManyMutationInput!, where: db_VerificationTokenWhereInput): db_AffectedRowsOutput
   db_deleteManyVerificationToken(where: db_VerificationTokenWhereInput): db_AffectedRowsOutput
-  db_createOnePost(data: db_PostCreateInput!): db_Post
-  db_upsertOnePost(where: db_PostWhereUniqueInput!, create: db_PostCreateInput!, update: db_PostUpdateInput!): db_Post
-  db_createManyPost(data: [db_PostCreateManyInput]!, skipDuplicates: Boolean): db_AffectedRowsOutput
-  db_deleteOnePost(where: db_PostWhereUniqueInput!): db_Post
-  db_updateOnePost(data: db_PostUpdateInput!, where: db_PostWhereUniqueInput!): db_Post
-  db_updateManyPost(data: db_PostUpdateManyMutationInput!, where: db_PostWhereInput): db_AffectedRowsOutput
-  db_deleteManyPost(where: db_PostWhereInput): db_AffectedRowsOutput
-  db_createOneTodo(data: db_TodoCreateInput!): db_Todo
-  db_upsertOneTodo(where: db_TodoWhereUniqueInput!, create: db_TodoCreateInput!, update: db_TodoUpdateInput!): db_Todo
-  db_createManyTodo(data: [db_TodoCreateManyInput]!, skipDuplicates: Boolean): db_AffectedRowsOutput
-  db_deleteOneTodo(where: db_TodoWhereUniqueInput!): db_Todo
-  db_updateOneTodo(data: db_TodoUpdateInput!, where: db_TodoWhereUniqueInput!): db_Todo
-  db_updateManyTodo(data: db_TodoUpdateManyMutationInput!, where: db_TodoWhereInput): db_AffectedRowsOutput
-  db_deleteManyTodo(where: db_TodoWhereInput): db_AffectedRowsOutput
   db_executeRaw(query: String!, parameters: [String]): Int!
 }
 

@@ -33,18 +33,10 @@ import {
 	DbAggregateAccountInput,
 	DbAggregateAccountInputInternal,
 	DbAggregateAccountInputInjected,
-	DbAggregatePostResponse,
-	DbAggregatePostInput,
-	DbAggregatePostInputInternal,
-	DbAggregatePostInputInjected,
 	DbAggregateSessionResponse,
 	DbAggregateSessionInput,
 	DbAggregateSessionInputInternal,
 	DbAggregateSessionInputInjected,
-	DbAggregateTodoResponse,
-	DbAggregateTodoInput,
-	DbAggregateTodoInputInternal,
-	DbAggregateTodoInputInjected,
 	DbAggregateUserResponse,
 	DbAggregateUserInput,
 	DbAggregateUserInputInternal,
@@ -57,18 +49,10 @@ import {
 	DbCreateManyAccountInput,
 	DbCreateManyAccountInputInternal,
 	DbCreateManyAccountInputInjected,
-	DbCreateManyPostResponse,
-	DbCreateManyPostInput,
-	DbCreateManyPostInputInternal,
-	DbCreateManyPostInputInjected,
 	DbCreateManySessionResponse,
 	DbCreateManySessionInput,
 	DbCreateManySessionInputInternal,
 	DbCreateManySessionInputInjected,
-	DbCreateManyTodoResponse,
-	DbCreateManyTodoInput,
-	DbCreateManyTodoInputInternal,
-	DbCreateManyTodoInputInjected,
 	DbCreateManyUserResponse,
 	DbCreateManyUserInput,
 	DbCreateManyUserInputInternal,
@@ -81,18 +65,10 @@ import {
 	DbCreateOneAccountInput,
 	DbCreateOneAccountInputInternal,
 	DbCreateOneAccountInputInjected,
-	DbCreateOnePostResponse,
-	DbCreateOnePostInput,
-	DbCreateOnePostInputInternal,
-	DbCreateOnePostInputInjected,
 	DbCreateOneSessionResponse,
 	DbCreateOneSessionInput,
 	DbCreateOneSessionInputInternal,
 	DbCreateOneSessionInputInjected,
-	DbCreateOneTodoResponse,
-	DbCreateOneTodoInput,
-	DbCreateOneTodoInputInternal,
-	DbCreateOneTodoInputInjected,
 	DbCreateOneUserResponse,
 	DbCreateOneUserInput,
 	DbCreateOneUserInputInternal,
@@ -105,18 +81,10 @@ import {
 	DbDeleteManyAccountInput,
 	DbDeleteManyAccountInputInternal,
 	DbDeleteManyAccountInputInjected,
-	DbDeleteManyPostResponse,
-	DbDeleteManyPostInput,
-	DbDeleteManyPostInputInternal,
-	DbDeleteManyPostInputInjected,
 	DbDeleteManySessionResponse,
 	DbDeleteManySessionInput,
 	DbDeleteManySessionInputInternal,
 	DbDeleteManySessionInputInjected,
-	DbDeleteManyTodoResponse,
-	DbDeleteManyTodoInput,
-	DbDeleteManyTodoInputInternal,
-	DbDeleteManyTodoInputInjected,
 	DbDeleteManyUserResponse,
 	DbDeleteManyUserInput,
 	DbDeleteManyUserInputInternal,
@@ -129,18 +97,10 @@ import {
 	DbDeleteOneAccountInput,
 	DbDeleteOneAccountInputInternal,
 	DbDeleteOneAccountInputInjected,
-	DbDeleteOnePostResponse,
-	DbDeleteOnePostInput,
-	DbDeleteOnePostInputInternal,
-	DbDeleteOnePostInputInjected,
 	DbDeleteOneSessionResponse,
 	DbDeleteOneSessionInput,
 	DbDeleteOneSessionInputInternal,
 	DbDeleteOneSessionInputInjected,
-	DbDeleteOneTodoResponse,
-	DbDeleteOneTodoInput,
-	DbDeleteOneTodoInputInternal,
-	DbDeleteOneTodoInputInjected,
 	DbDeleteOneUserResponse,
 	DbDeleteOneUserInput,
 	DbDeleteOneUserInputInternal,
@@ -161,14 +121,6 @@ import {
 	DbFindFirstAccountOrThrowInput,
 	DbFindFirstAccountOrThrowInputInternal,
 	DbFindFirstAccountOrThrowInputInjected,
-	DbFindFirstPostResponse,
-	DbFindFirstPostInput,
-	DbFindFirstPostInputInternal,
-	DbFindFirstPostInputInjected,
-	DbFindFirstPostOrThrowResponse,
-	DbFindFirstPostOrThrowInput,
-	DbFindFirstPostOrThrowInputInternal,
-	DbFindFirstPostOrThrowInputInjected,
 	DbFindFirstSessionResponse,
 	DbFindFirstSessionInput,
 	DbFindFirstSessionInputInternal,
@@ -177,14 +129,6 @@ import {
 	DbFindFirstSessionOrThrowInput,
 	DbFindFirstSessionOrThrowInputInternal,
 	DbFindFirstSessionOrThrowInputInjected,
-	DbFindFirstTodoResponse,
-	DbFindFirstTodoInput,
-	DbFindFirstTodoInputInternal,
-	DbFindFirstTodoInputInjected,
-	DbFindFirstTodoOrThrowResponse,
-	DbFindFirstTodoOrThrowInput,
-	DbFindFirstTodoOrThrowInputInternal,
-	DbFindFirstTodoOrThrowInputInjected,
 	DbFindFirstUserResponse,
 	DbFindFirstUserInput,
 	DbFindFirstUserInputInternal,
@@ -205,18 +149,10 @@ import {
 	DbFindManyAccountInput,
 	DbFindManyAccountInputInternal,
 	DbFindManyAccountInputInjected,
-	DbFindManyPostResponse,
-	DbFindManyPostInput,
-	DbFindManyPostInputInternal,
-	DbFindManyPostInputInjected,
 	DbFindManySessionResponse,
 	DbFindManySessionInput,
 	DbFindManySessionInputInternal,
 	DbFindManySessionInputInjected,
-	DbFindManyTodoResponse,
-	DbFindManyTodoInput,
-	DbFindManyTodoInputInternal,
-	DbFindManyTodoInputInjected,
 	DbFindManyUserResponse,
 	DbFindManyUserInput,
 	DbFindManyUserInputInternal,
@@ -233,14 +169,6 @@ import {
 	DbFindUniqueAccountOrThrowInput,
 	DbFindUniqueAccountOrThrowInputInternal,
 	DbFindUniqueAccountOrThrowInputInjected,
-	DbFindUniquePostResponse,
-	DbFindUniquePostInput,
-	DbFindUniquePostInputInternal,
-	DbFindUniquePostInputInjected,
-	DbFindUniquePostOrThrowResponse,
-	DbFindUniquePostOrThrowInput,
-	DbFindUniquePostOrThrowInputInternal,
-	DbFindUniquePostOrThrowInputInjected,
 	DbFindUniqueSessionResponse,
 	DbFindUniqueSessionInput,
 	DbFindUniqueSessionInputInternal,
@@ -249,14 +177,6 @@ import {
 	DbFindUniqueSessionOrThrowInput,
 	DbFindUniqueSessionOrThrowInputInternal,
 	DbFindUniqueSessionOrThrowInputInjected,
-	DbFindUniqueTodoResponse,
-	DbFindUniqueTodoInput,
-	DbFindUniqueTodoInputInternal,
-	DbFindUniqueTodoInputInjected,
-	DbFindUniqueTodoOrThrowResponse,
-	DbFindUniqueTodoOrThrowInput,
-	DbFindUniqueTodoOrThrowInputInternal,
-	DbFindUniqueTodoOrThrowInputInjected,
 	DbFindUniqueUserResponse,
 	DbFindUniqueUserInput,
 	DbFindUniqueUserInputInternal,
@@ -277,18 +197,10 @@ import {
 	DbGroupByAccountInput,
 	DbGroupByAccountInputInternal,
 	DbGroupByAccountInputInjected,
-	DbGroupByPostResponse,
-	DbGroupByPostInput,
-	DbGroupByPostInputInternal,
-	DbGroupByPostInputInjected,
 	DbGroupBySessionResponse,
 	DbGroupBySessionInput,
 	DbGroupBySessionInputInternal,
 	DbGroupBySessionInputInjected,
-	DbGroupByTodoResponse,
-	DbGroupByTodoInput,
-	DbGroupByTodoInputInternal,
-	DbGroupByTodoInputInjected,
 	DbGroupByUserResponse,
 	DbGroupByUserInput,
 	DbGroupByUserInputInternal,
@@ -309,18 +221,10 @@ import {
 	DbUpdateManyAccountInput,
 	DbUpdateManyAccountInputInternal,
 	DbUpdateManyAccountInputInjected,
-	DbUpdateManyPostResponse,
-	DbUpdateManyPostInput,
-	DbUpdateManyPostInputInternal,
-	DbUpdateManyPostInputInjected,
 	DbUpdateManySessionResponse,
 	DbUpdateManySessionInput,
 	DbUpdateManySessionInputInternal,
 	DbUpdateManySessionInputInjected,
-	DbUpdateManyTodoResponse,
-	DbUpdateManyTodoInput,
-	DbUpdateManyTodoInputInternal,
-	DbUpdateManyTodoInputInjected,
 	DbUpdateManyUserResponse,
 	DbUpdateManyUserInput,
 	DbUpdateManyUserInputInternal,
@@ -333,18 +237,10 @@ import {
 	DbUpdateOneAccountInput,
 	DbUpdateOneAccountInputInternal,
 	DbUpdateOneAccountInputInjected,
-	DbUpdateOnePostResponse,
-	DbUpdateOnePostInput,
-	DbUpdateOnePostInputInternal,
-	DbUpdateOnePostInputInjected,
 	DbUpdateOneSessionResponse,
 	DbUpdateOneSessionInput,
 	DbUpdateOneSessionInputInternal,
 	DbUpdateOneSessionInputInjected,
-	DbUpdateOneTodoResponse,
-	DbUpdateOneTodoInput,
-	DbUpdateOneTodoInputInternal,
-	DbUpdateOneTodoInputInjected,
 	DbUpdateOneUserResponse,
 	DbUpdateOneUserInput,
 	DbUpdateOneUserInputInternal,
@@ -357,18 +253,10 @@ import {
 	DbUpsertOneAccountInput,
 	DbUpsertOneAccountInputInternal,
 	DbUpsertOneAccountInputInjected,
-	DbUpsertOnePostResponse,
-	DbUpsertOnePostInput,
-	DbUpsertOnePostInputInternal,
-	DbUpsertOnePostInputInjected,
 	DbUpsertOneSessionResponse,
 	DbUpsertOneSessionInput,
 	DbUpsertOneSessionInputInternal,
 	DbUpsertOneSessionInputInjected,
-	DbUpsertOneTodoResponse,
-	DbUpsertOneTodoInput,
-	DbUpsertOneTodoInputInternal,
-	DbUpsertOneTodoInputInjected,
 	DbUpsertOneUserResponse,
 	DbUpsertOneUserInput,
 	DbUpsertOneUserInputInternal,
@@ -377,18 +265,7 @@ import {
 	DbUpsertOneVerificationTokenInput,
 	DbUpsertOneVerificationTokenInputInternal,
 	DbUpsertOneVerificationTokenInputInjected,
-	TodosAddTodoResponse,
-	TodosAddTodoInput,
-	TodosAddTodoInputInternal,
-	TodosAddTodoInputInjected,
-	TodosGetAllTodosForCurrentUserResponse,
-	TodosGetAllTodosForCurrentUserInput,
-	TodosGetAllTodosForCurrentUserInputInternal,
-	TodosGetAllTodosForCurrentUserInputInjected,
-	TodosUpdateTodoResponse,
-	TodosUpdateTodoInput,
-	TodosUpdateTodoInputInternal,
-	TodosUpdateTodoInputInjected,
+	UsersGetAllUsersResponse,
 	WeatherGetCityByIdResponse,
 	WeatherGetCityByIdInput,
 	WeatherGetCityByIdInputInternal,
@@ -476,34 +353,6 @@ export type DATA_SOURCES =
 	| "db_57"
 	| "db_58"
 	| "db_59"
-	| "db_60"
-	| "db_61"
-	| "db_62"
-	| "db_63"
-	| "db_64"
-	| "db_65"
-	| "db_66"
-	| "db_67"
-	| "db_68"
-	| "db_69"
-	| "db_70"
-	| "db_71"
-	| "db_72"
-	| "db_73"
-	| "db_74"
-	| "db_75"
-	| "db_76"
-	| "db_77"
-	| "db_78"
-	| "db_79"
-	| "db_80"
-	| "db_81"
-	| "db_82"
-	| "db_83"
-	| "db_84"
-	| "db_85"
-	| "db_86"
-	| "db_87"
 	| "weather";
 
 export interface HookContext<TCustomContext = any>
@@ -551,13 +400,11 @@ export type QueryHooks<TCustomContext = any> = {
 		DbAggregateAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbAggregatePost?: QueryHook<DbAggregatePostInputInjected, DbAggregatePostResponse, HookContext<TCustomContext>>;
 	DbAggregateSession?: QueryHook<
 		DbAggregateSessionInputInjected,
 		DbAggregateSessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbAggregateTodo?: QueryHook<DbAggregateTodoInputInjected, DbAggregateTodoResponse, HookContext<TCustomContext>>;
 	DbAggregateUser?: QueryHook<DbAggregateUserInputInjected, DbAggregateUserResponse, HookContext<TCustomContext>>;
 	DbAggregateVerificationToken?: QueryHook<
 		DbAggregateVerificationTokenInputInjected,
@@ -574,12 +421,6 @@ export type QueryHooks<TCustomContext = any> = {
 		DbFindFirstAccountOrThrowResponse,
 		HookContext<TCustomContext>
 	>;
-	DbFindFirstPost?: QueryHook<DbFindFirstPostInputInjected, DbFindFirstPostResponse, HookContext<TCustomContext>>;
-	DbFindFirstPostOrThrow?: QueryHook<
-		DbFindFirstPostOrThrowInputInjected,
-		DbFindFirstPostOrThrowResponse,
-		HookContext<TCustomContext>
-	>;
 	DbFindFirstSession?: QueryHook<
 		DbFindFirstSessionInputInjected,
 		DbFindFirstSessionResponse,
@@ -588,12 +429,6 @@ export type QueryHooks<TCustomContext = any> = {
 	DbFindFirstSessionOrThrow?: QueryHook<
 		DbFindFirstSessionOrThrowInputInjected,
 		DbFindFirstSessionOrThrowResponse,
-		HookContext<TCustomContext>
-	>;
-	DbFindFirstTodo?: QueryHook<DbFindFirstTodoInputInjected, DbFindFirstTodoResponse, HookContext<TCustomContext>>;
-	DbFindFirstTodoOrThrow?: QueryHook<
-		DbFindFirstTodoOrThrowInputInjected,
-		DbFindFirstTodoOrThrowResponse,
 		HookContext<TCustomContext>
 	>;
 	DbFindFirstUser?: QueryHook<DbFindFirstUserInputInjected, DbFindFirstUserResponse, HookContext<TCustomContext>>;
@@ -613,9 +448,7 @@ export type QueryHooks<TCustomContext = any> = {
 		HookContext<TCustomContext>
 	>;
 	DbFindManyAccount?: QueryHook<DbFindManyAccountInputInjected, DbFindManyAccountResponse, HookContext<TCustomContext>>;
-	DbFindManyPost?: QueryHook<DbFindManyPostInputInjected, DbFindManyPostResponse, HookContext<TCustomContext>>;
 	DbFindManySession?: QueryHook<DbFindManySessionInputInjected, DbFindManySessionResponse, HookContext<TCustomContext>>;
-	DbFindManyTodo?: QueryHook<DbFindManyTodoInputInjected, DbFindManyTodoResponse, HookContext<TCustomContext>>;
 	DbFindManyUser?: QueryHook<DbFindManyUserInputInjected, DbFindManyUserResponse, HookContext<TCustomContext>>;
 	DbFindManyVerificationToken?: QueryHook<
 		DbFindManyVerificationTokenInputInjected,
@@ -632,12 +465,6 @@ export type QueryHooks<TCustomContext = any> = {
 		DbFindUniqueAccountOrThrowResponse,
 		HookContext<TCustomContext>
 	>;
-	DbFindUniquePost?: QueryHook<DbFindUniquePostInputInjected, DbFindUniquePostResponse, HookContext<TCustomContext>>;
-	DbFindUniquePostOrThrow?: QueryHook<
-		DbFindUniquePostOrThrowInputInjected,
-		DbFindUniquePostOrThrowResponse,
-		HookContext<TCustomContext>
-	>;
 	DbFindUniqueSession?: QueryHook<
 		DbFindUniqueSessionInputInjected,
 		DbFindUniqueSessionResponse,
@@ -646,12 +473,6 @@ export type QueryHooks<TCustomContext = any> = {
 	DbFindUniqueSessionOrThrow?: QueryHook<
 		DbFindUniqueSessionOrThrowInputInjected,
 		DbFindUniqueSessionOrThrowResponse,
-		HookContext<TCustomContext>
-	>;
-	DbFindUniqueTodo?: QueryHook<DbFindUniqueTodoInputInjected, DbFindUniqueTodoResponse, HookContext<TCustomContext>>;
-	DbFindUniqueTodoOrThrow?: QueryHook<
-		DbFindUniqueTodoOrThrowInputInjected,
-		DbFindUniqueTodoOrThrowResponse,
 		HookContext<TCustomContext>
 	>;
 	DbFindUniqueUser?: QueryHook<DbFindUniqueUserInputInjected, DbFindUniqueUserResponse, HookContext<TCustomContext>>;
@@ -671,9 +492,7 @@ export type QueryHooks<TCustomContext = any> = {
 		HookContext<TCustomContext>
 	>;
 	DbGroupByAccount?: QueryHook<DbGroupByAccountInputInjected, DbGroupByAccountResponse, HookContext<TCustomContext>>;
-	DbGroupByPost?: QueryHook<DbGroupByPostInputInjected, DbGroupByPostResponse, HookContext<TCustomContext>>;
 	DbGroupBySession?: QueryHook<DbGroupBySessionInputInjected, DbGroupBySessionResponse, HookContext<TCustomContext>>;
-	DbGroupByTodo?: QueryHook<DbGroupByTodoInputInjected, DbGroupByTodoResponse, HookContext<TCustomContext>>;
 	DbGroupByUser?: QueryHook<DbGroupByUserInputInjected, DbGroupByUserResponse, HookContext<TCustomContext>>;
 	DbGroupByVerificationToken?: QueryHook<
 		DbGroupByVerificationTokenInputInjected,
@@ -682,11 +501,7 @@ export type QueryHooks<TCustomContext = any> = {
 	>;
 	DbQueryRaw?: QueryHook<DbQueryRawInputInjected, DbQueryRawResponse, HookContext<TCustomContext>>;
 	DbQueryRawJSON?: QueryHook<DbQueryRawJSONInputInjected, DbQueryRawJSONResponse, HookContext<TCustomContext>>;
-	TodosGetAllTodosForCurrentUser?: QueryHook<
-		TodosGetAllTodosForCurrentUserInputInjected,
-		TodosGetAllTodosForCurrentUserResponse,
-		HookContext<TCustomContext>
-	>;
+	UsersGetAllUsers?: QueryHookWithoutInput<UsersGetAllUsersResponse, HookContext<TCustomContext>>;
 	WeatherGetCityById?: QueryHook<
 		WeatherGetCityByIdInputInjected,
 		WeatherGetCityByIdResponse,
@@ -705,13 +520,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbCreateManyAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbCreateManyPost?: MutationHook<DbCreateManyPostInputInjected, DbCreateManyPostResponse, HookContext<TCustomContext>>;
 	DbCreateManySession?: MutationHook<
 		DbCreateManySessionInputInjected,
 		DbCreateManySessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbCreateManyTodo?: MutationHook<DbCreateManyTodoInputInjected, DbCreateManyTodoResponse, HookContext<TCustomContext>>;
 	DbCreateManyUser?: MutationHook<DbCreateManyUserInputInjected, DbCreateManyUserResponse, HookContext<TCustomContext>>;
 	DbCreateManyVerificationToken?: MutationHook<
 		DbCreateManyVerificationTokenInputInjected,
@@ -723,13 +536,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbCreateOneAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbCreateOnePost?: MutationHook<DbCreateOnePostInputInjected, DbCreateOnePostResponse, HookContext<TCustomContext>>;
 	DbCreateOneSession?: MutationHook<
 		DbCreateOneSessionInputInjected,
 		DbCreateOneSessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbCreateOneTodo?: MutationHook<DbCreateOneTodoInputInjected, DbCreateOneTodoResponse, HookContext<TCustomContext>>;
 	DbCreateOneUser?: MutationHook<DbCreateOneUserInputInjected, DbCreateOneUserResponse, HookContext<TCustomContext>>;
 	DbCreateOneVerificationToken?: MutationHook<
 		DbCreateOneVerificationTokenInputInjected,
@@ -741,13 +552,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbDeleteManyAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbDeleteManyPost?: MutationHook<DbDeleteManyPostInputInjected, DbDeleteManyPostResponse, HookContext<TCustomContext>>;
 	DbDeleteManySession?: MutationHook<
 		DbDeleteManySessionInputInjected,
 		DbDeleteManySessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbDeleteManyTodo?: MutationHook<DbDeleteManyTodoInputInjected, DbDeleteManyTodoResponse, HookContext<TCustomContext>>;
 	DbDeleteManyUser?: MutationHook<DbDeleteManyUserInputInjected, DbDeleteManyUserResponse, HookContext<TCustomContext>>;
 	DbDeleteManyVerificationToken?: MutationHook<
 		DbDeleteManyVerificationTokenInputInjected,
@@ -759,13 +568,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbDeleteOneAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbDeleteOnePost?: MutationHook<DbDeleteOnePostInputInjected, DbDeleteOnePostResponse, HookContext<TCustomContext>>;
 	DbDeleteOneSession?: MutationHook<
 		DbDeleteOneSessionInputInjected,
 		DbDeleteOneSessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbDeleteOneTodo?: MutationHook<DbDeleteOneTodoInputInjected, DbDeleteOneTodoResponse, HookContext<TCustomContext>>;
 	DbDeleteOneUser?: MutationHook<DbDeleteOneUserInputInjected, DbDeleteOneUserResponse, HookContext<TCustomContext>>;
 	DbDeleteOneVerificationToken?: MutationHook<
 		DbDeleteOneVerificationTokenInputInjected,
@@ -778,13 +585,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbUpdateManyAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpdateManyPost?: MutationHook<DbUpdateManyPostInputInjected, DbUpdateManyPostResponse, HookContext<TCustomContext>>;
 	DbUpdateManySession?: MutationHook<
 		DbUpdateManySessionInputInjected,
 		DbUpdateManySessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpdateManyTodo?: MutationHook<DbUpdateManyTodoInputInjected, DbUpdateManyTodoResponse, HookContext<TCustomContext>>;
 	DbUpdateManyUser?: MutationHook<DbUpdateManyUserInputInjected, DbUpdateManyUserResponse, HookContext<TCustomContext>>;
 	DbUpdateManyVerificationToken?: MutationHook<
 		DbUpdateManyVerificationTokenInputInjected,
@@ -796,13 +601,11 @@ export type MutationHooks<TCustomContext = any> = {
 		DbUpdateOneAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpdateOnePost?: MutationHook<DbUpdateOnePostInputInjected, DbUpdateOnePostResponse, HookContext<TCustomContext>>;
 	DbUpdateOneSession?: MutationHook<
 		DbUpdateOneSessionInputInjected,
 		DbUpdateOneSessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpdateOneTodo?: MutationHook<DbUpdateOneTodoInputInjected, DbUpdateOneTodoResponse, HookContext<TCustomContext>>;
 	DbUpdateOneUser?: MutationHook<DbUpdateOneUserInputInjected, DbUpdateOneUserResponse, HookContext<TCustomContext>>;
 	DbUpdateOneVerificationToken?: MutationHook<
 		DbUpdateOneVerificationTokenInputInjected,
@@ -814,21 +617,17 @@ export type MutationHooks<TCustomContext = any> = {
 		DbUpsertOneAccountResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpsertOnePost?: MutationHook<DbUpsertOnePostInputInjected, DbUpsertOnePostResponse, HookContext<TCustomContext>>;
 	DbUpsertOneSession?: MutationHook<
 		DbUpsertOneSessionInputInjected,
 		DbUpsertOneSessionResponse,
 		HookContext<TCustomContext>
 	>;
-	DbUpsertOneTodo?: MutationHook<DbUpsertOneTodoInputInjected, DbUpsertOneTodoResponse, HookContext<TCustomContext>>;
 	DbUpsertOneUser?: MutationHook<DbUpsertOneUserInputInjected, DbUpsertOneUserResponse, HookContext<TCustomContext>>;
 	DbUpsertOneVerificationToken?: MutationHook<
 		DbUpsertOneVerificationTokenInputInjected,
 		DbUpsertOneVerificationTokenResponse,
 		HookContext<TCustomContext>
 	>;
-	TodosAddTodo?: MutationHook<TodosAddTodoInputInjected, TodosAddTodoResponse, HookContext<TCustomContext>>;
-	TodosUpdateTodo?: MutationHook<TodosUpdateTodoInputInjected, TodosUpdateTodoResponse, HookContext<TCustomContext>>;
 };
 
 export type SubscriptionHooks<TCustomContext = any> = {};

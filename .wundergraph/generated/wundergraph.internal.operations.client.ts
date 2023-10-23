@@ -44,21 +44,11 @@ import {
 	DbAggregateAccountInputInternal,
 	DbAggregateAccountInputInjected,
 	DbAggregateAccountResponseData,
-	DbAggregatePostResponse,
-	DbAggregatePostInput,
-	DbAggregatePostInputInternal,
-	DbAggregatePostInputInjected,
-	DbAggregatePostResponseData,
 	DbAggregateSessionResponse,
 	DbAggregateSessionInput,
 	DbAggregateSessionInputInternal,
 	DbAggregateSessionInputInjected,
 	DbAggregateSessionResponseData,
-	DbAggregateTodoResponse,
-	DbAggregateTodoInput,
-	DbAggregateTodoInputInternal,
-	DbAggregateTodoInputInjected,
-	DbAggregateTodoResponseData,
 	DbAggregateUserResponse,
 	DbAggregateUserInput,
 	DbAggregateUserInputInternal,
@@ -74,21 +64,11 @@ import {
 	DbCreateManyAccountInputInternal,
 	DbCreateManyAccountInputInjected,
 	DbCreateManyAccountResponseData,
-	DbCreateManyPostResponse,
-	DbCreateManyPostInput,
-	DbCreateManyPostInputInternal,
-	DbCreateManyPostInputInjected,
-	DbCreateManyPostResponseData,
 	DbCreateManySessionResponse,
 	DbCreateManySessionInput,
 	DbCreateManySessionInputInternal,
 	DbCreateManySessionInputInjected,
 	DbCreateManySessionResponseData,
-	DbCreateManyTodoResponse,
-	DbCreateManyTodoInput,
-	DbCreateManyTodoInputInternal,
-	DbCreateManyTodoInputInjected,
-	DbCreateManyTodoResponseData,
 	DbCreateManyUserResponse,
 	DbCreateManyUserInput,
 	DbCreateManyUserInputInternal,
@@ -104,21 +84,11 @@ import {
 	DbCreateOneAccountInputInternal,
 	DbCreateOneAccountInputInjected,
 	DbCreateOneAccountResponseData,
-	DbCreateOnePostResponse,
-	DbCreateOnePostInput,
-	DbCreateOnePostInputInternal,
-	DbCreateOnePostInputInjected,
-	DbCreateOnePostResponseData,
 	DbCreateOneSessionResponse,
 	DbCreateOneSessionInput,
 	DbCreateOneSessionInputInternal,
 	DbCreateOneSessionInputInjected,
 	DbCreateOneSessionResponseData,
-	DbCreateOneTodoResponse,
-	DbCreateOneTodoInput,
-	DbCreateOneTodoInputInternal,
-	DbCreateOneTodoInputInjected,
-	DbCreateOneTodoResponseData,
 	DbCreateOneUserResponse,
 	DbCreateOneUserInput,
 	DbCreateOneUserInputInternal,
@@ -134,21 +104,11 @@ import {
 	DbDeleteManyAccountInputInternal,
 	DbDeleteManyAccountInputInjected,
 	DbDeleteManyAccountResponseData,
-	DbDeleteManyPostResponse,
-	DbDeleteManyPostInput,
-	DbDeleteManyPostInputInternal,
-	DbDeleteManyPostInputInjected,
-	DbDeleteManyPostResponseData,
 	DbDeleteManySessionResponse,
 	DbDeleteManySessionInput,
 	DbDeleteManySessionInputInternal,
 	DbDeleteManySessionInputInjected,
 	DbDeleteManySessionResponseData,
-	DbDeleteManyTodoResponse,
-	DbDeleteManyTodoInput,
-	DbDeleteManyTodoInputInternal,
-	DbDeleteManyTodoInputInjected,
-	DbDeleteManyTodoResponseData,
 	DbDeleteManyUserResponse,
 	DbDeleteManyUserInput,
 	DbDeleteManyUserInputInternal,
@@ -164,21 +124,11 @@ import {
 	DbDeleteOneAccountInputInternal,
 	DbDeleteOneAccountInputInjected,
 	DbDeleteOneAccountResponseData,
-	DbDeleteOnePostResponse,
-	DbDeleteOnePostInput,
-	DbDeleteOnePostInputInternal,
-	DbDeleteOnePostInputInjected,
-	DbDeleteOnePostResponseData,
 	DbDeleteOneSessionResponse,
 	DbDeleteOneSessionInput,
 	DbDeleteOneSessionInputInternal,
 	DbDeleteOneSessionInputInjected,
 	DbDeleteOneSessionResponseData,
-	DbDeleteOneTodoResponse,
-	DbDeleteOneTodoInput,
-	DbDeleteOneTodoInputInternal,
-	DbDeleteOneTodoInputInjected,
-	DbDeleteOneTodoResponseData,
 	DbDeleteOneUserResponse,
 	DbDeleteOneUserInput,
 	DbDeleteOneUserInputInternal,
@@ -204,16 +154,6 @@ import {
 	DbFindFirstAccountOrThrowInputInternal,
 	DbFindFirstAccountOrThrowInputInjected,
 	DbFindFirstAccountOrThrowResponseData,
-	DbFindFirstPostResponse,
-	DbFindFirstPostInput,
-	DbFindFirstPostInputInternal,
-	DbFindFirstPostInputInjected,
-	DbFindFirstPostResponseData,
-	DbFindFirstPostOrThrowResponse,
-	DbFindFirstPostOrThrowInput,
-	DbFindFirstPostOrThrowInputInternal,
-	DbFindFirstPostOrThrowInputInjected,
-	DbFindFirstPostOrThrowResponseData,
 	DbFindFirstSessionResponse,
 	DbFindFirstSessionInput,
 	DbFindFirstSessionInputInternal,
@@ -224,16 +164,6 @@ import {
 	DbFindFirstSessionOrThrowInputInternal,
 	DbFindFirstSessionOrThrowInputInjected,
 	DbFindFirstSessionOrThrowResponseData,
-	DbFindFirstTodoResponse,
-	DbFindFirstTodoInput,
-	DbFindFirstTodoInputInternal,
-	DbFindFirstTodoInputInjected,
-	DbFindFirstTodoResponseData,
-	DbFindFirstTodoOrThrowResponse,
-	DbFindFirstTodoOrThrowInput,
-	DbFindFirstTodoOrThrowInputInternal,
-	DbFindFirstTodoOrThrowInputInjected,
-	DbFindFirstTodoOrThrowResponseData,
 	DbFindFirstUserResponse,
 	DbFindFirstUserInput,
 	DbFindFirstUserInputInternal,
@@ -259,21 +189,11 @@ import {
 	DbFindManyAccountInputInternal,
 	DbFindManyAccountInputInjected,
 	DbFindManyAccountResponseData,
-	DbFindManyPostResponse,
-	DbFindManyPostInput,
-	DbFindManyPostInputInternal,
-	DbFindManyPostInputInjected,
-	DbFindManyPostResponseData,
 	DbFindManySessionResponse,
 	DbFindManySessionInput,
 	DbFindManySessionInputInternal,
 	DbFindManySessionInputInjected,
 	DbFindManySessionResponseData,
-	DbFindManyTodoResponse,
-	DbFindManyTodoInput,
-	DbFindManyTodoInputInternal,
-	DbFindManyTodoInputInjected,
-	DbFindManyTodoResponseData,
 	DbFindManyUserResponse,
 	DbFindManyUserInput,
 	DbFindManyUserInputInternal,
@@ -294,16 +214,6 @@ import {
 	DbFindUniqueAccountOrThrowInputInternal,
 	DbFindUniqueAccountOrThrowInputInjected,
 	DbFindUniqueAccountOrThrowResponseData,
-	DbFindUniquePostResponse,
-	DbFindUniquePostInput,
-	DbFindUniquePostInputInternal,
-	DbFindUniquePostInputInjected,
-	DbFindUniquePostResponseData,
-	DbFindUniquePostOrThrowResponse,
-	DbFindUniquePostOrThrowInput,
-	DbFindUniquePostOrThrowInputInternal,
-	DbFindUniquePostOrThrowInputInjected,
-	DbFindUniquePostOrThrowResponseData,
 	DbFindUniqueSessionResponse,
 	DbFindUniqueSessionInput,
 	DbFindUniqueSessionInputInternal,
@@ -314,16 +224,6 @@ import {
 	DbFindUniqueSessionOrThrowInputInternal,
 	DbFindUniqueSessionOrThrowInputInjected,
 	DbFindUniqueSessionOrThrowResponseData,
-	DbFindUniqueTodoResponse,
-	DbFindUniqueTodoInput,
-	DbFindUniqueTodoInputInternal,
-	DbFindUniqueTodoInputInjected,
-	DbFindUniqueTodoResponseData,
-	DbFindUniqueTodoOrThrowResponse,
-	DbFindUniqueTodoOrThrowInput,
-	DbFindUniqueTodoOrThrowInputInternal,
-	DbFindUniqueTodoOrThrowInputInjected,
-	DbFindUniqueTodoOrThrowResponseData,
 	DbFindUniqueUserResponse,
 	DbFindUniqueUserInput,
 	DbFindUniqueUserInputInternal,
@@ -349,21 +249,11 @@ import {
 	DbGroupByAccountInputInternal,
 	DbGroupByAccountInputInjected,
 	DbGroupByAccountResponseData,
-	DbGroupByPostResponse,
-	DbGroupByPostInput,
-	DbGroupByPostInputInternal,
-	DbGroupByPostInputInjected,
-	DbGroupByPostResponseData,
 	DbGroupBySessionResponse,
 	DbGroupBySessionInput,
 	DbGroupBySessionInputInternal,
 	DbGroupBySessionInputInjected,
 	DbGroupBySessionResponseData,
-	DbGroupByTodoResponse,
-	DbGroupByTodoInput,
-	DbGroupByTodoInputInternal,
-	DbGroupByTodoInputInjected,
-	DbGroupByTodoResponseData,
 	DbGroupByUserResponse,
 	DbGroupByUserInput,
 	DbGroupByUserInputInternal,
@@ -389,21 +279,11 @@ import {
 	DbUpdateManyAccountInputInternal,
 	DbUpdateManyAccountInputInjected,
 	DbUpdateManyAccountResponseData,
-	DbUpdateManyPostResponse,
-	DbUpdateManyPostInput,
-	DbUpdateManyPostInputInternal,
-	DbUpdateManyPostInputInjected,
-	DbUpdateManyPostResponseData,
 	DbUpdateManySessionResponse,
 	DbUpdateManySessionInput,
 	DbUpdateManySessionInputInternal,
 	DbUpdateManySessionInputInjected,
 	DbUpdateManySessionResponseData,
-	DbUpdateManyTodoResponse,
-	DbUpdateManyTodoInput,
-	DbUpdateManyTodoInputInternal,
-	DbUpdateManyTodoInputInjected,
-	DbUpdateManyTodoResponseData,
 	DbUpdateManyUserResponse,
 	DbUpdateManyUserInput,
 	DbUpdateManyUserInputInternal,
@@ -419,21 +299,11 @@ import {
 	DbUpdateOneAccountInputInternal,
 	DbUpdateOneAccountInputInjected,
 	DbUpdateOneAccountResponseData,
-	DbUpdateOnePostResponse,
-	DbUpdateOnePostInput,
-	DbUpdateOnePostInputInternal,
-	DbUpdateOnePostInputInjected,
-	DbUpdateOnePostResponseData,
 	DbUpdateOneSessionResponse,
 	DbUpdateOneSessionInput,
 	DbUpdateOneSessionInputInternal,
 	DbUpdateOneSessionInputInjected,
 	DbUpdateOneSessionResponseData,
-	DbUpdateOneTodoResponse,
-	DbUpdateOneTodoInput,
-	DbUpdateOneTodoInputInternal,
-	DbUpdateOneTodoInputInjected,
-	DbUpdateOneTodoResponseData,
 	DbUpdateOneUserResponse,
 	DbUpdateOneUserInput,
 	DbUpdateOneUserInputInternal,
@@ -449,21 +319,11 @@ import {
 	DbUpsertOneAccountInputInternal,
 	DbUpsertOneAccountInputInjected,
 	DbUpsertOneAccountResponseData,
-	DbUpsertOnePostResponse,
-	DbUpsertOnePostInput,
-	DbUpsertOnePostInputInternal,
-	DbUpsertOnePostInputInjected,
-	DbUpsertOnePostResponseData,
 	DbUpsertOneSessionResponse,
 	DbUpsertOneSessionInput,
 	DbUpsertOneSessionInputInternal,
 	DbUpsertOneSessionInputInjected,
 	DbUpsertOneSessionResponseData,
-	DbUpsertOneTodoResponse,
-	DbUpsertOneTodoInput,
-	DbUpsertOneTodoInputInternal,
-	DbUpsertOneTodoInputInjected,
-	DbUpsertOneTodoResponseData,
 	DbUpsertOneUserResponse,
 	DbUpsertOneUserInput,
 	DbUpsertOneUserInputInternal,
@@ -474,21 +334,8 @@ import {
 	DbUpsertOneVerificationTokenInputInternal,
 	DbUpsertOneVerificationTokenInputInjected,
 	DbUpsertOneVerificationTokenResponseData,
-	TodosAddTodoResponse,
-	TodosAddTodoInput,
-	TodosAddTodoInputInternal,
-	TodosAddTodoInputInjected,
-	TodosAddTodoResponseData,
-	TodosGetAllTodosForCurrentUserResponse,
-	TodosGetAllTodosForCurrentUserInput,
-	TodosGetAllTodosForCurrentUserInputInternal,
-	TodosGetAllTodosForCurrentUserInputInjected,
-	TodosGetAllTodosForCurrentUserResponseData,
-	TodosUpdateTodoResponse,
-	TodosUpdateTodoInput,
-	TodosUpdateTodoInputInternal,
-	TodosUpdateTodoInputInjected,
-	TodosUpdateTodoResponseData,
+	UsersGetAllUsersResponse,
+	UsersGetAllUsersResponseData,
 	WeatherGetCityByIdResponse,
 	WeatherGetCityByIdInput,
 	WeatherGetCityByIdInputInternal,
@@ -566,17 +413,9 @@ export type Queries = {
 		input: DbAggregateAccountInputInternal;
 		response: { data?: DbAggregateAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/AggregatePost": {
-		input: DbAggregatePostInputInternal;
-		response: { data?: DbAggregatePostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/AggregateSession": {
 		input: DbAggregateSessionInputInternal;
 		response: { data?: DbAggregateSessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/AggregateTodo": {
-		input: DbAggregateTodoInputInternal;
-		response: { data?: DbAggregateTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/AggregateUser": {
 		input: DbAggregateUserInputInternal;
@@ -594,14 +433,6 @@ export type Queries = {
 		input: DbFindFirstAccountOrThrowInputInternal;
 		response: { data?: DbFindFirstAccountOrThrowResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/FindFirstPost": {
-		input: DbFindFirstPostInputInternal;
-		response: { data?: DbFindFirstPostResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindFirstPostOrThrow": {
-		input: DbFindFirstPostOrThrowInputInternal;
-		response: { data?: DbFindFirstPostOrThrowResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/FindFirstSession": {
 		input: DbFindFirstSessionInputInternal;
 		response: { data?: DbFindFirstSessionResponse["data"]; error?: ClientOperationErrors };
@@ -609,14 +440,6 @@ export type Queries = {
 	"db/FindFirstSessionOrThrow": {
 		input: DbFindFirstSessionOrThrowInputInternal;
 		response: { data?: DbFindFirstSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindFirstTodo": {
-		input: DbFindFirstTodoInputInternal;
-		response: { data?: DbFindFirstTodoResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindFirstTodoOrThrow": {
-		input: DbFindFirstTodoOrThrowInputInternal;
-		response: { data?: DbFindFirstTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/FindFirstUser": {
 		input: DbFindFirstUserInputInternal;
@@ -638,17 +461,9 @@ export type Queries = {
 		input: DbFindManyAccountInputInternal;
 		response: { data?: DbFindManyAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/FindManyPost": {
-		input: DbFindManyPostInputInternal;
-		response: { data?: DbFindManyPostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/FindManySession": {
 		input: DbFindManySessionInputInternal;
 		response: { data?: DbFindManySessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindManyTodo": {
-		input: DbFindManyTodoInputInternal;
-		response: { data?: DbFindManyTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/FindManyUser": {
 		input: DbFindManyUserInputInternal;
@@ -666,14 +481,6 @@ export type Queries = {
 		input: DbFindUniqueAccountOrThrowInputInternal;
 		response: { data?: DbFindUniqueAccountOrThrowResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/FindUniquePost": {
-		input: DbFindUniquePostInputInternal;
-		response: { data?: DbFindUniquePostResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindUniquePostOrThrow": {
-		input: DbFindUniquePostOrThrowInputInternal;
-		response: { data?: DbFindUniquePostOrThrowResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/FindUniqueSession": {
 		input: DbFindUniqueSessionInputInternal;
 		response: { data?: DbFindUniqueSessionResponse["data"]; error?: ClientOperationErrors };
@@ -681,14 +488,6 @@ export type Queries = {
 	"db/FindUniqueSessionOrThrow": {
 		input: DbFindUniqueSessionOrThrowInputInternal;
 		response: { data?: DbFindUniqueSessionOrThrowResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindUniqueTodo": {
-		input: DbFindUniqueTodoInputInternal;
-		response: { data?: DbFindUniqueTodoResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/FindUniqueTodoOrThrow": {
-		input: DbFindUniqueTodoOrThrowInputInternal;
-		response: { data?: DbFindUniqueTodoOrThrowResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/FindUniqueUser": {
 		input: DbFindUniqueUserInputInternal;
@@ -710,17 +509,9 @@ export type Queries = {
 		input: DbGroupByAccountInputInternal;
 		response: { data?: DbGroupByAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/GroupByPost": {
-		input: DbGroupByPostInputInternal;
-		response: { data?: DbGroupByPostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/GroupBySession": {
 		input: DbGroupBySessionInputInternal;
 		response: { data?: DbGroupBySessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/GroupByTodo": {
-		input: DbGroupByTodoInputInternal;
-		response: { data?: DbGroupByTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/GroupByUser": {
 		input: DbGroupByUserInputInternal;
@@ -738,9 +529,9 @@ export type Queries = {
 		input: DbQueryRawJSONInputInternal;
 		response: { data?: DbQueryRawJSONResponse["data"]; error?: ClientOperationErrors };
 	};
-	"todos/getAllTodosForCurrentUser": {
-		input: TodosGetAllTodosForCurrentUserInputInternal;
-		response: { data?: TodosGetAllTodosForCurrentUserResponse["data"]; error?: ClientOperationErrors };
+	"users/GetAllUsers": {
+		input: undefined;
+		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
 	};
 	"weather/GetCityById": {
 		input: WeatherGetCityByIdInputInternal;
@@ -787,17 +578,9 @@ export type Mutations = {
 		input: DbCreateManyAccountInputInternal;
 		response: { data?: DbCreateManyAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/CreateManyPost": {
-		input: DbCreateManyPostInputInternal;
-		response: { data?: DbCreateManyPostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/CreateManySession": {
 		input: DbCreateManySessionInputInternal;
 		response: { data?: DbCreateManySessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/CreateManyTodo": {
-		input: DbCreateManyTodoInputInternal;
-		response: { data?: DbCreateManyTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/CreateManyUser": {
 		input: DbCreateManyUserInputInternal;
@@ -811,17 +594,9 @@ export type Mutations = {
 		input: DbCreateOneAccountInputInternal;
 		response: { data?: DbCreateOneAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/CreateOnePost": {
-		input: DbCreateOnePostInputInternal;
-		response: { data?: DbCreateOnePostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/CreateOneSession": {
 		input: DbCreateOneSessionInputInternal;
 		response: { data?: DbCreateOneSessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/CreateOneTodo": {
-		input: DbCreateOneTodoInputInternal;
-		response: { data?: DbCreateOneTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/CreateOneUser": {
 		input: DbCreateOneUserInputInternal;
@@ -835,17 +610,9 @@ export type Mutations = {
 		input: DbDeleteManyAccountInputInternal;
 		response: { data?: DbDeleteManyAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/DeleteManyPost": {
-		input: DbDeleteManyPostInputInternal;
-		response: { data?: DbDeleteManyPostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/DeleteManySession": {
 		input: DbDeleteManySessionInputInternal;
 		response: { data?: DbDeleteManySessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/DeleteManyTodo": {
-		input: DbDeleteManyTodoInputInternal;
-		response: { data?: DbDeleteManyTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/DeleteManyUser": {
 		input: DbDeleteManyUserInputInternal;
@@ -859,17 +626,9 @@ export type Mutations = {
 		input: DbDeleteOneAccountInputInternal;
 		response: { data?: DbDeleteOneAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/DeleteOnePost": {
-		input: DbDeleteOnePostInputInternal;
-		response: { data?: DbDeleteOnePostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/DeleteOneSession": {
 		input: DbDeleteOneSessionInputInternal;
 		response: { data?: DbDeleteOneSessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/DeleteOneTodo": {
-		input: DbDeleteOneTodoInputInternal;
-		response: { data?: DbDeleteOneTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/DeleteOneUser": {
 		input: DbDeleteOneUserInputInternal;
@@ -887,17 +646,9 @@ export type Mutations = {
 		input: DbUpdateManyAccountInputInternal;
 		response: { data?: DbUpdateManyAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/UpdateManyPost": {
-		input: DbUpdateManyPostInputInternal;
-		response: { data?: DbUpdateManyPostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/UpdateManySession": {
 		input: DbUpdateManySessionInputInternal;
 		response: { data?: DbUpdateManySessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/UpdateManyTodo": {
-		input: DbUpdateManyTodoInputInternal;
-		response: { data?: DbUpdateManyTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/UpdateManyUser": {
 		input: DbUpdateManyUserInputInternal;
@@ -911,17 +662,9 @@ export type Mutations = {
 		input: DbUpdateOneAccountInputInternal;
 		response: { data?: DbUpdateOneAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/UpdateOnePost": {
-		input: DbUpdateOnePostInputInternal;
-		response: { data?: DbUpdateOnePostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/UpdateOneSession": {
 		input: DbUpdateOneSessionInputInternal;
 		response: { data?: DbUpdateOneSessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/UpdateOneTodo": {
-		input: DbUpdateOneTodoInputInternal;
-		response: { data?: DbUpdateOneTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/UpdateOneUser": {
 		input: DbUpdateOneUserInputInternal;
@@ -935,17 +678,9 @@ export type Mutations = {
 		input: DbUpsertOneAccountInputInternal;
 		response: { data?: DbUpsertOneAccountResponse["data"]; error?: ClientOperationErrors };
 	};
-	"db/UpsertOnePost": {
-		input: DbUpsertOnePostInputInternal;
-		response: { data?: DbUpsertOnePostResponse["data"]; error?: ClientOperationErrors };
-	};
 	"db/UpsertOneSession": {
 		input: DbUpsertOneSessionInputInternal;
 		response: { data?: DbUpsertOneSessionResponse["data"]; error?: ClientOperationErrors };
-	};
-	"db/UpsertOneTodo": {
-		input: DbUpsertOneTodoInputInternal;
-		response: { data?: DbUpsertOneTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"db/UpsertOneUser": {
 		input: DbUpsertOneUserInputInternal;
@@ -954,14 +689,6 @@ export type Mutations = {
 	"db/UpsertOneVerificationToken": {
 		input: DbUpsertOneVerificationTokenInputInternal;
 		response: { data?: DbUpsertOneVerificationTokenResponse["data"]; error?: ClientOperationErrors };
-	};
-	"todos/addTodo": {
-		input: TodosAddTodoInputInternal;
-		response: { data?: TodosAddTodoResponse["data"]; error?: ClientOperationErrors };
-	};
-	"todos/updateTodo": {
-		input: TodosUpdateTodoInputInternal;
-		response: { data?: TodosUpdateTodoResponse["data"]; error?: ClientOperationErrors };
 	};
 	"users/update": {
 		input: UsersUpdateInputInternal;
