@@ -14,7 +14,7 @@
     "db:push": "prisma db push",
     "prisma-studio": "prisma studio",
     "wunderctl:generate": "wunderctl generate",
-    "wunderctl:up": "wunderctl up",
+    "wunderctl:up": "wunderctl up --debug",
     "build:wundergraph": "npx prisma generate && wunderctl generate"
   },
   "dependencies": {

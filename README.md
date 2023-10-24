@@ -149,6 +149,8 @@ pnpm dev
 pnpm wunderctl:up
 ```
 
+> Note: Graphql end point is available at http://localhost:9991/graphql
+
 5. View/edit the database:
 
 ```sh
