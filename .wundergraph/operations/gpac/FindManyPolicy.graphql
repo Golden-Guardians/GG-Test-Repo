@@ -1,0 +1,42 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query gpac_findManyPolicy_query($where: gpac_PolicyWhereInput, $orderBy: [gpac_PolicyOrderByWithRelationInput], $cursor: gpac_PolicyWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_PolicyScalarFieldEnum], $gpac_findManyPolicy_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_findManyPolicy_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_findManyPolicy_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_findManyPolicy_user_user_actions_take: Int, $gpac_findManyPolicy_user_user_actions_skip: Int, $gpac_findManyPolicy_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+  gpac_findManyPolicy(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    policyType
+    status
+    details
+    userId
+    user {
+      id
+      username
+      password
+      role
+      actions(
+        where: $gpac_findManyPolicy_user_user_actions_where
+        orderBy: $gpac_findManyPolicy_user_user_actions_orderBy
+        cursor: $gpac_findManyPolicy_user_user_actions_cursor
+        take: $gpac_findManyPolicy_user_user_actions_take
+        skip: $gpac_findManyPolicy_user_user_actions_skip
+        distinct: $gpac_findManyPolicy_user_user_actions_distinct
+      ) {
+        id
+        actionType
+        timestamp
+        details
+        userId
+      }
+      _count {
+        policies
+        actions
+      }
+    }
+  }
+}

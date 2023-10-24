@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation livingBalanceSheet_updateManyUser_mutation($data: livingBalanceSheet_UserUpdateManyMutationInput!, $where: livingBalanceSheet_UserWhereInput) {
+  livingBalanceSheet_updateManyUser(data: $data, where: $where) {
+    count
+  }
+}

@@ -1,0 +1,37 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_aggregateInteraction_query($where: customerCommunication_InteractionWhereInput, $orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $cursor: customerCommunication_InteractionWhereUniqueInput, $take: Int, $skip: Int) {
+  customerCommunication_aggregateInteraction(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      interactionType
+      content
+      timestamp
+      userId
+      widgetId
+      _all
+    }
+    _min {
+      id
+      interactionType
+      content
+      timestamp
+      userId
+      widgetId
+    }
+    _max {
+      id
+      interactionType
+      content
+      timestamp
+      userId
+      widgetId
+    }
+  }
+}

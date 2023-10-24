@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation clientPortal_updateManyClient_mutation($data: clientPortal_ClientUpdateManyMutationInput!, $where: clientPortal_ClientWhereInput) {
+  clientPortal_updateManyClient(data: $data, where: $where) {
+    count
+  }
+}

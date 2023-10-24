@@ -1,0 +1,34 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query guardianOnline_groupByFeature_query($where: guardianOnline_FeatureWhereInput, $orderBy: [guardianOnline_FeatureOrderByWithAggregationInput], $by: [guardianOnline_FeatureScalarFieldEnum]!, $having: guardianOnline_FeatureScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  guardianOnline_groupByFeature(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    featureType
+    content
+    userId
+    _count {
+      id
+      featureType
+      content
+      userId
+      _all
+    }
+    _min {
+      id
+      featureType
+      userId
+    }
+    _max {
+      id
+      featureType
+      userId
+    }
+  }
+}

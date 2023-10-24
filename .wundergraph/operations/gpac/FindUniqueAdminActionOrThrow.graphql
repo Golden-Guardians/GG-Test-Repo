@@ -1,0 +1,35 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query gpac_findUniqueAdminActionOrThrow_query($where: gpac_AdminActionWhereUniqueInput!, $gpac_findUniqueAdminActionOrThrow_user_user_policies_where: gpac_PolicyWhereInput, $gpac_findUniqueAdminActionOrThrow_user_user_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_findUniqueAdminActionOrThrow_user_user_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_findUniqueAdminActionOrThrow_user_user_policies_take: Int, $gpac_findUniqueAdminActionOrThrow_user_user_policies_skip: Int, $gpac_findUniqueAdminActionOrThrow_user_user_policies_distinct: [gpac_PolicyScalarFieldEnum]) {
+  gpac_findUniqueAdminActionOrThrow(where: $where) {
+    id
+    actionType
+    timestamp
+    details
+    userId
+    user {
+      id
+      username
+      password
+      role
+      policies(
+        where: $gpac_findUniqueAdminActionOrThrow_user_user_policies_where
+        orderBy: $gpac_findUniqueAdminActionOrThrow_user_user_policies_orderBy
+        cursor: $gpac_findUniqueAdminActionOrThrow_user_user_policies_cursor
+        take: $gpac_findUniqueAdminActionOrThrow_user_user_policies_take
+        skip: $gpac_findUniqueAdminActionOrThrow_user_user_policies_skip
+        distinct: $gpac_findUniqueAdminActionOrThrow_user_user_policies_distinct
+      ) {
+        id
+        policyType
+        status
+        details
+        userId
+      }
+      _count {
+        policies
+        actions
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation clientPortal_createManyService_mutation($data: [clientPortal_ServiceCreateManyInput]!, $skipDuplicates: Boolean) {
+  clientPortal_createManyService(data: $data, skipDuplicates: $skipDuplicates) {
+    count
+  }
+}

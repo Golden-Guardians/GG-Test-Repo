@@ -1,0 +1,70 @@
+// npx prisma db push --schema prisma/simulated-services/guardian-online.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("GUARDIAN_ONLINE_DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id       String    @id @default(cuid())
+  username String
+  password String
+  role     UserRole
+  features Feature[]
+  logs     UserLog[]
+}
+
+enum UserRole {
+  ADMIN
+  AGENT
+  CUSTOMER
+  FINANCIAL_REP
+}
+
+model Feature {
+  id          String      @id @default(cuid())
+  featureType FeatureType
+  content     Json
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+}
+
+enum FeatureType {
+  DASHBOARD
+  ACCOUNT_SUMMARY
+  NOTIFICATIONS
+  DOCUMENTS
+}
+
+model UserLog {
+  id          String      @id @default(cuid())
+  logType     LogType
+  contentType ContentType
+  timestamp   DateTime
+  details     Json
+  userId      String
+  user        User        @relation(fields: [userId], references: [id])
+}
+
+enum LogType {
+  LOGIN
+  LOGOUT
+  FEATURE_ACCESS
+  DOCUMENT_DOWNLOAD
+}
+
+enum ContentType {
+  CALL
+  CHAT
+  EMAIL
+  WEB_USAGE
+  IVR_HUGO_USAGE
+  OUTBOUND_CORRESPONDENCE
+  MARKETING_MATERIAL
+  TEXT
+}

@@ -1,0 +1,38 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query gpac_groupByPolicy_query($where: gpac_PolicyWhereInput, $orderBy: [gpac_PolicyOrderByWithAggregationInput], $by: [gpac_PolicyScalarFieldEnum]!, $having: gpac_PolicyScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  gpac_groupByPolicy(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    policyType
+    status
+    details
+    userId
+    _count {
+      id
+      policyType
+      status
+      details
+      userId
+      _all
+    }
+    _min {
+      id
+      policyType
+      status
+      userId
+    }
+    _max {
+      id
+      policyType
+      status
+      userId
+    }
+  }
+}

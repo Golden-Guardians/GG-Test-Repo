@@ -1,0 +1,28 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query clientPortal_aggregateClient_query($where: clientPortal_ClientWhereInput, $orderBy: [clientPortal_ClientOrderByWithRelationInput], $cursor: clientPortal_ClientWhereUniqueInput, $take: Int, $skip: Int) {
+  clientPortal_aggregateClient(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      username
+      password
+      _all
+    }
+    _min {
+      id
+      username
+      password
+    }
+    _max {
+      id
+      username
+      password
+    }
+  }
+}

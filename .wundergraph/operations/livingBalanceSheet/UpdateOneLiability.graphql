@@ -1,0 +1,48 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation livingBalanceSheet_updateOneLiability_mutation($data: livingBalanceSheet_LiabilityUpdateInput!, $where: livingBalanceSheet_LiabilityWhereUniqueInput!, $livingBalanceSheet_updateOneLiability_user_user_assets_where: livingBalanceSheet_AssetWhereInput, $livingBalanceSheet_updateOneLiability_user_user_assets_orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $livingBalanceSheet_updateOneLiability_user_user_assets_cursor: livingBalanceSheet_AssetWhereUniqueInput, $livingBalanceSheet_updateOneLiability_user_user_assets_take: Int, $livingBalanceSheet_updateOneLiability_user_user_assets_skip: Int, $livingBalanceSheet_updateOneLiability_user_user_assets_distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_updateOneLiability_user_user_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_updateOneLiability_user_user_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_updateOneLiability_user_user_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_updateOneLiability_user_user_goals_take: Int, $livingBalanceSheet_updateOneLiability_user_user_goals_skip: Int, $livingBalanceSheet_updateOneLiability_user_user_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+  livingBalanceSheet_updateOneLiability(data: $data, where: $where) {
+    id
+    liabilityType
+    amount
+    userId
+    user {
+      id
+      username
+      password
+      role
+      assets(
+        where: $livingBalanceSheet_updateOneLiability_user_user_assets_where
+        orderBy: $livingBalanceSheet_updateOneLiability_user_user_assets_orderBy
+        cursor: $livingBalanceSheet_updateOneLiability_user_user_assets_cursor
+        take: $livingBalanceSheet_updateOneLiability_user_user_assets_take
+        skip: $livingBalanceSheet_updateOneLiability_user_user_assets_skip
+        distinct: $livingBalanceSheet_updateOneLiability_user_user_assets_distinct
+      ) {
+        id
+        assetType
+        value
+        userId
+      }
+      goals(
+        where: $livingBalanceSheet_updateOneLiability_user_user_goals_where
+        orderBy: $livingBalanceSheet_updateOneLiability_user_user_goals_orderBy
+        cursor: $livingBalanceSheet_updateOneLiability_user_user_goals_cursor
+        take: $livingBalanceSheet_updateOneLiability_user_user_goals_take
+        skip: $livingBalanceSheet_updateOneLiability_user_user_goals_skip
+        distinct: $livingBalanceSheet_updateOneLiability_user_user_goals_distinct
+      ) {
+        id
+        goalType
+        target
+        deadline
+        userId
+      }
+      _count {
+        assets
+        liabilities
+        goals
+      }
+    }
+  }
+}

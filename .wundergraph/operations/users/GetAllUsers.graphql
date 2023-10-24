@@ -1,5 +1,5 @@
 query GetAllUsers {
-  db_findManyUser {
+  customerCommunication_findManyUser {
     id
     name
     email

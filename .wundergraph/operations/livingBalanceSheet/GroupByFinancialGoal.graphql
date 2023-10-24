@@ -1,0 +1,46 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query livingBalanceSheet_groupByFinancialGoal_query($where: livingBalanceSheet_FinancialGoalWhereInput, $orderBy: [livingBalanceSheet_FinancialGoalOrderByWithAggregationInput], $by: [livingBalanceSheet_FinancialGoalScalarFieldEnum]!, $having: livingBalanceSheet_FinancialGoalScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  livingBalanceSheet_groupByFinancialGoal(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    goalType
+    target
+    deadline
+    userId
+    _count {
+      id
+      goalType
+      target
+      deadline
+      userId
+      _all
+    }
+    _avg {
+      target
+    }
+    _sum {
+      target
+    }
+    _min {
+      id
+      goalType
+      target
+      deadline
+      userId
+    }
+    _max {
+      id
+      goalType
+      target
+      deadline
+      userId
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation livingBalanceSheet_updateManyFinancialGoal_mutation($data: livingBalanceSheet_FinancialGoalUpdateManyMutationInput!, $where: livingBalanceSheet_FinancialGoalWhereInput) {
+  livingBalanceSheet_updateManyFinancialGoal(data: $data, where: $where) {
+    count
+  }
+}

@@ -1,0 +1,74 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_findUniqueSessionOrThrow_query($where: customerCommunication_SessionWhereUniqueInput!, $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_take: Int, $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_skip: Int, $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_where: customerCommunication_AccountWhereInput, $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_orderBy: [customerCommunication_AccountOrderByWithRelationInput], $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_cursor: customerCommunication_AccountWhereUniqueInput, $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_take: Int, $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_skip: Int, $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_distinct: [customerCommunication_AccountScalarFieldEnum]) {
+  customerCommunication_findUniqueSessionOrThrow(where: $where) {
+    id
+    sessionToken
+    userId
+    expires
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      interactions(
+        where: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_where
+        orderBy: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_orderBy
+        cursor: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_cursor
+        take: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_take
+        skip: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_skip
+        distinct: $customerCommunication_findUniqueSessionOrThrow_user_user_interactions_distinct
+      ) {
+        id
+        interactionType
+        content
+        timestamp
+        userId
+        widgetId
+        Widget {
+          id
+          embeddedIn
+          _count {
+            interactions
+          }
+        }
+      }
+      accounts(
+        where: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_where
+        orderBy: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_orderBy
+        cursor: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_cursor
+        take: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_take
+        skip: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_skip
+        distinct: $customerCommunication_findUniqueSessionOrThrow_user_user_accounts_distinct
+      ) {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        createdAt
+        updatedAt
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+  }
+}

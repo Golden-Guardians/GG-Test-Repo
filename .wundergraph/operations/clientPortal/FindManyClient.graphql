@@ -1,0 +1,47 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query clientPortal_findManyClient_query($where: clientPortal_ClientWhereInput, $orderBy: [clientPortal_ClientOrderByWithRelationInput], $cursor: clientPortal_ClientWhereUniqueInput, $take: Int, $skip: Int, $distinct: [clientPortal_ClientScalarFieldEnum], $clientPortal_findManyClient_services_where: clientPortal_ServiceWhereInput, $clientPortal_findManyClient_services_orderBy: [clientPortal_ServiceOrderByWithRelationInput], $clientPortal_findManyClient_services_cursor: clientPortal_ServiceWhereUniqueInput, $clientPortal_findManyClient_services_take: Int, $clientPortal_findManyClient_services_skip: Int, $clientPortal_findManyClient_services_distinct: [clientPortal_ServiceScalarFieldEnum], $clientPortal_findManyClient_activities_where: clientPortal_ActivityWhereInput, $clientPortal_findManyClient_activities_orderBy: [clientPortal_ActivityOrderByWithRelationInput], $clientPortal_findManyClient_activities_cursor: clientPortal_ActivityWhereUniqueInput, $clientPortal_findManyClient_activities_take: Int, $clientPortal_findManyClient_activities_skip: Int, $clientPortal_findManyClient_activities_distinct: [clientPortal_ActivityScalarFieldEnum]) {
+  clientPortal_findManyClient(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    username
+    password
+    services(
+      where: $clientPortal_findManyClient_services_where
+      orderBy: $clientPortal_findManyClient_services_orderBy
+      cursor: $clientPortal_findManyClient_services_cursor
+      take: $clientPortal_findManyClient_services_take
+      skip: $clientPortal_findManyClient_services_skip
+      distinct: $clientPortal_findManyClient_services_distinct
+    ) {
+      id
+      serviceType
+      content
+      clientId
+    }
+    activities(
+      where: $clientPortal_findManyClient_activities_where
+      orderBy: $clientPortal_findManyClient_activities_orderBy
+      cursor: $clientPortal_findManyClient_activities_cursor
+      take: $clientPortal_findManyClient_activities_take
+      skip: $clientPortal_findManyClient_activities_skip
+      distinct: $clientPortal_findManyClient_activities_distinct
+    ) {
+      id
+      activityType
+      timestamp
+      details
+      clientId
+    }
+    _count {
+      services
+      activities
+    }
+  }
+}

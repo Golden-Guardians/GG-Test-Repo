@@ -1,0 +1,68 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_groupByUser_query($where: customerCommunication_UserWhereInput, $orderBy: [customerCommunication_UserOrderByWithAggregationInput], $by: [customerCommunication_UserScalarFieldEnum]!, $having: customerCommunication_UserScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  customerCommunication_groupByUser(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    name
+    email
+    emailVerified
+    image
+    createdAt
+    updatedAt
+    userType
+    stripeCustomerId
+    stripeSubscriptionId
+    stripePriceId
+    stripeCurrentPeriodEnd
+    _count {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      _all
+    }
+    _min {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+    }
+    _max {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+    }
+  }
+}

@@ -1,0 +1,50 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query smartOffice_findUniqueSaleOrThrow_query($where: smartOffice_SaleWhereUniqueInput!, $smartOffice_findUniqueSaleOrThrow_user_user_clients_where: smartOffice_ClientWhereInput, $smartOffice_findUniqueSaleOrThrow_user_user_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_findUniqueSaleOrThrow_user_user_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_findUniqueSaleOrThrow_user_user_clients_take: Int, $smartOffice_findUniqueSaleOrThrow_user_user_clients_skip: Int, $smartOffice_findUniqueSaleOrThrow_user_user_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_findUniqueSaleOrThrow_user_user_tasks_where: smartOffice_TaskWhereInput, $smartOffice_findUniqueSaleOrThrow_user_user_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_findUniqueSaleOrThrow_user_user_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_findUniqueSaleOrThrow_user_user_tasks_take: Int, $smartOffice_findUniqueSaleOrThrow_user_user_tasks_skip: Int, $smartOffice_findUniqueSaleOrThrow_user_user_tasks_distinct: [smartOffice_TaskScalarFieldEnum]) {
+  smartOffice_findUniqueSaleOrThrow(where: $where) {
+    id
+    saleType
+    amount
+    timestamp
+    userId
+    user {
+      id
+      username
+      password
+      role
+      clients(
+        where: $smartOffice_findUniqueSaleOrThrow_user_user_clients_where
+        orderBy: $smartOffice_findUniqueSaleOrThrow_user_user_clients_orderBy
+        cursor: $smartOffice_findUniqueSaleOrThrow_user_user_clients_cursor
+        take: $smartOffice_findUniqueSaleOrThrow_user_user_clients_take
+        skip: $smartOffice_findUniqueSaleOrThrow_user_user_clients_skip
+        distinct: $smartOffice_findUniqueSaleOrThrow_user_user_clients_distinct
+      ) {
+        id
+        name
+        email
+        phone
+        userId
+      }
+      tasks(
+        where: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_where
+        orderBy: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_orderBy
+        cursor: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_cursor
+        take: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_take
+        skip: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_skip
+        distinct: $smartOffice_findUniqueSaleOrThrow_user_user_tasks_distinct
+      ) {
+        id
+        taskType
+        status
+        details
+        userId
+      }
+      _count {
+        clients
+        tasks
+        sales
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query guardianOnline_aggregateUserLog_query($where: guardianOnline_UserLogWhereInput, $orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $cursor: guardianOnline_UserLogWhereUniqueInput, $take: Int, $skip: Int) {
+  guardianOnline_aggregateUserLog(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      logType
+      contentType
+      timestamp
+      details
+      userId
+      _all
+    }
+    _min {
+      id
+      logType
+      contentType
+      timestamp
+      userId
+    }
+    _max {
+      id
+      logType
+      contentType
+      timestamp
+      userId
+    }
+  }
+}

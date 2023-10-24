@@ -1,0 +1,33 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation clientPortal_upsertOneService_mutation($where: clientPortal_ServiceWhereUniqueInput!, $create: clientPortal_ServiceCreateInput!, $update: clientPortal_ServiceUpdateInput!, $clientPortal_upsertOneService_client_client_activities_where: clientPortal_ActivityWhereInput, $clientPortal_upsertOneService_client_client_activities_orderBy: [clientPortal_ActivityOrderByWithRelationInput], $clientPortal_upsertOneService_client_client_activities_cursor: clientPortal_ActivityWhereUniqueInput, $clientPortal_upsertOneService_client_client_activities_take: Int, $clientPortal_upsertOneService_client_client_activities_skip: Int, $clientPortal_upsertOneService_client_client_activities_distinct: [clientPortal_ActivityScalarFieldEnum]) {
+  clientPortal_upsertOneService(where: $where, create: $create, update: $update) {
+    id
+    serviceType
+    content
+    clientId
+    client {
+      id
+      username
+      password
+      activities(
+        where: $clientPortal_upsertOneService_client_client_activities_where
+        orderBy: $clientPortal_upsertOneService_client_client_activities_orderBy
+        cursor: $clientPortal_upsertOneService_client_client_activities_cursor
+        take: $clientPortal_upsertOneService_client_client_activities_take
+        skip: $clientPortal_upsertOneService_client_client_activities_skip
+        distinct: $clientPortal_upsertOneService_client_client_activities_distinct
+      ) {
+        id
+        activityType
+        timestamp
+        details
+        clientId
+      }
+      _count {
+        services
+        activities
+      }
+    }
+  }
+}

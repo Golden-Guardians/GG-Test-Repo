@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation gpac_deleteManyUser_mutation($where: gpac_UserWhereInput) {
+  gpac_deleteManyUser(where: $where) {
+    count
+  }
+}

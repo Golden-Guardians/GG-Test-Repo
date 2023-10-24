@@ -1,0 +1,35 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation guardianOnline_updateOneFeature_mutation($data: guardianOnline_FeatureUpdateInput!, $where: guardianOnline_FeatureWhereUniqueInput!, $guardianOnline_updateOneFeature_user_user_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_updateOneFeature_user_user_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_updateOneFeature_user_user_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_updateOneFeature_user_user_logs_take: Int, $guardianOnline_updateOneFeature_user_user_logs_skip: Int, $guardianOnline_updateOneFeature_user_user_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+  guardianOnline_updateOneFeature(data: $data, where: $where) {
+    id
+    featureType
+    content
+    userId
+    user {
+      id
+      username
+      password
+      role
+      logs(
+        where: $guardianOnline_updateOneFeature_user_user_logs_where
+        orderBy: $guardianOnline_updateOneFeature_user_user_logs_orderBy
+        cursor: $guardianOnline_updateOneFeature_user_user_logs_cursor
+        take: $guardianOnline_updateOneFeature_user_user_logs_take
+        skip: $guardianOnline_updateOneFeature_user_user_logs_skip
+        distinct: $guardianOnline_updateOneFeature_user_user_logs_distinct
+      ) {
+        id
+        logType
+        contentType
+        timestamp
+        details
+        userId
+      }
+      _count {
+        features
+        logs
+      }
+    }
+  }
+}

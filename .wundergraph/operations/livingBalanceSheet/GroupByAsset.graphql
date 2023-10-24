@@ -1,0 +1,42 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query livingBalanceSheet_groupByAsset_query($where: livingBalanceSheet_AssetWhereInput, $orderBy: [livingBalanceSheet_AssetOrderByWithAggregationInput], $by: [livingBalanceSheet_AssetScalarFieldEnum]!, $having: livingBalanceSheet_AssetScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  livingBalanceSheet_groupByAsset(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    assetType
+    value
+    userId
+    _count {
+      id
+      assetType
+      value
+      userId
+      _all
+    }
+    _avg {
+      value
+    }
+    _sum {
+      value
+    }
+    _min {
+      id
+      assetType
+      value
+      userId
+    }
+    _max {
+      id
+      assetType
+      value
+      userId
+    }
+  }
+}

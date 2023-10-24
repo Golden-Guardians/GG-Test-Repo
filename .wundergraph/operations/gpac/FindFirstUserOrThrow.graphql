@@ -1,0 +1,49 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query gpac_findFirstUserOrThrow_query($where: gpac_UserWhereInput, $orderBy: [gpac_UserOrderByWithRelationInput], $cursor: gpac_UserWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_UserScalarFieldEnum], $gpac_findFirstUserOrThrow_policies_where: gpac_PolicyWhereInput, $gpac_findFirstUserOrThrow_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_findFirstUserOrThrow_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_findFirstUserOrThrow_policies_take: Int, $gpac_findFirstUserOrThrow_policies_skip: Int, $gpac_findFirstUserOrThrow_policies_distinct: [gpac_PolicyScalarFieldEnum], $gpac_findFirstUserOrThrow_actions_where: gpac_AdminActionWhereInput, $gpac_findFirstUserOrThrow_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_findFirstUserOrThrow_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_findFirstUserOrThrow_actions_take: Int, $gpac_findFirstUserOrThrow_actions_skip: Int, $gpac_findFirstUserOrThrow_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+  gpac_findFirstUserOrThrow(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    username
+    password
+    role
+    policies(
+      where: $gpac_findFirstUserOrThrow_policies_where
+      orderBy: $gpac_findFirstUserOrThrow_policies_orderBy
+      cursor: $gpac_findFirstUserOrThrow_policies_cursor
+      take: $gpac_findFirstUserOrThrow_policies_take
+      skip: $gpac_findFirstUserOrThrow_policies_skip
+      distinct: $gpac_findFirstUserOrThrow_policies_distinct
+    ) {
+      id
+      policyType
+      status
+      details
+      userId
+    }
+    actions(
+      where: $gpac_findFirstUserOrThrow_actions_where
+      orderBy: $gpac_findFirstUserOrThrow_actions_orderBy
+      cursor: $gpac_findFirstUserOrThrow_actions_cursor
+      take: $gpac_findFirstUserOrThrow_actions_take
+      skip: $gpac_findFirstUserOrThrow_actions_skip
+      distinct: $gpac_findFirstUserOrThrow_actions_distinct
+    ) {
+      id
+      actionType
+      timestamp
+      details
+      userId
+    }
+    _count {
+      policies
+      actions
+    }
+  }
+}

@@ -1,0 +1,55 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_aggregateUser_query($where: customerCommunication_UserWhereInput, $orderBy: [customerCommunication_UserOrderByWithRelationInput], $cursor: customerCommunication_UserWhereUniqueInput, $take: Int, $skip: Int) {
+  customerCommunication_aggregateUser(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      _all
+    }
+    _min {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+    }
+    _max {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+    }
+  }
+}

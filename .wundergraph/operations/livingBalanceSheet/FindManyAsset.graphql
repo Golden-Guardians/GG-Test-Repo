@@ -1,0 +1,55 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query livingBalanceSheet_findManyAsset_query($where: livingBalanceSheet_AssetWhereInput, $orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $cursor: livingBalanceSheet_AssetWhereUniqueInput, $take: Int, $skip: Int, $distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_findManyAsset_user_user_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_findManyAsset_user_user_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_findManyAsset_user_user_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_findManyAsset_user_user_liabilities_take: Int, $livingBalanceSheet_findManyAsset_user_user_liabilities_skip: Int, $livingBalanceSheet_findManyAsset_user_user_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum], $livingBalanceSheet_findManyAsset_user_user_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_findManyAsset_user_user_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_findManyAsset_user_user_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_findManyAsset_user_user_goals_take: Int, $livingBalanceSheet_findManyAsset_user_user_goals_skip: Int, $livingBalanceSheet_findManyAsset_user_user_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+  livingBalanceSheet_findManyAsset(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    assetType
+    value
+    userId
+    user {
+      id
+      username
+      password
+      role
+      liabilities(
+        where: $livingBalanceSheet_findManyAsset_user_user_liabilities_where
+        orderBy: $livingBalanceSheet_findManyAsset_user_user_liabilities_orderBy
+        cursor: $livingBalanceSheet_findManyAsset_user_user_liabilities_cursor
+        take: $livingBalanceSheet_findManyAsset_user_user_liabilities_take
+        skip: $livingBalanceSheet_findManyAsset_user_user_liabilities_skip
+        distinct: $livingBalanceSheet_findManyAsset_user_user_liabilities_distinct
+      ) {
+        id
+        liabilityType
+        amount
+        userId
+      }
+      goals(
+        where: $livingBalanceSheet_findManyAsset_user_user_goals_where
+        orderBy: $livingBalanceSheet_findManyAsset_user_user_goals_orderBy
+        cursor: $livingBalanceSheet_findManyAsset_user_user_goals_cursor
+        take: $livingBalanceSheet_findManyAsset_user_user_goals_take
+        skip: $livingBalanceSheet_findManyAsset_user_user_goals_skip
+        distinct: $livingBalanceSheet_findManyAsset_user_user_goals_distinct
+      ) {
+        id
+        goalType
+        target
+        deadline
+        userId
+      }
+      _count {
+        assets
+        liabilities
+        goals
+      }
+    }
+  }
+}

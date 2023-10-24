@@ -1,0 +1,52 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation livingBalanceSheet_upsertOneFinancialGoal_mutation($where: livingBalanceSheet_FinancialGoalWhereUniqueInput!, $create: livingBalanceSheet_FinancialGoalCreateInput!, $update: livingBalanceSheet_FinancialGoalUpdateInput!, $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_where: livingBalanceSheet_AssetWhereInput, $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_cursor: livingBalanceSheet_AssetWhereUniqueInput, $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_take: Int, $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_skip: Int, $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_take: Int, $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_skip: Int, $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum]) {
+  livingBalanceSheet_upsertOneFinancialGoal(
+    where: $where
+    create: $create
+    update: $update
+  ) {
+    id
+    goalType
+    target
+    deadline
+    userId
+    user {
+      id
+      username
+      password
+      role
+      assets(
+        where: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_where
+        orderBy: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_orderBy
+        cursor: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_cursor
+        take: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_take
+        skip: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_skip
+        distinct: $livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_distinct
+      ) {
+        id
+        assetType
+        value
+        userId
+      }
+      liabilities(
+        where: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_where
+        orderBy: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_orderBy
+        cursor: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_cursor
+        take: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_take
+        skip: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_skip
+        distinct: $livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_distinct
+      ) {
+        id
+        liabilityType
+        amount
+        userId
+      }
+      _count {
+        assets
+        liabilities
+        goals
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation customerCommunication_updateOneFilter_mutation($data: customerCommunication_FilterUpdateInput!, $where: customerCommunication_FilterWhereUniqueInput!) {
+  customerCommunication_updateOneFilter(data: $data, where: $where) {
+    id
+    audience
+    output
+  }
+}

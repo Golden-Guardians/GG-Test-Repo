@@ -1,0 +1,29 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query clientPortal_aggregateService_query($where: clientPortal_ServiceWhereInput, $orderBy: [clientPortal_ServiceOrderByWithRelationInput], $cursor: clientPortal_ServiceWhereUniqueInput, $take: Int, $skip: Int) {
+  clientPortal_aggregateService(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      serviceType
+      content
+      clientId
+      _all
+    }
+    _min {
+      id
+      serviceType
+      clientId
+    }
+    _max {
+      id
+      serviceType
+      clientId
+    }
+  }
+}

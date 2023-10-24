@@ -1,5 +1,5 @@
 query {
-  db_aggregateUser {
+  customerCommunication_aggregateUser {
     _count {
       _all
     }
