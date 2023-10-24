@@ -143,7 +143,13 @@ cp .env.example .env.local
 pnpm dev
 ```
 
-4. View/edit the database:
+4. Start WunderGraph:
+
+```sh
+pnpm wunderctl:up
+```
+
+5. View/edit the database:
 
 ```sh
 pnpm prisma-studio
