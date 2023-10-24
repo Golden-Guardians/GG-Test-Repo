@@ -102,7 +102,7 @@ pnpm prisma-studio
 Deploy your application to production using the following command:
 
 ```bash
-pnpm sst deploy --stage prod
+npx sst deploy --stage prod
 ```
 
 > Note: The `sst deploy` command internally uses OpenNext to build your app.
