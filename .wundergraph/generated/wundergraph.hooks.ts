@@ -265,6 +265,7 @@ import {
 	DbUpsertOneVerificationTokenInput,
 	DbUpsertOneVerificationTokenInputInternal,
 	DbUpsertOneVerificationTokenInputInjected,
+	UsersCountUsersResponse,
 	UsersGetAllUsersResponse,
 	WeatherGetCityByIdResponse,
 	WeatherGetCityByIdInput,
@@ -501,6 +502,7 @@ export type QueryHooks<TCustomContext = any> = {
 	>;
 	DbQueryRaw?: QueryHook<DbQueryRawInputInjected, DbQueryRawResponse, HookContext<TCustomContext>>;
 	DbQueryRawJSON?: QueryHook<DbQueryRawJSONInputInjected, DbQueryRawJSONResponse, HookContext<TCustomContext>>;
+	UsersCountUsers?: QueryHookWithoutInput<UsersCountUsersResponse, HookContext<TCustomContext>>;
 	UsersGetAllUsers?: QueryHookWithoutInput<UsersGetAllUsersResponse, HookContext<TCustomContext>>;
 	WeatherGetCityById?: QueryHook<
 		WeatherGetCityByIdInputInjected,

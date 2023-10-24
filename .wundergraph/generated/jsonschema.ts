@@ -233,6 +233,12 @@ export interface Queries {
 		operationType: string;
 		description: string;
 	};
+	"users/CountUsers": {
+		input: JSONSchema7;
+		response: JSONSchema7;
+		operationType: string;
+		description: string;
+	};
 	"users/GetAllUsers": {
 		input: JSONSchema7;
 		response: JSONSchema7;
@@ -12269,6 +12275,38 @@ const jsonSchema: Schema = {
 		operationType: "QUERY",
 		description: "",
 	},
+	"users/CountUsers": {
+		input: { type: "object", properties: {}, additionalProperties: false },
+		response: {
+			type: "object",
+			properties: {
+				data: {
+					type: "object",
+					properties: {
+						db_aggregateUser: {
+							type: "object",
+							properties: {
+								_count: {
+									type: "object",
+									properties: { _all: { type: "integer" } },
+									additionalProperties: false,
+									required: ["_all"],
+								},
+								_min: { type: "object", properties: { id: { type: "string" } }, additionalProperties: false },
+								_max: { type: "object", properties: { id: { type: "string" } }, additionalProperties: false },
+							},
+							additionalProperties: false,
+						},
+					},
+					additionalProperties: false,
+					required: ["db_aggregateUser"],
+				},
+			},
+			additionalProperties: false,
+		},
+		operationType: "QUERY",
+		description: "",
+	},
 	"users/GetAllUsers": {
 		input: { type: "object", properties: {}, additionalProperties: false },
 		response: {
@@ -22657,6 +22695,7 @@ export type QueryNames =
 	| "db/GroupByVerificationToken"
 	| "db/QueryRaw"
 	| "db/QueryRawJSON"
+	| "users/CountUsers"
 	| "users/GetAllUsers"
 	| "weather/GetCityById"
 	| "weather/GetCityByName"

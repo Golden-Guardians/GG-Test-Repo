@@ -1,0 +1,13 @@
+query {
+  db_aggregateUser {
+    _count {
+      _all
+    }
+    _min {
+      id
+    }
+    _max {
+      id
+    }
+  }
+}

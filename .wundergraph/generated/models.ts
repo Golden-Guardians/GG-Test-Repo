@@ -3609,6 +3609,11 @@ export interface DbUpsertOneVerificationTokenResponse {
 	errors?: GraphQLError[];
 }
 
+export interface UsersCountUsersResponse {
+	data?: UsersCountUsersResponseData;
+	errors?: GraphQLError[];
+}
+
 export interface UsersGetAllUsersResponse {
 	data?: UsersGetAllUsersResponseData;
 	errors?: GraphQLError[];
@@ -5529,6 +5534,20 @@ export interface DbUpsertOneVerificationTokenResponseData {
 		identifier: string;
 		token: string;
 		expires: string;
+	};
+}
+
+export interface UsersCountUsersResponseData {
+	db_aggregateUser: {
+		_count?: {
+			_all: number;
+		};
+		_min?: {
+			id?: string;
+		};
+		_max?: {
+			id?: string;
+		};
 	};
 }
 

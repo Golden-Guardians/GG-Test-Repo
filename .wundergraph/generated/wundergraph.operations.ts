@@ -95,6 +95,7 @@ export interface OperationsConfiguration {
 		DbUpsertOneSession?: CustomizeMutation;
 		DbUpsertOneUser?: CustomizeMutation;
 		DbUpsertOneVerificationToken?: CustomizeMutation;
+		UsersCountUsers?: CustomizeQuery;
 		UsersGetAllUsers?: CustomizeQuery;
 		WeatherGetCityById?: CustomizeQuery;
 		WeatherGetCityByName?: CustomizeQuery;
@@ -177,6 +178,7 @@ declare module "@wundergraph/sdk" {
 		DbUpsertOneSession?: Partial<MutationConfiguration>;
 		DbUpsertOneUser?: Partial<MutationConfiguration>;
 		DbUpsertOneVerificationToken?: Partial<MutationConfiguration>;
+		UsersCountUsers?: Partial<QueryConfiguration>;
 		UsersGetAllUsers?: Partial<QueryConfiguration>;
 		WeatherGetCityById?: Partial<QueryConfiguration>;
 		WeatherGetCityByName?: Partial<QueryConfiguration>;

@@ -397,6 +397,12 @@
 "content": "mutation DbUpsertOneVerificationToken($where: db_VerificationTokenWhereUniqueInput!, $create: db_VerificationTokenCreateInput!, $update: db_VerificationTokenUpdateInput!){db_upsertOneVerificationToken(where: $where, create: $create, update: $update){identifier token expires}}"
 },
 {
+"operation_name": "UsersCountUsers",
+"api_mount_path": "users/CountUsers",
+"file_path": "users/CountUsers.graphql",
+"content": "query UsersCountUsers {db_aggregateUser {_count {_all} _min {id} _max {id}}}"
+},
+{
 "operation_name": "UsersGetAllUsers",
 "api_mount_path": "users/GetAllUsers",
 "file_path": "users/GetAllUsers.graphql",

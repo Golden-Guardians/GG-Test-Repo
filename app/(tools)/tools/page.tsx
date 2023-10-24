@@ -28,6 +28,10 @@ export default async function DashboardPage() {
     operationName: "users/GetAllUsers",
   })
 
+  const CountUsers = await client.query({
+    operationName: "users/CountUsers",
+  })
+
   return (
     <DashboardShell>
       <DashboardHeader heading="Users" text="Manage users." />
@@ -49,6 +53,13 @@ export default async function DashboardPage() {
           </EmptyPlaceholder>
         )}
         Wundergraph Example:
+        <div className="p-4">
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Users: {CountUsers.data?.db_aggregateUser?._count?._all}
+            </p>
+          </div>
+        </div>
         {getAllUsers.data?.db_findManyUser?.length ? (
           <div className="divide-y divide-border rounded-md border">
             {getAllUsers.data?.db_findManyUser.map((user) => (

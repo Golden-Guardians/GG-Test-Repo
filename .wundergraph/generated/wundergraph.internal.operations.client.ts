@@ -334,6 +334,8 @@ import {
 	DbUpsertOneVerificationTokenInputInternal,
 	DbUpsertOneVerificationTokenInputInjected,
 	DbUpsertOneVerificationTokenResponseData,
+	UsersCountUsersResponse,
+	UsersCountUsersResponseData,
 	UsersGetAllUsersResponse,
 	UsersGetAllUsersResponseData,
 	WeatherGetCityByIdResponse,
@@ -528,6 +530,10 @@ export type Queries = {
 	"db/QueryRawJSON": {
 		input: DbQueryRawJSONInputInternal;
 		response: { data?: DbQueryRawJSONResponse["data"]; error?: ClientOperationErrors };
+	};
+	"users/CountUsers": {
+		input: undefined;
+		response: { data?: UsersCountUsersResponse["data"]; error?: ClientOperationErrors };
 	};
 	"users/GetAllUsers": {
 		input: undefined;

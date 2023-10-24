@@ -3675,6 +3675,33 @@
           "name": "users",
           "item": [
             {
+              "id": "users/CountUsers",
+              "name": "CountUsers",
+              "request": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "users",
+                    "CountUsers"
+                  ],
+                  "host": [
+                    "{{apiBaseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": []
+            },
+            {
               "id": "users/GetAllUsers",
               "name": "GetAllUsers",
               "request": {

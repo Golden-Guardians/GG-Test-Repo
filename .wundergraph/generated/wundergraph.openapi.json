@@ -12556,6 +12556,84 @@
         }
       }
     },
+    "/users/CountUsers": {
+      "get": {
+        "operationId": "UsersCountUsers",
+        "x-wundergraph-operation-type": "query",
+        "x-wundergraph-requires-authentication": false,
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "db_aggregateUser": {
+                          "type": "object",
+                          "properties": {
+                            "_count": {
+                              "type": "object",
+                              "properties": {
+                                "_all": {
+                                  "type": "integer"
+                                }
+                              },
+                              "additionalProperties": false,
+                              "required": [
+                                "_all"
+                              ]
+                            },
+                            "_min": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "_max": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string"
+                                }
+                              },
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "db_aggregateUser"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidInputError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/GetAllUsers": {
       "get": {
         "operationId": "UsersGetAllUsers",

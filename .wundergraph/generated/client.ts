@@ -220,6 +220,8 @@ import type {
 	DbUpsertOneVerificationTokenResponse,
 	DbUpsertOneVerificationTokenInput,
 	DbUpsertOneVerificationTokenResponseData,
+	UsersCountUsersResponse,
+	UsersCountUsersResponseData,
 	UsersGetAllUsersResponse,
 	UsersGetAllUsersResponseData,
 	WeatherGetCityByIdResponse,
@@ -259,7 +261,7 @@ export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = false;
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "126f85c8",
+	applicationHash: "6e32c77c",
 	baseURL: "https://d2vp238439bu7d.cloudfront.net",
 	sdkVersion: "0.179.3",
 };
@@ -461,6 +463,9 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	"db/UpsertOneVerificationToken": {
+		requiresAuthentication: false,
+	},
+	"users/CountUsers": {
 		requiresAuthentication: false,
 	},
 	"users/GetAllUsers": {
@@ -766,6 +771,12 @@ export type Queries = {
 	"db/QueryRawJSON": {
 		input: DbQueryRawJSONInput;
 		response: { data?: DbQueryRawJSONResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"users/CountUsers": {
+		input?: undefined;
+		response: { data?: UsersCountUsersResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -1212,6 +1223,12 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
+	"users/CountUsers": {
+		input?: undefined;
+		response: { data?: UsersCountUsersResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"users/GetAllUsers": {
 		input?: undefined;
 		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
@@ -1488,6 +1505,12 @@ export type LiveQueries = {
 	"db/QueryRawJSON": {
 		input: DbQueryRawJSONInput;
 		response: { data?: DbQueryRawJSONResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"users/CountUsers": {
+		input?: undefined;
+		response: { data?: UsersCountUsersResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
