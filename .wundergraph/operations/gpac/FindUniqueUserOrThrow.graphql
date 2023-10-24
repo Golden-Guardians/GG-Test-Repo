@@ -1,42 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query gpac_findUniqueUserOrThrow_query($where: gpac_UserWhereUniqueInput!, $gpac_findUniqueUserOrThrow_policies_where: gpac_PolicyWhereInput, $gpac_findUniqueUserOrThrow_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_findUniqueUserOrThrow_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_findUniqueUserOrThrow_policies_take: Int, $gpac_findUniqueUserOrThrow_policies_skip: Int, $gpac_findUniqueUserOrThrow_policies_distinct: [gpac_PolicyScalarFieldEnum], $gpac_findUniqueUserOrThrow_actions_where: gpac_AdminActionWhereInput, $gpac_findUniqueUserOrThrow_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_findUniqueUserOrThrow_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_findUniqueUserOrThrow_actions_take: Int, $gpac_findUniqueUserOrThrow_actions_skip: Int, $gpac_findUniqueUserOrThrow_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+query gpac_findUniqueUserOrThrow_query($where: gpac_UserWhereUniqueInput!) {
   gpac_findUniqueUserOrThrow(where: $where) {
     id
     username
     password
     role
-    policies(
-      where: $gpac_findUniqueUserOrThrow_policies_where
-      orderBy: $gpac_findUniqueUserOrThrow_policies_orderBy
-      cursor: $gpac_findUniqueUserOrThrow_policies_cursor
-      take: $gpac_findUniqueUserOrThrow_policies_take
-      skip: $gpac_findUniqueUserOrThrow_policies_skip
-      distinct: $gpac_findUniqueUserOrThrow_policies_distinct
-    ) {
-      id
-      policyType
-      status
-      details
-      userId
-    }
-    actions(
-      where: $gpac_findUniqueUserOrThrow_actions_where
-      orderBy: $gpac_findUniqueUserOrThrow_actions_orderBy
-      cursor: $gpac_findUniqueUserOrThrow_actions_cursor
-      take: $gpac_findUniqueUserOrThrow_actions_take
-      skip: $gpac_findUniqueUserOrThrow_actions_skip
-      distinct: $gpac_findUniqueUserOrThrow_actions_distinct
-    ) {
-      id
-      actionType
-      timestamp
-      details
-      userId
-    }
-    _count {
-      policies
-      actions
-    }
   }
 }

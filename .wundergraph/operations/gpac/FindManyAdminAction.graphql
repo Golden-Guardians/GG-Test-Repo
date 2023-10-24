@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query gpac_findManyAdminAction_query($where: gpac_AdminActionWhereInput, $orderBy: [gpac_AdminActionOrderByWithRelationInput], $cursor: gpac_AdminActionWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_AdminActionScalarFieldEnum], $gpac_findManyAdminAction_user_user_policies_where: gpac_PolicyWhereInput, $gpac_findManyAdminAction_user_user_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_findManyAdminAction_user_user_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_findManyAdminAction_user_user_policies_take: Int, $gpac_findManyAdminAction_user_user_policies_skip: Int, $gpac_findManyAdminAction_user_user_policies_distinct: [gpac_PolicyScalarFieldEnum]) {
+query gpac_findManyAdminAction_query($where: gpac_AdminActionWhereInput, $orderBy: [gpac_AdminActionOrderByWithRelationInput], $cursor: gpac_AdminActionWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_AdminActionScalarFieldEnum]) {
   gpac_findManyAdminAction(
     where: $where
     orderBy: $orderBy
@@ -14,29 +14,5 @@ query gpac_findManyAdminAction_query($where: gpac_AdminActionWhereInput, $orderB
     timestamp
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      policies(
-        where: $gpac_findManyAdminAction_user_user_policies_where
-        orderBy: $gpac_findManyAdminAction_user_user_policies_orderBy
-        cursor: $gpac_findManyAdminAction_user_user_policies_cursor
-        take: $gpac_findManyAdminAction_user_user_policies_take
-        skip: $gpac_findManyAdminAction_user_user_policies_skip
-        distinct: $gpac_findManyAdminAction_user_user_policies_distinct
-      ) {
-        id
-        policyType
-        status
-        details
-        userId
-      }
-      _count {
-        policies
-        actions
-      }
-    }
   }
 }

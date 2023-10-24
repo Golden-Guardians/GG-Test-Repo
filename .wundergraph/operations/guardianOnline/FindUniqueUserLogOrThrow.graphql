@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query guardianOnline_findUniqueUserLogOrThrow_query($where: guardianOnline_UserLogWhereUniqueInput!, $guardianOnline_findUniqueUserLogOrThrow_user_user_features_where: guardianOnline_FeatureWhereInput, $guardianOnline_findUniqueUserLogOrThrow_user_user_features_orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $guardianOnline_findUniqueUserLogOrThrow_user_user_features_cursor: guardianOnline_FeatureWhereUniqueInput, $guardianOnline_findUniqueUserLogOrThrow_user_user_features_take: Int, $guardianOnline_findUniqueUserLogOrThrow_user_user_features_skip: Int, $guardianOnline_findUniqueUserLogOrThrow_user_user_features_distinct: [guardianOnline_FeatureScalarFieldEnum]) {
+query guardianOnline_findUniqueUserLogOrThrow_query($where: guardianOnline_UserLogWhereUniqueInput!) {
   guardianOnline_findUniqueUserLogOrThrow(where: $where) {
     id
     logType
@@ -8,28 +8,5 @@ query guardianOnline_findUniqueUserLogOrThrow_query($where: guardianOnline_UserL
     timestamp
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      features(
-        where: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_where
-        orderBy: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_orderBy
-        cursor: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_cursor
-        take: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_take
-        skip: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_skip
-        distinct: $guardianOnline_findUniqueUserLogOrThrow_user_user_features_distinct
-      ) {
-        id
-        featureType
-        content
-        userId
-      }
-      _count {
-        features
-        logs
-      }
-    }
   }
 }

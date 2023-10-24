@@ -1,55 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query livingBalanceSheet_findUniqueUser_query($where: livingBalanceSheet_UserWhereUniqueInput!, $livingBalanceSheet_findUniqueUser_assets_where: livingBalanceSheet_AssetWhereInput, $livingBalanceSheet_findUniqueUser_assets_orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $livingBalanceSheet_findUniqueUser_assets_cursor: livingBalanceSheet_AssetWhereUniqueInput, $livingBalanceSheet_findUniqueUser_assets_take: Int, $livingBalanceSheet_findUniqueUser_assets_skip: Int, $livingBalanceSheet_findUniqueUser_assets_distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_findUniqueUser_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_findUniqueUser_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_findUniqueUser_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_findUniqueUser_liabilities_take: Int, $livingBalanceSheet_findUniqueUser_liabilities_skip: Int, $livingBalanceSheet_findUniqueUser_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum], $livingBalanceSheet_findUniqueUser_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_findUniqueUser_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_findUniqueUser_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_findUniqueUser_goals_take: Int, $livingBalanceSheet_findUniqueUser_goals_skip: Int, $livingBalanceSheet_findUniqueUser_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+query livingBalanceSheet_findUniqueUser_query($where: livingBalanceSheet_UserWhereUniqueInput!) {
   livingBalanceSheet_findUniqueUser(where: $where) {
     id
     username
     password
     role
-    assets(
-      where: $livingBalanceSheet_findUniqueUser_assets_where
-      orderBy: $livingBalanceSheet_findUniqueUser_assets_orderBy
-      cursor: $livingBalanceSheet_findUniqueUser_assets_cursor
-      take: $livingBalanceSheet_findUniqueUser_assets_take
-      skip: $livingBalanceSheet_findUniqueUser_assets_skip
-      distinct: $livingBalanceSheet_findUniqueUser_assets_distinct
-    ) {
-      id
-      assetType
-      value
-      userId
-    }
-    liabilities(
-      where: $livingBalanceSheet_findUniqueUser_liabilities_where
-      orderBy: $livingBalanceSheet_findUniqueUser_liabilities_orderBy
-      cursor: $livingBalanceSheet_findUniqueUser_liabilities_cursor
-      take: $livingBalanceSheet_findUniqueUser_liabilities_take
-      skip: $livingBalanceSheet_findUniqueUser_liabilities_skip
-      distinct: $livingBalanceSheet_findUniqueUser_liabilities_distinct
-    ) {
-      id
-      liabilityType
-      amount
-      userId
-    }
-    goals(
-      where: $livingBalanceSheet_findUniqueUser_goals_where
-      orderBy: $livingBalanceSheet_findUniqueUser_goals_orderBy
-      cursor: $livingBalanceSheet_findUniqueUser_goals_cursor
-      take: $livingBalanceSheet_findUniqueUser_goals_take
-      skip: $livingBalanceSheet_findUniqueUser_goals_skip
-      distinct: $livingBalanceSheet_findUniqueUser_goals_distinct
-    ) {
-      id
-      goalType
-      target
-      deadline
-      userId
-    }
-    _count {
-      assets
-      liabilities
-      goals
-    }
   }
 }

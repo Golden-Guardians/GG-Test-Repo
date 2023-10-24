@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query guardianOnline_findFirstFeature_query($where: guardianOnline_FeatureWhereInput, $orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $cursor: guardianOnline_FeatureWhereUniqueInput, $take: Int, $skip: Int, $distinct: [guardianOnline_FeatureScalarFieldEnum], $guardianOnline_findFirstFeature_user_user_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_findFirstFeature_user_user_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_findFirstFeature_user_user_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_findFirstFeature_user_user_logs_take: Int, $guardianOnline_findFirstFeature_user_user_logs_skip: Int, $guardianOnline_findFirstFeature_user_user_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+query guardianOnline_findFirstFeature_query($where: guardianOnline_FeatureWhereInput, $orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $cursor: guardianOnline_FeatureWhereUniqueInput, $take: Int, $skip: Int, $distinct: [guardianOnline_FeatureScalarFieldEnum]) {
   guardianOnline_findFirstFeature(
     where: $where
     orderBy: $orderBy
@@ -13,30 +13,5 @@ query guardianOnline_findFirstFeature_query($where: guardianOnline_FeatureWhereI
     featureType
     content
     userId
-    user {
-      id
-      username
-      password
-      role
-      logs(
-        where: $guardianOnline_findFirstFeature_user_user_logs_where
-        orderBy: $guardianOnline_findFirstFeature_user_user_logs_orderBy
-        cursor: $guardianOnline_findFirstFeature_user_user_logs_cursor
-        take: $guardianOnline_findFirstFeature_user_user_logs_take
-        skip: $guardianOnline_findFirstFeature_user_user_logs_skip
-        distinct: $guardianOnline_findFirstFeature_user_user_logs_distinct
-      ) {
-        id
-        logType
-        contentType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        features
-        logs
-      }
-    }
   }
 }

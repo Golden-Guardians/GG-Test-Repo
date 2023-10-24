@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query livingBalanceSheet_findFirstUser_query($where: livingBalanceSheet_UserWhereInput, $orderBy: [livingBalanceSheet_UserOrderByWithRelationInput], $cursor: livingBalanceSheet_UserWhereUniqueInput, $take: Int, $skip: Int, $distinct: [livingBalanceSheet_UserScalarFieldEnum], $livingBalanceSheet_findFirstUser_assets_where: livingBalanceSheet_AssetWhereInput, $livingBalanceSheet_findFirstUser_assets_orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $livingBalanceSheet_findFirstUser_assets_cursor: livingBalanceSheet_AssetWhereUniqueInput, $livingBalanceSheet_findFirstUser_assets_take: Int, $livingBalanceSheet_findFirstUser_assets_skip: Int, $livingBalanceSheet_findFirstUser_assets_distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_findFirstUser_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_findFirstUser_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_findFirstUser_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_findFirstUser_liabilities_take: Int, $livingBalanceSheet_findFirstUser_liabilities_skip: Int, $livingBalanceSheet_findFirstUser_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum], $livingBalanceSheet_findFirstUser_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_findFirstUser_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_findFirstUser_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_findFirstUser_goals_take: Int, $livingBalanceSheet_findFirstUser_goals_skip: Int, $livingBalanceSheet_findFirstUser_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+query livingBalanceSheet_findFirstUser_query($where: livingBalanceSheet_UserWhereInput, $orderBy: [livingBalanceSheet_UserOrderByWithRelationInput], $cursor: livingBalanceSheet_UserWhereUniqueInput, $take: Int, $skip: Int, $distinct: [livingBalanceSheet_UserScalarFieldEnum]) {
   livingBalanceSheet_findFirstUser(
     where: $where
     orderBy: $orderBy
@@ -13,50 +13,5 @@ query livingBalanceSheet_findFirstUser_query($where: livingBalanceSheet_UserWher
     username
     password
     role
-    assets(
-      where: $livingBalanceSheet_findFirstUser_assets_where
-      orderBy: $livingBalanceSheet_findFirstUser_assets_orderBy
-      cursor: $livingBalanceSheet_findFirstUser_assets_cursor
-      take: $livingBalanceSheet_findFirstUser_assets_take
-      skip: $livingBalanceSheet_findFirstUser_assets_skip
-      distinct: $livingBalanceSheet_findFirstUser_assets_distinct
-    ) {
-      id
-      assetType
-      value
-      userId
-    }
-    liabilities(
-      where: $livingBalanceSheet_findFirstUser_liabilities_where
-      orderBy: $livingBalanceSheet_findFirstUser_liabilities_orderBy
-      cursor: $livingBalanceSheet_findFirstUser_liabilities_cursor
-      take: $livingBalanceSheet_findFirstUser_liabilities_take
-      skip: $livingBalanceSheet_findFirstUser_liabilities_skip
-      distinct: $livingBalanceSheet_findFirstUser_liabilities_distinct
-    ) {
-      id
-      liabilityType
-      amount
-      userId
-    }
-    goals(
-      where: $livingBalanceSheet_findFirstUser_goals_where
-      orderBy: $livingBalanceSheet_findFirstUser_goals_orderBy
-      cursor: $livingBalanceSheet_findFirstUser_goals_cursor
-      take: $livingBalanceSheet_findFirstUser_goals_take
-      skip: $livingBalanceSheet_findFirstUser_goals_skip
-      distinct: $livingBalanceSheet_findFirstUser_goals_distinct
-    ) {
-      id
-      goalType
-      target
-      deadline
-      userId
-    }
-    _count {
-      assets
-      liabilities
-      goals
-    }
   }
 }

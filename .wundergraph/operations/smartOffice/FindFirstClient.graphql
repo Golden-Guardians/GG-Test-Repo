@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query smartOffice_findFirstClient_query($where: smartOffice_ClientWhereInput, $orderBy: [smartOffice_ClientOrderByWithRelationInput], $cursor: smartOffice_ClientWhereUniqueInput, $take: Int, $skip: Int, $distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_findFirstClient_user_user_tasks_where: smartOffice_TaskWhereInput, $smartOffice_findFirstClient_user_user_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_findFirstClient_user_user_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_findFirstClient_user_user_tasks_take: Int, $smartOffice_findFirstClient_user_user_tasks_skip: Int, $smartOffice_findFirstClient_user_user_tasks_distinct: [smartOffice_TaskScalarFieldEnum], $smartOffice_findFirstClient_user_user_sales_where: smartOffice_SaleWhereInput, $smartOffice_findFirstClient_user_user_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_findFirstClient_user_user_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_findFirstClient_user_user_sales_take: Int, $smartOffice_findFirstClient_user_user_sales_skip: Int, $smartOffice_findFirstClient_user_user_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+query smartOffice_findFirstClient_query($where: smartOffice_ClientWhereInput, $orderBy: [smartOffice_ClientOrderByWithRelationInput], $cursor: smartOffice_ClientWhereUniqueInput, $take: Int, $skip: Int, $distinct: [smartOffice_ClientScalarFieldEnum]) {
   smartOffice_findFirstClient(
     where: $where
     orderBy: $orderBy
@@ -14,44 +14,5 @@ query smartOffice_findFirstClient_query($where: smartOffice_ClientWhereInput, $o
     email
     phone
     userId
-    user {
-      id
-      username
-      password
-      role
-      tasks(
-        where: $smartOffice_findFirstClient_user_user_tasks_where
-        orderBy: $smartOffice_findFirstClient_user_user_tasks_orderBy
-        cursor: $smartOffice_findFirstClient_user_user_tasks_cursor
-        take: $smartOffice_findFirstClient_user_user_tasks_take
-        skip: $smartOffice_findFirstClient_user_user_tasks_skip
-        distinct: $smartOffice_findFirstClient_user_user_tasks_distinct
-      ) {
-        id
-        taskType
-        status
-        details
-        userId
-      }
-      sales(
-        where: $smartOffice_findFirstClient_user_user_sales_where
-        orderBy: $smartOffice_findFirstClient_user_user_sales_orderBy
-        cursor: $smartOffice_findFirstClient_user_user_sales_cursor
-        take: $smartOffice_findFirstClient_user_user_sales_take
-        skip: $smartOffice_findFirstClient_user_user_sales_skip
-        distinct: $smartOffice_findFirstClient_user_user_sales_distinct
-      ) {
-        id
-        saleType
-        amount
-        timestamp
-        userId
-      }
-      _count {
-        clients
-        tasks
-        sales
-      }
-    }
   }
 }

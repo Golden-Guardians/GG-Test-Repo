@@ -1,50 +1,11 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation smartOffice_deleteOneSale_mutation($where: smartOffice_SaleWhereUniqueInput!, $smartOffice_deleteOneSale_user_user_clients_where: smartOffice_ClientWhereInput, $smartOffice_deleteOneSale_user_user_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_deleteOneSale_user_user_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_deleteOneSale_user_user_clients_take: Int, $smartOffice_deleteOneSale_user_user_clients_skip: Int, $smartOffice_deleteOneSale_user_user_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_deleteOneSale_user_user_tasks_where: smartOffice_TaskWhereInput, $smartOffice_deleteOneSale_user_user_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_deleteOneSale_user_user_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_deleteOneSale_user_user_tasks_take: Int, $smartOffice_deleteOneSale_user_user_tasks_skip: Int, $smartOffice_deleteOneSale_user_user_tasks_distinct: [smartOffice_TaskScalarFieldEnum]) {
+mutation smartOffice_deleteOneSale_mutation($where: smartOffice_SaleWhereUniqueInput!) {
   smartOffice_deleteOneSale(where: $where) {
     id
     saleType
     amount
     timestamp
     userId
-    user {
-      id
-      username
-      password
-      role
-      clients(
-        where: $smartOffice_deleteOneSale_user_user_clients_where
-        orderBy: $smartOffice_deleteOneSale_user_user_clients_orderBy
-        cursor: $smartOffice_deleteOneSale_user_user_clients_cursor
-        take: $smartOffice_deleteOneSale_user_user_clients_take
-        skip: $smartOffice_deleteOneSale_user_user_clients_skip
-        distinct: $smartOffice_deleteOneSale_user_user_clients_distinct
-      ) {
-        id
-        name
-        email
-        phone
-        userId
-      }
-      tasks(
-        where: $smartOffice_deleteOneSale_user_user_tasks_where
-        orderBy: $smartOffice_deleteOneSale_user_user_tasks_orderBy
-        cursor: $smartOffice_deleteOneSale_user_user_tasks_cursor
-        take: $smartOffice_deleteOneSale_user_user_tasks_take
-        skip: $smartOffice_deleteOneSale_user_user_tasks_skip
-        distinct: $smartOffice_deleteOneSale_user_user_tasks_distinct
-      ) {
-        id
-        taskType
-        status
-        details
-        userId
-      }
-      _count {
-        clients
-        tasks
-        sales
-      }
-    }
   }
 }

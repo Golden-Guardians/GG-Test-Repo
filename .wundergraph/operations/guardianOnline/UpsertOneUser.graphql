@@ -1,42 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation guardianOnline_upsertOneUser_mutation($where: guardianOnline_UserWhereUniqueInput!, $create: guardianOnline_UserCreateInput!, $update: guardianOnline_UserUpdateInput!, $guardianOnline_upsertOneUser_features_where: guardianOnline_FeatureWhereInput, $guardianOnline_upsertOneUser_features_orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $guardianOnline_upsertOneUser_features_cursor: guardianOnline_FeatureWhereUniqueInput, $guardianOnline_upsertOneUser_features_take: Int, $guardianOnline_upsertOneUser_features_skip: Int, $guardianOnline_upsertOneUser_features_distinct: [guardianOnline_FeatureScalarFieldEnum], $guardianOnline_upsertOneUser_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_upsertOneUser_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_upsertOneUser_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_upsertOneUser_logs_take: Int, $guardianOnline_upsertOneUser_logs_skip: Int, $guardianOnline_upsertOneUser_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+mutation guardianOnline_upsertOneUser_mutation($where: guardianOnline_UserWhereUniqueInput!, $create: guardianOnline_UserCreateInput!, $update: guardianOnline_UserUpdateInput!) {
   guardianOnline_upsertOneUser(where: $where, create: $create, update: $update) {
     id
     username
     password
     role
-    features(
-      where: $guardianOnline_upsertOneUser_features_where
-      orderBy: $guardianOnline_upsertOneUser_features_orderBy
-      cursor: $guardianOnline_upsertOneUser_features_cursor
-      take: $guardianOnline_upsertOneUser_features_take
-      skip: $guardianOnline_upsertOneUser_features_skip
-      distinct: $guardianOnline_upsertOneUser_features_distinct
-    ) {
-      id
-      featureType
-      content
-      userId
-    }
-    logs(
-      where: $guardianOnline_upsertOneUser_logs_where
-      orderBy: $guardianOnline_upsertOneUser_logs_orderBy
-      cursor: $guardianOnline_upsertOneUser_logs_cursor
-      take: $guardianOnline_upsertOneUser_logs_take
-      skip: $guardianOnline_upsertOneUser_logs_skip
-      distinct: $guardianOnline_upsertOneUser_logs_distinct
-    ) {
-      id
-      logType
-      contentType
-      timestamp
-      details
-      userId
-    }
-    _count {
-      features
-      logs
-    }
   }
 }

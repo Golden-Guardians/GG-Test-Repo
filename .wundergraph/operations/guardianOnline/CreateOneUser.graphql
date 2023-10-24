@@ -1,42 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation guardianOnline_createOneUser_mutation($data: guardianOnline_UserCreateInput!, $guardianOnline_createOneUser_features_where: guardianOnline_FeatureWhereInput, $guardianOnline_createOneUser_features_orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $guardianOnline_createOneUser_features_cursor: guardianOnline_FeatureWhereUniqueInput, $guardianOnline_createOneUser_features_take: Int, $guardianOnline_createOneUser_features_skip: Int, $guardianOnline_createOneUser_features_distinct: [guardianOnline_FeatureScalarFieldEnum], $guardianOnline_createOneUser_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_createOneUser_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_createOneUser_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_createOneUser_logs_take: Int, $guardianOnline_createOneUser_logs_skip: Int, $guardianOnline_createOneUser_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+mutation guardianOnline_createOneUser_mutation($data: guardianOnline_UserCreateInput!) {
   guardianOnline_createOneUser(data: $data) {
     id
     username
     password
     role
-    features(
-      where: $guardianOnline_createOneUser_features_where
-      orderBy: $guardianOnline_createOneUser_features_orderBy
-      cursor: $guardianOnline_createOneUser_features_cursor
-      take: $guardianOnline_createOneUser_features_take
-      skip: $guardianOnline_createOneUser_features_skip
-      distinct: $guardianOnline_createOneUser_features_distinct
-    ) {
-      id
-      featureType
-      content
-      userId
-    }
-    logs(
-      where: $guardianOnline_createOneUser_logs_where
-      orderBy: $guardianOnline_createOneUser_logs_orderBy
-      cursor: $guardianOnline_createOneUser_logs_cursor
-      take: $guardianOnline_createOneUser_logs_take
-      skip: $guardianOnline_createOneUser_logs_skip
-      distinct: $guardianOnline_createOneUser_logs_distinct
-    ) {
-      id
-      logType
-      contentType
-      timestamp
-      details
-      userId
-    }
-    _count {
-      features
-      logs
-    }
   }
 }

@@ -1,57 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation smartOffice_updateOneUser_mutation($data: smartOffice_UserUpdateInput!, $where: smartOffice_UserWhereUniqueInput!, $smartOffice_updateOneUser_clients_where: smartOffice_ClientWhereInput, $smartOffice_updateOneUser_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_updateOneUser_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_updateOneUser_clients_take: Int, $smartOffice_updateOneUser_clients_skip: Int, $smartOffice_updateOneUser_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_updateOneUser_tasks_where: smartOffice_TaskWhereInput, $smartOffice_updateOneUser_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_updateOneUser_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_updateOneUser_tasks_take: Int, $smartOffice_updateOneUser_tasks_skip: Int, $smartOffice_updateOneUser_tasks_distinct: [smartOffice_TaskScalarFieldEnum], $smartOffice_updateOneUser_sales_where: smartOffice_SaleWhereInput, $smartOffice_updateOneUser_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_updateOneUser_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_updateOneUser_sales_take: Int, $smartOffice_updateOneUser_sales_skip: Int, $smartOffice_updateOneUser_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+mutation smartOffice_updateOneUser_mutation($data: smartOffice_UserUpdateInput!, $where: smartOffice_UserWhereUniqueInput!) {
   smartOffice_updateOneUser(data: $data, where: $where) {
     id
     username
     password
     role
-    clients(
-      where: $smartOffice_updateOneUser_clients_where
-      orderBy: $smartOffice_updateOneUser_clients_orderBy
-      cursor: $smartOffice_updateOneUser_clients_cursor
-      take: $smartOffice_updateOneUser_clients_take
-      skip: $smartOffice_updateOneUser_clients_skip
-      distinct: $smartOffice_updateOneUser_clients_distinct
-    ) {
-      id
-      name
-      email
-      phone
-      userId
-    }
-    tasks(
-      where: $smartOffice_updateOneUser_tasks_where
-      orderBy: $smartOffice_updateOneUser_tasks_orderBy
-      cursor: $smartOffice_updateOneUser_tasks_cursor
-      take: $smartOffice_updateOneUser_tasks_take
-      skip: $smartOffice_updateOneUser_tasks_skip
-      distinct: $smartOffice_updateOneUser_tasks_distinct
-    ) {
-      id
-      taskType
-      status
-      details
-      userId
-    }
-    sales(
-      where: $smartOffice_updateOneUser_sales_where
-      orderBy: $smartOffice_updateOneUser_sales_orderBy
-      cursor: $smartOffice_updateOneUser_sales_cursor
-      take: $smartOffice_updateOneUser_sales_take
-      skip: $smartOffice_updateOneUser_sales_skip
-      distinct: $smartOffice_updateOneUser_sales_distinct
-    ) {
-      id
-      saleType
-      amount
-      timestamp
-      userId
-    }
-    _count {
-      clients
-      tasks
-      sales
-    }
   }
 }

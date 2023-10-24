@@ -1,35 +1,11 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation gpac_updateOnePolicy_mutation($data: gpac_PolicyUpdateInput!, $where: gpac_PolicyWhereUniqueInput!, $gpac_updateOnePolicy_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_updateOnePolicy_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_updateOnePolicy_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_updateOnePolicy_user_user_actions_take: Int, $gpac_updateOnePolicy_user_user_actions_skip: Int, $gpac_updateOnePolicy_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+mutation gpac_updateOnePolicy_mutation($data: gpac_PolicyUpdateInput!, $where: gpac_PolicyWhereUniqueInput!) {
   gpac_updateOnePolicy(data: $data, where: $where) {
     id
     policyType
     status
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      actions(
-        where: $gpac_updateOnePolicy_user_user_actions_where
-        orderBy: $gpac_updateOnePolicy_user_user_actions_orderBy
-        cursor: $gpac_updateOnePolicy_user_user_actions_cursor
-        take: $gpac_updateOnePolicy_user_user_actions_take
-        skip: $gpac_updateOnePolicy_user_user_actions_skip
-        distinct: $gpac_updateOnePolicy_user_user_actions_distinct
-      ) {
-        id
-        actionType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        policies
-        actions
-      }
-    }
   }
 }

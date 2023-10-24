@@ -390,28 +390,7 @@ interface TargetTypes {
 	weather_Temperature: "actual" | "feelsLike" | "max" | "min" | "_join";
 	weather_Weather: "clouds" | "summary" | "temperature" | "timestamp" | "wind" | "_join";
 	weather_Wind: "deg" | "speed" | "_join";
-	clientPortal_Service: "id" | "serviceType" | "content" | "clientId" | "client" | "_join";
-	clientPortal_Activity: "id" | "activityType" | "timestamp" | "details" | "clientId" | "client" | "_join";
-	clientPortal_ClientCountOutputType: "services" | "activities" | "_join";
-	clientPortal_Client: "id" | "username" | "password" | "services" | "activities" | "_count" | "_join";
-	clientPortal_ClientCountAggregateOutputType: "id" | "username" | "password" | "_all" | "_join";
-	clientPortal_ClientMinAggregateOutputType: "id" | "username" | "password" | "_join";
-	clientPortal_ClientMaxAggregateOutputType: "id" | "username" | "password" | "_join";
-	clientPortal_AggregateClient: "_count" | "_min" | "_max" | "_join";
-	clientPortal_ClientGroupByOutputType: "id" | "username" | "password" | "_count" | "_min" | "_max" | "_join";
-	clientPortal_ServiceCountAggregateOutputType: "id" | "serviceType" | "content" | "clientId" | "_all" | "_join";
-	clientPortal_ServiceMinAggregateOutputType: "id" | "serviceType" | "clientId" | "_join";
-	clientPortal_ServiceMaxAggregateOutputType: "id" | "serviceType" | "clientId" | "_join";
-	clientPortal_AggregateService: "_count" | "_min" | "_max" | "_join";
-	clientPortal_ServiceGroupByOutputType:
-		| "id"
-		| "serviceType"
-		| "content"
-		| "clientId"
-		| "_count"
-		| "_min"
-		| "_max"
-		| "_join";
+	clientPortal_Activity: "id" | "activityType" | "timestamp" | "details" | "clientId" | "_join";
 	clientPortal_ActivityCountAggregateOutputType:
 		| "id"
 		| "activityType"
@@ -433,30 +412,28 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
-	clientPortal_AffectedRowsOutput: "count" | "_join";
-	gpac_Policy: "id" | "policyType" | "status" | "details" | "userId" | "user" | "_join";
-	gpac_AdminAction: "id" | "actionType" | "timestamp" | "details" | "userId" | "user" | "_join";
-	gpac_UserCountOutputType: "policies" | "actions" | "_join";
-	gpac_User: "id" | "username" | "password" | "role" | "policies" | "actions" | "_count" | "_join";
-	gpac_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
-	gpac_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	gpac_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	gpac_AggregateUser: "_count" | "_min" | "_max" | "_join";
-	gpac_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
-	gpac_PolicyCountAggregateOutputType: "id" | "policyType" | "status" | "details" | "userId" | "_all" | "_join";
-	gpac_PolicyMinAggregateOutputType: "id" | "policyType" | "status" | "userId" | "_join";
-	gpac_PolicyMaxAggregateOutputType: "id" | "policyType" | "status" | "userId" | "_join";
-	gpac_AggregatePolicy: "_count" | "_min" | "_max" | "_join";
-	gpac_PolicyGroupByOutputType:
+	clientPortal_Client: "id" | "username" | "password" | "_join";
+	clientPortal_ClientCountAggregateOutputType: "id" | "username" | "password" | "_all" | "_join";
+	clientPortal_ClientMinAggregateOutputType: "id" | "username" | "password" | "_join";
+	clientPortal_ClientMaxAggregateOutputType: "id" | "username" | "password" | "_join";
+	clientPortal_AggregateClient: "_count" | "_min" | "_max" | "_join";
+	clientPortal_ClientGroupByOutputType: "id" | "username" | "password" | "_count" | "_min" | "_max" | "_join";
+	clientPortal_Service: "id" | "serviceType" | "content" | "clientId" | "_join";
+	clientPortal_ServiceCountAggregateOutputType: "id" | "serviceType" | "content" | "clientId" | "_all" | "_join";
+	clientPortal_ServiceMinAggregateOutputType: "id" | "serviceType" | "clientId" | "_join";
+	clientPortal_ServiceMaxAggregateOutputType: "id" | "serviceType" | "clientId" | "_join";
+	clientPortal_AggregateService: "_count" | "_min" | "_max" | "_join";
+	clientPortal_ServiceGroupByOutputType:
 		| "id"
-		| "policyType"
-		| "status"
-		| "details"
-		| "userId"
+		| "serviceType"
+		| "content"
+		| "clientId"
 		| "_count"
 		| "_min"
 		| "_max"
 		| "_join";
+	clientPortal_AffectedRowsOutput: "count" | "_join";
+	gpac_AdminAction: "id" | "actionType" | "timestamp" | "details" | "userId" | "_join";
 	gpac_AdminActionCountAggregateOutputType: "id" | "actionType" | "timestamp" | "details" | "userId" | "_all" | "_join";
 	gpac_AdminActionMinAggregateOutputType: "id" | "actionType" | "timestamp" | "userId" | "_join";
 	gpac_AdminActionMaxAggregateOutputType: "id" | "actionType" | "timestamp" | "userId" | "_join";
@@ -471,16 +448,29 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
+	gpac_Policy: "id" | "policyType" | "status" | "details" | "userId" | "_join";
+	gpac_PolicyCountAggregateOutputType: "id" | "policyType" | "status" | "details" | "userId" | "_all" | "_join";
+	gpac_PolicyMinAggregateOutputType: "id" | "policyType" | "status" | "userId" | "_join";
+	gpac_PolicyMaxAggregateOutputType: "id" | "policyType" | "status" | "userId" | "_join";
+	gpac_AggregatePolicy: "_count" | "_min" | "_max" | "_join";
+	gpac_PolicyGroupByOutputType:
+		| "id"
+		| "policyType"
+		| "status"
+		| "details"
+		| "userId"
+		| "_count"
+		| "_min"
+		| "_max"
+		| "_join";
+	gpac_User: "id" | "username" | "password" | "role" | "_join";
+	gpac_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
+	gpac_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	gpac_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	gpac_AggregateUser: "_count" | "_min" | "_max" | "_join";
+	gpac_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
 	gpac_AffectedRowsOutput: "count" | "_join";
-	guardianOnline_Feature: "id" | "featureType" | "content" | "userId" | "user" | "_join";
-	guardianOnline_UserLog: "id" | "logType" | "contentType" | "timestamp" | "details" | "userId" | "user" | "_join";
-	guardianOnline_UserCountOutputType: "features" | "logs" | "_join";
-	guardianOnline_User: "id" | "username" | "password" | "role" | "features" | "logs" | "_count" | "_join";
-	guardianOnline_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
-	guardianOnline_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	guardianOnline_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	guardianOnline_AggregateUser: "_count" | "_min" | "_max" | "_join";
-	guardianOnline_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
+	guardianOnline_Feature: "id" | "featureType" | "content" | "userId" | "_join";
 	guardianOnline_FeatureCountAggregateOutputType: "id" | "featureType" | "content" | "userId" | "_all" | "_join";
 	guardianOnline_FeatureMinAggregateOutputType: "id" | "featureType" | "userId" | "_join";
 	guardianOnline_FeatureMaxAggregateOutputType: "id" | "featureType" | "userId" | "_join";
@@ -494,6 +484,13 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
+	guardianOnline_User: "id" | "username" | "password" | "role" | "_join";
+	guardianOnline_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
+	guardianOnline_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	guardianOnline_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	guardianOnline_AggregateUser: "_count" | "_min" | "_max" | "_join";
+	guardianOnline_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
+	guardianOnline_UserLog: "id" | "logType" | "contentType" | "timestamp" | "details" | "userId" | "_join";
 	guardianOnline_UserLogCountAggregateOutputType:
 		| "id"
 		| "logType"
@@ -518,33 +515,7 @@ interface TargetTypes {
 		| "_max"
 		| "_join";
 	guardianOnline_AffectedRowsOutput: "count" | "_join";
-	livingBalanceSheet_Asset: "id" | "assetType" | "value" | "userId" | "user" | "_join";
-	livingBalanceSheet_Liability: "id" | "liabilityType" | "amount" | "userId" | "user" | "_join";
-	livingBalanceSheet_FinancialGoal: "id" | "goalType" | "target" | "deadline" | "userId" | "user" | "_join";
-	livingBalanceSheet_UserCountOutputType: "assets" | "liabilities" | "goals" | "_join";
-	livingBalanceSheet_User:
-		| "id"
-		| "username"
-		| "password"
-		| "role"
-		| "assets"
-		| "liabilities"
-		| "goals"
-		| "_count"
-		| "_join";
-	livingBalanceSheet_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
-	livingBalanceSheet_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	livingBalanceSheet_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	livingBalanceSheet_AggregateUser: "_count" | "_min" | "_max" | "_join";
-	livingBalanceSheet_UserGroupByOutputType:
-		| "id"
-		| "username"
-		| "password"
-		| "role"
-		| "_count"
-		| "_min"
-		| "_max"
-		| "_join";
+	livingBalanceSheet_Asset: "id" | "assetType" | "value" | "userId" | "_join";
 	livingBalanceSheet_AssetCountAggregateOutputType: "id" | "assetType" | "value" | "userId" | "_all" | "_join";
 	livingBalanceSheet_AssetAvgAggregateOutputType: "value" | "_join";
 	livingBalanceSheet_AssetSumAggregateOutputType: "value" | "_join";
@@ -562,23 +533,7 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
-	livingBalanceSheet_LiabilityCountAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_all" | "_join";
-	livingBalanceSheet_LiabilityAvgAggregateOutputType: "amount" | "_join";
-	livingBalanceSheet_LiabilitySumAggregateOutputType: "amount" | "_join";
-	livingBalanceSheet_LiabilityMinAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_join";
-	livingBalanceSheet_LiabilityMaxAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_join";
-	livingBalanceSheet_AggregateLiability: "_count" | "_avg" | "_sum" | "_min" | "_max" | "_join";
-	livingBalanceSheet_LiabilityGroupByOutputType:
-		| "id"
-		| "liabilityType"
-		| "amount"
-		| "userId"
-		| "_count"
-		| "_avg"
-		| "_sum"
-		| "_min"
-		| "_max"
-		| "_join";
+	livingBalanceSheet_FinancialGoal: "id" | "goalType" | "target" | "deadline" | "userId" | "_join";
 	livingBalanceSheet_FinancialGoalCountAggregateOutputType:
 		| "id"
 		| "goalType"
@@ -616,17 +571,40 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
+	livingBalanceSheet_Liability: "id" | "liabilityType" | "amount" | "userId" | "_join";
+	livingBalanceSheet_LiabilityCountAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_all" | "_join";
+	livingBalanceSheet_LiabilityAvgAggregateOutputType: "amount" | "_join";
+	livingBalanceSheet_LiabilitySumAggregateOutputType: "amount" | "_join";
+	livingBalanceSheet_LiabilityMinAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_join";
+	livingBalanceSheet_LiabilityMaxAggregateOutputType: "id" | "liabilityType" | "amount" | "userId" | "_join";
+	livingBalanceSheet_AggregateLiability: "_count" | "_avg" | "_sum" | "_min" | "_max" | "_join";
+	livingBalanceSheet_LiabilityGroupByOutputType:
+		| "id"
+		| "liabilityType"
+		| "amount"
+		| "userId"
+		| "_count"
+		| "_avg"
+		| "_sum"
+		| "_min"
+		| "_max"
+		| "_join";
+	livingBalanceSheet_User: "id" | "username" | "password" | "role" | "_join";
+	livingBalanceSheet_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
+	livingBalanceSheet_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	livingBalanceSheet_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	livingBalanceSheet_AggregateUser: "_count" | "_min" | "_max" | "_join";
+	livingBalanceSheet_UserGroupByOutputType:
+		| "id"
+		| "username"
+		| "password"
+		| "role"
+		| "_count"
+		| "_min"
+		| "_max"
+		| "_join";
 	livingBalanceSheet_AffectedRowsOutput: "count" | "_join";
-	smartOffice_Client: "id" | "name" | "email" | "phone" | "userId" | "user" | "_join";
-	smartOffice_Task: "id" | "taskType" | "status" | "details" | "userId" | "user" | "_join";
-	smartOffice_Sale: "id" | "saleType" | "amount" | "timestamp" | "userId" | "user" | "_join";
-	smartOffice_UserCountOutputType: "clients" | "tasks" | "sales" | "_join";
-	smartOffice_User: "id" | "username" | "password" | "role" | "clients" | "tasks" | "sales" | "_count" | "_join";
-	smartOffice_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
-	smartOffice_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	smartOffice_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
-	smartOffice_AggregateUser: "_count" | "_min" | "_max" | "_join";
-	smartOffice_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
+	smartOffice_Client: "id" | "name" | "email" | "phone" | "userId" | "_join";
 	smartOffice_ClientCountAggregateOutputType: "id" | "name" | "email" | "phone" | "userId" | "_all" | "_join";
 	smartOffice_ClientMinAggregateOutputType: "id" | "name" | "email" | "phone" | "userId" | "_join";
 	smartOffice_ClientMaxAggregateOutputType: "id" | "name" | "email" | "phone" | "userId" | "_join";
@@ -641,20 +619,7 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
-	smartOffice_TaskCountAggregateOutputType: "id" | "taskType" | "status" | "details" | "userId" | "_all" | "_join";
-	smartOffice_TaskMinAggregateOutputType: "id" | "taskType" | "status" | "userId" | "_join";
-	smartOffice_TaskMaxAggregateOutputType: "id" | "taskType" | "status" | "userId" | "_join";
-	smartOffice_AggregateTask: "_count" | "_min" | "_max" | "_join";
-	smartOffice_TaskGroupByOutputType:
-		| "id"
-		| "taskType"
-		| "status"
-		| "details"
-		| "userId"
-		| "_count"
-		| "_min"
-		| "_max"
-		| "_join";
+	smartOffice_Sale: "id" | "saleType" | "amount" | "timestamp" | "userId" | "_join";
 	smartOffice_SaleCountAggregateOutputType: "id" | "saleType" | "amount" | "timestamp" | "userId" | "_all" | "_join";
 	smartOffice_SaleAvgAggregateOutputType: "amount" | "_join";
 	smartOffice_SaleSumAggregateOutputType: "amount" | "_join";
@@ -673,6 +638,27 @@ interface TargetTypes {
 		| "_min"
 		| "_max"
 		| "_join";
+	smartOffice_Task: "id" | "taskType" | "status" | "details" | "userId" | "_join";
+	smartOffice_TaskCountAggregateOutputType: "id" | "taskType" | "status" | "details" | "userId" | "_all" | "_join";
+	smartOffice_TaskMinAggregateOutputType: "id" | "taskType" | "status" | "userId" | "_join";
+	smartOffice_TaskMaxAggregateOutputType: "id" | "taskType" | "status" | "userId" | "_join";
+	smartOffice_AggregateTask: "_count" | "_min" | "_max" | "_join";
+	smartOffice_TaskGroupByOutputType:
+		| "id"
+		| "taskType"
+		| "status"
+		| "details"
+		| "userId"
+		| "_count"
+		| "_min"
+		| "_max"
+		| "_join";
+	smartOffice_User: "id" | "username" | "password" | "role" | "_join";
+	smartOffice_UserCountAggregateOutputType: "id" | "username" | "password" | "role" | "_all" | "_join";
+	smartOffice_UserMinAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	smartOffice_UserMaxAggregateOutputType: "id" | "username" | "password" | "role" | "_join";
+	smartOffice_AggregateUser: "_count" | "_min" | "_max" | "_join";
+	smartOffice_UserGroupByOutputType: "id" | "username" | "password" | "role" | "_count" | "_min" | "_max" | "_join";
 	smartOffice_AffectedRowsOutput: "count" | "_join";
 }
 
@@ -1027,6 +1013,51 @@ interface SourceFields {
 		country: null;
 		name: null;
 	};
+	clientPortal_findFirstActivity: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	clientPortal_findFirstActivityOrThrow: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	clientPortal_findManyActivity: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	clientPortal_aggregateActivity: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+	};
+	clientPortal_groupByActivity: {
+		where: null;
+		orderBy: null;
+		by: null;
+		having: null;
+		take: null;
+		skip: null;
+	};
+	clientPortal_findUniqueActivity: {
+		where: null;
+	};
+	clientPortal_findUniqueActivityOrThrow: {
+		where: null;
+	};
 	clientPortal_findFirstClient: {
 		where: null;
 		orderBy: null;
@@ -1117,51 +1148,6 @@ interface SourceFields {
 	clientPortal_findUniqueServiceOrThrow: {
 		where: null;
 	};
-	clientPortal_findFirstActivity: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	clientPortal_findFirstActivityOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	clientPortal_findManyActivity: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	clientPortal_aggregateActivity: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	clientPortal_groupByActivity: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	clientPortal_findUniqueActivity: {
-		where: null;
-	};
-	clientPortal_findUniqueActivityOrThrow: {
-		where: null;
-	};
 	clientPortal_queryRaw: {
 		query: null;
 		parameters: null;
@@ -1170,7 +1156,7 @@ interface SourceFields {
 		query: null;
 		parameters: null;
 	};
-	gpac_findFirstUser: {
+	gpac_findFirstAdminAction: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1178,7 +1164,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_findFirstUserOrThrow: {
+	gpac_findFirstAdminActionOrThrow: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1186,7 +1172,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_findManyUser: {
+	gpac_findManyAdminAction: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1194,14 +1180,14 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_aggregateUser: {
+	gpac_aggregateAdminAction: {
 		where: null;
 		orderBy: null;
 		cursor: null;
 		take: null;
 		skip: null;
 	};
-	gpac_groupByUser: {
+	gpac_groupByAdminAction: {
 		where: null;
 		orderBy: null;
 		by: null;
@@ -1209,10 +1195,10 @@ interface SourceFields {
 		take: null;
 		skip: null;
 	};
-	gpac_findUniqueUser: {
+	gpac_findUniqueAdminAction: {
 		where: null;
 	};
-	gpac_findUniqueUserOrThrow: {
+	gpac_findUniqueAdminActionOrThrow: {
 		where: null;
 	};
 	gpac_findFirstPolicy: {
@@ -1260,7 +1246,7 @@ interface SourceFields {
 	gpac_findUniquePolicyOrThrow: {
 		where: null;
 	};
-	gpac_findFirstAdminAction: {
+	gpac_findFirstUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1268,7 +1254,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_findFirstAdminActionOrThrow: {
+	gpac_findFirstUserOrThrow: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1276,7 +1262,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_findManyAdminAction: {
+	gpac_findManyUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1284,14 +1270,14 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	gpac_aggregateAdminAction: {
+	gpac_aggregateUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
 		take: null;
 		skip: null;
 	};
-	gpac_groupByAdminAction: {
+	gpac_groupByUser: {
 		where: null;
 		orderBy: null;
 		by: null;
@@ -1299,10 +1285,10 @@ interface SourceFields {
 		take: null;
 		skip: null;
 	};
-	gpac_findUniqueAdminAction: {
+	gpac_findUniqueUser: {
 		where: null;
 	};
-	gpac_findUniqueAdminActionOrThrow: {
+	gpac_findUniqueUserOrThrow: {
 		where: null;
 	};
 	gpac_queryRaw: {
@@ -1312,51 +1298,6 @@ interface SourceFields {
 	gpac_queryRawJSON: {
 		query: null;
 		parameters: null;
-	};
-	guardianOnline_findFirstUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	guardianOnline_findFirstUserOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	guardianOnline_findManyUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	guardianOnline_aggregateUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	guardianOnline_groupByUser: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	guardianOnline_findUniqueUser: {
-		where: null;
-	};
-	guardianOnline_findUniqueUserOrThrow: {
-		where: null;
 	};
 	guardianOnline_findFirstFeature: {
 		where: null;
@@ -1401,6 +1342,51 @@ interface SourceFields {
 		where: null;
 	};
 	guardianOnline_findUniqueFeatureOrThrow: {
+		where: null;
+	};
+	guardianOnline_findFirstUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	guardianOnline_findFirstUserOrThrow: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	guardianOnline_findManyUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	guardianOnline_aggregateUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+	};
+	guardianOnline_groupByUser: {
+		where: null;
+		orderBy: null;
+		by: null;
+		having: null;
+		take: null;
+		skip: null;
+	};
+	guardianOnline_findUniqueUser: {
+		where: null;
+	};
+	guardianOnline_findUniqueUserOrThrow: {
 		where: null;
 	};
 	guardianOnline_findFirstUserLog: {
@@ -1456,51 +1442,6 @@ interface SourceFields {
 		query: null;
 		parameters: null;
 	};
-	livingBalanceSheet_findFirstUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_findFirstUserOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_findManyUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_aggregateUser: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	livingBalanceSheet_groupByUser: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	livingBalanceSheet_findUniqueUser: {
-		where: null;
-	};
-	livingBalanceSheet_findUniqueUserOrThrow: {
-		where: null;
-	};
 	livingBalanceSheet_findFirstAsset: {
 		where: null;
 		orderBy: null;
@@ -1544,51 +1485,6 @@ interface SourceFields {
 		where: null;
 	};
 	livingBalanceSheet_findUniqueAssetOrThrow: {
-		where: null;
-	};
-	livingBalanceSheet_findFirstLiability: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_findFirstLiabilityOrThrow: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_findManyLiability: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-		distinct: null;
-	};
-	livingBalanceSheet_aggregateLiability: {
-		where: null;
-		orderBy: null;
-		cursor: null;
-		take: null;
-		skip: null;
-	};
-	livingBalanceSheet_groupByLiability: {
-		where: null;
-		orderBy: null;
-		by: null;
-		having: null;
-		take: null;
-		skip: null;
-	};
-	livingBalanceSheet_findUniqueLiability: {
-		where: null;
-	};
-	livingBalanceSheet_findUniqueLiabilityOrThrow: {
 		where: null;
 	};
 	livingBalanceSheet_findFirstFinancialGoal: {
@@ -1636,15 +1532,7 @@ interface SourceFields {
 	livingBalanceSheet_findUniqueFinancialGoalOrThrow: {
 		where: null;
 	};
-	livingBalanceSheet_queryRaw: {
-		query: null;
-		parameters: null;
-	};
-	livingBalanceSheet_queryRawJSON: {
-		query: null;
-		parameters: null;
-	};
-	smartOffice_findFirstUser: {
+	livingBalanceSheet_findFirstLiability: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1652,7 +1540,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_findFirstUserOrThrow: {
+	livingBalanceSheet_findFirstLiabilityOrThrow: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1660,7 +1548,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_findManyUser: {
+	livingBalanceSheet_findManyLiability: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1668,14 +1556,14 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_aggregateUser: {
+	livingBalanceSheet_aggregateLiability: {
 		where: null;
 		orderBy: null;
 		cursor: null;
 		take: null;
 		skip: null;
 	};
-	smartOffice_groupByUser: {
+	livingBalanceSheet_groupByLiability: {
 		where: null;
 		orderBy: null;
 		by: null;
@@ -1683,11 +1571,64 @@ interface SourceFields {
 		take: null;
 		skip: null;
 	};
-	smartOffice_findUniqueUser: {
+	livingBalanceSheet_findUniqueLiability: {
 		where: null;
 	};
-	smartOffice_findUniqueUserOrThrow: {
+	livingBalanceSheet_findUniqueLiabilityOrThrow: {
 		where: null;
+	};
+	livingBalanceSheet_findFirstUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	livingBalanceSheet_findFirstUserOrThrow: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	livingBalanceSheet_findManyUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	livingBalanceSheet_aggregateUser: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+	};
+	livingBalanceSheet_groupByUser: {
+		where: null;
+		orderBy: null;
+		by: null;
+		having: null;
+		take: null;
+		skip: null;
+	};
+	livingBalanceSheet_findUniqueUser: {
+		where: null;
+	};
+	livingBalanceSheet_findUniqueUserOrThrow: {
+		where: null;
+	};
+	livingBalanceSheet_queryRaw: {
+		query: null;
+		parameters: null;
+	};
+	livingBalanceSheet_queryRawJSON: {
+		query: null;
+		parameters: null;
 	};
 	smartOffice_findFirstClient: {
 		where: null;
@@ -1732,6 +1673,51 @@ interface SourceFields {
 		where: null;
 	};
 	smartOffice_findUniqueClientOrThrow: {
+		where: null;
+	};
+	smartOffice_findFirstSale: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	smartOffice_findFirstSaleOrThrow: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	smartOffice_findManySale: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+		distinct: null;
+	};
+	smartOffice_aggregateSale: {
+		where: null;
+		orderBy: null;
+		cursor: null;
+		take: null;
+		skip: null;
+	};
+	smartOffice_groupBySale: {
+		where: null;
+		orderBy: null;
+		by: null;
+		having: null;
+		take: null;
+		skip: null;
+	};
+	smartOffice_findUniqueSale: {
+		where: null;
+	};
+	smartOffice_findUniqueSaleOrThrow: {
 		where: null;
 	};
 	smartOffice_findFirstTask: {
@@ -1779,7 +1765,7 @@ interface SourceFields {
 	smartOffice_findUniqueTaskOrThrow: {
 		where: null;
 	};
-	smartOffice_findFirstSale: {
+	smartOffice_findFirstUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1787,7 +1773,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_findFirstSaleOrThrow: {
+	smartOffice_findFirstUserOrThrow: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1795,7 +1781,7 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_findManySale: {
+	smartOffice_findManyUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
@@ -1803,14 +1789,14 @@ interface SourceFields {
 		skip: null;
 		distinct: null;
 	};
-	smartOffice_aggregateSale: {
+	smartOffice_aggregateUser: {
 		where: null;
 		orderBy: null;
 		cursor: null;
 		take: null;
 		skip: null;
 	};
-	smartOffice_groupBySale: {
+	smartOffice_groupByUser: {
 		where: null;
 		orderBy: null;
 		by: null;
@@ -1818,10 +1804,10 @@ interface SourceFields {
 		take: null;
 		skip: null;
 	};
-	smartOffice_findUniqueSale: {
+	smartOffice_findUniqueUser: {
 		where: null;
 	};
-	smartOffice_findUniqueSaleOrThrow: {
+	smartOffice_findUniqueUserOrThrow: {
 		where: null;
 	};
 	smartOffice_queryRaw: {

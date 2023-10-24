@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query gpac_findFirstPolicy_query($where: gpac_PolicyWhereInput, $orderBy: [gpac_PolicyOrderByWithRelationInput], $cursor: gpac_PolicyWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_PolicyScalarFieldEnum], $gpac_findFirstPolicy_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_findFirstPolicy_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_findFirstPolicy_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_findFirstPolicy_user_user_actions_take: Int, $gpac_findFirstPolicy_user_user_actions_skip: Int, $gpac_findFirstPolicy_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+query gpac_findFirstPolicy_query($where: gpac_PolicyWhereInput, $orderBy: [gpac_PolicyOrderByWithRelationInput], $cursor: gpac_PolicyWhereUniqueInput, $take: Int, $skip: Int, $distinct: [gpac_PolicyScalarFieldEnum]) {
   gpac_findFirstPolicy(
     where: $where
     orderBy: $orderBy
@@ -14,29 +14,5 @@ query gpac_findFirstPolicy_query($where: gpac_PolicyWhereInput, $orderBy: [gpac_
     status
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      actions(
-        where: $gpac_findFirstPolicy_user_user_actions_where
-        orderBy: $gpac_findFirstPolicy_user_user_actions_orderBy
-        cursor: $gpac_findFirstPolicy_user_user_actions_cursor
-        take: $gpac_findFirstPolicy_user_user_actions_take
-        skip: $gpac_findFirstPolicy_user_user_actions_skip
-        distinct: $gpac_findFirstPolicy_user_user_actions_distinct
-      ) {
-        id
-        actionType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        policies
-        actions
-      }
-    }
   }
 }

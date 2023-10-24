@@ -17,11 +17,10 @@ export interface clientPortal_ActivityWhereInput {
 	OR?: clientPortal_ActivityWhereInput[];
 	NOT?: clientPortal_ActivityWhereInput;
 	id?: clientPortal_StringFilter;
-	activityType?: clientPortal_EnumActivityTypeFilter;
+	activityType?: clientPortal_EnumActivity_activityTypeFilter;
 	timestamp?: clientPortal_DateTimeFilter;
 	details?: clientPortal_JsonFilter;
 	clientId?: clientPortal_StringFilter;
-	client?: clientPortal_ClientRelationFilter;
 }
 
 export interface clientPortal_StringFilter {
@@ -52,11 +51,11 @@ export interface clientPortal_NestedStringFilter {
 	not?: clientPortal_NestedStringFilter;
 }
 
-export interface clientPortal_EnumActivityTypeFilter {
-	equals?: clientPortal_ActivityTypeValues;
-	in?: clientPortal_ActivityTypeValues[];
-	notIn?: clientPortal_ActivityTypeValues[];
-	not?: clientPortal_ActivityTypeValues;
+export interface clientPortal_EnumActivity_activityTypeFilter {
+	equals?: clientPortal_Activity_activityTypeValues;
+	in?: clientPortal_Activity_activityTypeValues[];
+	notIn?: clientPortal_Activity_activityTypeValues[];
+	not?: clientPortal_Activity_activityTypeValues;
 }
 
 export interface clientPortal_DateTimeFilter {
@@ -97,9 +96,16 @@ export interface clientPortal_JsonFilter {
 	not?: JSONValue;
 }
 
-export interface clientPortal_ClientRelationFilter {
-	is?: clientPortal_ClientWhereInput;
-	isNot?: clientPortal_ClientWhereInput;
+export interface clientPortal_ActivityOrderByWithRelationInput {
+	id?: clientPortal_SortOrderValues;
+	activityType?: clientPortal_SortOrderValues;
+	timestamp?: clientPortal_SortOrderValues;
+	details?: clientPortal_SortOrderValues;
+	clientId?: clientPortal_SortOrderValues;
+}
+
+export interface clientPortal_ActivityWhereUniqueInput {
+	id?: string;
 }
 
 export interface clientPortal_ClientWhereInput {
@@ -109,14 +115,16 @@ export interface clientPortal_ClientWhereInput {
 	id?: clientPortal_StringFilter;
 	username?: clientPortal_StringFilter;
 	password?: clientPortal_StringFilter;
-	services?: clientPortal_ServiceListRelationFilter;
-	activities?: clientPortal_ActivityListRelationFilter;
 }
 
-export interface clientPortal_ServiceListRelationFilter {
-	every?: clientPortal_ServiceWhereInput;
-	some?: clientPortal_ServiceWhereInput;
-	none?: clientPortal_ServiceWhereInput;
+export interface clientPortal_ClientOrderByWithRelationInput {
+	id?: clientPortal_SortOrderValues;
+	username?: clientPortal_SortOrderValues;
+	password?: clientPortal_SortOrderValues;
+}
+
+export interface clientPortal_ClientWhereUniqueInput {
+	id?: string;
 }
 
 export interface clientPortal_ServiceWhereInput {
@@ -124,56 +132,16 @@ export interface clientPortal_ServiceWhereInput {
 	OR?: clientPortal_ServiceWhereInput[];
 	NOT?: clientPortal_ServiceWhereInput;
 	id?: clientPortal_StringFilter;
-	serviceType?: clientPortal_EnumServiceTypeFilter;
+	serviceType?: clientPortal_EnumService_serviceTypeFilter;
 	content?: clientPortal_JsonFilter;
 	clientId?: clientPortal_StringFilter;
-	client?: clientPortal_ClientRelationFilter;
 }
 
-export interface clientPortal_EnumServiceTypeFilter {
-	equals?: clientPortal_ServiceTypeValues;
-	in?: clientPortal_ServiceTypeValues[];
-	notIn?: clientPortal_ServiceTypeValues[];
-	not?: clientPortal_ServiceTypeValues;
-}
-
-export interface clientPortal_ActivityListRelationFilter {
-	every?: clientPortal_ActivityWhereInput;
-	some?: clientPortal_ActivityWhereInput;
-	none?: clientPortal_ActivityWhereInput;
-}
-
-export interface clientPortal_ActivityOrderByWithRelationInput {
-	id?: clientPortal_SortOrderValues;
-	activityType?: clientPortal_SortOrderValues;
-	timestamp?: clientPortal_SortOrderValues;
-	details?: clientPortal_SortOrderValues;
-	clientId?: clientPortal_SortOrderValues;
-	client?: clientPortal_ClientOrderByWithRelationInput;
-}
-
-export interface clientPortal_ClientOrderByWithRelationInput {
-	id?: clientPortal_SortOrderValues;
-	username?: clientPortal_SortOrderValues;
-	password?: clientPortal_SortOrderValues;
-	services?: clientPortal_ServiceOrderByRelationAggregateInput;
-	activities?: clientPortal_ActivityOrderByRelationAggregateInput;
-}
-
-export interface clientPortal_ServiceOrderByRelationAggregateInput {
-	_count?: clientPortal_SortOrderValues;
-}
-
-export interface clientPortal_ActivityOrderByRelationAggregateInput {
-	_count?: clientPortal_SortOrderValues;
-}
-
-export interface clientPortal_ActivityWhereUniqueInput {
-	id?: string;
-}
-
-export interface clientPortal_ClientWhereUniqueInput {
-	id?: string;
+export interface clientPortal_EnumService_serviceTypeFilter {
+	equals?: clientPortal_Service_serviceTypeValues;
+	in?: clientPortal_Service_serviceTypeValues[];
+	notIn?: clientPortal_Service_serviceTypeValues[];
+	not?: clientPortal_Service_serviceTypeValues;
 }
 
 export interface clientPortal_ServiceOrderByWithRelationInput {
@@ -181,7 +149,6 @@ export interface clientPortal_ServiceOrderByWithRelationInput {
 	serviceType?: clientPortal_SortOrderValues;
 	content?: clientPortal_SortOrderValues;
 	clientId?: clientPortal_SortOrderValues;
-	client?: clientPortal_ClientOrderByWithRelationInput;
 }
 
 export interface clientPortal_ServiceWhereUniqueInput {
@@ -190,7 +157,7 @@ export interface clientPortal_ServiceWhereUniqueInput {
 
 export interface clientPortal_ActivityCreateManyInput {
 	id?: string;
-	activityType?: clientPortal_ActivityTypeValues;
+	activityType?: clientPortal_Activity_activityTypeValues;
 	timestamp?: string;
 	details?: JSONValue;
 	clientId?: string;
@@ -204,128 +171,30 @@ export interface clientPortal_ClientCreateManyInput {
 
 export interface clientPortal_ServiceCreateManyInput {
 	id?: string;
-	serviceType?: clientPortal_ServiceTypeValues;
+	serviceType?: clientPortal_Service_serviceTypeValues;
 	content?: JSONValue;
 	clientId?: string;
 }
 
 export interface clientPortal_ActivityCreateInput {
-	id?: string;
-	activityType: clientPortal_ActivityTypeValues;
+	id: string;
+	activityType: clientPortal_Activity_activityTypeValues;
 	timestamp: string;
 	details: JSONValue;
-	client: clientPortal_ClientCreateNestedOneWithoutActivitiesInput;
-}
-
-export interface clientPortal_ClientCreateNestedOneWithoutActivitiesInput {
-	create?: clientPortal_ClientCreateWithoutActivitiesInput;
-	connectOrCreate?: clientPortal_ClientCreateOrConnectWithoutActivitiesInput;
-	connect?: clientPortal_ClientWhereUniqueInput;
-}
-
-export interface clientPortal_ClientCreateWithoutActivitiesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	services?: clientPortal_ServiceCreateNestedManyWithoutClientInput;
-}
-
-export interface clientPortal_ServiceCreateNestedManyWithoutClientInput {
-	create?: clientPortal_ServiceCreateWithoutClientInput;
-	connectOrCreate?: clientPortal_ServiceCreateOrConnectWithoutClientInput;
-	createMany?: clientPortal_ServiceCreateManyClientInputEnvelope;
-	connect?: clientPortal_ServiceWhereUniqueInput;
-}
-
-export interface clientPortal_ServiceCreateWithoutClientInput {
-	id?: string;
-	serviceType?: clientPortal_ServiceTypeValues;
-	content?: JSONValue;
-}
-
-export interface clientPortal_ServiceCreateOrConnectWithoutClientInput {
-	where?: clientPortal_ServiceWhereUniqueInput;
-	create?: clientPortal_ServiceCreateWithoutClientInput;
-}
-
-export interface clientPortal_ServiceCreateManyClientInputEnvelope {
-	data?: clientPortal_ServiceCreateManyClientInput;
-	skipDuplicates?: boolean;
-}
-
-export interface clientPortal_ServiceCreateManyClientInput {
-	id?: string;
-	serviceType: clientPortal_ServiceTypeValues;
-	content: JSONValue;
-}
-
-export interface clientPortal_ClientCreateOrConnectWithoutActivitiesInput {
-	where?: clientPortal_ClientWhereUniqueInput;
-	create?: clientPortal_ClientCreateWithoutActivitiesInput;
+	clientId: string;
 }
 
 export interface clientPortal_ClientCreateInput {
-	id?: string;
+	id: string;
 	username: string;
 	password: string;
-	services?: clientPortal_ServiceCreateNestedManyWithoutClientInput;
-	activities?: clientPortal_ActivityCreateNestedManyWithoutClientInput;
-}
-
-export interface clientPortal_ActivityCreateNestedManyWithoutClientInput {
-	create?: clientPortal_ActivityCreateWithoutClientInput;
-	connectOrCreate?: clientPortal_ActivityCreateOrConnectWithoutClientInput;
-	createMany?: clientPortal_ActivityCreateManyClientInputEnvelope;
-	connect?: clientPortal_ActivityWhereUniqueInput;
-}
-
-export interface clientPortal_ActivityCreateWithoutClientInput {
-	id?: string;
-	activityType?: clientPortal_ActivityTypeValues;
-	timestamp?: string;
-	details?: JSONValue;
-}
-
-export interface clientPortal_ActivityCreateOrConnectWithoutClientInput {
-	where?: clientPortal_ActivityWhereUniqueInput;
-	create?: clientPortal_ActivityCreateWithoutClientInput;
-}
-
-export interface clientPortal_ActivityCreateManyClientInputEnvelope {
-	data?: clientPortal_ActivityCreateManyClientInput;
-	skipDuplicates?: boolean;
-}
-
-export interface clientPortal_ActivityCreateManyClientInput {
-	id?: string;
-	activityType: clientPortal_ActivityTypeValues;
-	timestamp: string;
-	details: JSONValue;
 }
 
 export interface clientPortal_ServiceCreateInput {
-	id?: string;
-	serviceType: clientPortal_ServiceTypeValues;
+	id: string;
+	serviceType: clientPortal_Service_serviceTypeValues;
 	content: JSONValue;
-	client: clientPortal_ClientCreateNestedOneWithoutServicesInput;
-}
-
-export interface clientPortal_ClientCreateNestedOneWithoutServicesInput {
-	create?: clientPortal_ClientCreateWithoutServicesInput;
-	connectOrCreate?: clientPortal_ClientCreateOrConnectWithoutServicesInput;
-	connect?: clientPortal_ClientWhereUniqueInput;
-}
-
-export interface clientPortal_ClientCreateWithoutServicesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	activities?: clientPortal_ActivityCreateNestedManyWithoutClientInput;
-}
-
-export interface clientPortal_ClientCreateOrConnectWithoutServicesInput {
-	where?: clientPortal_ClientWhereUniqueInput;
-	create?: clientPortal_ClientCreateWithoutServicesInput;
+	clientId: string;
 }
 
 export interface clientPortal_ActivityOrderByWithAggregationInput {
@@ -366,7 +235,7 @@ export interface clientPortal_ActivityScalarWhereWithAggregatesInput {
 	OR?: clientPortal_ActivityScalarWhereWithAggregatesInput[];
 	NOT?: clientPortal_ActivityScalarWhereWithAggregatesInput;
 	id?: clientPortal_StringWithAggregatesFilter;
-	activityType?: clientPortal_EnumActivityTypeWithAggregatesFilter;
+	activityType?: clientPortal_EnumActivity_activityTypeWithAggregatesFilter;
 	timestamp?: clientPortal_DateTimeWithAggregatesFilter;
 	details?: clientPortal_JsonWithAggregatesFilter;
 	clientId?: clientPortal_StringWithAggregatesFilter;
@@ -417,21 +286,21 @@ export interface clientPortal_NestedIntFilter {
 	not?: clientPortal_NestedIntFilter;
 }
 
-export interface clientPortal_EnumActivityTypeWithAggregatesFilter {
-	equals?: clientPortal_ActivityTypeValues;
-	in?: clientPortal_ActivityTypeValues[];
-	notIn?: clientPortal_ActivityTypeValues[];
-	not?: clientPortal_ActivityTypeValues;
+export interface clientPortal_EnumActivity_activityTypeWithAggregatesFilter {
+	equals?: clientPortal_Activity_activityTypeValues;
+	in?: clientPortal_Activity_activityTypeValues[];
+	notIn?: clientPortal_Activity_activityTypeValues[];
+	not?: clientPortal_Activity_activityTypeValues;
 	_count?: clientPortal_NestedIntFilter;
-	_min?: clientPortal_NestedEnumActivityTypeFilter;
-	_max?: clientPortal_NestedEnumActivityTypeFilter;
+	_min?: clientPortal_NestedEnumActivity_activityTypeFilter;
+	_max?: clientPortal_NestedEnumActivity_activityTypeFilter;
 }
 
-export interface clientPortal_NestedEnumActivityTypeFilter {
-	equals?: clientPortal_ActivityTypeValues;
-	in?: clientPortal_ActivityTypeValues[];
-	notIn?: clientPortal_ActivityTypeValues[];
-	not?: clientPortal_ActivityTypeValues;
+export interface clientPortal_NestedEnumActivity_activityTypeFilter {
+	equals?: clientPortal_Activity_activityTypeValues;
+	in?: clientPortal_Activity_activityTypeValues[];
+	notIn?: clientPortal_Activity_activityTypeValues[];
+	not?: clientPortal_Activity_activityTypeValues;
 }
 
 export interface clientPortal_DateTimeWithAggregatesFilter {
@@ -567,33 +436,34 @@ export interface clientPortal_ServiceScalarWhereWithAggregatesInput {
 	OR?: clientPortal_ServiceScalarWhereWithAggregatesInput[];
 	NOT?: clientPortal_ServiceScalarWhereWithAggregatesInput;
 	id?: clientPortal_StringWithAggregatesFilter;
-	serviceType?: clientPortal_EnumServiceTypeWithAggregatesFilter;
+	serviceType?: clientPortal_EnumService_serviceTypeWithAggregatesFilter;
 	content?: clientPortal_JsonWithAggregatesFilter;
 	clientId?: clientPortal_StringWithAggregatesFilter;
 }
 
-export interface clientPortal_EnumServiceTypeWithAggregatesFilter {
-	equals?: clientPortal_ServiceTypeValues;
-	in?: clientPortal_ServiceTypeValues[];
-	notIn?: clientPortal_ServiceTypeValues[];
-	not?: clientPortal_ServiceTypeValues;
+export interface clientPortal_EnumService_serviceTypeWithAggregatesFilter {
+	equals?: clientPortal_Service_serviceTypeValues;
+	in?: clientPortal_Service_serviceTypeValues[];
+	notIn?: clientPortal_Service_serviceTypeValues[];
+	not?: clientPortal_Service_serviceTypeValues;
 	_count?: clientPortal_NestedIntFilter;
-	_min?: clientPortal_NestedEnumServiceTypeFilter;
-	_max?: clientPortal_NestedEnumServiceTypeFilter;
+	_min?: clientPortal_NestedEnumService_serviceTypeFilter;
+	_max?: clientPortal_NestedEnumService_serviceTypeFilter;
 }
 
-export interface clientPortal_NestedEnumServiceTypeFilter {
-	equals?: clientPortal_ServiceTypeValues;
-	in?: clientPortal_ServiceTypeValues[];
-	notIn?: clientPortal_ServiceTypeValues[];
-	not?: clientPortal_ServiceTypeValues;
+export interface clientPortal_NestedEnumService_serviceTypeFilter {
+	equals?: clientPortal_Service_serviceTypeValues;
+	in?: clientPortal_Service_serviceTypeValues[];
+	notIn?: clientPortal_Service_serviceTypeValues[];
+	not?: clientPortal_Service_serviceTypeValues;
 }
 
 export interface clientPortal_ActivityUpdateManyMutationInput {
 	id?: clientPortal_StringFieldUpdateOperationsInput;
-	activityType?: clientPortal_ActivityTypeValues;
+	activityType?: clientPortal_Activity_activityTypeValues;
 	timestamp?: clientPortal_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
+	clientId?: clientPortal_StringFieldUpdateOperationsInput;
 }
 
 export interface clientPortal_StringFieldUpdateOperationsInput {
@@ -612,165 +482,30 @@ export interface clientPortal_ClientUpdateManyMutationInput {
 
 export interface clientPortal_ServiceUpdateManyMutationInput {
 	id?: clientPortal_StringFieldUpdateOperationsInput;
-	serviceType?: clientPortal_ServiceTypeValues;
+	serviceType?: clientPortal_Service_serviceTypeValues;
 	content?: JSONValue;
+	clientId?: clientPortal_StringFieldUpdateOperationsInput;
 }
 
 export interface clientPortal_ActivityUpdateInput {
 	id?: clientPortal_StringFieldUpdateOperationsInput;
-	activityType?: clientPortal_ActivityTypeValues;
+	activityType?: clientPortal_Activity_activityTypeValues;
 	timestamp?: clientPortal_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
-	client?: clientPortal_ClientUpdateOneRequiredWithoutActivitiesNestedInput;
-}
-
-export interface clientPortal_ClientUpdateOneRequiredWithoutActivitiesNestedInput {
-	create?: clientPortal_ClientCreateWithoutActivitiesInput;
-	connectOrCreate?: clientPortal_ClientCreateOrConnectWithoutActivitiesInput;
-	upsert?: clientPortal_ClientUpsertWithoutActivitiesInput;
-	connect?: clientPortal_ClientWhereUniqueInput;
-	update?: clientPortal_ClientUpdateWithoutActivitiesInput;
-}
-
-export interface clientPortal_ClientUpsertWithoutActivitiesInput {
-	update?: clientPortal_ClientUpdateWithoutActivitiesInput;
-	create?: clientPortal_ClientCreateWithoutActivitiesInput;
-}
-
-export interface clientPortal_ClientUpdateWithoutActivitiesInput {
-	id?: clientPortal_StringFieldUpdateOperationsInput;
-	username?: clientPortal_StringFieldUpdateOperationsInput;
-	password?: clientPortal_StringFieldUpdateOperationsInput;
-	services?: clientPortal_ServiceUpdateManyWithoutClientNestedInput;
-}
-
-export interface clientPortal_ServiceUpdateManyWithoutClientNestedInput {
-	create?: clientPortal_ServiceCreateWithoutClientInput;
-	connectOrCreate?: clientPortal_ServiceCreateOrConnectWithoutClientInput;
-	upsert?: clientPortal_ServiceUpsertWithWhereUniqueWithoutClientInput;
-	createMany?: clientPortal_ServiceCreateManyClientInputEnvelope;
-	set?: clientPortal_ServiceWhereUniqueInput;
-	disconnect?: clientPortal_ServiceWhereUniqueInput;
-	delete?: clientPortal_ServiceWhereUniqueInput;
-	connect?: clientPortal_ServiceWhereUniqueInput;
-	update?: clientPortal_ServiceUpdateWithWhereUniqueWithoutClientInput;
-	updateMany?: clientPortal_ServiceUpdateManyWithWhereWithoutClientInput;
-	deleteMany?: clientPortal_ServiceScalarWhereInput;
-}
-
-export interface clientPortal_ServiceUpsertWithWhereUniqueWithoutClientInput {
-	where?: clientPortal_ServiceWhereUniqueInput;
-	update?: clientPortal_ServiceUpdateWithoutClientInput;
-	create?: clientPortal_ServiceCreateWithoutClientInput;
-}
-
-export interface clientPortal_ServiceUpdateWithoutClientInput {
-	id?: clientPortal_StringFieldUpdateOperationsInput;
-	serviceType?: clientPortal_ServiceTypeValues;
-	content?: JSONValue;
-}
-
-export interface clientPortal_ServiceUpdateWithWhereUniqueWithoutClientInput {
-	where?: clientPortal_ServiceWhereUniqueInput;
-	data?: clientPortal_ServiceUpdateWithoutClientInput;
-}
-
-export interface clientPortal_ServiceUpdateManyWithWhereWithoutClientInput {
-	where?: clientPortal_ServiceScalarWhereInput;
-	data?: clientPortal_ServiceUpdateManyMutationInput;
-}
-
-export interface clientPortal_ServiceScalarWhereInput {
-	AND?: clientPortal_ServiceScalarWhereInput;
-	OR?: clientPortal_ServiceScalarWhereInput[];
-	NOT?: clientPortal_ServiceScalarWhereInput;
-	id?: clientPortal_StringFilter;
-	serviceType?: clientPortal_EnumServiceTypeFilter;
-	content?: clientPortal_JsonFilter;
-	clientId?: clientPortal_StringFilter;
+	clientId?: clientPortal_StringFieldUpdateOperationsInput;
 }
 
 export interface clientPortal_ClientUpdateInput {
 	id?: clientPortal_StringFieldUpdateOperationsInput;
 	username?: clientPortal_StringFieldUpdateOperationsInput;
 	password?: clientPortal_StringFieldUpdateOperationsInput;
-	services?: clientPortal_ServiceUpdateManyWithoutClientNestedInput;
-	activities?: clientPortal_ActivityUpdateManyWithoutClientNestedInput;
-}
-
-export interface clientPortal_ActivityUpdateManyWithoutClientNestedInput {
-	create?: clientPortal_ActivityCreateWithoutClientInput;
-	connectOrCreate?: clientPortal_ActivityCreateOrConnectWithoutClientInput;
-	upsert?: clientPortal_ActivityUpsertWithWhereUniqueWithoutClientInput;
-	createMany?: clientPortal_ActivityCreateManyClientInputEnvelope;
-	set?: clientPortal_ActivityWhereUniqueInput;
-	disconnect?: clientPortal_ActivityWhereUniqueInput;
-	delete?: clientPortal_ActivityWhereUniqueInput;
-	connect?: clientPortal_ActivityWhereUniqueInput;
-	update?: clientPortal_ActivityUpdateWithWhereUniqueWithoutClientInput;
-	updateMany?: clientPortal_ActivityUpdateManyWithWhereWithoutClientInput;
-	deleteMany?: clientPortal_ActivityScalarWhereInput;
-}
-
-export interface clientPortal_ActivityUpsertWithWhereUniqueWithoutClientInput {
-	where?: clientPortal_ActivityWhereUniqueInput;
-	update?: clientPortal_ActivityUpdateWithoutClientInput;
-	create?: clientPortal_ActivityCreateWithoutClientInput;
-}
-
-export interface clientPortal_ActivityUpdateWithoutClientInput {
-	id?: clientPortal_StringFieldUpdateOperationsInput;
-	activityType?: clientPortal_ActivityTypeValues;
-	timestamp?: clientPortal_DateTimeFieldUpdateOperationsInput;
-	details?: JSONValue;
-}
-
-export interface clientPortal_ActivityUpdateWithWhereUniqueWithoutClientInput {
-	where?: clientPortal_ActivityWhereUniqueInput;
-	data?: clientPortal_ActivityUpdateWithoutClientInput;
-}
-
-export interface clientPortal_ActivityUpdateManyWithWhereWithoutClientInput {
-	where?: clientPortal_ActivityScalarWhereInput;
-	data?: clientPortal_ActivityUpdateManyMutationInput;
-}
-
-export interface clientPortal_ActivityScalarWhereInput {
-	AND?: clientPortal_ActivityScalarWhereInput;
-	OR?: clientPortal_ActivityScalarWhereInput[];
-	NOT?: clientPortal_ActivityScalarWhereInput;
-	id?: clientPortal_StringFilter;
-	activityType?: clientPortal_EnumActivityTypeFilter;
-	timestamp?: clientPortal_DateTimeFilter;
-	details?: clientPortal_JsonFilter;
-	clientId?: clientPortal_StringFilter;
 }
 
 export interface clientPortal_ServiceUpdateInput {
 	id?: clientPortal_StringFieldUpdateOperationsInput;
-	serviceType?: clientPortal_ServiceTypeValues;
+	serviceType?: clientPortal_Service_serviceTypeValues;
 	content?: JSONValue;
-	client?: clientPortal_ClientUpdateOneRequiredWithoutServicesNestedInput;
-}
-
-export interface clientPortal_ClientUpdateOneRequiredWithoutServicesNestedInput {
-	create?: clientPortal_ClientCreateWithoutServicesInput;
-	connectOrCreate?: clientPortal_ClientCreateOrConnectWithoutServicesInput;
-	upsert?: clientPortal_ClientUpsertWithoutServicesInput;
-	connect?: clientPortal_ClientWhereUniqueInput;
-	update?: clientPortal_ClientUpdateWithoutServicesInput;
-}
-
-export interface clientPortal_ClientUpsertWithoutServicesInput {
-	update?: clientPortal_ClientUpdateWithoutServicesInput;
-	create?: clientPortal_ClientCreateWithoutServicesInput;
-}
-
-export interface clientPortal_ClientUpdateWithoutServicesInput {
-	id?: clientPortal_StringFieldUpdateOperationsInput;
-	username?: clientPortal_StringFieldUpdateOperationsInput;
-	password?: clientPortal_StringFieldUpdateOperationsInput;
-	activities?: clientPortal_ActivityUpdateManyWithoutClientNestedInput;
+	clientId?: clientPortal_StringFieldUpdateOperationsInput;
 }
 
 export interface countries_ContinentFilterInput {
@@ -2667,11 +2402,10 @@ export interface gpac_AdminActionWhereInput {
 	OR?: gpac_AdminActionWhereInput[];
 	NOT?: gpac_AdminActionWhereInput;
 	id?: gpac_StringFilter;
-	actionType?: gpac_EnumActionTypeFilter;
+	actionType?: gpac_EnumAdminAction_actionTypeFilter;
 	timestamp?: gpac_DateTimeFilter;
 	details?: gpac_JsonFilter;
 	userId?: gpac_StringFilter;
-	user?: gpac_UserRelationFilter;
 }
 
 export interface gpac_StringFilter {
@@ -2702,11 +2436,11 @@ export interface gpac_NestedStringFilter {
 	not?: gpac_NestedStringFilter;
 }
 
-export interface gpac_EnumActionTypeFilter {
-	equals?: gpac_ActionTypeValues;
-	in?: gpac_ActionTypeValues[];
-	notIn?: gpac_ActionTypeValues[];
-	not?: gpac_ActionTypeValues;
+export interface gpac_EnumAdminAction_actionTypeFilter {
+	equals?: gpac_AdminAction_actionTypeValues;
+	in?: gpac_AdminAction_actionTypeValues[];
+	notIn?: gpac_AdminAction_actionTypeValues[];
+	not?: gpac_AdminAction_actionTypeValues;
 }
 
 export interface gpac_DateTimeFilter {
@@ -2747,9 +2481,53 @@ export interface gpac_JsonFilter {
 	not?: JSONValue;
 }
 
-export interface gpac_UserRelationFilter {
-	is?: gpac_UserWhereInput;
-	isNot?: gpac_UserWhereInput;
+export interface gpac_AdminActionOrderByWithRelationInput {
+	id?: gpac_SortOrderValues;
+	actionType?: gpac_SortOrderValues;
+	timestamp?: gpac_SortOrderValues;
+	details?: gpac_SortOrderValues;
+	userId?: gpac_SortOrderValues;
+}
+
+export interface gpac_AdminActionWhereUniqueInput {
+	id?: string;
+}
+
+export interface gpac_PolicyWhereInput {
+	AND?: gpac_PolicyWhereInput;
+	OR?: gpac_PolicyWhereInput[];
+	NOT?: gpac_PolicyWhereInput;
+	id?: gpac_StringFilter;
+	policyType?: gpac_EnumPolicy_policyTypeFilter;
+	status?: gpac_EnumPolicy_statusFilter;
+	details?: gpac_JsonFilter;
+	userId?: gpac_StringFilter;
+}
+
+export interface gpac_EnumPolicy_policyTypeFilter {
+	equals?: gpac_Policy_policyTypeValues;
+	in?: gpac_Policy_policyTypeValues[];
+	notIn?: gpac_Policy_policyTypeValues[];
+	not?: gpac_Policy_policyTypeValues;
+}
+
+export interface gpac_EnumPolicy_statusFilter {
+	equals?: gpac_Policy_statusValues;
+	in?: gpac_Policy_statusValues[];
+	notIn?: gpac_Policy_statusValues[];
+	not?: gpac_Policy_statusValues;
+}
+
+export interface gpac_PolicyOrderByWithRelationInput {
+	id?: gpac_SortOrderValues;
+	policyType?: gpac_SortOrderValues;
+	status?: gpac_SortOrderValues;
+	details?: gpac_SortOrderValues;
+	userId?: gpac_SortOrderValues;
+}
+
+export interface gpac_PolicyWhereUniqueInput {
+	id?: string;
 }
 
 export interface gpac_UserWhereInput {
@@ -2759,63 +2537,14 @@ export interface gpac_UserWhereInput {
 	id?: gpac_StringFilter;
 	username?: gpac_StringFilter;
 	password?: gpac_StringFilter;
-	role?: gpac_EnumUserRoleFilter;
-	policies?: gpac_PolicyListRelationFilter;
-	actions?: gpac_AdminActionListRelationFilter;
+	role?: gpac_EnumUser_roleFilter;
 }
 
-export interface gpac_EnumUserRoleFilter {
-	equals?: gpac_UserRoleValues;
-	in?: gpac_UserRoleValues[];
-	notIn?: gpac_UserRoleValues[];
-	not?: gpac_UserRoleValues;
-}
-
-export interface gpac_PolicyListRelationFilter {
-	every?: gpac_PolicyWhereInput;
-	some?: gpac_PolicyWhereInput;
-	none?: gpac_PolicyWhereInput;
-}
-
-export interface gpac_PolicyWhereInput {
-	AND?: gpac_PolicyWhereInput;
-	OR?: gpac_PolicyWhereInput[];
-	NOT?: gpac_PolicyWhereInput;
-	id?: gpac_StringFilter;
-	policyType?: gpac_EnumPolicyTypeFilter;
-	status?: gpac_EnumPolicyStatusFilter;
-	details?: gpac_JsonFilter;
-	userId?: gpac_StringFilter;
-	user?: gpac_UserRelationFilter;
-}
-
-export interface gpac_EnumPolicyTypeFilter {
-	equals?: gpac_PolicyTypeValues;
-	in?: gpac_PolicyTypeValues[];
-	notIn?: gpac_PolicyTypeValues[];
-	not?: gpac_PolicyTypeValues;
-}
-
-export interface gpac_EnumPolicyStatusFilter {
-	equals?: gpac_PolicyStatusValues;
-	in?: gpac_PolicyStatusValues[];
-	notIn?: gpac_PolicyStatusValues[];
-	not?: gpac_PolicyStatusValues;
-}
-
-export interface gpac_AdminActionListRelationFilter {
-	every?: gpac_AdminActionWhereInput;
-	some?: gpac_AdminActionWhereInput;
-	none?: gpac_AdminActionWhereInput;
-}
-
-export interface gpac_AdminActionOrderByWithRelationInput {
-	id?: gpac_SortOrderValues;
-	actionType?: gpac_SortOrderValues;
-	timestamp?: gpac_SortOrderValues;
-	details?: gpac_SortOrderValues;
-	userId?: gpac_SortOrderValues;
-	user?: gpac_UserOrderByWithRelationInput;
+export interface gpac_EnumUser_roleFilter {
+	equals?: gpac_User_roleValues;
+	in?: gpac_User_roleValues[];
+	notIn?: gpac_User_roleValues[];
+	not?: gpac_User_roleValues;
 }
 
 export interface gpac_UserOrderByWithRelationInput {
@@ -2823,33 +2552,6 @@ export interface gpac_UserOrderByWithRelationInput {
 	username?: gpac_SortOrderValues;
 	password?: gpac_SortOrderValues;
 	role?: gpac_SortOrderValues;
-	policies?: gpac_PolicyOrderByRelationAggregateInput;
-	actions?: gpac_AdminActionOrderByRelationAggregateInput;
-}
-
-export interface gpac_PolicyOrderByRelationAggregateInput {
-	_count?: gpac_SortOrderValues;
-}
-
-export interface gpac_AdminActionOrderByRelationAggregateInput {
-	_count?: gpac_SortOrderValues;
-}
-
-export interface gpac_AdminActionWhereUniqueInput {
-	id?: string;
-}
-
-export interface gpac_PolicyOrderByWithRelationInput {
-	id?: gpac_SortOrderValues;
-	policyType?: gpac_SortOrderValues;
-	status?: gpac_SortOrderValues;
-	details?: gpac_SortOrderValues;
-	userId?: gpac_SortOrderValues;
-	user?: gpac_UserOrderByWithRelationInput;
-}
-
-export interface gpac_PolicyWhereUniqueInput {
-	id?: string;
 }
 
 export interface gpac_UserWhereUniqueInput {
@@ -2858,7 +2560,7 @@ export interface gpac_UserWhereUniqueInput {
 
 export interface gpac_AdminActionCreateManyInput {
 	id?: string;
-	actionType?: gpac_ActionTypeValues;
+	actionType?: gpac_AdminAction_actionTypeValues;
 	timestamp?: string;
 	details?: JSONValue;
 	userId?: string;
@@ -2866,8 +2568,8 @@ export interface gpac_AdminActionCreateManyInput {
 
 export interface gpac_PolicyCreateManyInput {
 	id?: string;
-	policyType?: gpac_PolicyTypeValues;
-	status?: gpac_PolicyStatusValues;
+	policyType?: gpac_Policy_policyTypeValues;
+	status?: gpac_Policy_statusValues;
 	details?: JSONValue;
 	userId?: string;
 }
@@ -2876,132 +2578,30 @@ export interface gpac_UserCreateManyInput {
 	id?: string;
 	username?: string;
 	password?: string;
-	role?: gpac_UserRoleValues;
+	role?: gpac_User_roleValues;
 }
 
 export interface gpac_AdminActionCreateInput {
-	id?: string;
-	actionType: gpac_ActionTypeValues;
+	id: string;
+	actionType: gpac_AdminAction_actionTypeValues;
 	timestamp: string;
 	details: JSONValue;
-	user: gpac_UserCreateNestedOneWithoutActionsInput;
-}
-
-export interface gpac_UserCreateNestedOneWithoutActionsInput {
-	create?: gpac_UserCreateWithoutActionsInput;
-	connectOrCreate?: gpac_UserCreateOrConnectWithoutActionsInput;
-	connect?: gpac_UserWhereUniqueInput;
-}
-
-export interface gpac_UserCreateWithoutActionsInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: gpac_UserRoleValues;
-	policies?: gpac_PolicyCreateNestedManyWithoutUserInput;
-}
-
-export interface gpac_PolicyCreateNestedManyWithoutUserInput {
-	create?: gpac_PolicyCreateWithoutUserInput;
-	connectOrCreate?: gpac_PolicyCreateOrConnectWithoutUserInput;
-	createMany?: gpac_PolicyCreateManyUserInputEnvelope;
-	connect?: gpac_PolicyWhereUniqueInput;
-}
-
-export interface gpac_PolicyCreateWithoutUserInput {
-	id?: string;
-	policyType?: gpac_PolicyTypeValues;
-	status?: gpac_PolicyStatusValues;
-	details?: JSONValue;
-}
-
-export interface gpac_PolicyCreateOrConnectWithoutUserInput {
-	where?: gpac_PolicyWhereUniqueInput;
-	create?: gpac_PolicyCreateWithoutUserInput;
-}
-
-export interface gpac_PolicyCreateManyUserInputEnvelope {
-	data?: gpac_PolicyCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface gpac_PolicyCreateManyUserInput {
-	id?: string;
-	policyType: gpac_PolicyTypeValues;
-	status: gpac_PolicyStatusValues;
-	details: JSONValue;
-}
-
-export interface gpac_UserCreateOrConnectWithoutActionsInput {
-	where?: gpac_UserWhereUniqueInput;
-	create?: gpac_UserCreateWithoutActionsInput;
+	userId: string;
 }
 
 export interface gpac_PolicyCreateInput {
-	id?: string;
-	policyType: gpac_PolicyTypeValues;
-	status: gpac_PolicyStatusValues;
+	id: string;
+	policyType: gpac_Policy_policyTypeValues;
+	status: gpac_Policy_statusValues;
 	details: JSONValue;
-	user: gpac_UserCreateNestedOneWithoutPoliciesInput;
-}
-
-export interface gpac_UserCreateNestedOneWithoutPoliciesInput {
-	create?: gpac_UserCreateWithoutPoliciesInput;
-	connectOrCreate?: gpac_UserCreateOrConnectWithoutPoliciesInput;
-	connect?: gpac_UserWhereUniqueInput;
-}
-
-export interface gpac_UserCreateWithoutPoliciesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: gpac_UserRoleValues;
-	actions?: gpac_AdminActionCreateNestedManyWithoutUserInput;
-}
-
-export interface gpac_AdminActionCreateNestedManyWithoutUserInput {
-	create?: gpac_AdminActionCreateWithoutUserInput;
-	connectOrCreate?: gpac_AdminActionCreateOrConnectWithoutUserInput;
-	createMany?: gpac_AdminActionCreateManyUserInputEnvelope;
-	connect?: gpac_AdminActionWhereUniqueInput;
-}
-
-export interface gpac_AdminActionCreateWithoutUserInput {
-	id?: string;
-	actionType?: gpac_ActionTypeValues;
-	timestamp?: string;
-	details?: JSONValue;
-}
-
-export interface gpac_AdminActionCreateOrConnectWithoutUserInput {
-	where?: gpac_AdminActionWhereUniqueInput;
-	create?: gpac_AdminActionCreateWithoutUserInput;
-}
-
-export interface gpac_AdminActionCreateManyUserInputEnvelope {
-	data?: gpac_AdminActionCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface gpac_AdminActionCreateManyUserInput {
-	id?: string;
-	actionType: gpac_ActionTypeValues;
-	timestamp: string;
-	details: JSONValue;
-}
-
-export interface gpac_UserCreateOrConnectWithoutPoliciesInput {
-	where?: gpac_UserWhereUniqueInput;
-	create?: gpac_UserCreateWithoutPoliciesInput;
+	userId: string;
 }
 
 export interface gpac_UserCreateInput {
-	id?: string;
+	id: string;
 	username: string;
 	password: string;
-	role: gpac_UserRoleValues;
-	policies?: gpac_PolicyCreateNestedManyWithoutUserInput;
-	actions?: gpac_AdminActionCreateNestedManyWithoutUserInput;
+	role: gpac_User_roleValues;
 }
 
 export interface gpac_AdminActionOrderByWithAggregationInput {
@@ -3042,7 +2642,7 @@ export interface gpac_AdminActionScalarWhereWithAggregatesInput {
 	OR?: gpac_AdminActionScalarWhereWithAggregatesInput[];
 	NOT?: gpac_AdminActionScalarWhereWithAggregatesInput;
 	id?: gpac_StringWithAggregatesFilter;
-	actionType?: gpac_EnumActionTypeWithAggregatesFilter;
+	actionType?: gpac_EnumAdminAction_actionTypeWithAggregatesFilter;
 	timestamp?: gpac_DateTimeWithAggregatesFilter;
 	details?: gpac_JsonWithAggregatesFilter;
 	userId?: gpac_StringWithAggregatesFilter;
@@ -3093,21 +2693,21 @@ export interface gpac_NestedIntFilter {
 	not?: gpac_NestedIntFilter;
 }
 
-export interface gpac_EnumActionTypeWithAggregatesFilter {
-	equals?: gpac_ActionTypeValues;
-	in?: gpac_ActionTypeValues[];
-	notIn?: gpac_ActionTypeValues[];
-	not?: gpac_ActionTypeValues;
+export interface gpac_EnumAdminAction_actionTypeWithAggregatesFilter {
+	equals?: gpac_AdminAction_actionTypeValues;
+	in?: gpac_AdminAction_actionTypeValues[];
+	notIn?: gpac_AdminAction_actionTypeValues[];
+	not?: gpac_AdminAction_actionTypeValues;
 	_count?: gpac_NestedIntFilter;
-	_min?: gpac_NestedEnumActionTypeFilter;
-	_max?: gpac_NestedEnumActionTypeFilter;
+	_min?: gpac_NestedEnumAdminAction_actionTypeFilter;
+	_max?: gpac_NestedEnumAdminAction_actionTypeFilter;
 }
 
-export interface gpac_NestedEnumActionTypeFilter {
-	equals?: gpac_ActionTypeValues;
-	in?: gpac_ActionTypeValues[];
-	notIn?: gpac_ActionTypeValues[];
-	not?: gpac_ActionTypeValues;
+export interface gpac_NestedEnumAdminAction_actionTypeFilter {
+	equals?: gpac_AdminAction_actionTypeValues;
+	in?: gpac_AdminAction_actionTypeValues[];
+	notIn?: gpac_AdminAction_actionTypeValues[];
+	not?: gpac_AdminAction_actionTypeValues;
 }
 
 export interface gpac_DateTimeWithAggregatesFilter {
@@ -3211,44 +2811,44 @@ export interface gpac_PolicyScalarWhereWithAggregatesInput {
 	OR?: gpac_PolicyScalarWhereWithAggregatesInput[];
 	NOT?: gpac_PolicyScalarWhereWithAggregatesInput;
 	id?: gpac_StringWithAggregatesFilter;
-	policyType?: gpac_EnumPolicyTypeWithAggregatesFilter;
-	status?: gpac_EnumPolicyStatusWithAggregatesFilter;
+	policyType?: gpac_EnumPolicy_policyTypeWithAggregatesFilter;
+	status?: gpac_EnumPolicy_statusWithAggregatesFilter;
 	details?: gpac_JsonWithAggregatesFilter;
 	userId?: gpac_StringWithAggregatesFilter;
 }
 
-export interface gpac_EnumPolicyTypeWithAggregatesFilter {
-	equals?: gpac_PolicyTypeValues;
-	in?: gpac_PolicyTypeValues[];
-	notIn?: gpac_PolicyTypeValues[];
-	not?: gpac_PolicyTypeValues;
+export interface gpac_EnumPolicy_policyTypeWithAggregatesFilter {
+	equals?: gpac_Policy_policyTypeValues;
+	in?: gpac_Policy_policyTypeValues[];
+	notIn?: gpac_Policy_policyTypeValues[];
+	not?: gpac_Policy_policyTypeValues;
 	_count?: gpac_NestedIntFilter;
-	_min?: gpac_NestedEnumPolicyTypeFilter;
-	_max?: gpac_NestedEnumPolicyTypeFilter;
+	_min?: gpac_NestedEnumPolicy_policyTypeFilter;
+	_max?: gpac_NestedEnumPolicy_policyTypeFilter;
 }
 
-export interface gpac_NestedEnumPolicyTypeFilter {
-	equals?: gpac_PolicyTypeValues;
-	in?: gpac_PolicyTypeValues[];
-	notIn?: gpac_PolicyTypeValues[];
-	not?: gpac_PolicyTypeValues;
+export interface gpac_NestedEnumPolicy_policyTypeFilter {
+	equals?: gpac_Policy_policyTypeValues;
+	in?: gpac_Policy_policyTypeValues[];
+	notIn?: gpac_Policy_policyTypeValues[];
+	not?: gpac_Policy_policyTypeValues;
 }
 
-export interface gpac_EnumPolicyStatusWithAggregatesFilter {
-	equals?: gpac_PolicyStatusValues;
-	in?: gpac_PolicyStatusValues[];
-	notIn?: gpac_PolicyStatusValues[];
-	not?: gpac_PolicyStatusValues;
+export interface gpac_EnumPolicy_statusWithAggregatesFilter {
+	equals?: gpac_Policy_statusValues;
+	in?: gpac_Policy_statusValues[];
+	notIn?: gpac_Policy_statusValues[];
+	not?: gpac_Policy_statusValues;
 	_count?: gpac_NestedIntFilter;
-	_min?: gpac_NestedEnumPolicyStatusFilter;
-	_max?: gpac_NestedEnumPolicyStatusFilter;
+	_min?: gpac_NestedEnumPolicy_statusFilter;
+	_max?: gpac_NestedEnumPolicy_statusFilter;
 }
 
-export interface gpac_NestedEnumPolicyStatusFilter {
-	equals?: gpac_PolicyStatusValues;
-	in?: gpac_PolicyStatusValues[];
-	notIn?: gpac_PolicyStatusValues[];
-	not?: gpac_PolicyStatusValues;
+export interface gpac_NestedEnumPolicy_statusFilter {
+	equals?: gpac_Policy_statusValues;
+	in?: gpac_Policy_statusValues[];
+	notIn?: gpac_Policy_statusValues[];
+	not?: gpac_Policy_statusValues;
 }
 
 export interface gpac_UserOrderByWithAggregationInput {
@@ -3289,31 +2889,32 @@ export interface gpac_UserScalarWhereWithAggregatesInput {
 	id?: gpac_StringWithAggregatesFilter;
 	username?: gpac_StringWithAggregatesFilter;
 	password?: gpac_StringWithAggregatesFilter;
-	role?: gpac_EnumUserRoleWithAggregatesFilter;
+	role?: gpac_EnumUser_roleWithAggregatesFilter;
 }
 
-export interface gpac_EnumUserRoleWithAggregatesFilter {
-	equals?: gpac_UserRoleValues;
-	in?: gpac_UserRoleValues[];
-	notIn?: gpac_UserRoleValues[];
-	not?: gpac_UserRoleValues;
+export interface gpac_EnumUser_roleWithAggregatesFilter {
+	equals?: gpac_User_roleValues;
+	in?: gpac_User_roleValues[];
+	notIn?: gpac_User_roleValues[];
+	not?: gpac_User_roleValues;
 	_count?: gpac_NestedIntFilter;
-	_min?: gpac_NestedEnumUserRoleFilter;
-	_max?: gpac_NestedEnumUserRoleFilter;
+	_min?: gpac_NestedEnumUser_roleFilter;
+	_max?: gpac_NestedEnumUser_roleFilter;
 }
 
-export interface gpac_NestedEnumUserRoleFilter {
-	equals?: gpac_UserRoleValues;
-	in?: gpac_UserRoleValues[];
-	notIn?: gpac_UserRoleValues[];
-	not?: gpac_UserRoleValues;
+export interface gpac_NestedEnumUser_roleFilter {
+	equals?: gpac_User_roleValues;
+	in?: gpac_User_roleValues[];
+	notIn?: gpac_User_roleValues[];
+	not?: gpac_User_roleValues;
 }
 
 export interface gpac_AdminActionUpdateManyMutationInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
-	actionType?: gpac_ActionTypeValues;
+	actionType?: gpac_AdminAction_actionTypeValues;
 	timestamp?: gpac_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
+	userId?: gpac_StringFieldUpdateOperationsInput;
 }
 
 export interface gpac_StringFieldUpdateOperationsInput {
@@ -3326,179 +2927,40 @@ export interface gpac_DateTimeFieldUpdateOperationsInput {
 
 export interface gpac_PolicyUpdateManyMutationInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
-	policyType?: gpac_PolicyTypeValues;
-	status?: gpac_PolicyStatusValues;
+	policyType?: gpac_Policy_policyTypeValues;
+	status?: gpac_Policy_statusValues;
 	details?: JSONValue;
+	userId?: gpac_StringFieldUpdateOperationsInput;
 }
 
 export interface gpac_UserUpdateManyMutationInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
 	username?: gpac_StringFieldUpdateOperationsInput;
 	password?: gpac_StringFieldUpdateOperationsInput;
-	role?: gpac_UserRoleValues;
+	role?: gpac_User_roleValues;
 }
 
 export interface gpac_AdminActionUpdateInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
-	actionType?: gpac_ActionTypeValues;
+	actionType?: gpac_AdminAction_actionTypeValues;
 	timestamp?: gpac_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
-	user?: gpac_UserUpdateOneRequiredWithoutActionsNestedInput;
-}
-
-export interface gpac_UserUpdateOneRequiredWithoutActionsNestedInput {
-	create?: gpac_UserCreateWithoutActionsInput;
-	connectOrCreate?: gpac_UserCreateOrConnectWithoutActionsInput;
-	upsert?: gpac_UserUpsertWithoutActionsInput;
-	connect?: gpac_UserWhereUniqueInput;
-	update?: gpac_UserUpdateWithoutActionsInput;
-}
-
-export interface gpac_UserUpsertWithoutActionsInput {
-	update?: gpac_UserUpdateWithoutActionsInput;
-	create?: gpac_UserCreateWithoutActionsInput;
-}
-
-export interface gpac_UserUpdateWithoutActionsInput {
-	id?: gpac_StringFieldUpdateOperationsInput;
-	username?: gpac_StringFieldUpdateOperationsInput;
-	password?: gpac_StringFieldUpdateOperationsInput;
-	role?: gpac_UserRoleValues;
-	policies?: gpac_PolicyUpdateManyWithoutUserNestedInput;
-}
-
-export interface gpac_PolicyUpdateManyWithoutUserNestedInput {
-	create?: gpac_PolicyCreateWithoutUserInput;
-	connectOrCreate?: gpac_PolicyCreateOrConnectWithoutUserInput;
-	upsert?: gpac_PolicyUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: gpac_PolicyCreateManyUserInputEnvelope;
-	set?: gpac_PolicyWhereUniqueInput;
-	disconnect?: gpac_PolicyWhereUniqueInput;
-	delete?: gpac_PolicyWhereUniqueInput;
-	connect?: gpac_PolicyWhereUniqueInput;
-	update?: gpac_PolicyUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: gpac_PolicyUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: gpac_PolicyScalarWhereInput;
-}
-
-export interface gpac_PolicyUpsertWithWhereUniqueWithoutUserInput {
-	where?: gpac_PolicyWhereUniqueInput;
-	update?: gpac_PolicyUpdateWithoutUserInput;
-	create?: gpac_PolicyCreateWithoutUserInput;
-}
-
-export interface gpac_PolicyUpdateWithoutUserInput {
-	id?: gpac_StringFieldUpdateOperationsInput;
-	policyType?: gpac_PolicyTypeValues;
-	status?: gpac_PolicyStatusValues;
-	details?: JSONValue;
-}
-
-export interface gpac_PolicyUpdateWithWhereUniqueWithoutUserInput {
-	where?: gpac_PolicyWhereUniqueInput;
-	data?: gpac_PolicyUpdateWithoutUserInput;
-}
-
-export interface gpac_PolicyUpdateManyWithWhereWithoutUserInput {
-	where?: gpac_PolicyScalarWhereInput;
-	data?: gpac_PolicyUpdateManyMutationInput;
-}
-
-export interface gpac_PolicyScalarWhereInput {
-	AND?: gpac_PolicyScalarWhereInput;
-	OR?: gpac_PolicyScalarWhereInput[];
-	NOT?: gpac_PolicyScalarWhereInput;
-	id?: gpac_StringFilter;
-	policyType?: gpac_EnumPolicyTypeFilter;
-	status?: gpac_EnumPolicyStatusFilter;
-	details?: gpac_JsonFilter;
-	userId?: gpac_StringFilter;
+	userId?: gpac_StringFieldUpdateOperationsInput;
 }
 
 export interface gpac_PolicyUpdateInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
-	policyType?: gpac_PolicyTypeValues;
-	status?: gpac_PolicyStatusValues;
+	policyType?: gpac_Policy_policyTypeValues;
+	status?: gpac_Policy_statusValues;
 	details?: JSONValue;
-	user?: gpac_UserUpdateOneRequiredWithoutPoliciesNestedInput;
-}
-
-export interface gpac_UserUpdateOneRequiredWithoutPoliciesNestedInput {
-	create?: gpac_UserCreateWithoutPoliciesInput;
-	connectOrCreate?: gpac_UserCreateOrConnectWithoutPoliciesInput;
-	upsert?: gpac_UserUpsertWithoutPoliciesInput;
-	connect?: gpac_UserWhereUniqueInput;
-	update?: gpac_UserUpdateWithoutPoliciesInput;
-}
-
-export interface gpac_UserUpsertWithoutPoliciesInput {
-	update?: gpac_UserUpdateWithoutPoliciesInput;
-	create?: gpac_UserCreateWithoutPoliciesInput;
-}
-
-export interface gpac_UserUpdateWithoutPoliciesInput {
-	id?: gpac_StringFieldUpdateOperationsInput;
-	username?: gpac_StringFieldUpdateOperationsInput;
-	password?: gpac_StringFieldUpdateOperationsInput;
-	role?: gpac_UserRoleValues;
-	actions?: gpac_AdminActionUpdateManyWithoutUserNestedInput;
-}
-
-export interface gpac_AdminActionUpdateManyWithoutUserNestedInput {
-	create?: gpac_AdminActionCreateWithoutUserInput;
-	connectOrCreate?: gpac_AdminActionCreateOrConnectWithoutUserInput;
-	upsert?: gpac_AdminActionUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: gpac_AdminActionCreateManyUserInputEnvelope;
-	set?: gpac_AdminActionWhereUniqueInput;
-	disconnect?: gpac_AdminActionWhereUniqueInput;
-	delete?: gpac_AdminActionWhereUniqueInput;
-	connect?: gpac_AdminActionWhereUniqueInput;
-	update?: gpac_AdminActionUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: gpac_AdminActionUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: gpac_AdminActionScalarWhereInput;
-}
-
-export interface gpac_AdminActionUpsertWithWhereUniqueWithoutUserInput {
-	where?: gpac_AdminActionWhereUniqueInput;
-	update?: gpac_AdminActionUpdateWithoutUserInput;
-	create?: gpac_AdminActionCreateWithoutUserInput;
-}
-
-export interface gpac_AdminActionUpdateWithoutUserInput {
-	id?: gpac_StringFieldUpdateOperationsInput;
-	actionType?: gpac_ActionTypeValues;
-	timestamp?: gpac_DateTimeFieldUpdateOperationsInput;
-	details?: JSONValue;
-}
-
-export interface gpac_AdminActionUpdateWithWhereUniqueWithoutUserInput {
-	where?: gpac_AdminActionWhereUniqueInput;
-	data?: gpac_AdminActionUpdateWithoutUserInput;
-}
-
-export interface gpac_AdminActionUpdateManyWithWhereWithoutUserInput {
-	where?: gpac_AdminActionScalarWhereInput;
-	data?: gpac_AdminActionUpdateManyMutationInput;
-}
-
-export interface gpac_AdminActionScalarWhereInput {
-	AND?: gpac_AdminActionScalarWhereInput;
-	OR?: gpac_AdminActionScalarWhereInput[];
-	NOT?: gpac_AdminActionScalarWhereInput;
-	id?: gpac_StringFilter;
-	actionType?: gpac_EnumActionTypeFilter;
-	timestamp?: gpac_DateTimeFilter;
-	details?: gpac_JsonFilter;
-	userId?: gpac_StringFilter;
+	userId?: gpac_StringFieldUpdateOperationsInput;
 }
 
 export interface gpac_UserUpdateInput {
 	id?: gpac_StringFieldUpdateOperationsInput;
 	username?: gpac_StringFieldUpdateOperationsInput;
 	password?: gpac_StringFieldUpdateOperationsInput;
-	role?: gpac_UserRoleValues;
-	policies?: gpac_PolicyUpdateManyWithoutUserNestedInput;
-	actions?: gpac_AdminActionUpdateManyWithoutUserNestedInput;
+	role?: gpac_User_roleValues;
 }
 
 export interface guardianOnline_FeatureWhereInput {
@@ -3506,10 +2968,9 @@ export interface guardianOnline_FeatureWhereInput {
 	OR?: guardianOnline_FeatureWhereInput[];
 	NOT?: guardianOnline_FeatureWhereInput;
 	id?: guardianOnline_StringFilter;
-	featureType?: guardianOnline_EnumFeatureTypeFilter;
+	featureType?: guardianOnline_EnumFeature_featureTypeFilter;
 	content?: guardianOnline_JsonFilter;
 	userId?: guardianOnline_StringFilter;
-	user?: guardianOnline_UserRelationFilter;
 }
 
 export interface guardianOnline_StringFilter {
@@ -3540,11 +3001,11 @@ export interface guardianOnline_NestedStringFilter {
 	not?: guardianOnline_NestedStringFilter;
 }
 
-export interface guardianOnline_EnumFeatureTypeFilter {
-	equals?: guardianOnline_FeatureTypeValues;
-	in?: guardianOnline_FeatureTypeValues[];
-	notIn?: guardianOnline_FeatureTypeValues[];
-	not?: guardianOnline_FeatureTypeValues;
+export interface guardianOnline_EnumFeature_featureTypeFilter {
+	equals?: guardianOnline_Feature_featureTypeValues;
+	in?: guardianOnline_Feature_featureTypeValues[];
+	notIn?: guardianOnline_Feature_featureTypeValues[];
+	not?: guardianOnline_Feature_featureTypeValues;
 }
 
 export interface guardianOnline_JsonFilter {
@@ -3563,9 +3024,15 @@ export interface guardianOnline_JsonFilter {
 	not?: JSONValue;
 }
 
-export interface guardianOnline_UserRelationFilter {
-	is?: guardianOnline_UserWhereInput;
-	isNot?: guardianOnline_UserWhereInput;
+export interface guardianOnline_FeatureOrderByWithRelationInput {
+	id?: guardianOnline_SortOrderValues;
+	featureType?: guardianOnline_SortOrderValues;
+	content?: guardianOnline_SortOrderValues;
+	userId?: guardianOnline_SortOrderValues;
+}
+
+export interface guardianOnline_FeatureWhereUniqueInput {
+	id?: string;
 }
 
 export interface guardianOnline_UserWhereInput {
@@ -3575,28 +3042,25 @@ export interface guardianOnline_UserWhereInput {
 	id?: guardianOnline_StringFilter;
 	username?: guardianOnline_StringFilter;
 	password?: guardianOnline_StringFilter;
-	role?: guardianOnline_EnumUserRoleFilter;
-	features?: guardianOnline_FeatureListRelationFilter;
-	logs?: guardianOnline_UserLogListRelationFilter;
+	role?: guardianOnline_EnumUser_roleFilter;
 }
 
-export interface guardianOnline_EnumUserRoleFilter {
-	equals?: guardianOnline_UserRoleValues;
-	in?: guardianOnline_UserRoleValues[];
-	notIn?: guardianOnline_UserRoleValues[];
-	not?: guardianOnline_UserRoleValues;
+export interface guardianOnline_EnumUser_roleFilter {
+	equals?: guardianOnline_User_roleValues;
+	in?: guardianOnline_User_roleValues[];
+	notIn?: guardianOnline_User_roleValues[];
+	not?: guardianOnline_User_roleValues;
 }
 
-export interface guardianOnline_FeatureListRelationFilter {
-	every?: guardianOnline_FeatureWhereInput;
-	some?: guardianOnline_FeatureWhereInput;
-	none?: guardianOnline_FeatureWhereInput;
+export interface guardianOnline_UserOrderByWithRelationInput {
+	id?: guardianOnline_SortOrderValues;
+	username?: guardianOnline_SortOrderValues;
+	password?: guardianOnline_SortOrderValues;
+	role?: guardianOnline_SortOrderValues;
 }
 
-export interface guardianOnline_UserLogListRelationFilter {
-	every?: guardianOnline_UserLogWhereInput;
-	some?: guardianOnline_UserLogWhereInput;
-	none?: guardianOnline_UserLogWhereInput;
+export interface guardianOnline_UserWhereUniqueInput {
+	id?: string;
 }
 
 export interface guardianOnline_UserLogWhereInput {
@@ -3604,26 +3068,25 @@ export interface guardianOnline_UserLogWhereInput {
 	OR?: guardianOnline_UserLogWhereInput[];
 	NOT?: guardianOnline_UserLogWhereInput;
 	id?: guardianOnline_StringFilter;
-	logType?: guardianOnline_EnumLogTypeFilter;
-	contentType?: guardianOnline_EnumContentTypeFilter;
+	logType?: guardianOnline_EnumUserLog_logTypeFilter;
+	contentType?: guardianOnline_EnumUserLog_contentTypeFilter;
 	timestamp?: guardianOnline_DateTimeFilter;
 	details?: guardianOnline_JsonFilter;
 	userId?: guardianOnline_StringFilter;
-	user?: guardianOnline_UserRelationFilter;
 }
 
-export interface guardianOnline_EnumLogTypeFilter {
-	equals?: guardianOnline_LogTypeValues;
-	in?: guardianOnline_LogTypeValues[];
-	notIn?: guardianOnline_LogTypeValues[];
-	not?: guardianOnline_LogTypeValues;
+export interface guardianOnline_EnumUserLog_logTypeFilter {
+	equals?: guardianOnline_UserLog_logTypeValues;
+	in?: guardianOnline_UserLog_logTypeValues[];
+	notIn?: guardianOnline_UserLog_logTypeValues[];
+	not?: guardianOnline_UserLog_logTypeValues;
 }
 
-export interface guardianOnline_EnumContentTypeFilter {
-	equals?: guardianOnline_ContentTypeValues;
-	in?: guardianOnline_ContentTypeValues[];
-	notIn?: guardianOnline_ContentTypeValues[];
-	not?: guardianOnline_ContentTypeValues;
+export interface guardianOnline_EnumUserLog_contentTypeFilter {
+	equals?: guardianOnline_UserLog_contentTypeValues;
+	in?: guardianOnline_UserLog_contentTypeValues[];
+	notIn?: guardianOnline_UserLog_contentTypeValues[];
+	not?: guardianOnline_UserLog_contentTypeValues;
 }
 
 export interface guardianOnline_DateTimeFilter {
@@ -3648,39 +3111,6 @@ export interface guardianOnline_NestedDateTimeFilter {
 	not?: guardianOnline_NestedDateTimeFilter;
 }
 
-export interface guardianOnline_FeatureOrderByWithRelationInput {
-	id?: guardianOnline_SortOrderValues;
-	featureType?: guardianOnline_SortOrderValues;
-	content?: guardianOnline_SortOrderValues;
-	userId?: guardianOnline_SortOrderValues;
-	user?: guardianOnline_UserOrderByWithRelationInput;
-}
-
-export interface guardianOnline_UserOrderByWithRelationInput {
-	id?: guardianOnline_SortOrderValues;
-	username?: guardianOnline_SortOrderValues;
-	password?: guardianOnline_SortOrderValues;
-	role?: guardianOnline_SortOrderValues;
-	features?: guardianOnline_FeatureOrderByRelationAggregateInput;
-	logs?: guardianOnline_UserLogOrderByRelationAggregateInput;
-}
-
-export interface guardianOnline_FeatureOrderByRelationAggregateInput {
-	_count?: guardianOnline_SortOrderValues;
-}
-
-export interface guardianOnline_UserLogOrderByRelationAggregateInput {
-	_count?: guardianOnline_SortOrderValues;
-}
-
-export interface guardianOnline_FeatureWhereUniqueInput {
-	id?: string;
-}
-
-export interface guardianOnline_UserWhereUniqueInput {
-	id?: string;
-}
-
 export interface guardianOnline_UserLogOrderByWithRelationInput {
 	id?: guardianOnline_SortOrderValues;
 	logType?: guardianOnline_SortOrderValues;
@@ -3688,7 +3118,6 @@ export interface guardianOnline_UserLogOrderByWithRelationInput {
 	timestamp?: guardianOnline_SortOrderValues;
 	details?: guardianOnline_SortOrderValues;
 	userId?: guardianOnline_SortOrderValues;
-	user?: guardianOnline_UserOrderByWithRelationInput;
 }
 
 export interface guardianOnline_UserLogWhereUniqueInput {
@@ -3697,7 +3126,7 @@ export interface guardianOnline_UserLogWhereUniqueInput {
 
 export interface guardianOnline_FeatureCreateManyInput {
 	id?: string;
-	featureType?: guardianOnline_FeatureTypeValues;
+	featureType?: guardianOnline_Feature_featureTypeValues;
 	content?: JSONValue;
 	userId?: string;
 }
@@ -3706,141 +3135,39 @@ export interface guardianOnline_UserCreateManyInput {
 	id?: string;
 	username?: string;
 	password?: string;
-	role?: guardianOnline_UserRoleValues;
+	role?: guardianOnline_User_roleValues;
 }
 
 export interface guardianOnline_UserLogCreateManyInput {
 	id?: string;
-	logType?: guardianOnline_LogTypeValues;
-	contentType?: guardianOnline_ContentTypeValues;
+	logType?: guardianOnline_UserLog_logTypeValues;
+	contentType?: guardianOnline_UserLog_contentTypeValues;
 	timestamp?: string;
 	details?: JSONValue;
 	userId?: string;
 }
 
 export interface guardianOnline_FeatureCreateInput {
-	id?: string;
-	featureType: guardianOnline_FeatureTypeValues;
+	id: string;
+	featureType: guardianOnline_Feature_featureTypeValues;
 	content: JSONValue;
-	user: guardianOnline_UserCreateNestedOneWithoutFeaturesInput;
-}
-
-export interface guardianOnline_UserCreateNestedOneWithoutFeaturesInput {
-	create?: guardianOnline_UserCreateWithoutFeaturesInput;
-	connectOrCreate?: guardianOnline_UserCreateOrConnectWithoutFeaturesInput;
-	connect?: guardianOnline_UserWhereUniqueInput;
-}
-
-export interface guardianOnline_UserCreateWithoutFeaturesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: guardianOnline_UserRoleValues;
-	logs?: guardianOnline_UserLogCreateNestedManyWithoutUserInput;
-}
-
-export interface guardianOnline_UserLogCreateNestedManyWithoutUserInput {
-	create?: guardianOnline_UserLogCreateWithoutUserInput;
-	connectOrCreate?: guardianOnline_UserLogCreateOrConnectWithoutUserInput;
-	createMany?: guardianOnline_UserLogCreateManyUserInputEnvelope;
-	connect?: guardianOnline_UserLogWhereUniqueInput;
-}
-
-export interface guardianOnline_UserLogCreateWithoutUserInput {
-	id?: string;
-	logType?: guardianOnline_LogTypeValues;
-	contentType?: guardianOnline_ContentTypeValues;
-	timestamp?: string;
-	details?: JSONValue;
-}
-
-export interface guardianOnline_UserLogCreateOrConnectWithoutUserInput {
-	where?: guardianOnline_UserLogWhereUniqueInput;
-	create?: guardianOnline_UserLogCreateWithoutUserInput;
-}
-
-export interface guardianOnline_UserLogCreateManyUserInputEnvelope {
-	data?: guardianOnline_UserLogCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface guardianOnline_UserLogCreateManyUserInput {
-	id?: string;
-	logType: guardianOnline_LogTypeValues;
-	contentType: guardianOnline_ContentTypeValues;
-	timestamp: string;
-	details: JSONValue;
-}
-
-export interface guardianOnline_UserCreateOrConnectWithoutFeaturesInput {
-	where?: guardianOnline_UserWhereUniqueInput;
-	create?: guardianOnline_UserCreateWithoutFeaturesInput;
+	userId: string;
 }
 
 export interface guardianOnline_UserCreateInput {
-	id?: string;
+	id: string;
 	username: string;
 	password: string;
-	role: guardianOnline_UserRoleValues;
-	features?: guardianOnline_FeatureCreateNestedManyWithoutUserInput;
-	logs?: guardianOnline_UserLogCreateNestedManyWithoutUserInput;
-}
-
-export interface guardianOnline_FeatureCreateNestedManyWithoutUserInput {
-	create?: guardianOnline_FeatureCreateWithoutUserInput;
-	connectOrCreate?: guardianOnline_FeatureCreateOrConnectWithoutUserInput;
-	createMany?: guardianOnline_FeatureCreateManyUserInputEnvelope;
-	connect?: guardianOnline_FeatureWhereUniqueInput;
-}
-
-export interface guardianOnline_FeatureCreateWithoutUserInput {
-	id?: string;
-	featureType?: guardianOnline_FeatureTypeValues;
-	content?: JSONValue;
-}
-
-export interface guardianOnline_FeatureCreateOrConnectWithoutUserInput {
-	where?: guardianOnline_FeatureWhereUniqueInput;
-	create?: guardianOnline_FeatureCreateWithoutUserInput;
-}
-
-export interface guardianOnline_FeatureCreateManyUserInputEnvelope {
-	data?: guardianOnline_FeatureCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface guardianOnline_FeatureCreateManyUserInput {
-	id?: string;
-	featureType: guardianOnline_FeatureTypeValues;
-	content: JSONValue;
+	role: guardianOnline_User_roleValues;
 }
 
 export interface guardianOnline_UserLogCreateInput {
-	id?: string;
-	logType: guardianOnline_LogTypeValues;
-	contentType: guardianOnline_ContentTypeValues;
+	id: string;
+	logType: guardianOnline_UserLog_logTypeValues;
+	contentType: guardianOnline_UserLog_contentTypeValues;
 	timestamp: string;
 	details: JSONValue;
-	user: guardianOnline_UserCreateNestedOneWithoutLogsInput;
-}
-
-export interface guardianOnline_UserCreateNestedOneWithoutLogsInput {
-	create?: guardianOnline_UserCreateWithoutLogsInput;
-	connectOrCreate?: guardianOnline_UserCreateOrConnectWithoutLogsInput;
-	connect?: guardianOnline_UserWhereUniqueInput;
-}
-
-export interface guardianOnline_UserCreateWithoutLogsInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: guardianOnline_UserRoleValues;
-	features?: guardianOnline_FeatureCreateNestedManyWithoutUserInput;
-}
-
-export interface guardianOnline_UserCreateOrConnectWithoutLogsInput {
-	where?: guardianOnline_UserWhereUniqueInput;
-	create?: guardianOnline_UserCreateWithoutLogsInput;
+	userId: string;
 }
 
 export interface guardianOnline_FeatureOrderByWithAggregationInput {
@@ -3877,7 +3204,7 @@ export interface guardianOnline_FeatureScalarWhereWithAggregatesInput {
 	OR?: guardianOnline_FeatureScalarWhereWithAggregatesInput[];
 	NOT?: guardianOnline_FeatureScalarWhereWithAggregatesInput;
 	id?: guardianOnline_StringWithAggregatesFilter;
-	featureType?: guardianOnline_EnumFeatureTypeWithAggregatesFilter;
+	featureType?: guardianOnline_EnumFeature_featureTypeWithAggregatesFilter;
 	content?: guardianOnline_JsonWithAggregatesFilter;
 	userId?: guardianOnline_StringWithAggregatesFilter;
 }
@@ -3927,21 +3254,21 @@ export interface guardianOnline_NestedIntFilter {
 	not?: guardianOnline_NestedIntFilter;
 }
 
-export interface guardianOnline_EnumFeatureTypeWithAggregatesFilter {
-	equals?: guardianOnline_FeatureTypeValues;
-	in?: guardianOnline_FeatureTypeValues[];
-	notIn?: guardianOnline_FeatureTypeValues[];
-	not?: guardianOnline_FeatureTypeValues;
+export interface guardianOnline_EnumFeature_featureTypeWithAggregatesFilter {
+	equals?: guardianOnline_Feature_featureTypeValues;
+	in?: guardianOnline_Feature_featureTypeValues[];
+	notIn?: guardianOnline_Feature_featureTypeValues[];
+	not?: guardianOnline_Feature_featureTypeValues;
 	_count?: guardianOnline_NestedIntFilter;
-	_min?: guardianOnline_NestedEnumFeatureTypeFilter;
-	_max?: guardianOnline_NestedEnumFeatureTypeFilter;
+	_min?: guardianOnline_NestedEnumFeature_featureTypeFilter;
+	_max?: guardianOnline_NestedEnumFeature_featureTypeFilter;
 }
 
-export interface guardianOnline_NestedEnumFeatureTypeFilter {
-	equals?: guardianOnline_FeatureTypeValues;
-	in?: guardianOnline_FeatureTypeValues[];
-	notIn?: guardianOnline_FeatureTypeValues[];
-	not?: guardianOnline_FeatureTypeValues;
+export interface guardianOnline_NestedEnumFeature_featureTypeFilter {
+	equals?: guardianOnline_Feature_featureTypeValues;
+	in?: guardianOnline_Feature_featureTypeValues[];
+	notIn?: guardianOnline_Feature_featureTypeValues[];
+	not?: guardianOnline_Feature_featureTypeValues;
 }
 
 export interface guardianOnline_JsonWithAggregatesFilter {
@@ -4017,24 +3344,24 @@ export interface guardianOnline_UserScalarWhereWithAggregatesInput {
 	id?: guardianOnline_StringWithAggregatesFilter;
 	username?: guardianOnline_StringWithAggregatesFilter;
 	password?: guardianOnline_StringWithAggregatesFilter;
-	role?: guardianOnline_EnumUserRoleWithAggregatesFilter;
+	role?: guardianOnline_EnumUser_roleWithAggregatesFilter;
 }
 
-export interface guardianOnline_EnumUserRoleWithAggregatesFilter {
-	equals?: guardianOnline_UserRoleValues;
-	in?: guardianOnline_UserRoleValues[];
-	notIn?: guardianOnline_UserRoleValues[];
-	not?: guardianOnline_UserRoleValues;
+export interface guardianOnline_EnumUser_roleWithAggregatesFilter {
+	equals?: guardianOnline_User_roleValues;
+	in?: guardianOnline_User_roleValues[];
+	notIn?: guardianOnline_User_roleValues[];
+	not?: guardianOnline_User_roleValues;
 	_count?: guardianOnline_NestedIntFilter;
-	_min?: guardianOnline_NestedEnumUserRoleFilter;
-	_max?: guardianOnline_NestedEnumUserRoleFilter;
+	_min?: guardianOnline_NestedEnumUser_roleFilter;
+	_max?: guardianOnline_NestedEnumUser_roleFilter;
 }
 
-export interface guardianOnline_NestedEnumUserRoleFilter {
-	equals?: guardianOnline_UserRoleValues;
-	in?: guardianOnline_UserRoleValues[];
-	notIn?: guardianOnline_UserRoleValues[];
-	not?: guardianOnline_UserRoleValues;
+export interface guardianOnline_NestedEnumUser_roleFilter {
+	equals?: guardianOnline_User_roleValues;
+	in?: guardianOnline_User_roleValues[];
+	notIn?: guardianOnline_User_roleValues[];
+	not?: guardianOnline_User_roleValues;
 }
 
 export interface guardianOnline_UserLogOrderByWithAggregationInput {
@@ -4079,45 +3406,45 @@ export interface guardianOnline_UserLogScalarWhereWithAggregatesInput {
 	OR?: guardianOnline_UserLogScalarWhereWithAggregatesInput[];
 	NOT?: guardianOnline_UserLogScalarWhereWithAggregatesInput;
 	id?: guardianOnline_StringWithAggregatesFilter;
-	logType?: guardianOnline_EnumLogTypeWithAggregatesFilter;
-	contentType?: guardianOnline_EnumContentTypeWithAggregatesFilter;
+	logType?: guardianOnline_EnumUserLog_logTypeWithAggregatesFilter;
+	contentType?: guardianOnline_EnumUserLog_contentTypeWithAggregatesFilter;
 	timestamp?: guardianOnline_DateTimeWithAggregatesFilter;
 	details?: guardianOnline_JsonWithAggregatesFilter;
 	userId?: guardianOnline_StringWithAggregatesFilter;
 }
 
-export interface guardianOnline_EnumLogTypeWithAggregatesFilter {
-	equals?: guardianOnline_LogTypeValues;
-	in?: guardianOnline_LogTypeValues[];
-	notIn?: guardianOnline_LogTypeValues[];
-	not?: guardianOnline_LogTypeValues;
+export interface guardianOnline_EnumUserLog_logTypeWithAggregatesFilter {
+	equals?: guardianOnline_UserLog_logTypeValues;
+	in?: guardianOnline_UserLog_logTypeValues[];
+	notIn?: guardianOnline_UserLog_logTypeValues[];
+	not?: guardianOnline_UserLog_logTypeValues;
 	_count?: guardianOnline_NestedIntFilter;
-	_min?: guardianOnline_NestedEnumLogTypeFilter;
-	_max?: guardianOnline_NestedEnumLogTypeFilter;
+	_min?: guardianOnline_NestedEnumUserLog_logTypeFilter;
+	_max?: guardianOnline_NestedEnumUserLog_logTypeFilter;
 }
 
-export interface guardianOnline_NestedEnumLogTypeFilter {
-	equals?: guardianOnline_LogTypeValues;
-	in?: guardianOnline_LogTypeValues[];
-	notIn?: guardianOnline_LogTypeValues[];
-	not?: guardianOnline_LogTypeValues;
+export interface guardianOnline_NestedEnumUserLog_logTypeFilter {
+	equals?: guardianOnline_UserLog_logTypeValues;
+	in?: guardianOnline_UserLog_logTypeValues[];
+	notIn?: guardianOnline_UserLog_logTypeValues[];
+	not?: guardianOnline_UserLog_logTypeValues;
 }
 
-export interface guardianOnline_EnumContentTypeWithAggregatesFilter {
-	equals?: guardianOnline_ContentTypeValues;
-	in?: guardianOnline_ContentTypeValues[];
-	notIn?: guardianOnline_ContentTypeValues[];
-	not?: guardianOnline_ContentTypeValues;
+export interface guardianOnline_EnumUserLog_contentTypeWithAggregatesFilter {
+	equals?: guardianOnline_UserLog_contentTypeValues;
+	in?: guardianOnline_UserLog_contentTypeValues[];
+	notIn?: guardianOnline_UserLog_contentTypeValues[];
+	not?: guardianOnline_UserLog_contentTypeValues;
 	_count?: guardianOnline_NestedIntFilter;
-	_min?: guardianOnline_NestedEnumContentTypeFilter;
-	_max?: guardianOnline_NestedEnumContentTypeFilter;
+	_min?: guardianOnline_NestedEnumUserLog_contentTypeFilter;
+	_max?: guardianOnline_NestedEnumUserLog_contentTypeFilter;
 }
 
-export interface guardianOnline_NestedEnumContentTypeFilter {
-	equals?: guardianOnline_ContentTypeValues;
-	in?: guardianOnline_ContentTypeValues[];
-	notIn?: guardianOnline_ContentTypeValues[];
-	not?: guardianOnline_ContentTypeValues;
+export interface guardianOnline_NestedEnumUserLog_contentTypeFilter {
+	equals?: guardianOnline_UserLog_contentTypeValues;
+	in?: guardianOnline_UserLog_contentTypeValues[];
+	notIn?: guardianOnline_UserLog_contentTypeValues[];
+	not?: guardianOnline_UserLog_contentTypeValues;
 }
 
 export interface guardianOnline_DateTimeWithAggregatesFilter {
@@ -4150,8 +3477,9 @@ export interface guardianOnline_NestedDateTimeWithAggregatesFilter {
 
 export interface guardianOnline_FeatureUpdateManyMutationInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	featureType?: guardianOnline_FeatureTypeValues;
+	featureType?: guardianOnline_Feature_featureTypeValues;
 	content?: JSONValue;
+	userId?: guardianOnline_StringFieldUpdateOperationsInput;
 }
 
 export interface guardianOnline_StringFieldUpdateOperationsInput {
@@ -4162,15 +3490,16 @@ export interface guardianOnline_UserUpdateManyMutationInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
 	username?: guardianOnline_StringFieldUpdateOperationsInput;
 	password?: guardianOnline_StringFieldUpdateOperationsInput;
-	role?: guardianOnline_UserRoleValues;
+	role?: guardianOnline_User_roleValues;
 }
 
 export interface guardianOnline_UserLogUpdateManyMutationInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	logType?: guardianOnline_LogTypeValues;
-	contentType?: guardianOnline_ContentTypeValues;
+	logType?: guardianOnline_UserLog_logTypeValues;
+	contentType?: guardianOnline_UserLog_contentTypeValues;
 	timestamp?: guardianOnline_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
+	userId?: guardianOnline_StringFieldUpdateOperationsInput;
 }
 
 export interface guardianOnline_DateTimeFieldUpdateOperationsInput {
@@ -4179,165 +3508,25 @@ export interface guardianOnline_DateTimeFieldUpdateOperationsInput {
 
 export interface guardianOnline_FeatureUpdateInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	featureType?: guardianOnline_FeatureTypeValues;
+	featureType?: guardianOnline_Feature_featureTypeValues;
 	content?: JSONValue;
-	user?: guardianOnline_UserUpdateOneRequiredWithoutFeaturesNestedInput;
-}
-
-export interface guardianOnline_UserUpdateOneRequiredWithoutFeaturesNestedInput {
-	create?: guardianOnline_UserCreateWithoutFeaturesInput;
-	connectOrCreate?: guardianOnline_UserCreateOrConnectWithoutFeaturesInput;
-	upsert?: guardianOnline_UserUpsertWithoutFeaturesInput;
-	connect?: guardianOnline_UserWhereUniqueInput;
-	update?: guardianOnline_UserUpdateWithoutFeaturesInput;
-}
-
-export interface guardianOnline_UserUpsertWithoutFeaturesInput {
-	update?: guardianOnline_UserUpdateWithoutFeaturesInput;
-	create?: guardianOnline_UserCreateWithoutFeaturesInput;
-}
-
-export interface guardianOnline_UserUpdateWithoutFeaturesInput {
-	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	username?: guardianOnline_StringFieldUpdateOperationsInput;
-	password?: guardianOnline_StringFieldUpdateOperationsInput;
-	role?: guardianOnline_UserRoleValues;
-	logs?: guardianOnline_UserLogUpdateManyWithoutUserNestedInput;
-}
-
-export interface guardianOnline_UserLogUpdateManyWithoutUserNestedInput {
-	create?: guardianOnline_UserLogCreateWithoutUserInput;
-	connectOrCreate?: guardianOnline_UserLogCreateOrConnectWithoutUserInput;
-	upsert?: guardianOnline_UserLogUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: guardianOnline_UserLogCreateManyUserInputEnvelope;
-	set?: guardianOnline_UserLogWhereUniqueInput;
-	disconnect?: guardianOnline_UserLogWhereUniqueInput;
-	delete?: guardianOnline_UserLogWhereUniqueInput;
-	connect?: guardianOnline_UserLogWhereUniqueInput;
-	update?: guardianOnline_UserLogUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: guardianOnline_UserLogUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: guardianOnline_UserLogScalarWhereInput;
-}
-
-export interface guardianOnline_UserLogUpsertWithWhereUniqueWithoutUserInput {
-	where?: guardianOnline_UserLogWhereUniqueInput;
-	update?: guardianOnline_UserLogUpdateWithoutUserInput;
-	create?: guardianOnline_UserLogCreateWithoutUserInput;
-}
-
-export interface guardianOnline_UserLogUpdateWithoutUserInput {
-	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	logType?: guardianOnline_LogTypeValues;
-	contentType?: guardianOnline_ContentTypeValues;
-	timestamp?: guardianOnline_DateTimeFieldUpdateOperationsInput;
-	details?: JSONValue;
-}
-
-export interface guardianOnline_UserLogUpdateWithWhereUniqueWithoutUserInput {
-	where?: guardianOnline_UserLogWhereUniqueInput;
-	data?: guardianOnline_UserLogUpdateWithoutUserInput;
-}
-
-export interface guardianOnline_UserLogUpdateManyWithWhereWithoutUserInput {
-	where?: guardianOnline_UserLogScalarWhereInput;
-	data?: guardianOnline_UserLogUpdateManyMutationInput;
-}
-
-export interface guardianOnline_UserLogScalarWhereInput {
-	AND?: guardianOnline_UserLogScalarWhereInput;
-	OR?: guardianOnline_UserLogScalarWhereInput[];
-	NOT?: guardianOnline_UserLogScalarWhereInput;
-	id?: guardianOnline_StringFilter;
-	logType?: guardianOnline_EnumLogTypeFilter;
-	contentType?: guardianOnline_EnumContentTypeFilter;
-	timestamp?: guardianOnline_DateTimeFilter;
-	details?: guardianOnline_JsonFilter;
-	userId?: guardianOnline_StringFilter;
+	userId?: guardianOnline_StringFieldUpdateOperationsInput;
 }
 
 export interface guardianOnline_UserUpdateInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
 	username?: guardianOnline_StringFieldUpdateOperationsInput;
 	password?: guardianOnline_StringFieldUpdateOperationsInput;
-	role?: guardianOnline_UserRoleValues;
-	features?: guardianOnline_FeatureUpdateManyWithoutUserNestedInput;
-	logs?: guardianOnline_UserLogUpdateManyWithoutUserNestedInput;
-}
-
-export interface guardianOnline_FeatureUpdateManyWithoutUserNestedInput {
-	create?: guardianOnline_FeatureCreateWithoutUserInput;
-	connectOrCreate?: guardianOnline_FeatureCreateOrConnectWithoutUserInput;
-	upsert?: guardianOnline_FeatureUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: guardianOnline_FeatureCreateManyUserInputEnvelope;
-	set?: guardianOnline_FeatureWhereUniqueInput;
-	disconnect?: guardianOnline_FeatureWhereUniqueInput;
-	delete?: guardianOnline_FeatureWhereUniqueInput;
-	connect?: guardianOnline_FeatureWhereUniqueInput;
-	update?: guardianOnline_FeatureUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: guardianOnline_FeatureUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: guardianOnline_FeatureScalarWhereInput;
-}
-
-export interface guardianOnline_FeatureUpsertWithWhereUniqueWithoutUserInput {
-	where?: guardianOnline_FeatureWhereUniqueInput;
-	update?: guardianOnline_FeatureUpdateWithoutUserInput;
-	create?: guardianOnline_FeatureCreateWithoutUserInput;
-}
-
-export interface guardianOnline_FeatureUpdateWithoutUserInput {
-	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	featureType?: guardianOnline_FeatureTypeValues;
-	content?: JSONValue;
-}
-
-export interface guardianOnline_FeatureUpdateWithWhereUniqueWithoutUserInput {
-	where?: guardianOnline_FeatureWhereUniqueInput;
-	data?: guardianOnline_FeatureUpdateWithoutUserInput;
-}
-
-export interface guardianOnline_FeatureUpdateManyWithWhereWithoutUserInput {
-	where?: guardianOnline_FeatureScalarWhereInput;
-	data?: guardianOnline_FeatureUpdateManyMutationInput;
-}
-
-export interface guardianOnline_FeatureScalarWhereInput {
-	AND?: guardianOnline_FeatureScalarWhereInput;
-	OR?: guardianOnline_FeatureScalarWhereInput[];
-	NOT?: guardianOnline_FeatureScalarWhereInput;
-	id?: guardianOnline_StringFilter;
-	featureType?: guardianOnline_EnumFeatureTypeFilter;
-	content?: guardianOnline_JsonFilter;
-	userId?: guardianOnline_StringFilter;
+	role?: guardianOnline_User_roleValues;
 }
 
 export interface guardianOnline_UserLogUpdateInput {
 	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	logType?: guardianOnline_LogTypeValues;
-	contentType?: guardianOnline_ContentTypeValues;
+	logType?: guardianOnline_UserLog_logTypeValues;
+	contentType?: guardianOnline_UserLog_contentTypeValues;
 	timestamp?: guardianOnline_DateTimeFieldUpdateOperationsInput;
 	details?: JSONValue;
-	user?: guardianOnline_UserUpdateOneRequiredWithoutLogsNestedInput;
-}
-
-export interface guardianOnline_UserUpdateOneRequiredWithoutLogsNestedInput {
-	create?: guardianOnline_UserCreateWithoutLogsInput;
-	connectOrCreate?: guardianOnline_UserCreateOrConnectWithoutLogsInput;
-	upsert?: guardianOnline_UserUpsertWithoutLogsInput;
-	connect?: guardianOnline_UserWhereUniqueInput;
-	update?: guardianOnline_UserUpdateWithoutLogsInput;
-}
-
-export interface guardianOnline_UserUpsertWithoutLogsInput {
-	update?: guardianOnline_UserUpdateWithoutLogsInput;
-	create?: guardianOnline_UserCreateWithoutLogsInput;
-}
-
-export interface guardianOnline_UserUpdateWithoutLogsInput {
-	id?: guardianOnline_StringFieldUpdateOperationsInput;
-	username?: guardianOnline_StringFieldUpdateOperationsInput;
-	password?: guardianOnline_StringFieldUpdateOperationsInput;
-	role?: guardianOnline_UserRoleValues;
-	features?: guardianOnline_FeatureUpdateManyWithoutUserNestedInput;
+	userId?: guardianOnline_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_AssetWhereInput {
@@ -4345,10 +3534,9 @@ export interface livingBalanceSheet_AssetWhereInput {
 	OR?: livingBalanceSheet_AssetWhereInput[];
 	NOT?: livingBalanceSheet_AssetWhereInput;
 	id?: livingBalanceSheet_StringFilter;
-	assetType?: livingBalanceSheet_EnumAssetTypeFilter;
+	assetType?: livingBalanceSheet_EnumAsset_assetTypeFilter;
 	value?: livingBalanceSheet_FloatFilter;
 	userId?: livingBalanceSheet_StringFilter;
-	user?: livingBalanceSheet_UserRelationFilter;
 }
 
 export interface livingBalanceSheet_StringFilter {
@@ -4379,11 +3567,11 @@ export interface livingBalanceSheet_NestedStringFilter {
 	not?: livingBalanceSheet_NestedStringFilter;
 }
 
-export interface livingBalanceSheet_EnumAssetTypeFilter {
-	equals?: livingBalanceSheet_AssetTypeValues;
-	in?: livingBalanceSheet_AssetTypeValues[];
-	notIn?: livingBalanceSheet_AssetTypeValues[];
-	not?: livingBalanceSheet_AssetTypeValues;
+export interface livingBalanceSheet_EnumAsset_assetTypeFilter {
+	equals?: livingBalanceSheet_Asset_assetTypeValues;
+	in?: livingBalanceSheet_Asset_assetTypeValues[];
+	notIn?: livingBalanceSheet_Asset_assetTypeValues[];
+	not?: livingBalanceSheet_Asset_assetTypeValues;
 }
 
 export interface livingBalanceSheet_FloatFilter {
@@ -4408,65 +3596,15 @@ export interface livingBalanceSheet_NestedFloatFilter {
 	not?: livingBalanceSheet_NestedFloatFilter;
 }
 
-export interface livingBalanceSheet_UserRelationFilter {
-	is?: livingBalanceSheet_UserWhereInput;
-	isNot?: livingBalanceSheet_UserWhereInput;
+export interface livingBalanceSheet_AssetOrderByWithRelationInput {
+	id?: livingBalanceSheet_SortOrderValues;
+	assetType?: livingBalanceSheet_SortOrderValues;
+	value?: livingBalanceSheet_SortOrderValues;
+	userId?: livingBalanceSheet_SortOrderValues;
 }
 
-export interface livingBalanceSheet_UserWhereInput {
-	AND?: livingBalanceSheet_UserWhereInput;
-	OR?: livingBalanceSheet_UserWhereInput[];
-	NOT?: livingBalanceSheet_UserWhereInput;
-	id?: livingBalanceSheet_StringFilter;
-	username?: livingBalanceSheet_StringFilter;
-	password?: livingBalanceSheet_StringFilter;
-	role?: livingBalanceSheet_EnumUserRoleFilter;
-	assets?: livingBalanceSheet_AssetListRelationFilter;
-	liabilities?: livingBalanceSheet_LiabilityListRelationFilter;
-	goals?: livingBalanceSheet_FinancialGoalListRelationFilter;
-}
-
-export interface livingBalanceSheet_EnumUserRoleFilter {
-	equals?: livingBalanceSheet_UserRoleValues;
-	in?: livingBalanceSheet_UserRoleValues[];
-	notIn?: livingBalanceSheet_UserRoleValues[];
-	not?: livingBalanceSheet_UserRoleValues;
-}
-
-export interface livingBalanceSheet_AssetListRelationFilter {
-	every?: livingBalanceSheet_AssetWhereInput;
-	some?: livingBalanceSheet_AssetWhereInput;
-	none?: livingBalanceSheet_AssetWhereInput;
-}
-
-export interface livingBalanceSheet_LiabilityListRelationFilter {
-	every?: livingBalanceSheet_LiabilityWhereInput;
-	some?: livingBalanceSheet_LiabilityWhereInput;
-	none?: livingBalanceSheet_LiabilityWhereInput;
-}
-
-export interface livingBalanceSheet_LiabilityWhereInput {
-	AND?: livingBalanceSheet_LiabilityWhereInput;
-	OR?: livingBalanceSheet_LiabilityWhereInput[];
-	NOT?: livingBalanceSheet_LiabilityWhereInput;
-	id?: livingBalanceSheet_StringFilter;
-	liabilityType?: livingBalanceSheet_EnumLiabilityTypeFilter;
-	amount?: livingBalanceSheet_FloatFilter;
-	userId?: livingBalanceSheet_StringFilter;
-	user?: livingBalanceSheet_UserRelationFilter;
-}
-
-export interface livingBalanceSheet_EnumLiabilityTypeFilter {
-	equals?: livingBalanceSheet_LiabilityTypeValues;
-	in?: livingBalanceSheet_LiabilityTypeValues[];
-	notIn?: livingBalanceSheet_LiabilityTypeValues[];
-	not?: livingBalanceSheet_LiabilityTypeValues;
-}
-
-export interface livingBalanceSheet_FinancialGoalListRelationFilter {
-	every?: livingBalanceSheet_FinancialGoalWhereInput;
-	some?: livingBalanceSheet_FinancialGoalWhereInput;
-	none?: livingBalanceSheet_FinancialGoalWhereInput;
+export interface livingBalanceSheet_AssetWhereUniqueInput {
+	id?: string;
 }
 
 export interface livingBalanceSheet_FinancialGoalWhereInput {
@@ -4474,18 +3612,17 @@ export interface livingBalanceSheet_FinancialGoalWhereInput {
 	OR?: livingBalanceSheet_FinancialGoalWhereInput[];
 	NOT?: livingBalanceSheet_FinancialGoalWhereInput;
 	id?: livingBalanceSheet_StringFilter;
-	goalType?: livingBalanceSheet_EnumGoalTypeFilter;
+	goalType?: livingBalanceSheet_EnumFinancialGoal_goalTypeFilter;
 	target?: livingBalanceSheet_FloatFilter;
 	deadline?: livingBalanceSheet_DateTimeFilter;
 	userId?: livingBalanceSheet_StringFilter;
-	user?: livingBalanceSheet_UserRelationFilter;
 }
 
-export interface livingBalanceSheet_EnumGoalTypeFilter {
-	equals?: livingBalanceSheet_GoalTypeValues;
-	in?: livingBalanceSheet_GoalTypeValues[];
-	notIn?: livingBalanceSheet_GoalTypeValues[];
-	not?: livingBalanceSheet_GoalTypeValues;
+export interface livingBalanceSheet_EnumFinancialGoal_goalTypeFilter {
+	equals?: livingBalanceSheet_FinancialGoal_goalTypeValues;
+	in?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	notIn?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	not?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 }
 
 export interface livingBalanceSheet_DateTimeFilter {
@@ -4510,51 +3647,33 @@ export interface livingBalanceSheet_NestedDateTimeFilter {
 	not?: livingBalanceSheet_NestedDateTimeFilter;
 }
 
-export interface livingBalanceSheet_AssetOrderByWithRelationInput {
-	id?: livingBalanceSheet_SortOrderValues;
-	assetType?: livingBalanceSheet_SortOrderValues;
-	value?: livingBalanceSheet_SortOrderValues;
-	userId?: livingBalanceSheet_SortOrderValues;
-	user?: livingBalanceSheet_UserOrderByWithRelationInput;
-}
-
-export interface livingBalanceSheet_UserOrderByWithRelationInput {
-	id?: livingBalanceSheet_SortOrderValues;
-	username?: livingBalanceSheet_SortOrderValues;
-	password?: livingBalanceSheet_SortOrderValues;
-	role?: livingBalanceSheet_SortOrderValues;
-	assets?: livingBalanceSheet_AssetOrderByRelationAggregateInput;
-	liabilities?: livingBalanceSheet_LiabilityOrderByRelationAggregateInput;
-	goals?: livingBalanceSheet_FinancialGoalOrderByRelationAggregateInput;
-}
-
-export interface livingBalanceSheet_AssetOrderByRelationAggregateInput {
-	_count?: livingBalanceSheet_SortOrderValues;
-}
-
-export interface livingBalanceSheet_LiabilityOrderByRelationAggregateInput {
-	_count?: livingBalanceSheet_SortOrderValues;
-}
-
-export interface livingBalanceSheet_FinancialGoalOrderByRelationAggregateInput {
-	_count?: livingBalanceSheet_SortOrderValues;
-}
-
-export interface livingBalanceSheet_AssetWhereUniqueInput {
-	id?: string;
-}
-
 export interface livingBalanceSheet_FinancialGoalOrderByWithRelationInput {
 	id?: livingBalanceSheet_SortOrderValues;
 	goalType?: livingBalanceSheet_SortOrderValues;
 	target?: livingBalanceSheet_SortOrderValues;
 	deadline?: livingBalanceSheet_SortOrderValues;
 	userId?: livingBalanceSheet_SortOrderValues;
-	user?: livingBalanceSheet_UserOrderByWithRelationInput;
 }
 
 export interface livingBalanceSheet_FinancialGoalWhereUniqueInput {
 	id?: string;
+}
+
+export interface livingBalanceSheet_LiabilityWhereInput {
+	AND?: livingBalanceSheet_LiabilityWhereInput;
+	OR?: livingBalanceSheet_LiabilityWhereInput[];
+	NOT?: livingBalanceSheet_LiabilityWhereInput;
+	id?: livingBalanceSheet_StringFilter;
+	liabilityType?: livingBalanceSheet_EnumLiability_liabilityTypeFilter;
+	amount?: livingBalanceSheet_FloatFilter;
+	userId?: livingBalanceSheet_StringFilter;
+}
+
+export interface livingBalanceSheet_EnumLiability_liabilityTypeFilter {
+	equals?: livingBalanceSheet_Liability_liabilityTypeValues;
+	in?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	notIn?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	not?: livingBalanceSheet_Liability_liabilityTypeValues;
 }
 
 export interface livingBalanceSheet_LiabilityOrderByWithRelationInput {
@@ -4562,11 +3681,34 @@ export interface livingBalanceSheet_LiabilityOrderByWithRelationInput {
 	liabilityType?: livingBalanceSheet_SortOrderValues;
 	amount?: livingBalanceSheet_SortOrderValues;
 	userId?: livingBalanceSheet_SortOrderValues;
-	user?: livingBalanceSheet_UserOrderByWithRelationInput;
 }
 
 export interface livingBalanceSheet_LiabilityWhereUniqueInput {
 	id?: string;
+}
+
+export interface livingBalanceSheet_UserWhereInput {
+	AND?: livingBalanceSheet_UserWhereInput;
+	OR?: livingBalanceSheet_UserWhereInput[];
+	NOT?: livingBalanceSheet_UserWhereInput;
+	id?: livingBalanceSheet_StringFilter;
+	username?: livingBalanceSheet_StringFilter;
+	password?: livingBalanceSheet_StringFilter;
+	role?: livingBalanceSheet_EnumUser_roleFilter;
+}
+
+export interface livingBalanceSheet_EnumUser_roleFilter {
+	equals?: livingBalanceSheet_User_roleValues;
+	in?: livingBalanceSheet_User_roleValues[];
+	notIn?: livingBalanceSheet_User_roleValues[];
+	not?: livingBalanceSheet_User_roleValues;
+}
+
+export interface livingBalanceSheet_UserOrderByWithRelationInput {
+	id?: livingBalanceSheet_SortOrderValues;
+	username?: livingBalanceSheet_SortOrderValues;
+	password?: livingBalanceSheet_SortOrderValues;
+	role?: livingBalanceSheet_SortOrderValues;
 }
 
 export interface livingBalanceSheet_UserWhereUniqueInput {
@@ -4575,14 +3717,14 @@ export interface livingBalanceSheet_UserWhereUniqueInput {
 
 export interface livingBalanceSheet_AssetCreateManyInput {
 	id?: string;
-	assetType?: livingBalanceSheet_AssetTypeValues;
+	assetType?: livingBalanceSheet_Asset_assetTypeValues;
 	value?: number;
 	userId?: string;
 }
 
 export interface livingBalanceSheet_FinancialGoalCreateManyInput {
 	id?: string;
-	goalType?: livingBalanceSheet_GoalTypeValues;
+	goalType?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 	target?: number;
 	deadline?: string;
 	userId?: string;
@@ -4590,7 +3732,7 @@ export interface livingBalanceSheet_FinancialGoalCreateManyInput {
 
 export interface livingBalanceSheet_LiabilityCreateManyInput {
 	id?: string;
-	liabilityType?: livingBalanceSheet_LiabilityTypeValues;
+	liabilityType?: livingBalanceSheet_Liability_liabilityTypeValues;
 	amount?: number;
 	userId?: string;
 }
@@ -4599,188 +3741,36 @@ export interface livingBalanceSheet_UserCreateManyInput {
 	id?: string;
 	username?: string;
 	password?: string;
-	role?: livingBalanceSheet_UserRoleValues;
+	role?: livingBalanceSheet_User_roleValues;
 }
 
 export interface livingBalanceSheet_AssetCreateInput {
-	id?: string;
-	assetType: livingBalanceSheet_AssetTypeValues;
+	id: string;
+	assetType: livingBalanceSheet_Asset_assetTypeValues;
 	value: number;
-	user: livingBalanceSheet_UserCreateNestedOneWithoutAssetsInput;
-}
-
-export interface livingBalanceSheet_UserCreateNestedOneWithoutAssetsInput {
-	create?: livingBalanceSheet_UserCreateWithoutAssetsInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutAssetsInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_UserCreateWithoutAssetsInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: livingBalanceSheet_UserRoleValues;
-	liabilities?: livingBalanceSheet_LiabilityCreateNestedManyWithoutUserInput;
-	goals?: livingBalanceSheet_FinancialGoalCreateNestedManyWithoutUserInput;
-}
-
-export interface livingBalanceSheet_LiabilityCreateNestedManyWithoutUserInput {
-	create?: livingBalanceSheet_LiabilityCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_LiabilityCreateOrConnectWithoutUserInput;
-	createMany?: livingBalanceSheet_LiabilityCreateManyUserInputEnvelope;
-	connect?: livingBalanceSheet_LiabilityWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_LiabilityCreateWithoutUserInput {
-	id?: string;
-	liabilityType?: livingBalanceSheet_LiabilityTypeValues;
-	amount?: number;
-}
-
-export interface livingBalanceSheet_LiabilityCreateOrConnectWithoutUserInput {
-	where?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	create?: livingBalanceSheet_LiabilityCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_LiabilityCreateManyUserInputEnvelope {
-	data?: livingBalanceSheet_LiabilityCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface livingBalanceSheet_LiabilityCreateManyUserInput {
-	id?: string;
-	liabilityType: livingBalanceSheet_LiabilityTypeValues;
-	amount: number;
-}
-
-export interface livingBalanceSheet_FinancialGoalCreateNestedManyWithoutUserInput {
-	create?: livingBalanceSheet_FinancialGoalCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_FinancialGoalCreateOrConnectWithoutUserInput;
-	createMany?: livingBalanceSheet_FinancialGoalCreateManyUserInputEnvelope;
-	connect?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalCreateWithoutUserInput {
-	id?: string;
-	goalType?: livingBalanceSheet_GoalTypeValues;
-	target?: number;
-	deadline?: string;
-}
-
-export interface livingBalanceSheet_FinancialGoalCreateOrConnectWithoutUserInput {
-	where?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	create?: livingBalanceSheet_FinancialGoalCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalCreateManyUserInputEnvelope {
-	data?: livingBalanceSheet_FinancialGoalCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface livingBalanceSheet_FinancialGoalCreateManyUserInput {
-	id?: string;
-	goalType: livingBalanceSheet_GoalTypeValues;
-	target: number;
-	deadline: string;
-}
-
-export interface livingBalanceSheet_UserCreateOrConnectWithoutAssetsInput {
-	where?: livingBalanceSheet_UserWhereUniqueInput;
-	create?: livingBalanceSheet_UserCreateWithoutAssetsInput;
+	userId: string;
 }
 
 export interface livingBalanceSheet_FinancialGoalCreateInput {
-	id?: string;
-	goalType: livingBalanceSheet_GoalTypeValues;
+	id: string;
+	goalType: livingBalanceSheet_FinancialGoal_goalTypeValues;
 	target: number;
 	deadline: string;
-	user: livingBalanceSheet_UserCreateNestedOneWithoutGoalsInput;
-}
-
-export interface livingBalanceSheet_UserCreateNestedOneWithoutGoalsInput {
-	create?: livingBalanceSheet_UserCreateWithoutGoalsInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutGoalsInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_UserCreateWithoutGoalsInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetCreateNestedManyWithoutUserInput;
-	liabilities?: livingBalanceSheet_LiabilityCreateNestedManyWithoutUserInput;
-}
-
-export interface livingBalanceSheet_AssetCreateNestedManyWithoutUserInput {
-	create?: livingBalanceSheet_AssetCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_AssetCreateOrConnectWithoutUserInput;
-	createMany?: livingBalanceSheet_AssetCreateManyUserInputEnvelope;
-	connect?: livingBalanceSheet_AssetWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_AssetCreateWithoutUserInput {
-	id?: string;
-	assetType?: livingBalanceSheet_AssetTypeValues;
-	value?: number;
-}
-
-export interface livingBalanceSheet_AssetCreateOrConnectWithoutUserInput {
-	where?: livingBalanceSheet_AssetWhereUniqueInput;
-	create?: livingBalanceSheet_AssetCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_AssetCreateManyUserInputEnvelope {
-	data?: livingBalanceSheet_AssetCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface livingBalanceSheet_AssetCreateManyUserInput {
-	id?: string;
-	assetType: livingBalanceSheet_AssetTypeValues;
-	value: number;
-}
-
-export interface livingBalanceSheet_UserCreateOrConnectWithoutGoalsInput {
-	where?: livingBalanceSheet_UserWhereUniqueInput;
-	create?: livingBalanceSheet_UserCreateWithoutGoalsInput;
+	userId: string;
 }
 
 export interface livingBalanceSheet_LiabilityCreateInput {
-	id?: string;
-	liabilityType: livingBalanceSheet_LiabilityTypeValues;
+	id: string;
+	liabilityType: livingBalanceSheet_Liability_liabilityTypeValues;
 	amount: number;
-	user: livingBalanceSheet_UserCreateNestedOneWithoutLiabilitiesInput;
-}
-
-export interface livingBalanceSheet_UserCreateNestedOneWithoutLiabilitiesInput {
-	create?: livingBalanceSheet_UserCreateWithoutLiabilitiesInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutLiabilitiesInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-}
-
-export interface livingBalanceSheet_UserCreateWithoutLiabilitiesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetCreateNestedManyWithoutUserInput;
-	goals?: livingBalanceSheet_FinancialGoalCreateNestedManyWithoutUserInput;
-}
-
-export interface livingBalanceSheet_UserCreateOrConnectWithoutLiabilitiesInput {
-	where?: livingBalanceSheet_UserWhereUniqueInput;
-	create?: livingBalanceSheet_UserCreateWithoutLiabilitiesInput;
+	userId: string;
 }
 
 export interface livingBalanceSheet_UserCreateInput {
-	id?: string;
+	id: string;
 	username: string;
 	password: string;
-	role: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetCreateNestedManyWithoutUserInput;
-	liabilities?: livingBalanceSheet_LiabilityCreateNestedManyWithoutUserInput;
-	goals?: livingBalanceSheet_FinancialGoalCreateNestedManyWithoutUserInput;
+	role: livingBalanceSheet_User_roleValues;
 }
 
 export interface livingBalanceSheet_AssetOrderByWithAggregationInput {
@@ -4829,7 +3819,7 @@ export interface livingBalanceSheet_AssetScalarWhereWithAggregatesInput {
 	OR?: livingBalanceSheet_AssetScalarWhereWithAggregatesInput[];
 	NOT?: livingBalanceSheet_AssetScalarWhereWithAggregatesInput;
 	id?: livingBalanceSheet_StringWithAggregatesFilter;
-	assetType?: livingBalanceSheet_EnumAssetTypeWithAggregatesFilter;
+	assetType?: livingBalanceSheet_EnumAsset_assetTypeWithAggregatesFilter;
 	value?: livingBalanceSheet_FloatWithAggregatesFilter;
 	userId?: livingBalanceSheet_StringWithAggregatesFilter;
 }
@@ -4879,21 +3869,21 @@ export interface livingBalanceSheet_NestedIntFilter {
 	not?: livingBalanceSheet_NestedIntFilter;
 }
 
-export interface livingBalanceSheet_EnumAssetTypeWithAggregatesFilter {
-	equals?: livingBalanceSheet_AssetTypeValues;
-	in?: livingBalanceSheet_AssetTypeValues[];
-	notIn?: livingBalanceSheet_AssetTypeValues[];
-	not?: livingBalanceSheet_AssetTypeValues;
+export interface livingBalanceSheet_EnumAsset_assetTypeWithAggregatesFilter {
+	equals?: livingBalanceSheet_Asset_assetTypeValues;
+	in?: livingBalanceSheet_Asset_assetTypeValues[];
+	notIn?: livingBalanceSheet_Asset_assetTypeValues[];
+	not?: livingBalanceSheet_Asset_assetTypeValues;
 	_count?: livingBalanceSheet_NestedIntFilter;
-	_min?: livingBalanceSheet_NestedEnumAssetTypeFilter;
-	_max?: livingBalanceSheet_NestedEnumAssetTypeFilter;
+	_min?: livingBalanceSheet_NestedEnumAsset_assetTypeFilter;
+	_max?: livingBalanceSheet_NestedEnumAsset_assetTypeFilter;
 }
 
-export interface livingBalanceSheet_NestedEnumAssetTypeFilter {
-	equals?: livingBalanceSheet_AssetTypeValues;
-	in?: livingBalanceSheet_AssetTypeValues[];
-	notIn?: livingBalanceSheet_AssetTypeValues[];
-	not?: livingBalanceSheet_AssetTypeValues;
+export interface livingBalanceSheet_NestedEnumAsset_assetTypeFilter {
+	equals?: livingBalanceSheet_Asset_assetTypeValues;
+	in?: livingBalanceSheet_Asset_assetTypeValues[];
+	notIn?: livingBalanceSheet_Asset_assetTypeValues[];
+	not?: livingBalanceSheet_Asset_assetTypeValues;
 }
 
 export interface livingBalanceSheet_FloatWithAggregatesFilter {
@@ -4978,27 +3968,27 @@ export interface livingBalanceSheet_FinancialGoalScalarWhereWithAggregatesInput 
 	OR?: livingBalanceSheet_FinancialGoalScalarWhereWithAggregatesInput[];
 	NOT?: livingBalanceSheet_FinancialGoalScalarWhereWithAggregatesInput;
 	id?: livingBalanceSheet_StringWithAggregatesFilter;
-	goalType?: livingBalanceSheet_EnumGoalTypeWithAggregatesFilter;
+	goalType?: livingBalanceSheet_EnumFinancialGoal_goalTypeWithAggregatesFilter;
 	target?: livingBalanceSheet_FloatWithAggregatesFilter;
 	deadline?: livingBalanceSheet_DateTimeWithAggregatesFilter;
 	userId?: livingBalanceSheet_StringWithAggregatesFilter;
 }
 
-export interface livingBalanceSheet_EnumGoalTypeWithAggregatesFilter {
-	equals?: livingBalanceSheet_GoalTypeValues;
-	in?: livingBalanceSheet_GoalTypeValues[];
-	notIn?: livingBalanceSheet_GoalTypeValues[];
-	not?: livingBalanceSheet_GoalTypeValues;
+export interface livingBalanceSheet_EnumFinancialGoal_goalTypeWithAggregatesFilter {
+	equals?: livingBalanceSheet_FinancialGoal_goalTypeValues;
+	in?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	notIn?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	not?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 	_count?: livingBalanceSheet_NestedIntFilter;
-	_min?: livingBalanceSheet_NestedEnumGoalTypeFilter;
-	_max?: livingBalanceSheet_NestedEnumGoalTypeFilter;
+	_min?: livingBalanceSheet_NestedEnumFinancialGoal_goalTypeFilter;
+	_max?: livingBalanceSheet_NestedEnumFinancialGoal_goalTypeFilter;
 }
 
-export interface livingBalanceSheet_NestedEnumGoalTypeFilter {
-	equals?: livingBalanceSheet_GoalTypeValues;
-	in?: livingBalanceSheet_GoalTypeValues[];
-	notIn?: livingBalanceSheet_GoalTypeValues[];
-	not?: livingBalanceSheet_GoalTypeValues;
+export interface livingBalanceSheet_NestedEnumFinancialGoal_goalTypeFilter {
+	equals?: livingBalanceSheet_FinancialGoal_goalTypeValues;
+	in?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	notIn?: livingBalanceSheet_FinancialGoal_goalTypeValues[];
+	not?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 }
 
 export interface livingBalanceSheet_DateTimeWithAggregatesFilter {
@@ -5075,26 +4065,26 @@ export interface livingBalanceSheet_LiabilityScalarWhereWithAggregatesInput {
 	OR?: livingBalanceSheet_LiabilityScalarWhereWithAggregatesInput[];
 	NOT?: livingBalanceSheet_LiabilityScalarWhereWithAggregatesInput;
 	id?: livingBalanceSheet_StringWithAggregatesFilter;
-	liabilityType?: livingBalanceSheet_EnumLiabilityTypeWithAggregatesFilter;
+	liabilityType?: livingBalanceSheet_EnumLiability_liabilityTypeWithAggregatesFilter;
 	amount?: livingBalanceSheet_FloatWithAggregatesFilter;
 	userId?: livingBalanceSheet_StringWithAggregatesFilter;
 }
 
-export interface livingBalanceSheet_EnumLiabilityTypeWithAggregatesFilter {
-	equals?: livingBalanceSheet_LiabilityTypeValues;
-	in?: livingBalanceSheet_LiabilityTypeValues[];
-	notIn?: livingBalanceSheet_LiabilityTypeValues[];
-	not?: livingBalanceSheet_LiabilityTypeValues;
+export interface livingBalanceSheet_EnumLiability_liabilityTypeWithAggregatesFilter {
+	equals?: livingBalanceSheet_Liability_liabilityTypeValues;
+	in?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	notIn?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	not?: livingBalanceSheet_Liability_liabilityTypeValues;
 	_count?: livingBalanceSheet_NestedIntFilter;
-	_min?: livingBalanceSheet_NestedEnumLiabilityTypeFilter;
-	_max?: livingBalanceSheet_NestedEnumLiabilityTypeFilter;
+	_min?: livingBalanceSheet_NestedEnumLiability_liabilityTypeFilter;
+	_max?: livingBalanceSheet_NestedEnumLiability_liabilityTypeFilter;
 }
 
-export interface livingBalanceSheet_NestedEnumLiabilityTypeFilter {
-	equals?: livingBalanceSheet_LiabilityTypeValues;
-	in?: livingBalanceSheet_LiabilityTypeValues[];
-	notIn?: livingBalanceSheet_LiabilityTypeValues[];
-	not?: livingBalanceSheet_LiabilityTypeValues;
+export interface livingBalanceSheet_NestedEnumLiability_liabilityTypeFilter {
+	equals?: livingBalanceSheet_Liability_liabilityTypeValues;
+	in?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	notIn?: livingBalanceSheet_Liability_liabilityTypeValues[];
+	not?: livingBalanceSheet_Liability_liabilityTypeValues;
 }
 
 export interface livingBalanceSheet_UserOrderByWithAggregationInput {
@@ -5135,30 +4125,31 @@ export interface livingBalanceSheet_UserScalarWhereWithAggregatesInput {
 	id?: livingBalanceSheet_StringWithAggregatesFilter;
 	username?: livingBalanceSheet_StringWithAggregatesFilter;
 	password?: livingBalanceSheet_StringWithAggregatesFilter;
-	role?: livingBalanceSheet_EnumUserRoleWithAggregatesFilter;
+	role?: livingBalanceSheet_EnumUser_roleWithAggregatesFilter;
 }
 
-export interface livingBalanceSheet_EnumUserRoleWithAggregatesFilter {
-	equals?: livingBalanceSheet_UserRoleValues;
-	in?: livingBalanceSheet_UserRoleValues[];
-	notIn?: livingBalanceSheet_UserRoleValues[];
-	not?: livingBalanceSheet_UserRoleValues;
+export interface livingBalanceSheet_EnumUser_roleWithAggregatesFilter {
+	equals?: livingBalanceSheet_User_roleValues;
+	in?: livingBalanceSheet_User_roleValues[];
+	notIn?: livingBalanceSheet_User_roleValues[];
+	not?: livingBalanceSheet_User_roleValues;
 	_count?: livingBalanceSheet_NestedIntFilter;
-	_min?: livingBalanceSheet_NestedEnumUserRoleFilter;
-	_max?: livingBalanceSheet_NestedEnumUserRoleFilter;
+	_min?: livingBalanceSheet_NestedEnumUser_roleFilter;
+	_max?: livingBalanceSheet_NestedEnumUser_roleFilter;
 }
 
-export interface livingBalanceSheet_NestedEnumUserRoleFilter {
-	equals?: livingBalanceSheet_UserRoleValues;
-	in?: livingBalanceSheet_UserRoleValues[];
-	notIn?: livingBalanceSheet_UserRoleValues[];
-	not?: livingBalanceSheet_UserRoleValues;
+export interface livingBalanceSheet_NestedEnumUser_roleFilter {
+	equals?: livingBalanceSheet_User_roleValues;
+	in?: livingBalanceSheet_User_roleValues[];
+	notIn?: livingBalanceSheet_User_roleValues[];
+	not?: livingBalanceSheet_User_roleValues;
 }
 
 export interface livingBalanceSheet_AssetUpdateManyMutationInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	assetType?: livingBalanceSheet_AssetTypeValues;
+	assetType?: livingBalanceSheet_Asset_assetTypeValues;
 	value?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_StringFieldUpdateOperationsInput {
@@ -5175,9 +4166,10 @@ export interface livingBalanceSheet_FloatFieldUpdateOperationsInput {
 
 export interface livingBalanceSheet_FinancialGoalUpdateManyMutationInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	goalType?: livingBalanceSheet_GoalTypeValues;
+	goalType?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 	target?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
 	deadline?: livingBalanceSheet_DateTimeFieldUpdateOperationsInput;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_DateTimeFieldUpdateOperationsInput {
@@ -5186,253 +4178,45 @@ export interface livingBalanceSheet_DateTimeFieldUpdateOperationsInput {
 
 export interface livingBalanceSheet_LiabilityUpdateManyMutationInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	liabilityType?: livingBalanceSheet_LiabilityTypeValues;
+	liabilityType?: livingBalanceSheet_Liability_liabilityTypeValues;
 	amount?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_UserUpdateManyMutationInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 	username?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 	password?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	role?: livingBalanceSheet_UserRoleValues;
+	role?: livingBalanceSheet_User_roleValues;
 }
 
 export interface livingBalanceSheet_AssetUpdateInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	assetType?: livingBalanceSheet_AssetTypeValues;
+	assetType?: livingBalanceSheet_Asset_assetTypeValues;
 	value?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
-	user?: livingBalanceSheet_UserUpdateOneRequiredWithoutAssetsNestedInput;
-}
-
-export interface livingBalanceSheet_UserUpdateOneRequiredWithoutAssetsNestedInput {
-	create?: livingBalanceSheet_UserCreateWithoutAssetsInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutAssetsInput;
-	upsert?: livingBalanceSheet_UserUpsertWithoutAssetsInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-	update?: livingBalanceSheet_UserUpdateWithoutAssetsInput;
-}
-
-export interface livingBalanceSheet_UserUpsertWithoutAssetsInput {
-	update?: livingBalanceSheet_UserUpdateWithoutAssetsInput;
-	create?: livingBalanceSheet_UserCreateWithoutAssetsInput;
-}
-
-export interface livingBalanceSheet_UserUpdateWithoutAssetsInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	username?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	password?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	role?: livingBalanceSheet_UserRoleValues;
-	liabilities?: livingBalanceSheet_LiabilityUpdateManyWithoutUserNestedInput;
-	goals?: livingBalanceSheet_FinancialGoalUpdateManyWithoutUserNestedInput;
-}
-
-export interface livingBalanceSheet_LiabilityUpdateManyWithoutUserNestedInput {
-	create?: livingBalanceSheet_LiabilityCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_LiabilityCreateOrConnectWithoutUserInput;
-	upsert?: livingBalanceSheet_LiabilityUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: livingBalanceSheet_LiabilityCreateManyUserInputEnvelope;
-	set?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	disconnect?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	delete?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	connect?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	update?: livingBalanceSheet_LiabilityUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: livingBalanceSheet_LiabilityUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: livingBalanceSheet_LiabilityScalarWhereInput;
-}
-
-export interface livingBalanceSheet_LiabilityUpsertWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	update?: livingBalanceSheet_LiabilityUpdateWithoutUserInput;
-	create?: livingBalanceSheet_LiabilityCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_LiabilityUpdateWithoutUserInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	liabilityType?: livingBalanceSheet_LiabilityTypeValues;
-	amount?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
-}
-
-export interface livingBalanceSheet_LiabilityUpdateWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	data?: livingBalanceSheet_LiabilityUpdateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_LiabilityUpdateManyWithWhereWithoutUserInput {
-	where?: livingBalanceSheet_LiabilityScalarWhereInput;
-	data?: livingBalanceSheet_LiabilityUpdateManyMutationInput;
-}
-
-export interface livingBalanceSheet_LiabilityScalarWhereInput {
-	AND?: livingBalanceSheet_LiabilityScalarWhereInput;
-	OR?: livingBalanceSheet_LiabilityScalarWhereInput[];
-	NOT?: livingBalanceSheet_LiabilityScalarWhereInput;
-	id?: livingBalanceSheet_StringFilter;
-	liabilityType?: livingBalanceSheet_EnumLiabilityTypeFilter;
-	amount?: livingBalanceSheet_FloatFilter;
-	userId?: livingBalanceSheet_StringFilter;
-}
-
-export interface livingBalanceSheet_FinancialGoalUpdateManyWithoutUserNestedInput {
-	create?: livingBalanceSheet_FinancialGoalCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_FinancialGoalCreateOrConnectWithoutUserInput;
-	upsert?: livingBalanceSheet_FinancialGoalUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: livingBalanceSheet_FinancialGoalCreateManyUserInputEnvelope;
-	set?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	disconnect?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	delete?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	connect?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	update?: livingBalanceSheet_FinancialGoalUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: livingBalanceSheet_FinancialGoalUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: livingBalanceSheet_FinancialGoalScalarWhereInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalUpsertWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	update?: livingBalanceSheet_FinancialGoalUpdateWithoutUserInput;
-	create?: livingBalanceSheet_FinancialGoalCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalUpdateWithoutUserInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	goalType?: livingBalanceSheet_GoalTypeValues;
-	target?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
-	deadline?: livingBalanceSheet_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalUpdateWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	data?: livingBalanceSheet_FinancialGoalUpdateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalUpdateManyWithWhereWithoutUserInput {
-	where?: livingBalanceSheet_FinancialGoalScalarWhereInput;
-	data?: livingBalanceSheet_FinancialGoalUpdateManyMutationInput;
-}
-
-export interface livingBalanceSheet_FinancialGoalScalarWhereInput {
-	AND?: livingBalanceSheet_FinancialGoalScalarWhereInput;
-	OR?: livingBalanceSheet_FinancialGoalScalarWhereInput[];
-	NOT?: livingBalanceSheet_FinancialGoalScalarWhereInput;
-	id?: livingBalanceSheet_StringFilter;
-	goalType?: livingBalanceSheet_EnumGoalTypeFilter;
-	target?: livingBalanceSheet_FloatFilter;
-	deadline?: livingBalanceSheet_DateTimeFilter;
-	userId?: livingBalanceSheet_StringFilter;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_FinancialGoalUpdateInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	goalType?: livingBalanceSheet_GoalTypeValues;
+	goalType?: livingBalanceSheet_FinancialGoal_goalTypeValues;
 	target?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
 	deadline?: livingBalanceSheet_DateTimeFieldUpdateOperationsInput;
-	user?: livingBalanceSheet_UserUpdateOneRequiredWithoutGoalsNestedInput;
-}
-
-export interface livingBalanceSheet_UserUpdateOneRequiredWithoutGoalsNestedInput {
-	create?: livingBalanceSheet_UserCreateWithoutGoalsInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutGoalsInput;
-	upsert?: livingBalanceSheet_UserUpsertWithoutGoalsInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-	update?: livingBalanceSheet_UserUpdateWithoutGoalsInput;
-}
-
-export interface livingBalanceSheet_UserUpsertWithoutGoalsInput {
-	update?: livingBalanceSheet_UserUpdateWithoutGoalsInput;
-	create?: livingBalanceSheet_UserCreateWithoutGoalsInput;
-}
-
-export interface livingBalanceSheet_UserUpdateWithoutGoalsInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	username?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	password?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	role?: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetUpdateManyWithoutUserNestedInput;
-	liabilities?: livingBalanceSheet_LiabilityUpdateManyWithoutUserNestedInput;
-}
-
-export interface livingBalanceSheet_AssetUpdateManyWithoutUserNestedInput {
-	create?: livingBalanceSheet_AssetCreateWithoutUserInput;
-	connectOrCreate?: livingBalanceSheet_AssetCreateOrConnectWithoutUserInput;
-	upsert?: livingBalanceSheet_AssetUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: livingBalanceSheet_AssetCreateManyUserInputEnvelope;
-	set?: livingBalanceSheet_AssetWhereUniqueInput;
-	disconnect?: livingBalanceSheet_AssetWhereUniqueInput;
-	delete?: livingBalanceSheet_AssetWhereUniqueInput;
-	connect?: livingBalanceSheet_AssetWhereUniqueInput;
-	update?: livingBalanceSheet_AssetUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: livingBalanceSheet_AssetUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: livingBalanceSheet_AssetScalarWhereInput;
-}
-
-export interface livingBalanceSheet_AssetUpsertWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_AssetWhereUniqueInput;
-	update?: livingBalanceSheet_AssetUpdateWithoutUserInput;
-	create?: livingBalanceSheet_AssetCreateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_AssetUpdateWithoutUserInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	assetType?: livingBalanceSheet_AssetTypeValues;
-	value?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
-}
-
-export interface livingBalanceSheet_AssetUpdateWithWhereUniqueWithoutUserInput {
-	where?: livingBalanceSheet_AssetWhereUniqueInput;
-	data?: livingBalanceSheet_AssetUpdateWithoutUserInput;
-}
-
-export interface livingBalanceSheet_AssetUpdateManyWithWhereWithoutUserInput {
-	where?: livingBalanceSheet_AssetScalarWhereInput;
-	data?: livingBalanceSheet_AssetUpdateManyMutationInput;
-}
-
-export interface livingBalanceSheet_AssetScalarWhereInput {
-	AND?: livingBalanceSheet_AssetScalarWhereInput;
-	OR?: livingBalanceSheet_AssetScalarWhereInput[];
-	NOT?: livingBalanceSheet_AssetScalarWhereInput;
-	id?: livingBalanceSheet_StringFilter;
-	assetType?: livingBalanceSheet_EnumAssetTypeFilter;
-	value?: livingBalanceSheet_FloatFilter;
-	userId?: livingBalanceSheet_StringFilter;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_LiabilityUpdateInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	liabilityType?: livingBalanceSheet_LiabilityTypeValues;
+	liabilityType?: livingBalanceSheet_Liability_liabilityTypeValues;
 	amount?: livingBalanceSheet_FloatFieldUpdateOperationsInput;
-	user?: livingBalanceSheet_UserUpdateOneRequiredWithoutLiabilitiesNestedInput;
-}
-
-export interface livingBalanceSheet_UserUpdateOneRequiredWithoutLiabilitiesNestedInput {
-	create?: livingBalanceSheet_UserCreateWithoutLiabilitiesInput;
-	connectOrCreate?: livingBalanceSheet_UserCreateOrConnectWithoutLiabilitiesInput;
-	upsert?: livingBalanceSheet_UserUpsertWithoutLiabilitiesInput;
-	connect?: livingBalanceSheet_UserWhereUniqueInput;
-	update?: livingBalanceSheet_UserUpdateWithoutLiabilitiesInput;
-}
-
-export interface livingBalanceSheet_UserUpsertWithoutLiabilitiesInput {
-	update?: livingBalanceSheet_UserUpdateWithoutLiabilitiesInput;
-	create?: livingBalanceSheet_UserCreateWithoutLiabilitiesInput;
-}
-
-export interface livingBalanceSheet_UserUpdateWithoutLiabilitiesInput {
-	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	username?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	password?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	role?: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetUpdateManyWithoutUserNestedInput;
-	goals?: livingBalanceSheet_FinancialGoalUpdateManyWithoutUserNestedInput;
+	userId?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 }
 
 export interface livingBalanceSheet_UserUpdateInput {
 	id?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 	username?: livingBalanceSheet_StringFieldUpdateOperationsInput;
 	password?: livingBalanceSheet_StringFieldUpdateOperationsInput;
-	role?: livingBalanceSheet_UserRoleValues;
-	assets?: livingBalanceSheet_AssetUpdateManyWithoutUserNestedInput;
-	liabilities?: livingBalanceSheet_LiabilityUpdateManyWithoutUserNestedInput;
-	goals?: livingBalanceSheet_FinancialGoalUpdateManyWithoutUserNestedInput;
+	role?: livingBalanceSheet_User_roleValues;
 }
 
 export interface smartOffice_ClientWhereInput {
@@ -5444,7 +4228,6 @@ export interface smartOffice_ClientWhereInput {
 	email?: smartOffice_StringFilter;
 	phone?: smartOffice_StringFilter;
 	userId?: smartOffice_StringFilter;
-	user?: smartOffice_UserRelationFilter;
 }
 
 export interface smartOffice_StringFilter {
@@ -5475,89 +4258,16 @@ export interface smartOffice_NestedStringFilter {
 	not?: smartOffice_NestedStringFilter;
 }
 
-export interface smartOffice_UserRelationFilter {
-	is?: smartOffice_UserWhereInput;
-	isNot?: smartOffice_UserWhereInput;
+export interface smartOffice_ClientOrderByWithRelationInput {
+	id?: smartOffice_SortOrderValues;
+	name?: smartOffice_SortOrderValues;
+	email?: smartOffice_SortOrderValues;
+	phone?: smartOffice_SortOrderValues;
+	userId?: smartOffice_SortOrderValues;
 }
 
-export interface smartOffice_UserWhereInput {
-	AND?: smartOffice_UserWhereInput;
-	OR?: smartOffice_UserWhereInput[];
-	NOT?: smartOffice_UserWhereInput;
-	id?: smartOffice_StringFilter;
-	username?: smartOffice_StringFilter;
-	password?: smartOffice_StringFilter;
-	role?: smartOffice_EnumUserRoleFilter;
-	clients?: smartOffice_ClientListRelationFilter;
-	tasks?: smartOffice_TaskListRelationFilter;
-	sales?: smartOffice_SaleListRelationFilter;
-}
-
-export interface smartOffice_EnumUserRoleFilter {
-	equals?: smartOffice_UserRoleValues;
-	in?: smartOffice_UserRoleValues[];
-	notIn?: smartOffice_UserRoleValues[];
-	not?: smartOffice_UserRoleValues;
-}
-
-export interface smartOffice_ClientListRelationFilter {
-	every?: smartOffice_ClientWhereInput;
-	some?: smartOffice_ClientWhereInput;
-	none?: smartOffice_ClientWhereInput;
-}
-
-export interface smartOffice_TaskListRelationFilter {
-	every?: smartOffice_TaskWhereInput;
-	some?: smartOffice_TaskWhereInput;
-	none?: smartOffice_TaskWhereInput;
-}
-
-export interface smartOffice_TaskWhereInput {
-	AND?: smartOffice_TaskWhereInput;
-	OR?: smartOffice_TaskWhereInput[];
-	NOT?: smartOffice_TaskWhereInput;
-	id?: smartOffice_StringFilter;
-	taskType?: smartOffice_EnumTaskTypeFilter;
-	status?: smartOffice_EnumTaskStatusFilter;
-	details?: smartOffice_JsonFilter;
-	userId?: smartOffice_StringFilter;
-	user?: smartOffice_UserRelationFilter;
-}
-
-export interface smartOffice_EnumTaskTypeFilter {
-	equals?: smartOffice_TaskTypeValues;
-	in?: smartOffice_TaskTypeValues[];
-	notIn?: smartOffice_TaskTypeValues[];
-	not?: smartOffice_TaskTypeValues;
-}
-
-export interface smartOffice_EnumTaskStatusFilter {
-	equals?: smartOffice_TaskStatusValues;
-	in?: smartOffice_TaskStatusValues[];
-	notIn?: smartOffice_TaskStatusValues[];
-	not?: smartOffice_TaskStatusValues;
-}
-
-export interface smartOffice_JsonFilter {
-	equals?: JSONValue;
-	path?: string;
-	string_contains?: string;
-	string_starts_with?: string;
-	string_ends_with?: string;
-	array_contains?: JSONValue;
-	array_starts_with?: JSONValue;
-	array_ends_with?: JSONValue;
-	lt?: JSONValue;
-	lte?: JSONValue;
-	gt?: JSONValue;
-	gte?: JSONValue;
-	not?: JSONValue;
-}
-
-export interface smartOffice_SaleListRelationFilter {
-	every?: smartOffice_SaleWhereInput;
-	some?: smartOffice_SaleWhereInput;
-	none?: smartOffice_SaleWhereInput;
+export interface smartOffice_ClientWhereUniqueInput {
+	id?: string;
 }
 
 export interface smartOffice_SaleWhereInput {
@@ -5565,18 +4275,17 @@ export interface smartOffice_SaleWhereInput {
 	OR?: smartOffice_SaleWhereInput[];
 	NOT?: smartOffice_SaleWhereInput;
 	id?: smartOffice_StringFilter;
-	saleType?: smartOffice_EnumSaleTypeFilter;
+	saleType?: smartOffice_EnumSale_saleTypeFilter;
 	amount?: smartOffice_FloatFilter;
 	timestamp?: smartOffice_DateTimeFilter;
 	userId?: smartOffice_StringFilter;
-	user?: smartOffice_UserRelationFilter;
 }
 
-export interface smartOffice_EnumSaleTypeFilter {
-	equals?: smartOffice_SaleTypeValues;
-	in?: smartOffice_SaleTypeValues[];
-	notIn?: smartOffice_SaleTypeValues[];
-	not?: smartOffice_SaleTypeValues;
+export interface smartOffice_EnumSale_saleTypeFilter {
+	equals?: smartOffice_Sale_saleTypeValues;
+	in?: smartOffice_Sale_saleTypeValues[];
+	notIn?: smartOffice_Sale_saleTypeValues[];
+	not?: smartOffice_Sale_saleTypeValues;
 }
 
 export interface smartOffice_FloatFilter {
@@ -5623,52 +4332,57 @@ export interface smartOffice_NestedDateTimeFilter {
 	not?: smartOffice_NestedDateTimeFilter;
 }
 
-export interface smartOffice_ClientOrderByWithRelationInput {
-	id?: smartOffice_SortOrderValues;
-	name?: smartOffice_SortOrderValues;
-	email?: smartOffice_SortOrderValues;
-	phone?: smartOffice_SortOrderValues;
-	userId?: smartOffice_SortOrderValues;
-	user?: smartOffice_UserOrderByWithRelationInput;
-}
-
-export interface smartOffice_UserOrderByWithRelationInput {
-	id?: smartOffice_SortOrderValues;
-	username?: smartOffice_SortOrderValues;
-	password?: smartOffice_SortOrderValues;
-	role?: smartOffice_SortOrderValues;
-	clients?: smartOffice_ClientOrderByRelationAggregateInput;
-	tasks?: smartOffice_TaskOrderByRelationAggregateInput;
-	sales?: smartOffice_SaleOrderByRelationAggregateInput;
-}
-
-export interface smartOffice_ClientOrderByRelationAggregateInput {
-	_count?: smartOffice_SortOrderValues;
-}
-
-export interface smartOffice_TaskOrderByRelationAggregateInput {
-	_count?: smartOffice_SortOrderValues;
-}
-
-export interface smartOffice_SaleOrderByRelationAggregateInput {
-	_count?: smartOffice_SortOrderValues;
-}
-
-export interface smartOffice_ClientWhereUniqueInput {
-	id?: string;
-}
-
 export interface smartOffice_SaleOrderByWithRelationInput {
 	id?: smartOffice_SortOrderValues;
 	saleType?: smartOffice_SortOrderValues;
 	amount?: smartOffice_SortOrderValues;
 	timestamp?: smartOffice_SortOrderValues;
 	userId?: smartOffice_SortOrderValues;
-	user?: smartOffice_UserOrderByWithRelationInput;
 }
 
 export interface smartOffice_SaleWhereUniqueInput {
 	id?: string;
+}
+
+export interface smartOffice_TaskWhereInput {
+	AND?: smartOffice_TaskWhereInput;
+	OR?: smartOffice_TaskWhereInput[];
+	NOT?: smartOffice_TaskWhereInput;
+	id?: smartOffice_StringFilter;
+	taskType?: smartOffice_EnumTask_taskTypeFilter;
+	status?: smartOffice_EnumTask_statusFilter;
+	details?: smartOffice_JsonFilter;
+	userId?: smartOffice_StringFilter;
+}
+
+export interface smartOffice_EnumTask_taskTypeFilter {
+	equals?: smartOffice_Task_taskTypeValues;
+	in?: smartOffice_Task_taskTypeValues[];
+	notIn?: smartOffice_Task_taskTypeValues[];
+	not?: smartOffice_Task_taskTypeValues;
+}
+
+export interface smartOffice_EnumTask_statusFilter {
+	equals?: smartOffice_Task_statusValues;
+	in?: smartOffice_Task_statusValues[];
+	notIn?: smartOffice_Task_statusValues[];
+	not?: smartOffice_Task_statusValues;
+}
+
+export interface smartOffice_JsonFilter {
+	equals?: JSONValue;
+	path?: string;
+	string_contains?: string;
+	string_starts_with?: string;
+	string_ends_with?: string;
+	array_contains?: JSONValue;
+	array_starts_with?: JSONValue;
+	array_ends_with?: JSONValue;
+	lt?: JSONValue;
+	lte?: JSONValue;
+	gt?: JSONValue;
+	gte?: JSONValue;
+	not?: JSONValue;
 }
 
 export interface smartOffice_TaskOrderByWithRelationInput {
@@ -5677,11 +4391,34 @@ export interface smartOffice_TaskOrderByWithRelationInput {
 	status?: smartOffice_SortOrderValues;
 	details?: smartOffice_SortOrderValues;
 	userId?: smartOffice_SortOrderValues;
-	user?: smartOffice_UserOrderByWithRelationInput;
 }
 
 export interface smartOffice_TaskWhereUniqueInput {
 	id?: string;
+}
+
+export interface smartOffice_UserWhereInput {
+	AND?: smartOffice_UserWhereInput;
+	OR?: smartOffice_UserWhereInput[];
+	NOT?: smartOffice_UserWhereInput;
+	id?: smartOffice_StringFilter;
+	username?: smartOffice_StringFilter;
+	password?: smartOffice_StringFilter;
+	role?: smartOffice_EnumUser_roleFilter;
+}
+
+export interface smartOffice_EnumUser_roleFilter {
+	equals?: smartOffice_User_roleValues;
+	in?: smartOffice_User_roleValues[];
+	notIn?: smartOffice_User_roleValues[];
+	not?: smartOffice_User_roleValues;
+}
+
+export interface smartOffice_UserOrderByWithRelationInput {
+	id?: smartOffice_SortOrderValues;
+	username?: smartOffice_SortOrderValues;
+	password?: smartOffice_SortOrderValues;
+	role?: smartOffice_SortOrderValues;
 }
 
 export interface smartOffice_UserWhereUniqueInput {
@@ -5698,7 +4435,7 @@ export interface smartOffice_ClientCreateManyInput {
 
 export interface smartOffice_SaleCreateManyInput {
 	id?: string;
-	saleType?: smartOffice_SaleTypeValues;
+	saleType?: smartOffice_Sale_saleTypeValues;
 	amount?: number;
 	timestamp?: string;
 	userId?: string;
@@ -5706,8 +4443,8 @@ export interface smartOffice_SaleCreateManyInput {
 
 export interface smartOffice_TaskCreateManyInput {
 	id?: string;
-	taskType?: smartOffice_TaskTypeValues;
-	status?: smartOffice_TaskStatusValues;
+	taskType?: smartOffice_Task_taskTypeValues;
+	status?: smartOffice_Task_statusValues;
 	details?: JSONValue;
 	userId?: string;
 }
@@ -5716,194 +4453,38 @@ export interface smartOffice_UserCreateManyInput {
 	id?: string;
 	username?: string;
 	password?: string;
-	role?: smartOffice_UserRoleValues;
+	role?: smartOffice_User_roleValues;
 }
 
 export interface smartOffice_ClientCreateInput {
-	id?: string;
+	id: string;
 	name: string;
 	email: string;
 	phone: string;
-	user: smartOffice_UserCreateNestedOneWithoutClientsInput;
-}
-
-export interface smartOffice_UserCreateNestedOneWithoutClientsInput {
-	create?: smartOffice_UserCreateWithoutClientsInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutClientsInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-}
-
-export interface smartOffice_UserCreateWithoutClientsInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: smartOffice_UserRoleValues;
-	tasks?: smartOffice_TaskCreateNestedManyWithoutUserInput;
-	sales?: smartOffice_SaleCreateNestedManyWithoutUserInput;
-}
-
-export interface smartOffice_TaskCreateNestedManyWithoutUserInput {
-	create?: smartOffice_TaskCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_TaskCreateOrConnectWithoutUserInput;
-	createMany?: smartOffice_TaskCreateManyUserInputEnvelope;
-	connect?: smartOffice_TaskWhereUniqueInput;
-}
-
-export interface smartOffice_TaskCreateWithoutUserInput {
-	id?: string;
-	taskType?: smartOffice_TaskTypeValues;
-	status?: smartOffice_TaskStatusValues;
-	details?: JSONValue;
-}
-
-export interface smartOffice_TaskCreateOrConnectWithoutUserInput {
-	where?: smartOffice_TaskWhereUniqueInput;
-	create?: smartOffice_TaskCreateWithoutUserInput;
-}
-
-export interface smartOffice_TaskCreateManyUserInputEnvelope {
-	data?: smartOffice_TaskCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface smartOffice_TaskCreateManyUserInput {
-	id?: string;
-	taskType: smartOffice_TaskTypeValues;
-	status: smartOffice_TaskStatusValues;
-	details: JSONValue;
-}
-
-export interface smartOffice_SaleCreateNestedManyWithoutUserInput {
-	create?: smartOffice_SaleCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_SaleCreateOrConnectWithoutUserInput;
-	createMany?: smartOffice_SaleCreateManyUserInputEnvelope;
-	connect?: smartOffice_SaleWhereUniqueInput;
-}
-
-export interface smartOffice_SaleCreateWithoutUserInput {
-	id?: string;
-	saleType?: smartOffice_SaleTypeValues;
-	amount?: number;
-	timestamp?: string;
-}
-
-export interface smartOffice_SaleCreateOrConnectWithoutUserInput {
-	where?: smartOffice_SaleWhereUniqueInput;
-	create?: smartOffice_SaleCreateWithoutUserInput;
-}
-
-export interface smartOffice_SaleCreateManyUserInputEnvelope {
-	data?: smartOffice_SaleCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface smartOffice_SaleCreateManyUserInput {
-	id?: string;
-	saleType: smartOffice_SaleTypeValues;
-	amount: number;
-	timestamp: string;
-}
-
-export interface smartOffice_UserCreateOrConnectWithoutClientsInput {
-	where?: smartOffice_UserWhereUniqueInput;
-	create?: smartOffice_UserCreateWithoutClientsInput;
+	userId: string;
 }
 
 export interface smartOffice_SaleCreateInput {
-	id?: string;
-	saleType: smartOffice_SaleTypeValues;
+	id: string;
+	saleType: smartOffice_Sale_saleTypeValues;
 	amount: number;
 	timestamp: string;
-	user: smartOffice_UserCreateNestedOneWithoutSalesInput;
-}
-
-export interface smartOffice_UserCreateNestedOneWithoutSalesInput {
-	create?: smartOffice_UserCreateWithoutSalesInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutSalesInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-}
-
-export interface smartOffice_UserCreateWithoutSalesInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientCreateNestedManyWithoutUserInput;
-	tasks?: smartOffice_TaskCreateNestedManyWithoutUserInput;
-}
-
-export interface smartOffice_ClientCreateNestedManyWithoutUserInput {
-	create?: smartOffice_ClientCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_ClientCreateOrConnectWithoutUserInput;
-	createMany?: smartOffice_ClientCreateManyUserInputEnvelope;
-	connect?: smartOffice_ClientWhereUniqueInput;
-}
-
-export interface smartOffice_ClientCreateWithoutUserInput {
-	id?: string;
-	name?: string;
-	email?: string;
-	phone?: string;
-}
-
-export interface smartOffice_ClientCreateOrConnectWithoutUserInput {
-	where?: smartOffice_ClientWhereUniqueInput;
-	create?: smartOffice_ClientCreateWithoutUserInput;
-}
-
-export interface smartOffice_ClientCreateManyUserInputEnvelope {
-	data?: smartOffice_ClientCreateManyUserInput;
-	skipDuplicates?: boolean;
-}
-
-export interface smartOffice_ClientCreateManyUserInput {
-	id?: string;
-	name: string;
-	email: string;
-	phone: string;
-}
-
-export interface smartOffice_UserCreateOrConnectWithoutSalesInput {
-	where?: smartOffice_UserWhereUniqueInput;
-	create?: smartOffice_UserCreateWithoutSalesInput;
+	userId: string;
 }
 
 export interface smartOffice_TaskCreateInput {
-	id?: string;
-	taskType: smartOffice_TaskTypeValues;
-	status: smartOffice_TaskStatusValues;
+	id: string;
+	taskType: smartOffice_Task_taskTypeValues;
+	status: smartOffice_Task_statusValues;
 	details: JSONValue;
-	user: smartOffice_UserCreateNestedOneWithoutTasksInput;
-}
-
-export interface smartOffice_UserCreateNestedOneWithoutTasksInput {
-	create?: smartOffice_UserCreateWithoutTasksInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutTasksInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-}
-
-export interface smartOffice_UserCreateWithoutTasksInput {
-	id?: string;
-	username?: string;
-	password?: string;
-	role?: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientCreateNestedManyWithoutUserInput;
-	sales?: smartOffice_SaleCreateNestedManyWithoutUserInput;
-}
-
-export interface smartOffice_UserCreateOrConnectWithoutTasksInput {
-	where?: smartOffice_UserWhereUniqueInput;
-	create?: smartOffice_UserCreateWithoutTasksInput;
+	userId: string;
 }
 
 export interface smartOffice_UserCreateInput {
-	id?: string;
+	id: string;
 	username: string;
 	password: string;
-	role: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientCreateNestedManyWithoutUserInput;
-	tasks?: smartOffice_TaskCreateNestedManyWithoutUserInput;
-	sales?: smartOffice_SaleCreateNestedManyWithoutUserInput;
+	role: smartOffice_User_roleValues;
 }
 
 export interface smartOffice_ClientOrderByWithAggregationInput {
@@ -6047,27 +4628,27 @@ export interface smartOffice_SaleScalarWhereWithAggregatesInput {
 	OR?: smartOffice_SaleScalarWhereWithAggregatesInput[];
 	NOT?: smartOffice_SaleScalarWhereWithAggregatesInput;
 	id?: smartOffice_StringWithAggregatesFilter;
-	saleType?: smartOffice_EnumSaleTypeWithAggregatesFilter;
+	saleType?: smartOffice_EnumSale_saleTypeWithAggregatesFilter;
 	amount?: smartOffice_FloatWithAggregatesFilter;
 	timestamp?: smartOffice_DateTimeWithAggregatesFilter;
 	userId?: smartOffice_StringWithAggregatesFilter;
 }
 
-export interface smartOffice_EnumSaleTypeWithAggregatesFilter {
-	equals?: smartOffice_SaleTypeValues;
-	in?: smartOffice_SaleTypeValues[];
-	notIn?: smartOffice_SaleTypeValues[];
-	not?: smartOffice_SaleTypeValues;
+export interface smartOffice_EnumSale_saleTypeWithAggregatesFilter {
+	equals?: smartOffice_Sale_saleTypeValues;
+	in?: smartOffice_Sale_saleTypeValues[];
+	notIn?: smartOffice_Sale_saleTypeValues[];
+	not?: smartOffice_Sale_saleTypeValues;
 	_count?: smartOffice_NestedIntFilter;
-	_min?: smartOffice_NestedEnumSaleTypeFilter;
-	_max?: smartOffice_NestedEnumSaleTypeFilter;
+	_min?: smartOffice_NestedEnumSale_saleTypeFilter;
+	_max?: smartOffice_NestedEnumSale_saleTypeFilter;
 }
 
-export interface smartOffice_NestedEnumSaleTypeFilter {
-	equals?: smartOffice_SaleTypeValues;
-	in?: smartOffice_SaleTypeValues[];
-	notIn?: smartOffice_SaleTypeValues[];
-	not?: smartOffice_SaleTypeValues;
+export interface smartOffice_NestedEnumSale_saleTypeFilter {
+	equals?: smartOffice_Sale_saleTypeValues;
+	in?: smartOffice_Sale_saleTypeValues[];
+	notIn?: smartOffice_Sale_saleTypeValues[];
+	not?: smartOffice_Sale_saleTypeValues;
 }
 
 export interface smartOffice_FloatWithAggregatesFilter {
@@ -6168,44 +4749,44 @@ export interface smartOffice_TaskScalarWhereWithAggregatesInput {
 	OR?: smartOffice_TaskScalarWhereWithAggregatesInput[];
 	NOT?: smartOffice_TaskScalarWhereWithAggregatesInput;
 	id?: smartOffice_StringWithAggregatesFilter;
-	taskType?: smartOffice_EnumTaskTypeWithAggregatesFilter;
-	status?: smartOffice_EnumTaskStatusWithAggregatesFilter;
+	taskType?: smartOffice_EnumTask_taskTypeWithAggregatesFilter;
+	status?: smartOffice_EnumTask_statusWithAggregatesFilter;
 	details?: smartOffice_JsonWithAggregatesFilter;
 	userId?: smartOffice_StringWithAggregatesFilter;
 }
 
-export interface smartOffice_EnumTaskTypeWithAggregatesFilter {
-	equals?: smartOffice_TaskTypeValues;
-	in?: smartOffice_TaskTypeValues[];
-	notIn?: smartOffice_TaskTypeValues[];
-	not?: smartOffice_TaskTypeValues;
+export interface smartOffice_EnumTask_taskTypeWithAggregatesFilter {
+	equals?: smartOffice_Task_taskTypeValues;
+	in?: smartOffice_Task_taskTypeValues[];
+	notIn?: smartOffice_Task_taskTypeValues[];
+	not?: smartOffice_Task_taskTypeValues;
 	_count?: smartOffice_NestedIntFilter;
-	_min?: smartOffice_NestedEnumTaskTypeFilter;
-	_max?: smartOffice_NestedEnumTaskTypeFilter;
+	_min?: smartOffice_NestedEnumTask_taskTypeFilter;
+	_max?: smartOffice_NestedEnumTask_taskTypeFilter;
 }
 
-export interface smartOffice_NestedEnumTaskTypeFilter {
-	equals?: smartOffice_TaskTypeValues;
-	in?: smartOffice_TaskTypeValues[];
-	notIn?: smartOffice_TaskTypeValues[];
-	not?: smartOffice_TaskTypeValues;
+export interface smartOffice_NestedEnumTask_taskTypeFilter {
+	equals?: smartOffice_Task_taskTypeValues;
+	in?: smartOffice_Task_taskTypeValues[];
+	notIn?: smartOffice_Task_taskTypeValues[];
+	not?: smartOffice_Task_taskTypeValues;
 }
 
-export interface smartOffice_EnumTaskStatusWithAggregatesFilter {
-	equals?: smartOffice_TaskStatusValues;
-	in?: smartOffice_TaskStatusValues[];
-	notIn?: smartOffice_TaskStatusValues[];
-	not?: smartOffice_TaskStatusValues;
+export interface smartOffice_EnumTask_statusWithAggregatesFilter {
+	equals?: smartOffice_Task_statusValues;
+	in?: smartOffice_Task_statusValues[];
+	notIn?: smartOffice_Task_statusValues[];
+	not?: smartOffice_Task_statusValues;
 	_count?: smartOffice_NestedIntFilter;
-	_min?: smartOffice_NestedEnumTaskStatusFilter;
-	_max?: smartOffice_NestedEnumTaskStatusFilter;
+	_min?: smartOffice_NestedEnumTask_statusFilter;
+	_max?: smartOffice_NestedEnumTask_statusFilter;
 }
 
-export interface smartOffice_NestedEnumTaskStatusFilter {
-	equals?: smartOffice_TaskStatusValues;
-	in?: smartOffice_TaskStatusValues[];
-	notIn?: smartOffice_TaskStatusValues[];
-	not?: smartOffice_TaskStatusValues;
+export interface smartOffice_NestedEnumTask_statusFilter {
+	equals?: smartOffice_Task_statusValues;
+	in?: smartOffice_Task_statusValues[];
+	notIn?: smartOffice_Task_statusValues[];
+	not?: smartOffice_Task_statusValues;
 }
 
 export interface smartOffice_JsonWithAggregatesFilter {
@@ -6281,24 +4862,24 @@ export interface smartOffice_UserScalarWhereWithAggregatesInput {
 	id?: smartOffice_StringWithAggregatesFilter;
 	username?: smartOffice_StringWithAggregatesFilter;
 	password?: smartOffice_StringWithAggregatesFilter;
-	role?: smartOffice_EnumUserRoleWithAggregatesFilter;
+	role?: smartOffice_EnumUser_roleWithAggregatesFilter;
 }
 
-export interface smartOffice_EnumUserRoleWithAggregatesFilter {
-	equals?: smartOffice_UserRoleValues;
-	in?: smartOffice_UserRoleValues[];
-	notIn?: smartOffice_UserRoleValues[];
-	not?: smartOffice_UserRoleValues;
+export interface smartOffice_EnumUser_roleWithAggregatesFilter {
+	equals?: smartOffice_User_roleValues;
+	in?: smartOffice_User_roleValues[];
+	notIn?: smartOffice_User_roleValues[];
+	not?: smartOffice_User_roleValues;
 	_count?: smartOffice_NestedIntFilter;
-	_min?: smartOffice_NestedEnumUserRoleFilter;
-	_max?: smartOffice_NestedEnumUserRoleFilter;
+	_min?: smartOffice_NestedEnumUser_roleFilter;
+	_max?: smartOffice_NestedEnumUser_roleFilter;
 }
 
-export interface smartOffice_NestedEnumUserRoleFilter {
-	equals?: smartOffice_UserRoleValues;
-	in?: smartOffice_UserRoleValues[];
-	notIn?: smartOffice_UserRoleValues[];
-	not?: smartOffice_UserRoleValues;
+export interface smartOffice_NestedEnumUser_roleFilter {
+	equals?: smartOffice_User_roleValues;
+	in?: smartOffice_User_roleValues[];
+	notIn?: smartOffice_User_roleValues[];
+	not?: smartOffice_User_roleValues;
 }
 
 export interface smartOffice_ClientUpdateManyMutationInput {
@@ -6306,6 +4887,7 @@ export interface smartOffice_ClientUpdateManyMutationInput {
 	name?: smartOffice_StringFieldUpdateOperationsInput;
 	email?: smartOffice_StringFieldUpdateOperationsInput;
 	phone?: smartOffice_StringFieldUpdateOperationsInput;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_StringFieldUpdateOperationsInput {
@@ -6314,9 +4896,10 @@ export interface smartOffice_StringFieldUpdateOperationsInput {
 
 export interface smartOffice_SaleUpdateManyMutationInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
-	saleType?: smartOffice_SaleTypeValues;
+	saleType?: smartOffice_Sale_saleTypeValues;
 	amount?: smartOffice_FloatFieldUpdateOperationsInput;
 	timestamp?: smartOffice_DateTimeFieldUpdateOperationsInput;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_FloatFieldUpdateOperationsInput {
@@ -6333,16 +4916,17 @@ export interface smartOffice_DateTimeFieldUpdateOperationsInput {
 
 export interface smartOffice_TaskUpdateManyMutationInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
-	taskType?: smartOffice_TaskTypeValues;
-	status?: smartOffice_TaskStatusValues;
+	taskType?: smartOffice_Task_taskTypeValues;
+	status?: smartOffice_Task_statusValues;
 	details?: JSONValue;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_UserUpdateManyMutationInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
 	username?: smartOffice_StringFieldUpdateOperationsInput;
 	password?: smartOffice_StringFieldUpdateOperationsInput;
-	role?: smartOffice_UserRoleValues;
+	role?: smartOffice_User_roleValues;
 }
 
 export interface smartOffice_ClientUpdateInput {
@@ -6350,243 +4934,30 @@ export interface smartOffice_ClientUpdateInput {
 	name?: smartOffice_StringFieldUpdateOperationsInput;
 	email?: smartOffice_StringFieldUpdateOperationsInput;
 	phone?: smartOffice_StringFieldUpdateOperationsInput;
-	user?: smartOffice_UserUpdateOneRequiredWithoutClientsNestedInput;
-}
-
-export interface smartOffice_UserUpdateOneRequiredWithoutClientsNestedInput {
-	create?: smartOffice_UserCreateWithoutClientsInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutClientsInput;
-	upsert?: smartOffice_UserUpsertWithoutClientsInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-	update?: smartOffice_UserUpdateWithoutClientsInput;
-}
-
-export interface smartOffice_UserUpsertWithoutClientsInput {
-	update?: smartOffice_UserUpdateWithoutClientsInput;
-	create?: smartOffice_UserCreateWithoutClientsInput;
-}
-
-export interface smartOffice_UserUpdateWithoutClientsInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	username?: smartOffice_StringFieldUpdateOperationsInput;
-	password?: smartOffice_StringFieldUpdateOperationsInput;
-	role?: smartOffice_UserRoleValues;
-	tasks?: smartOffice_TaskUpdateManyWithoutUserNestedInput;
-	sales?: smartOffice_SaleUpdateManyWithoutUserNestedInput;
-}
-
-export interface smartOffice_TaskUpdateManyWithoutUserNestedInput {
-	create?: smartOffice_TaskCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_TaskCreateOrConnectWithoutUserInput;
-	upsert?: smartOffice_TaskUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: smartOffice_TaskCreateManyUserInputEnvelope;
-	set?: smartOffice_TaskWhereUniqueInput;
-	disconnect?: smartOffice_TaskWhereUniqueInput;
-	delete?: smartOffice_TaskWhereUniqueInput;
-	connect?: smartOffice_TaskWhereUniqueInput;
-	update?: smartOffice_TaskUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: smartOffice_TaskUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: smartOffice_TaskScalarWhereInput;
-}
-
-export interface smartOffice_TaskUpsertWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_TaskWhereUniqueInput;
-	update?: smartOffice_TaskUpdateWithoutUserInput;
-	create?: smartOffice_TaskCreateWithoutUserInput;
-}
-
-export interface smartOffice_TaskUpdateWithoutUserInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	taskType?: smartOffice_TaskTypeValues;
-	status?: smartOffice_TaskStatusValues;
-	details?: JSONValue;
-}
-
-export interface smartOffice_TaskUpdateWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_TaskWhereUniqueInput;
-	data?: smartOffice_TaskUpdateWithoutUserInput;
-}
-
-export interface smartOffice_TaskUpdateManyWithWhereWithoutUserInput {
-	where?: smartOffice_TaskScalarWhereInput;
-	data?: smartOffice_TaskUpdateManyMutationInput;
-}
-
-export interface smartOffice_TaskScalarWhereInput {
-	AND?: smartOffice_TaskScalarWhereInput;
-	OR?: smartOffice_TaskScalarWhereInput[];
-	NOT?: smartOffice_TaskScalarWhereInput;
-	id?: smartOffice_StringFilter;
-	taskType?: smartOffice_EnumTaskTypeFilter;
-	status?: smartOffice_EnumTaskStatusFilter;
-	details?: smartOffice_JsonFilter;
-	userId?: smartOffice_StringFilter;
-}
-
-export interface smartOffice_SaleUpdateManyWithoutUserNestedInput {
-	create?: smartOffice_SaleCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_SaleCreateOrConnectWithoutUserInput;
-	upsert?: smartOffice_SaleUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: smartOffice_SaleCreateManyUserInputEnvelope;
-	set?: smartOffice_SaleWhereUniqueInput;
-	disconnect?: smartOffice_SaleWhereUniqueInput;
-	delete?: smartOffice_SaleWhereUniqueInput;
-	connect?: smartOffice_SaleWhereUniqueInput;
-	update?: smartOffice_SaleUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: smartOffice_SaleUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: smartOffice_SaleScalarWhereInput;
-}
-
-export interface smartOffice_SaleUpsertWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_SaleWhereUniqueInput;
-	update?: smartOffice_SaleUpdateWithoutUserInput;
-	create?: smartOffice_SaleCreateWithoutUserInput;
-}
-
-export interface smartOffice_SaleUpdateWithoutUserInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	saleType?: smartOffice_SaleTypeValues;
-	amount?: smartOffice_FloatFieldUpdateOperationsInput;
-	timestamp?: smartOffice_DateTimeFieldUpdateOperationsInput;
-}
-
-export interface smartOffice_SaleUpdateWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_SaleWhereUniqueInput;
-	data?: smartOffice_SaleUpdateWithoutUserInput;
-}
-
-export interface smartOffice_SaleUpdateManyWithWhereWithoutUserInput {
-	where?: smartOffice_SaleScalarWhereInput;
-	data?: smartOffice_SaleUpdateManyMutationInput;
-}
-
-export interface smartOffice_SaleScalarWhereInput {
-	AND?: smartOffice_SaleScalarWhereInput;
-	OR?: smartOffice_SaleScalarWhereInput[];
-	NOT?: smartOffice_SaleScalarWhereInput;
-	id?: smartOffice_StringFilter;
-	saleType?: smartOffice_EnumSaleTypeFilter;
-	amount?: smartOffice_FloatFilter;
-	timestamp?: smartOffice_DateTimeFilter;
-	userId?: smartOffice_StringFilter;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_SaleUpdateInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
-	saleType?: smartOffice_SaleTypeValues;
+	saleType?: smartOffice_Sale_saleTypeValues;
 	amount?: smartOffice_FloatFieldUpdateOperationsInput;
 	timestamp?: smartOffice_DateTimeFieldUpdateOperationsInput;
-	user?: smartOffice_UserUpdateOneRequiredWithoutSalesNestedInput;
-}
-
-export interface smartOffice_UserUpdateOneRequiredWithoutSalesNestedInput {
-	create?: smartOffice_UserCreateWithoutSalesInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutSalesInput;
-	upsert?: smartOffice_UserUpsertWithoutSalesInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-	update?: smartOffice_UserUpdateWithoutSalesInput;
-}
-
-export interface smartOffice_UserUpsertWithoutSalesInput {
-	update?: smartOffice_UserUpdateWithoutSalesInput;
-	create?: smartOffice_UserCreateWithoutSalesInput;
-}
-
-export interface smartOffice_UserUpdateWithoutSalesInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	username?: smartOffice_StringFieldUpdateOperationsInput;
-	password?: smartOffice_StringFieldUpdateOperationsInput;
-	role?: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientUpdateManyWithoutUserNestedInput;
-	tasks?: smartOffice_TaskUpdateManyWithoutUserNestedInput;
-}
-
-export interface smartOffice_ClientUpdateManyWithoutUserNestedInput {
-	create?: smartOffice_ClientCreateWithoutUserInput;
-	connectOrCreate?: smartOffice_ClientCreateOrConnectWithoutUserInput;
-	upsert?: smartOffice_ClientUpsertWithWhereUniqueWithoutUserInput;
-	createMany?: smartOffice_ClientCreateManyUserInputEnvelope;
-	set?: smartOffice_ClientWhereUniqueInput;
-	disconnect?: smartOffice_ClientWhereUniqueInput;
-	delete?: smartOffice_ClientWhereUniqueInput;
-	connect?: smartOffice_ClientWhereUniqueInput;
-	update?: smartOffice_ClientUpdateWithWhereUniqueWithoutUserInput;
-	updateMany?: smartOffice_ClientUpdateManyWithWhereWithoutUserInput;
-	deleteMany?: smartOffice_ClientScalarWhereInput;
-}
-
-export interface smartOffice_ClientUpsertWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_ClientWhereUniqueInput;
-	update?: smartOffice_ClientUpdateWithoutUserInput;
-	create?: smartOffice_ClientCreateWithoutUserInput;
-}
-
-export interface smartOffice_ClientUpdateWithoutUserInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	name?: smartOffice_StringFieldUpdateOperationsInput;
-	email?: smartOffice_StringFieldUpdateOperationsInput;
-	phone?: smartOffice_StringFieldUpdateOperationsInput;
-}
-
-export interface smartOffice_ClientUpdateWithWhereUniqueWithoutUserInput {
-	where?: smartOffice_ClientWhereUniqueInput;
-	data?: smartOffice_ClientUpdateWithoutUserInput;
-}
-
-export interface smartOffice_ClientUpdateManyWithWhereWithoutUserInput {
-	where?: smartOffice_ClientScalarWhereInput;
-	data?: smartOffice_ClientUpdateManyMutationInput;
-}
-
-export interface smartOffice_ClientScalarWhereInput {
-	AND?: smartOffice_ClientScalarWhereInput;
-	OR?: smartOffice_ClientScalarWhereInput[];
-	NOT?: smartOffice_ClientScalarWhereInput;
-	id?: smartOffice_StringFilter;
-	name?: smartOffice_StringFilter;
-	email?: smartOffice_StringFilter;
-	phone?: smartOffice_StringFilter;
-	userId?: smartOffice_StringFilter;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_TaskUpdateInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
-	taskType?: smartOffice_TaskTypeValues;
-	status?: smartOffice_TaskStatusValues;
+	taskType?: smartOffice_Task_taskTypeValues;
+	status?: smartOffice_Task_statusValues;
 	details?: JSONValue;
-	user?: smartOffice_UserUpdateOneRequiredWithoutTasksNestedInput;
-}
-
-export interface smartOffice_UserUpdateOneRequiredWithoutTasksNestedInput {
-	create?: smartOffice_UserCreateWithoutTasksInput;
-	connectOrCreate?: smartOffice_UserCreateOrConnectWithoutTasksInput;
-	upsert?: smartOffice_UserUpsertWithoutTasksInput;
-	connect?: smartOffice_UserWhereUniqueInput;
-	update?: smartOffice_UserUpdateWithoutTasksInput;
-}
-
-export interface smartOffice_UserUpsertWithoutTasksInput {
-	update?: smartOffice_UserUpdateWithoutTasksInput;
-	create?: smartOffice_UserCreateWithoutTasksInput;
-}
-
-export interface smartOffice_UserUpdateWithoutTasksInput {
-	id?: smartOffice_StringFieldUpdateOperationsInput;
-	username?: smartOffice_StringFieldUpdateOperationsInput;
-	password?: smartOffice_StringFieldUpdateOperationsInput;
-	role?: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientUpdateManyWithoutUserNestedInput;
-	sales?: smartOffice_SaleUpdateManyWithoutUserNestedInput;
+	userId?: smartOffice_StringFieldUpdateOperationsInput;
 }
 
 export interface smartOffice_UserUpdateInput {
 	id?: smartOffice_StringFieldUpdateOperationsInput;
 	username?: smartOffice_StringFieldUpdateOperationsInput;
 	password?: smartOffice_StringFieldUpdateOperationsInput;
-	role?: smartOffice_UserRoleValues;
-	clients?: smartOffice_ClientUpdateManyWithoutUserNestedInput;
-	tasks?: smartOffice_TaskUpdateManyWithoutUserNestedInput;
-	sales?: smartOffice_SaleUpdateManyWithoutUserNestedInput;
+	role?: smartOffice_User_roleValues;
 }
 
 export interface weather_ConfigInput {
@@ -6598,7 +4969,7 @@ export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue
 
 export type JSONObject = { [key: string]: JSONValue };
 
-export const clientPortal_ActivityType = {
+export const clientPortal_Activity_activityType = {
 	LOGIN: "LOGIN",
 	LOGOUT: "LOGOUT",
 	SERVICE_ACCESS: "SERVICE_ACCESS",
@@ -6606,16 +4977,8 @@ export const clientPortal_ActivityType = {
 	TRANSACTION: "TRANSACTION",
 } as const;
 
-export type clientPortal_ActivityTypeValues =
-	(typeof clientPortal_ActivityType)[keyof typeof clientPortal_ActivityType];
-
-export const clientPortal_ServiceType = {
-	GENERAL_ACCESS: "GENERAL_ACCESS",
-	QUOTES: "QUOTES",
-	TRANSACTIONS: "TRANSACTIONS",
-} as const;
-
-export type clientPortal_ServiceTypeValues = (typeof clientPortal_ServiceType)[keyof typeof clientPortal_ServiceType];
+export type clientPortal_Activity_activityTypeValues =
+	(typeof clientPortal_Activity_activityType)[keyof typeof clientPortal_Activity_activityType];
 
 export const clientPortal_SortOrder = {
 	asc: "asc",
@@ -6624,15 +4987,14 @@ export const clientPortal_SortOrder = {
 
 export type clientPortal_SortOrderValues = (typeof clientPortal_SortOrder)[keyof typeof clientPortal_SortOrder];
 
-export const clientPortal_ServiceScalarFieldEnum = {
-	id: "id",
-	serviceType: "serviceType",
-	content: "content",
-	clientId: "clientId",
+export const clientPortal_Service_serviceType = {
+	GENERAL_ACCESS: "GENERAL_ACCESS",
+	QUOTES: "QUOTES",
+	TRANSACTIONS: "TRANSACTIONS",
 } as const;
 
-export type clientPortal_ServiceScalarFieldEnumValues =
-	(typeof clientPortal_ServiceScalarFieldEnum)[keyof typeof clientPortal_ServiceScalarFieldEnum];
+export type clientPortal_Service_serviceTypeValues =
+	(typeof clientPortal_Service_serviceType)[keyof typeof clientPortal_Service_serviceType];
 
 export const clientPortal_ActivityScalarFieldEnum = {
 	id: "id",
@@ -6653,6 +5015,16 @@ export const clientPortal_ClientScalarFieldEnum = {
 
 export type clientPortal_ClientScalarFieldEnumValues =
 	(typeof clientPortal_ClientScalarFieldEnum)[keyof typeof clientPortal_ClientScalarFieldEnum];
+
+export const clientPortal_ServiceScalarFieldEnum = {
+	id: "id",
+	serviceType: "serviceType",
+	content: "content",
+	clientId: "clientId",
+} as const;
+
+export type clientPortal_ServiceScalarFieldEnumValues =
+	(typeof clientPortal_ServiceScalarFieldEnum)[keyof typeof clientPortal_ServiceScalarFieldEnum];
 
 export const customerCommunication_UserType = {
 	CALL_CENTER_REP: "CALL_CENTER_REP",
@@ -6797,40 +5169,15 @@ export const customerCommunication_WidgetScalarFieldEnum = {
 export type customerCommunication_WidgetScalarFieldEnumValues =
 	(typeof customerCommunication_WidgetScalarFieldEnum)[keyof typeof customerCommunication_WidgetScalarFieldEnum];
 
-export const gpac_ActionType = {
+export const gpac_AdminAction_actionType = {
 	POLICY_CREATION: "POLICY_CREATION",
 	POLICY_MODIFICATION: "POLICY_MODIFICATION",
 	POLICY_CANCELLATION: "POLICY_CANCELLATION",
 	USER_REGISTRATION: "USER_REGISTRATION",
 } as const;
 
-export type gpac_ActionTypeValues = (typeof gpac_ActionType)[keyof typeof gpac_ActionType];
-
-export const gpac_UserRole = {
-	ADMIN: "ADMIN",
-	POLICY_HOLDER: "POLICY_HOLDER",
-	AGENT: "AGENT",
-	UNDERWRITER: "UNDERWRITER",
-} as const;
-
-export type gpac_UserRoleValues = (typeof gpac_UserRole)[keyof typeof gpac_UserRole];
-
-export const gpac_PolicyType = {
-	LIFE_INSURANCE: "LIFE_INSURANCE",
-	HEALTH_INSURANCE: "HEALTH_INSURANCE",
-	AUTO_INSURANCE: "AUTO_INSURANCE",
-} as const;
-
-export type gpac_PolicyTypeValues = (typeof gpac_PolicyType)[keyof typeof gpac_PolicyType];
-
-export const gpac_PolicyStatus = {
-	ACTIVE: "ACTIVE",
-	PENDING: "PENDING",
-	LAPSED: "LAPSED",
-	CANCELLED: "CANCELLED",
-} as const;
-
-export type gpac_PolicyStatusValues = (typeof gpac_PolicyStatus)[keyof typeof gpac_PolicyStatus];
+export type gpac_AdminAction_actionTypeValues =
+	(typeof gpac_AdminAction_actionType)[keyof typeof gpac_AdminAction_actionType];
 
 export const gpac_SortOrder = {
 	asc: "asc",
@@ -6839,16 +5186,31 @@ export const gpac_SortOrder = {
 
 export type gpac_SortOrderValues = (typeof gpac_SortOrder)[keyof typeof gpac_SortOrder];
 
-export const gpac_PolicyScalarFieldEnum = {
-	id: "id",
-	policyType: "policyType",
-	status: "status",
-	details: "details",
-	userId: "userId",
+export const gpac_Policy_policyType = {
+	LIFE_INSURANCE: "LIFE_INSURANCE",
+	HEALTH_INSURANCE: "HEALTH_INSURANCE",
+	AUTO_INSURANCE: "AUTO_INSURANCE",
 } as const;
 
-export type gpac_PolicyScalarFieldEnumValues =
-	(typeof gpac_PolicyScalarFieldEnum)[keyof typeof gpac_PolicyScalarFieldEnum];
+export type gpac_Policy_policyTypeValues = (typeof gpac_Policy_policyType)[keyof typeof gpac_Policy_policyType];
+
+export const gpac_Policy_status = {
+	ACTIVE: "ACTIVE",
+	PENDING: "PENDING",
+	LAPSED: "LAPSED",
+	CANCELLED: "CANCELLED",
+} as const;
+
+export type gpac_Policy_statusValues = (typeof gpac_Policy_status)[keyof typeof gpac_Policy_status];
+
+export const gpac_User_role = {
+	ADMIN: "ADMIN",
+	POLICY_HOLDER: "POLICY_HOLDER",
+	AGENT: "AGENT",
+	UNDERWRITER: "UNDERWRITER",
+} as const;
+
+export type gpac_User_roleValues = (typeof gpac_User_role)[keyof typeof gpac_User_role];
 
 export const gpac_AdminActionScalarFieldEnum = {
 	id: "id",
@@ -6861,6 +5223,17 @@ export const gpac_AdminActionScalarFieldEnum = {
 export type gpac_AdminActionScalarFieldEnumValues =
 	(typeof gpac_AdminActionScalarFieldEnum)[keyof typeof gpac_AdminActionScalarFieldEnum];
 
+export const gpac_PolicyScalarFieldEnum = {
+	id: "id",
+	policyType: "policyType",
+	status: "status",
+	details: "details",
+	userId: "userId",
+} as const;
+
+export type gpac_PolicyScalarFieldEnumValues =
+	(typeof gpac_PolicyScalarFieldEnum)[keyof typeof gpac_PolicyScalarFieldEnum];
+
 export const gpac_UserScalarFieldEnum = {
 	id: "id",
 	username: "username",
@@ -6870,35 +5243,43 @@ export const gpac_UserScalarFieldEnum = {
 
 export type gpac_UserScalarFieldEnumValues = (typeof gpac_UserScalarFieldEnum)[keyof typeof gpac_UserScalarFieldEnum];
 
-export const guardianOnline_FeatureType = {
+export const guardianOnline_Feature_featureType = {
 	DASHBOARD: "DASHBOARD",
 	ACCOUNT_SUMMARY: "ACCOUNT_SUMMARY",
 	NOTIFICATIONS: "NOTIFICATIONS",
 	DOCUMENTS: "DOCUMENTS",
 } as const;
 
-export type guardianOnline_FeatureTypeValues =
-	(typeof guardianOnline_FeatureType)[keyof typeof guardianOnline_FeatureType];
+export type guardianOnline_Feature_featureTypeValues =
+	(typeof guardianOnline_Feature_featureType)[keyof typeof guardianOnline_Feature_featureType];
 
-export const guardianOnline_UserRole = {
+export const guardianOnline_SortOrder = {
+	asc: "asc",
+	desc: "desc",
+} as const;
+
+export type guardianOnline_SortOrderValues = (typeof guardianOnline_SortOrder)[keyof typeof guardianOnline_SortOrder];
+
+export const guardianOnline_User_role = {
 	ADMIN: "ADMIN",
 	AGENT: "AGENT",
 	CUSTOMER: "CUSTOMER",
 	FINANCIAL_REP: "FINANCIAL_REP",
 } as const;
 
-export type guardianOnline_UserRoleValues = (typeof guardianOnline_UserRole)[keyof typeof guardianOnline_UserRole];
+export type guardianOnline_User_roleValues = (typeof guardianOnline_User_role)[keyof typeof guardianOnline_User_role];
 
-export const guardianOnline_LogType = {
+export const guardianOnline_UserLog_logType = {
 	LOGIN: "LOGIN",
 	LOGOUT: "LOGOUT",
 	FEATURE_ACCESS: "FEATURE_ACCESS",
 	DOCUMENT_DOWNLOAD: "DOCUMENT_DOWNLOAD",
 } as const;
 
-export type guardianOnline_LogTypeValues = (typeof guardianOnline_LogType)[keyof typeof guardianOnline_LogType];
+export type guardianOnline_UserLog_logTypeValues =
+	(typeof guardianOnline_UserLog_logType)[keyof typeof guardianOnline_UserLog_logType];
 
-export const guardianOnline_ContentType = {
+export const guardianOnline_UserLog_contentType = {
 	CALL: "CALL",
 	CHAT: "CHAT",
 	EMAIL: "EMAIL",
@@ -6909,27 +5290,8 @@ export const guardianOnline_ContentType = {
 	TEXT: "TEXT",
 } as const;
 
-export type guardianOnline_ContentTypeValues =
-	(typeof guardianOnline_ContentType)[keyof typeof guardianOnline_ContentType];
-
-export const guardianOnline_SortOrder = {
-	asc: "asc",
-	desc: "desc",
-} as const;
-
-export type guardianOnline_SortOrderValues = (typeof guardianOnline_SortOrder)[keyof typeof guardianOnline_SortOrder];
-
-export const guardianOnline_UserLogScalarFieldEnum = {
-	id: "id",
-	logType: "logType",
-	contentType: "contentType",
-	timestamp: "timestamp",
-	details: "details",
-	userId: "userId",
-} as const;
-
-export type guardianOnline_UserLogScalarFieldEnumValues =
-	(typeof guardianOnline_UserLogScalarFieldEnum)[keyof typeof guardianOnline_UserLogScalarFieldEnum];
+export type guardianOnline_UserLog_contentTypeValues =
+	(typeof guardianOnline_UserLog_contentType)[keyof typeof guardianOnline_UserLog_contentType];
 
 export const guardianOnline_FeatureScalarFieldEnum = {
 	id: "id",
@@ -6951,43 +5313,27 @@ export const guardianOnline_UserScalarFieldEnum = {
 export type guardianOnline_UserScalarFieldEnumValues =
 	(typeof guardianOnline_UserScalarFieldEnum)[keyof typeof guardianOnline_UserScalarFieldEnum];
 
-export const livingBalanceSheet_AssetType = {
+export const guardianOnline_UserLogScalarFieldEnum = {
+	id: "id",
+	logType: "logType",
+	contentType: "contentType",
+	timestamp: "timestamp",
+	details: "details",
+	userId: "userId",
+} as const;
+
+export type guardianOnline_UserLogScalarFieldEnumValues =
+	(typeof guardianOnline_UserLogScalarFieldEnum)[keyof typeof guardianOnline_UserLogScalarFieldEnum];
+
+export const livingBalanceSheet_Asset_assetType = {
 	REAL_ESTATE: "REAL_ESTATE",
 	STOCKS: "STOCKS",
 	BONDS: "BONDS",
 	CASH: "CASH",
 } as const;
 
-export type livingBalanceSheet_AssetTypeValues =
-	(typeof livingBalanceSheet_AssetType)[keyof typeof livingBalanceSheet_AssetType];
-
-export const livingBalanceSheet_UserRole = {
-	ADMIN: "ADMIN",
-	FINANCIAL_ADVISOR: "FINANCIAL_ADVISOR",
-	CLIENT: "CLIENT",
-} as const;
-
-export type livingBalanceSheet_UserRoleValues =
-	(typeof livingBalanceSheet_UserRole)[keyof typeof livingBalanceSheet_UserRole];
-
-export const livingBalanceSheet_LiabilityType = {
-	MORTGAGE: "MORTGAGE",
-	LOAN: "LOAN",
-	CREDIT_CARD_DEBT: "CREDIT_CARD_DEBT",
-} as const;
-
-export type livingBalanceSheet_LiabilityTypeValues =
-	(typeof livingBalanceSheet_LiabilityType)[keyof typeof livingBalanceSheet_LiabilityType];
-
-export const livingBalanceSheet_GoalType = {
-	RETIREMENT: "RETIREMENT",
-	EDUCATION: "EDUCATION",
-	VACATION: "VACATION",
-	EMERGENCY_FUND: "EMERGENCY_FUND",
-} as const;
-
-export type livingBalanceSheet_GoalTypeValues =
-	(typeof livingBalanceSheet_GoalType)[keyof typeof livingBalanceSheet_GoalType];
+export type livingBalanceSheet_Asset_assetTypeValues =
+	(typeof livingBalanceSheet_Asset_assetType)[keyof typeof livingBalanceSheet_Asset_assetType];
 
 export const livingBalanceSheet_SortOrder = {
 	asc: "asc",
@@ -6997,15 +5343,43 @@ export const livingBalanceSheet_SortOrder = {
 export type livingBalanceSheet_SortOrderValues =
 	(typeof livingBalanceSheet_SortOrder)[keyof typeof livingBalanceSheet_SortOrder];
 
-export const livingBalanceSheet_LiabilityScalarFieldEnum = {
+export const livingBalanceSheet_FinancialGoal_goalType = {
+	RETIREMENT: "RETIREMENT",
+	EDUCATION: "EDUCATION",
+	VACATION: "VACATION",
+	EMERGENCY_FUND: "EMERGENCY_FUND",
+} as const;
+
+export type livingBalanceSheet_FinancialGoal_goalTypeValues =
+	(typeof livingBalanceSheet_FinancialGoal_goalType)[keyof typeof livingBalanceSheet_FinancialGoal_goalType];
+
+export const livingBalanceSheet_Liability_liabilityType = {
+	MORTGAGE: "MORTGAGE",
+	LOAN: "LOAN",
+	CREDIT_CARD_DEBT: "CREDIT_CARD_DEBT",
+} as const;
+
+export type livingBalanceSheet_Liability_liabilityTypeValues =
+	(typeof livingBalanceSheet_Liability_liabilityType)[keyof typeof livingBalanceSheet_Liability_liabilityType];
+
+export const livingBalanceSheet_User_role = {
+	ADMIN: "ADMIN",
+	FINANCIAL_ADVISOR: "FINANCIAL_ADVISOR",
+	CLIENT: "CLIENT",
+} as const;
+
+export type livingBalanceSheet_User_roleValues =
+	(typeof livingBalanceSheet_User_role)[keyof typeof livingBalanceSheet_User_role];
+
+export const livingBalanceSheet_AssetScalarFieldEnum = {
 	id: "id",
-	liabilityType: "liabilityType",
-	amount: "amount",
+	assetType: "assetType",
+	value: "value",
 	userId: "userId",
 } as const;
 
-export type livingBalanceSheet_LiabilityScalarFieldEnumValues =
-	(typeof livingBalanceSheet_LiabilityScalarFieldEnum)[keyof typeof livingBalanceSheet_LiabilityScalarFieldEnum];
+export type livingBalanceSheet_AssetScalarFieldEnumValues =
+	(typeof livingBalanceSheet_AssetScalarFieldEnum)[keyof typeof livingBalanceSheet_AssetScalarFieldEnum];
 
 export const livingBalanceSheet_FinancialGoalScalarFieldEnum = {
 	id: "id",
@@ -7018,15 +5392,15 @@ export const livingBalanceSheet_FinancialGoalScalarFieldEnum = {
 export type livingBalanceSheet_FinancialGoalScalarFieldEnumValues =
 	(typeof livingBalanceSheet_FinancialGoalScalarFieldEnum)[keyof typeof livingBalanceSheet_FinancialGoalScalarFieldEnum];
 
-export const livingBalanceSheet_AssetScalarFieldEnum = {
+export const livingBalanceSheet_LiabilityScalarFieldEnum = {
 	id: "id",
-	assetType: "assetType",
-	value: "value",
+	liabilityType: "liabilityType",
+	amount: "amount",
 	userId: "userId",
 } as const;
 
-export type livingBalanceSheet_AssetScalarFieldEnumValues =
-	(typeof livingBalanceSheet_AssetScalarFieldEnum)[keyof typeof livingBalanceSheet_AssetScalarFieldEnum];
+export type livingBalanceSheet_LiabilityScalarFieldEnumValues =
+	(typeof livingBalanceSheet_LiabilityScalarFieldEnum)[keyof typeof livingBalanceSheet_LiabilityScalarFieldEnum];
 
 export const livingBalanceSheet_UserScalarFieldEnum = {
 	id: "id",
@@ -7038,39 +5412,6 @@ export const livingBalanceSheet_UserScalarFieldEnum = {
 export type livingBalanceSheet_UserScalarFieldEnumValues =
 	(typeof livingBalanceSheet_UserScalarFieldEnum)[keyof typeof livingBalanceSheet_UserScalarFieldEnum];
 
-export const smartOffice_UserRole = {
-	ADMIN: "ADMIN",
-	AGENT: "AGENT",
-	SALES_REP: "SALES_REP",
-} as const;
-
-export type smartOffice_UserRoleValues = (typeof smartOffice_UserRole)[keyof typeof smartOffice_UserRole];
-
-export const smartOffice_TaskType = {
-	MEETING: "MEETING",
-	CALL: "CALL",
-	EMAIL: "EMAIL",
-	FOLLOW_UP: "FOLLOW_UP",
-} as const;
-
-export type smartOffice_TaskTypeValues = (typeof smartOffice_TaskType)[keyof typeof smartOffice_TaskType];
-
-export const smartOffice_TaskStatus = {
-	PENDING: "PENDING",
-	COMPLETED: "COMPLETED",
-	CANCELLED: "CANCELLED",
-} as const;
-
-export type smartOffice_TaskStatusValues = (typeof smartOffice_TaskStatus)[keyof typeof smartOffice_TaskStatus];
-
-export const smartOffice_SaleType = {
-	NEW_POLICY: "NEW_POLICY",
-	RENEWAL: "RENEWAL",
-	UPGRADE: "UPGRADE",
-} as const;
-
-export type smartOffice_SaleTypeValues = (typeof smartOffice_SaleType)[keyof typeof smartOffice_SaleType];
-
 export const smartOffice_SortOrder = {
 	asc: "asc",
 	desc: "desc",
@@ -7078,16 +5419,51 @@ export const smartOffice_SortOrder = {
 
 export type smartOffice_SortOrderValues = (typeof smartOffice_SortOrder)[keyof typeof smartOffice_SortOrder];
 
-export const smartOffice_TaskScalarFieldEnum = {
+export const smartOffice_Sale_saleType = {
+	NEW_POLICY: "NEW_POLICY",
+	RENEWAL: "RENEWAL",
+	UPGRADE: "UPGRADE",
+} as const;
+
+export type smartOffice_Sale_saleTypeValues =
+	(typeof smartOffice_Sale_saleType)[keyof typeof smartOffice_Sale_saleType];
+
+export const smartOffice_Task_taskType = {
+	MEETING: "MEETING",
+	CALL: "CALL",
+	EMAIL: "EMAIL",
+	FOLLOW_UP: "FOLLOW_UP",
+} as const;
+
+export type smartOffice_Task_taskTypeValues =
+	(typeof smartOffice_Task_taskType)[keyof typeof smartOffice_Task_taskType];
+
+export const smartOffice_Task_status = {
+	PENDING: "PENDING",
+	COMPLETED: "COMPLETED",
+	CANCELLED: "CANCELLED",
+} as const;
+
+export type smartOffice_Task_statusValues = (typeof smartOffice_Task_status)[keyof typeof smartOffice_Task_status];
+
+export const smartOffice_User_role = {
+	ADMIN: "ADMIN",
+	AGENT: "AGENT",
+	SALES_REP: "SALES_REP",
+} as const;
+
+export type smartOffice_User_roleValues = (typeof smartOffice_User_role)[keyof typeof smartOffice_User_role];
+
+export const smartOffice_ClientScalarFieldEnum = {
 	id: "id",
-	taskType: "taskType",
-	status: "status",
-	details: "details",
+	name: "name",
+	email: "email",
+	phone: "phone",
 	userId: "userId",
 } as const;
 
-export type smartOffice_TaskScalarFieldEnumValues =
-	(typeof smartOffice_TaskScalarFieldEnum)[keyof typeof smartOffice_TaskScalarFieldEnum];
+export type smartOffice_ClientScalarFieldEnumValues =
+	(typeof smartOffice_ClientScalarFieldEnum)[keyof typeof smartOffice_ClientScalarFieldEnum];
 
 export const smartOffice_SaleScalarFieldEnum = {
 	id: "id",
@@ -7100,16 +5476,16 @@ export const smartOffice_SaleScalarFieldEnum = {
 export type smartOffice_SaleScalarFieldEnumValues =
 	(typeof smartOffice_SaleScalarFieldEnum)[keyof typeof smartOffice_SaleScalarFieldEnum];
 
-export const smartOffice_ClientScalarFieldEnum = {
+export const smartOffice_TaskScalarFieldEnum = {
 	id: "id",
-	name: "name",
-	email: "email",
-	phone: "phone",
+	taskType: "taskType",
+	status: "status",
+	details: "details",
 	userId: "userId",
 } as const;
 
-export type smartOffice_ClientScalarFieldEnumValues =
-	(typeof smartOffice_ClientScalarFieldEnum)[keyof typeof smartOffice_ClientScalarFieldEnum];
+export type smartOffice_TaskScalarFieldEnumValues =
+	(typeof smartOffice_TaskScalarFieldEnum)[keyof typeof smartOffice_TaskScalarFieldEnum];
 
 export const smartOffice_UserScalarFieldEnum = {
 	id: "id",
@@ -7224,38 +5600,14 @@ export interface ClientPortalCreateManyServiceInput {
 
 export interface ClientPortalCreateOneActivityInput {
 	data: clientPortal_ActivityCreateInput;
-	clientPortal_createOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneActivity_client_client_services_take?: number;
-	clientPortal_createOneActivity_client_client_services_skip?: number;
-	clientPortal_createOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneClientInput {
 	data: clientPortal_ClientCreateInput;
-	clientPortal_createOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneClient_services_take?: number;
-	clientPortal_createOneClient_services_skip?: number;
-	clientPortal_createOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_createOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneClient_activities_take?: number;
-	clientPortal_createOneClient_activities_skip?: number;
-	clientPortal_createOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneServiceInput {
 	data: clientPortal_ServiceCreateInput;
-	clientPortal_createOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneService_client_client_activities_take?: number;
-	clientPortal_createOneService_client_client_activities_skip?: number;
-	clientPortal_createOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteManyActivityInput {
@@ -7272,38 +5624,14 @@ export interface ClientPortalDeleteManyServiceInput {
 
 export interface ClientPortalDeleteOneActivityInput {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_take?: number;
-	clientPortal_deleteOneActivity_client_client_services_skip?: number;
-	clientPortal_deleteOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneClientInput {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_deleteOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneClient_services_take?: number;
-	clientPortal_deleteOneClient_services_skip?: number;
-	clientPortal_deleteOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_deleteOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneClient_activities_take?: number;
-	clientPortal_deleteOneClient_activities_skip?: number;
-	clientPortal_deleteOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneServiceInput {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_take?: number;
-	clientPortal_deleteOneService_client_client_activities_skip?: number;
-	clientPortal_deleteOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalExecuteRawInput {
@@ -7318,12 +5646,6 @@ export interface ClientPortalFindFirstActivityInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivity_client_client_services_take?: number;
-	clientPortal_findFirstActivity_client_client_services_skip?: number;
-	clientPortal_findFirstActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstActivityOrThrowInput {
@@ -7333,12 +5655,6 @@ export interface ClientPortalFindFirstActivityOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientInput {
@@ -7348,18 +5664,6 @@ export interface ClientPortalFindFirstClientInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClient_services_take?: number;
-	clientPortal_findFirstClient_services_skip?: number;
-	clientPortal_findFirstClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClient_activities_take?: number;
-	clientPortal_findFirstClient_activities_skip?: number;
-	clientPortal_findFirstClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientOrThrowInput {
@@ -7369,18 +5673,6 @@ export interface ClientPortalFindFirstClientOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_services_take?: number;
-	clientPortal_findFirstClientOrThrow_services_skip?: number;
-	clientPortal_findFirstClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_activities_take?: number;
-	clientPortal_findFirstClientOrThrow_activities_skip?: number;
-	clientPortal_findFirstClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceInput {
@@ -7390,12 +5682,6 @@ export interface ClientPortalFindFirstServiceInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstService_client_client_activities_take?: number;
-	clientPortal_findFirstService_client_client_activities_skip?: number;
-	clientPortal_findFirstService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceOrThrowInput {
@@ -7405,12 +5691,6 @@ export interface ClientPortalFindFirstServiceOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyActivityInput {
@@ -7420,12 +5700,6 @@ export interface ClientPortalFindManyActivityInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findManyActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyActivity_client_client_services_take?: number;
-	clientPortal_findManyActivity_client_client_services_skip?: number;
-	clientPortal_findManyActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyClientInput {
@@ -7435,18 +5709,6 @@ export interface ClientPortalFindManyClientInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findManyClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyClient_services_take?: number;
-	clientPortal_findManyClient_services_skip?: number;
-	clientPortal_findManyClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyClient_activities_take?: number;
-	clientPortal_findManyClient_activities_skip?: number;
-	clientPortal_findManyClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyServiceInput {
@@ -7456,84 +5718,30 @@ export interface ClientPortalFindManyServiceInput {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyService_client_client_activities_take?: number;
-	clientPortal_findManyService_client_client_activities_skip?: number;
-	clientPortal_findManyService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityInput {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_take?: number;
-	clientPortal_findUniqueActivity_client_client_services_skip?: number;
-	clientPortal_findUniqueActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityOrThrowInput {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientInput {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClient_services_take?: number;
-	clientPortal_findUniqueClient_services_skip?: number;
-	clientPortal_findUniqueClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClient_activities_take?: number;
-	clientPortal_findUniqueClient_activities_skip?: number;
-	clientPortal_findUniqueClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientOrThrowInput {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_take?: number;
-	clientPortal_findUniqueClientOrThrow_services_skip?: number;
-	clientPortal_findUniqueClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_activities_take?: number;
-	clientPortal_findUniqueClientOrThrow_activities_skip?: number;
-	clientPortal_findUniqueClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceInput {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_take?: number;
-	clientPortal_findUniqueService_client_client_activities_skip?: number;
-	clientPortal_findUniqueService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceOrThrowInput {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalGroupByActivityInput {
@@ -7591,82 +5799,34 @@ export interface ClientPortalUpdateManyServiceInput {
 export interface ClientPortalUpdateOneActivityInput {
 	data: clientPortal_ActivityUpdateInput;
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_take?: number;
-	clientPortal_updateOneActivity_client_client_services_skip?: number;
-	clientPortal_updateOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneClientInput {
 	data: clientPortal_ClientUpdateInput;
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_updateOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneClient_services_take?: number;
-	clientPortal_updateOneClient_services_skip?: number;
-	clientPortal_updateOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_updateOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneClient_activities_take?: number;
-	clientPortal_updateOneClient_activities_skip?: number;
-	clientPortal_updateOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneServiceInput {
 	data: clientPortal_ServiceUpdateInput;
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_take?: number;
-	clientPortal_updateOneService_client_client_activities_skip?: number;
-	clientPortal_updateOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneActivityInput {
 	where: clientPortal_ActivityWhereUniqueInput;
 	create: clientPortal_ActivityCreateInput;
 	update: clientPortal_ActivityUpdateInput;
-	clientPortal_upsertOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneActivity_client_client_services_take?: number;
-	clientPortal_upsertOneActivity_client_client_services_skip?: number;
-	clientPortal_upsertOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneClientInput {
 	where: clientPortal_ClientWhereUniqueInput;
 	create: clientPortal_ClientCreateInput;
 	update: clientPortal_ClientUpdateInput;
-	clientPortal_upsertOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneClient_services_take?: number;
-	clientPortal_upsertOneClient_services_skip?: number;
-	clientPortal_upsertOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_upsertOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneClient_activities_take?: number;
-	clientPortal_upsertOneClient_activities_skip?: number;
-	clientPortal_upsertOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneServiceInput {
 	where: clientPortal_ServiceWhereUniqueInput;
 	create: clientPortal_ServiceCreateInput;
 	update: clientPortal_ServiceUpdateInput;
-	clientPortal_upsertOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneService_client_client_activities_take?: number;
-	clientPortal_upsertOneService_client_client_activities_skip?: number;
-	clientPortal_upsertOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface CountriesContinentInput {
@@ -9000,38 +7160,14 @@ export interface GpacCreateManyUserInput {
 
 export interface GpacCreateOneAdminActionInput {
 	data: gpac_AdminActionCreateInput;
-	gpac_createOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneAdminAction_user_user_policies_take?: number;
-	gpac_createOneAdminAction_user_user_policies_skip?: number;
-	gpac_createOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOnePolicyInput {
 	data: gpac_PolicyCreateInput;
-	gpac_createOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOnePolicy_user_user_actions_take?: number;
-	gpac_createOnePolicy_user_user_actions_skip?: number;
-	gpac_createOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOneUserInput {
 	data: gpac_UserCreateInput;
-	gpac_createOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneUser_policies_take?: number;
-	gpac_createOneUser_policies_skip?: number;
-	gpac_createOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_createOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOneUser_actions_take?: number;
-	gpac_createOneUser_actions_skip?: number;
-	gpac_createOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteManyAdminActionInput {
@@ -9048,38 +7184,14 @@ export interface GpacDeleteManyUserInput {
 
 export interface GpacDeleteOneAdminActionInput {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_take?: number;
-	gpac_deleteOneAdminAction_user_user_policies_skip?: number;
-	gpac_deleteOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOnePolicyInput {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_take?: number;
-	gpac_deleteOnePolicy_user_user_actions_skip?: number;
-	gpac_deleteOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOneUserInput {
 	where: gpac_UserWhereUniqueInput;
-	gpac_deleteOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneUser_policies_take?: number;
-	gpac_deleteOneUser_policies_skip?: number;
-	gpac_deleteOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_deleteOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneUser_actions_take?: number;
-	gpac_deleteOneUser_actions_skip?: number;
-	gpac_deleteOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacExecuteRawInput {
@@ -9094,12 +7206,6 @@ export interface GpacFindFirstAdminActionInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminAction_user_user_policies_take?: number;
-	gpac_findFirstAdminAction_user_user_policies_skip?: number;
-	gpac_findFirstAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstAdminActionOrThrowInput {
@@ -9109,12 +7215,6 @@ export interface GpacFindFirstAdminActionOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyInput {
@@ -9124,12 +7224,6 @@ export interface GpacFindFirstPolicyInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicy_user_user_actions_take?: number;
-	gpac_findFirstPolicy_user_user_actions_skip?: number;
-	gpac_findFirstPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyOrThrowInput {
@@ -9139,12 +7233,6 @@ export interface GpacFindFirstPolicyOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_take?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserInput {
@@ -9154,18 +7242,6 @@ export interface GpacFindFirstUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUser_policies_take?: number;
-	gpac_findFirstUser_policies_skip?: number;
-	gpac_findFirstUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUser_actions_take?: number;
-	gpac_findFirstUser_actions_skip?: number;
-	gpac_findFirstUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserOrThrowInput {
@@ -9175,18 +7251,6 @@ export interface GpacFindFirstUserOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUserOrThrow_policies_take?: number;
-	gpac_findFirstUserOrThrow_policies_skip?: number;
-	gpac_findFirstUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUserOrThrow_actions_take?: number;
-	gpac_findFirstUserOrThrow_actions_skip?: number;
-	gpac_findFirstUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyAdminActionInput {
@@ -9196,12 +7260,6 @@ export interface GpacFindManyAdminActionInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findManyAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyAdminAction_user_user_policies_take?: number;
-	gpac_findManyAdminAction_user_user_policies_skip?: number;
-	gpac_findManyAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyPolicyInput {
@@ -9211,12 +7269,6 @@ export interface GpacFindManyPolicyInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyPolicy_user_user_actions_take?: number;
-	gpac_findManyPolicy_user_user_actions_skip?: number;
-	gpac_findManyPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyUserInput {
@@ -9226,90 +7278,30 @@ export interface GpacFindManyUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findManyUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyUser_policies_take?: number;
-	gpac_findManyUser_policies_skip?: number;
-	gpac_findManyUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyUser_actions_take?: number;
-	gpac_findManyUser_actions_skip?: number;
-	gpac_findManyUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionInput {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_take?: number;
-	gpac_findUniqueAdminAction_user_user_policies_skip?: number;
-	gpac_findUniqueAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionOrThrowInput {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyInput {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_take?: number;
-	gpac_findUniquePolicy_user_user_actions_skip?: number;
-	gpac_findUniquePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyOrThrowInput {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_take?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserInput {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUser_policies_take?: number;
-	gpac_findUniqueUser_policies_skip?: number;
-	gpac_findUniqueUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUser_actions_take?: number;
-	gpac_findUniqueUser_actions_skip?: number;
-	gpac_findUniqueUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserOrThrowInput {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_take?: number;
-	gpac_findUniqueUserOrThrow_policies_skip?: number;
-	gpac_findUniqueUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_actions_take?: number;
-	gpac_findUniqueUserOrThrow_actions_skip?: number;
-	gpac_findUniqueUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacGroupByAdminActionInput {
@@ -9367,82 +7359,34 @@ export interface GpacUpdateManyUserInput {
 export interface GpacUpdateOneAdminActionInput {
 	data: gpac_AdminActionUpdateInput;
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_take?: number;
-	gpac_updateOneAdminAction_user_user_policies_skip?: number;
-	gpac_updateOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOnePolicyInput {
 	data: gpac_PolicyUpdateInput;
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_take?: number;
-	gpac_updateOnePolicy_user_user_actions_skip?: number;
-	gpac_updateOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOneUserInput {
 	data: gpac_UserUpdateInput;
 	where: gpac_UserWhereUniqueInput;
-	gpac_updateOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneUser_policies_take?: number;
-	gpac_updateOneUser_policies_skip?: number;
-	gpac_updateOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_updateOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneUser_actions_take?: number;
-	gpac_updateOneUser_actions_skip?: number;
-	gpac_updateOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneAdminActionInput {
 	where: gpac_AdminActionWhereUniqueInput;
 	create: gpac_AdminActionCreateInput;
 	update: gpac_AdminActionUpdateInput;
-	gpac_upsertOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneAdminAction_user_user_policies_take?: number;
-	gpac_upsertOneAdminAction_user_user_policies_skip?: number;
-	gpac_upsertOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOnePolicyInput {
 	where: gpac_PolicyWhereUniqueInput;
 	create: gpac_PolicyCreateInput;
 	update: gpac_PolicyUpdateInput;
-	gpac_upsertOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOnePolicy_user_user_actions_take?: number;
-	gpac_upsertOnePolicy_user_user_actions_skip?: number;
-	gpac_upsertOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneUserInput {
 	where: gpac_UserWhereUniqueInput;
 	create: gpac_UserCreateInput;
 	update: gpac_UserUpdateInput;
-	gpac_upsertOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneUser_policies_take?: number;
-	gpac_upsertOneUser_policies_skip?: number;
-	gpac_upsertOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_upsertOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOneUser_actions_take?: number;
-	gpac_upsertOneUser_actions_skip?: number;
-	gpac_upsertOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineAggregateFeatureInput {
@@ -9486,38 +7430,14 @@ export interface GuardianOnlineCreateManyUserLogInput {
 
 export interface GuardianOnlineCreateOneFeatureInput {
 	data: guardianOnline_FeatureCreateInput;
-	guardianOnline_createOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneFeature_user_user_logs_take?: number;
-	guardianOnline_createOneFeature_user_user_logs_skip?: number;
-	guardianOnline_createOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserInput {
 	data: guardianOnline_UserCreateInput;
-	guardianOnline_createOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUser_features_take?: number;
-	guardianOnline_createOneUser_features_skip?: number;
-	guardianOnline_createOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_createOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneUser_logs_take?: number;
-	guardianOnline_createOneUser_logs_skip?: number;
-	guardianOnline_createOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserLogInput {
 	data: guardianOnline_UserLogCreateInput;
-	guardianOnline_createOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUserLog_user_user_features_take?: number;
-	guardianOnline_createOneUserLog_user_user_features_skip?: number;
-	guardianOnline_createOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteManyFeatureInput {
@@ -9534,38 +7454,14 @@ export interface GuardianOnlineDeleteManyUserLogInput {
 
 export interface GuardianOnlineDeleteOneFeatureInput {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_take?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_skip?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserInput {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_take?: number;
-	guardianOnline_deleteOneUser_features_skip?: number;
-	guardianOnline_deleteOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_deleteOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUser_logs_take?: number;
-	guardianOnline_deleteOneUser_logs_skip?: number;
-	guardianOnline_deleteOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserLogInput {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_take?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_skip?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineExecuteRawInput {
@@ -9580,12 +7476,6 @@ export interface GuardianOnlineFindFirstFeatureInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeature_user_user_logs_take?: number;
-	guardianOnline_findFirstFeature_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstFeatureOrThrowInput {
@@ -9595,12 +7485,6 @@ export interface GuardianOnlineFindFirstFeatureOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserInput {
@@ -9610,18 +7494,6 @@ export interface GuardianOnlineFindFirstUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUser_features_take?: number;
-	guardianOnline_findFirstUser_features_skip?: number;
-	guardianOnline_findFirstUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUser_logs_take?: number;
-	guardianOnline_findFirstUser_logs_skip?: number;
-	guardianOnline_findFirstUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogInput {
@@ -9631,12 +7503,6 @@ export interface GuardianOnlineFindFirstUserLogInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLog_user_user_features_take?: number;
-	guardianOnline_findFirstUserLog_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogOrThrowInput {
@@ -9646,12 +7512,6 @@ export interface GuardianOnlineFindFirstUserLogOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserOrThrowInput {
@@ -9661,18 +7521,6 @@ export interface GuardianOnlineFindFirstUserOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_features_take?: number;
-	guardianOnline_findFirstUserOrThrow_features_skip?: number;
-	guardianOnline_findFirstUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_logs_take?: number;
-	guardianOnline_findFirstUserOrThrow_logs_skip?: number;
-	guardianOnline_findFirstUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyFeatureInput {
@@ -9682,12 +7530,6 @@ export interface GuardianOnlineFindManyFeatureInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyFeature_user_user_logs_take?: number;
-	guardianOnline_findManyFeature_user_user_logs_skip?: number;
-	guardianOnline_findManyFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserInput {
@@ -9697,18 +7539,6 @@ export interface GuardianOnlineFindManyUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findManyUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUser_features_take?: number;
-	guardianOnline_findManyUser_features_skip?: number;
-	guardianOnline_findManyUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyUser_logs_take?: number;
-	guardianOnline_findManyUser_logs_skip?: number;
-	guardianOnline_findManyUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserLogInput {
@@ -9718,84 +7548,30 @@ export interface GuardianOnlineFindManyUserLogInput {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findManyUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUserLog_user_user_features_take?: number;
-	guardianOnline_findManyUserLog_user_user_features_skip?: number;
-	guardianOnline_findManyUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureInput {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureOrThrowInput {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserInput {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_take?: number;
-	guardianOnline_findUniqueUser_features_skip?: number;
-	guardianOnline_findUniqueUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUser_logs_take?: number;
-	guardianOnline_findUniqueUser_logs_skip?: number;
-	guardianOnline_findUniqueUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogInput {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogOrThrowInput {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserOrThrowInput {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_take?: number;
-	guardianOnline_findUniqueUserOrThrow_features_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_logs_take?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineGroupByFeatureInput {
@@ -9853,82 +7629,34 @@ export interface GuardianOnlineUpdateManyUserLogInput {
 export interface GuardianOnlineUpdateOneFeatureInput {
 	data: guardianOnline_FeatureUpdateInput;
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_take?: number;
-	guardianOnline_updateOneFeature_user_user_logs_skip?: number;
-	guardianOnline_updateOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserInput {
 	data: guardianOnline_UserUpdateInput;
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_updateOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUser_features_take?: number;
-	guardianOnline_updateOneUser_features_skip?: number;
-	guardianOnline_updateOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_updateOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUser_logs_take?: number;
-	guardianOnline_updateOneUser_logs_skip?: number;
-	guardianOnline_updateOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserLogInput {
 	data: guardianOnline_UserLogUpdateInput;
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_take?: number;
-	guardianOnline_updateOneUserLog_user_user_features_skip?: number;
-	guardianOnline_updateOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneFeatureInput {
 	where: guardianOnline_FeatureWhereUniqueInput;
 	create: guardianOnline_FeatureCreateInput;
 	update: guardianOnline_FeatureUpdateInput;
-	guardianOnline_upsertOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneFeature_user_user_logs_take?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_skip?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserInput {
 	where: guardianOnline_UserWhereUniqueInput;
 	create: guardianOnline_UserCreateInput;
 	update: guardianOnline_UserUpdateInput;
-	guardianOnline_upsertOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUser_features_take?: number;
-	guardianOnline_upsertOneUser_features_skip?: number;
-	guardianOnline_upsertOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_upsertOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneUser_logs_take?: number;
-	guardianOnline_upsertOneUser_logs_skip?: number;
-	guardianOnline_upsertOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserLogInput {
 	where: guardianOnline_UserLogWhereUniqueInput;
 	create: guardianOnline_UserLogCreateInput;
 	update: guardianOnline_UserLogUpdateInput;
-	guardianOnline_upsertOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUserLog_user_user_features_take?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_skip?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetAggregateAssetInput {
@@ -9985,72 +7713,18 @@ export interface LivingBalanceSheetCreateManyUserInput {
 
 export interface LivingBalanceSheetCreateOneAssetInput {
 	data: livingBalanceSheet_AssetCreateInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneFinancialGoalInput {
 	data: livingBalanceSheet_FinancialGoalCreateInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneLiabilityInput {
 	data: livingBalanceSheet_LiabilityCreateInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneUserInput {
 	data: livingBalanceSheet_UserCreateInput;
-	livingBalanceSheet_createOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneUser_assets_take?: number;
-	livingBalanceSheet_createOneUser_assets_skip?: number;
-	livingBalanceSheet_createOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneUser_liabilities_take?: number;
-	livingBalanceSheet_createOneUser_liabilities_skip?: number;
-	livingBalanceSheet_createOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneUser_goals_take?: number;
-	livingBalanceSheet_createOneUser_goals_skip?: number;
-	livingBalanceSheet_createOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteManyAssetInput {
@@ -10071,72 +7745,18 @@ export interface LivingBalanceSheetDeleteManyUserInput {
 
 export interface LivingBalanceSheetDeleteOneAssetInput {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneFinancialGoalInput {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneLiabilityInput {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneUserInput {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_take?: number;
-	livingBalanceSheet_deleteOneUser_assets_skip?: number;
-	livingBalanceSheet_deleteOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_liabilities_take?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_goals_take?: number;
-	livingBalanceSheet_deleteOneUser_goals_skip?: number;
-	livingBalanceSheet_deleteOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetExecuteRawInput {
@@ -10151,18 +7771,6 @@ export interface LivingBalanceSheetFindFirstAssetInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstAssetOrThrowInput {
@@ -10172,18 +7780,6 @@ export interface LivingBalanceSheetFindFirstAssetOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalInput {
@@ -10193,18 +7789,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInput {
@@ -10214,18 +7798,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityInput {
@@ -10235,18 +7807,6 @@ export interface LivingBalanceSheetFindFirstLiabilityInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityOrThrowInput {
@@ -10256,18 +7816,6 @@ export interface LivingBalanceSheetFindFirstLiabilityOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserInput {
@@ -10277,24 +7825,6 @@ export interface LivingBalanceSheetFindFirstUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_assets_take?: number;
-	livingBalanceSheet_findFirstUser_assets_skip?: number;
-	livingBalanceSheet_findFirstUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_liabilities_take?: number;
-	livingBalanceSheet_findFirstUser_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_goals_take?: number;
-	livingBalanceSheet_findFirstUser_goals_skip?: number;
-	livingBalanceSheet_findFirstUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserOrThrowInput {
@@ -10304,24 +7834,6 @@ export interface LivingBalanceSheetFindFirstUserOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyAssetInput {
@@ -10331,18 +7843,6 @@ export interface LivingBalanceSheetFindManyAssetInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyFinancialGoalInput {
@@ -10352,18 +7852,6 @@ export interface LivingBalanceSheetFindManyFinancialGoalInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyLiabilityInput {
@@ -10373,18 +7861,6 @@ export interface LivingBalanceSheetFindManyLiabilityInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyUserInput {
@@ -10394,164 +7870,38 @@ export interface LivingBalanceSheetFindManyUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyUser_assets_take?: number;
-	livingBalanceSheet_findManyUser_assets_skip?: number;
-	livingBalanceSheet_findManyUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyUser_liabilities_take?: number;
-	livingBalanceSheet_findManyUser_liabilities_skip?: number;
-	livingBalanceSheet_findManyUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyUser_goals_take?: number;
-	livingBalanceSheet_findManyUser_goals_skip?: number;
-	livingBalanceSheet_findManyUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetInput {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetOrThrowInput {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalInput {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalOrThrowInput {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityInput {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityOrThrowInput {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserInput {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_take?: number;
-	livingBalanceSheet_findUniqueUser_assets_skip?: number;
-	livingBalanceSheet_findUniqueUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_goals_take?: number;
-	livingBalanceSheet_findUniqueUser_goals_skip?: number;
-	livingBalanceSheet_findUniqueUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserOrThrowInput {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetGroupByAssetInput {
@@ -10623,153 +7973,45 @@ export interface LivingBalanceSheetUpdateManyUserInput {
 export interface LivingBalanceSheetUpdateOneAssetInput {
 	data: livingBalanceSheet_AssetUpdateInput;
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneFinancialGoalInput {
 	data: livingBalanceSheet_FinancialGoalUpdateInput;
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneLiabilityInput {
 	data: livingBalanceSheet_LiabilityUpdateInput;
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneUserInput {
 	data: livingBalanceSheet_UserUpdateInput;
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_take?: number;
-	livingBalanceSheet_updateOneUser_assets_skip?: number;
-	livingBalanceSheet_updateOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_liabilities_take?: number;
-	livingBalanceSheet_updateOneUser_liabilities_skip?: number;
-	livingBalanceSheet_updateOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_goals_take?: number;
-	livingBalanceSheet_updateOneUser_goals_skip?: number;
-	livingBalanceSheet_updateOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneAssetInput {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
 	create: livingBalanceSheet_AssetCreateInput;
 	update: livingBalanceSheet_AssetUpdateInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneFinancialGoalInput {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
 	create: livingBalanceSheet_FinancialGoalCreateInput;
 	update: livingBalanceSheet_FinancialGoalUpdateInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneLiabilityInput {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
 	create: livingBalanceSheet_LiabilityCreateInput;
 	update: livingBalanceSheet_LiabilityUpdateInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneUserInput {
 	where: livingBalanceSheet_UserWhereUniqueInput;
 	create: livingBalanceSheet_UserCreateInput;
 	update: livingBalanceSheet_UserUpdateInput;
-	livingBalanceSheet_upsertOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_assets_take?: number;
-	livingBalanceSheet_upsertOneUser_assets_skip?: number;
-	livingBalanceSheet_upsertOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_liabilities_take?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_goals_take?: number;
-	livingBalanceSheet_upsertOneUser_goals_skip?: number;
-	livingBalanceSheet_upsertOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeAggregateClientInput {
@@ -10826,72 +8068,18 @@ export interface SmartOfficeCreateManyUserInput {
 
 export interface SmartOfficeCreateOneClientInput {
 	data: smartOffice_ClientCreateInput;
-	smartOffice_createOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneClient_user_user_tasks_take?: number;
-	smartOffice_createOneClient_user_user_tasks_skip?: number;
-	smartOffice_createOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneClient_user_user_sales_take?: number;
-	smartOffice_createOneClient_user_user_sales_skip?: number;
-	smartOffice_createOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneSaleInput {
 	data: smartOffice_SaleCreateInput;
-	smartOffice_createOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneSale_user_user_clients_take?: number;
-	smartOffice_createOneSale_user_user_clients_skip?: number;
-	smartOffice_createOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneSale_user_user_tasks_take?: number;
-	smartOffice_createOneSale_user_user_tasks_skip?: number;
-	smartOffice_createOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneTaskInput {
 	data: smartOffice_TaskCreateInput;
-	smartOffice_createOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneTask_user_user_clients_take?: number;
-	smartOffice_createOneTask_user_user_clients_skip?: number;
-	smartOffice_createOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneTask_user_user_sales_take?: number;
-	smartOffice_createOneTask_user_user_sales_skip?: number;
-	smartOffice_createOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneUserInput {
 	data: smartOffice_UserCreateInput;
-	smartOffice_createOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneUser_clients_take?: number;
-	smartOffice_createOneUser_clients_skip?: number;
-	smartOffice_createOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneUser_tasks_take?: number;
-	smartOffice_createOneUser_tasks_skip?: number;
-	smartOffice_createOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneUser_sales_take?: number;
-	smartOffice_createOneUser_sales_skip?: number;
-	smartOffice_createOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteManyClientInput {
@@ -10912,72 +8100,18 @@ export interface SmartOfficeDeleteManyUserInput {
 
 export interface SmartOfficeDeleteOneClientInput {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_take?: number;
-	smartOffice_deleteOneClient_user_user_tasks_skip?: number;
-	smartOffice_deleteOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_sales_take?: number;
-	smartOffice_deleteOneClient_user_user_sales_skip?: number;
-	smartOffice_deleteOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneSaleInput {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_take?: number;
-	smartOffice_deleteOneSale_user_user_clients_skip?: number;
-	smartOffice_deleteOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_tasks_take?: number;
-	smartOffice_deleteOneSale_user_user_tasks_skip?: number;
-	smartOffice_deleteOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneTaskInput {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_take?: number;
-	smartOffice_deleteOneTask_user_user_clients_skip?: number;
-	smartOffice_deleteOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_sales_take?: number;
-	smartOffice_deleteOneTask_user_user_sales_skip?: number;
-	smartOffice_deleteOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneUserInput {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_take?: number;
-	smartOffice_deleteOneUser_clients_skip?: number;
-	smartOffice_deleteOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneUser_tasks_take?: number;
-	smartOffice_deleteOneUser_tasks_skip?: number;
-	smartOffice_deleteOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneUser_sales_take?: number;
-	smartOffice_deleteOneUser_sales_skip?: number;
-	smartOffice_deleteOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeExecuteRawInput {
@@ -10992,18 +8126,6 @@ export interface SmartOfficeFindFirstClientInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_tasks_take?: number;
-	smartOffice_findFirstClient_user_user_tasks_skip?: number;
-	smartOffice_findFirstClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_sales_take?: number;
-	smartOffice_findFirstClient_user_user_sales_skip?: number;
-	smartOffice_findFirstClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstClientOrThrowInput {
@@ -11013,18 +8135,6 @@ export interface SmartOfficeFindFirstClientOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleInput {
@@ -11034,18 +8144,6 @@ export interface SmartOfficeFindFirstSaleInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_clients_take?: number;
-	smartOffice_findFirstSale_user_user_clients_skip?: number;
-	smartOffice_findFirstSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_tasks_take?: number;
-	smartOffice_findFirstSale_user_user_tasks_skip?: number;
-	smartOffice_findFirstSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleOrThrowInput {
@@ -11055,18 +8153,6 @@ export interface SmartOfficeFindFirstSaleOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskInput {
@@ -11076,18 +8162,6 @@ export interface SmartOfficeFindFirstTaskInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_clients_take?: number;
-	smartOffice_findFirstTask_user_user_clients_skip?: number;
-	smartOffice_findFirstTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_sales_take?: number;
-	smartOffice_findFirstTask_user_user_sales_skip?: number;
-	smartOffice_findFirstTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskOrThrowInput {
@@ -11097,18 +8171,6 @@ export interface SmartOfficeFindFirstTaskOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserInput {
@@ -11118,24 +8180,6 @@ export interface SmartOfficeFindFirstUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUser_clients_take?: number;
-	smartOffice_findFirstUser_clients_skip?: number;
-	smartOffice_findFirstUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUser_tasks_take?: number;
-	smartOffice_findFirstUser_tasks_skip?: number;
-	smartOffice_findFirstUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUser_sales_take?: number;
-	smartOffice_findFirstUser_sales_skip?: number;
-	smartOffice_findFirstUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserOrThrowInput {
@@ -11145,24 +8189,6 @@ export interface SmartOfficeFindFirstUserOrThrowInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_clients_take?: number;
-	smartOffice_findFirstUserOrThrow_clients_skip?: number;
-	smartOffice_findFirstUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_tasks_take?: number;
-	smartOffice_findFirstUserOrThrow_tasks_skip?: number;
-	smartOffice_findFirstUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_sales_take?: number;
-	smartOffice_findFirstUserOrThrow_sales_skip?: number;
-	smartOffice_findFirstUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyClientInput {
@@ -11172,18 +8198,6 @@ export interface SmartOfficeFindManyClientInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyClient_user_user_tasks_take?: number;
-	smartOffice_findManyClient_user_user_tasks_skip?: number;
-	smartOffice_findManyClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyClient_user_user_sales_take?: number;
-	smartOffice_findManyClient_user_user_sales_skip?: number;
-	smartOffice_findManyClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManySaleInput {
@@ -11193,18 +8207,6 @@ export interface SmartOfficeFindManySaleInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManySale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManySale_user_user_clients_take?: number;
-	smartOffice_findManySale_user_user_clients_skip?: number;
-	smartOffice_findManySale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManySale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManySale_user_user_tasks_take?: number;
-	smartOffice_findManySale_user_user_tasks_skip?: number;
-	smartOffice_findManySale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyTaskInput {
@@ -11214,18 +8216,6 @@ export interface SmartOfficeFindManyTaskInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyTask_user_user_clients_take?: number;
-	smartOffice_findManyTask_user_user_clients_skip?: number;
-	smartOffice_findManyTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyTask_user_user_sales_take?: number;
-	smartOffice_findManyTask_user_user_sales_skip?: number;
-	smartOffice_findManyTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyUserInput {
@@ -11235,164 +8225,38 @@ export interface SmartOfficeFindManyUserInput {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findManyUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyUser_clients_take?: number;
-	smartOffice_findManyUser_clients_skip?: number;
-	smartOffice_findManyUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyUser_tasks_take?: number;
-	smartOffice_findManyUser_tasks_skip?: number;
-	smartOffice_findManyUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyUser_sales_take?: number;
-	smartOffice_findManyUser_sales_skip?: number;
-	smartOffice_findManyUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientInput {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_take?: number;
-	smartOffice_findUniqueClient_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_sales_take?: number;
-	smartOffice_findUniqueClient_user_user_sales_skip?: number;
-	smartOffice_findUniqueClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientOrThrowInput {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleInput {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_take?: number;
-	smartOffice_findUniqueSale_user_user_clients_skip?: number;
-	smartOffice_findUniqueSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_tasks_take?: number;
-	smartOffice_findUniqueSale_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleOrThrowInput {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskInput {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_take?: number;
-	smartOffice_findUniqueTask_user_user_clients_skip?: number;
-	smartOffice_findUniqueTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_sales_take?: number;
-	smartOffice_findUniqueTask_user_user_sales_skip?: number;
-	smartOffice_findUniqueTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskOrThrowInput {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserInput {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_take?: number;
-	smartOffice_findUniqueUser_clients_skip?: number;
-	smartOffice_findUniqueUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUser_tasks_take?: number;
-	smartOffice_findUniqueUser_tasks_skip?: number;
-	smartOffice_findUniqueUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUser_sales_take?: number;
-	smartOffice_findUniqueUser_sales_skip?: number;
-	smartOffice_findUniqueUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserOrThrowInput {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_take?: number;
-	smartOffice_findUniqueUserOrThrow_clients_skip?: number;
-	smartOffice_findUniqueUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_tasks_take?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_skip?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_sales_take?: number;
-	smartOffice_findUniqueUserOrThrow_sales_skip?: number;
-	smartOffice_findUniqueUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeGroupByClientInput {
@@ -11464,153 +8328,45 @@ export interface SmartOfficeUpdateManyUserInput {
 export interface SmartOfficeUpdateOneClientInput {
 	data: smartOffice_ClientUpdateInput;
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_take?: number;
-	smartOffice_updateOneClient_user_user_tasks_skip?: number;
-	smartOffice_updateOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_sales_take?: number;
-	smartOffice_updateOneClient_user_user_sales_skip?: number;
-	smartOffice_updateOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneSaleInput {
 	data: smartOffice_SaleUpdateInput;
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_take?: number;
-	smartOffice_updateOneSale_user_user_clients_skip?: number;
-	smartOffice_updateOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_tasks_take?: number;
-	smartOffice_updateOneSale_user_user_tasks_skip?: number;
-	smartOffice_updateOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneTaskInput {
 	data: smartOffice_TaskUpdateInput;
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_take?: number;
-	smartOffice_updateOneTask_user_user_clients_skip?: number;
-	smartOffice_updateOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_sales_take?: number;
-	smartOffice_updateOneTask_user_user_sales_skip?: number;
-	smartOffice_updateOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneUserInput {
 	data: smartOffice_UserUpdateInput;
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_updateOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneUser_clients_take?: number;
-	smartOffice_updateOneUser_clients_skip?: number;
-	smartOffice_updateOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneUser_tasks_take?: number;
-	smartOffice_updateOneUser_tasks_skip?: number;
-	smartOffice_updateOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneUser_sales_take?: number;
-	smartOffice_updateOneUser_sales_skip?: number;
-	smartOffice_updateOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneClientInput {
 	where: smartOffice_ClientWhereUniqueInput;
 	create: smartOffice_ClientCreateInput;
 	update: smartOffice_ClientUpdateInput;
-	smartOffice_upsertOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_tasks_take?: number;
-	smartOffice_upsertOneClient_user_user_tasks_skip?: number;
-	smartOffice_upsertOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_sales_take?: number;
-	smartOffice_upsertOneClient_user_user_sales_skip?: number;
-	smartOffice_upsertOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneSaleInput {
 	where: smartOffice_SaleWhereUniqueInput;
 	create: smartOffice_SaleCreateInput;
 	update: smartOffice_SaleUpdateInput;
-	smartOffice_upsertOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_clients_take?: number;
-	smartOffice_upsertOneSale_user_user_clients_skip?: number;
-	smartOffice_upsertOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_tasks_take?: number;
-	smartOffice_upsertOneSale_user_user_tasks_skip?: number;
-	smartOffice_upsertOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneTaskInput {
 	where: smartOffice_TaskWhereUniqueInput;
 	create: smartOffice_TaskCreateInput;
 	update: smartOffice_TaskUpdateInput;
-	smartOffice_upsertOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_clients_take?: number;
-	smartOffice_upsertOneTask_user_user_clients_skip?: number;
-	smartOffice_upsertOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_sales_take?: number;
-	smartOffice_upsertOneTask_user_user_sales_skip?: number;
-	smartOffice_upsertOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneUserInput {
 	where: smartOffice_UserWhereUniqueInput;
 	create: smartOffice_UserCreateInput;
 	update: smartOffice_UserUpdateInput;
-	smartOffice_upsertOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneUser_clients_take?: number;
-	smartOffice_upsertOneUser_clients_skip?: number;
-	smartOffice_upsertOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneUser_tasks_take?: number;
-	smartOffice_upsertOneUser_tasks_skip?: number;
-	smartOffice_upsertOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneUser_sales_take?: number;
-	smartOffice_upsertOneUser_sales_skip?: number;
-	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface WeatherGetCityByIdInput {
@@ -11681,38 +8437,14 @@ export interface ClientPortalCreateManyServiceInputInternal {
 
 export interface ClientPortalCreateOneActivityInputInternal {
 	data: clientPortal_ActivityCreateInput;
-	clientPortal_createOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneActivity_client_client_services_take?: number;
-	clientPortal_createOneActivity_client_client_services_skip?: number;
-	clientPortal_createOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneClientInputInternal {
 	data: clientPortal_ClientCreateInput;
-	clientPortal_createOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneClient_services_take?: number;
-	clientPortal_createOneClient_services_skip?: number;
-	clientPortal_createOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_createOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneClient_activities_take?: number;
-	clientPortal_createOneClient_activities_skip?: number;
-	clientPortal_createOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneServiceInputInternal {
 	data: clientPortal_ServiceCreateInput;
-	clientPortal_createOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneService_client_client_activities_take?: number;
-	clientPortal_createOneService_client_client_activities_skip?: number;
-	clientPortal_createOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteManyActivityInputInternal {
@@ -11729,38 +8461,14 @@ export interface ClientPortalDeleteManyServiceInputInternal {
 
 export interface ClientPortalDeleteOneActivityInputInternal {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_take?: number;
-	clientPortal_deleteOneActivity_client_client_services_skip?: number;
-	clientPortal_deleteOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneClientInputInternal {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_deleteOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneClient_services_take?: number;
-	clientPortal_deleteOneClient_services_skip?: number;
-	clientPortal_deleteOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_deleteOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneClient_activities_take?: number;
-	clientPortal_deleteOneClient_activities_skip?: number;
-	clientPortal_deleteOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneServiceInputInternal {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_take?: number;
-	clientPortal_deleteOneService_client_client_activities_skip?: number;
-	clientPortal_deleteOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalExecuteRawInputInternal {
@@ -11775,12 +8483,6 @@ export interface ClientPortalFindFirstActivityInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivity_client_client_services_take?: number;
-	clientPortal_findFirstActivity_client_client_services_skip?: number;
-	clientPortal_findFirstActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstActivityOrThrowInputInternal {
@@ -11790,12 +8492,6 @@ export interface ClientPortalFindFirstActivityOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientInputInternal {
@@ -11805,18 +8501,6 @@ export interface ClientPortalFindFirstClientInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClient_services_take?: number;
-	clientPortal_findFirstClient_services_skip?: number;
-	clientPortal_findFirstClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClient_activities_take?: number;
-	clientPortal_findFirstClient_activities_skip?: number;
-	clientPortal_findFirstClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientOrThrowInputInternal {
@@ -11826,18 +8510,6 @@ export interface ClientPortalFindFirstClientOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_services_take?: number;
-	clientPortal_findFirstClientOrThrow_services_skip?: number;
-	clientPortal_findFirstClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_activities_take?: number;
-	clientPortal_findFirstClientOrThrow_activities_skip?: number;
-	clientPortal_findFirstClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceInputInternal {
@@ -11847,12 +8519,6 @@ export interface ClientPortalFindFirstServiceInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstService_client_client_activities_take?: number;
-	clientPortal_findFirstService_client_client_activities_skip?: number;
-	clientPortal_findFirstService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceOrThrowInputInternal {
@@ -11862,12 +8528,6 @@ export interface ClientPortalFindFirstServiceOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyActivityInputInternal {
@@ -11877,12 +8537,6 @@ export interface ClientPortalFindManyActivityInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findManyActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyActivity_client_client_services_take?: number;
-	clientPortal_findManyActivity_client_client_services_skip?: number;
-	clientPortal_findManyActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyClientInputInternal {
@@ -11892,18 +8546,6 @@ export interface ClientPortalFindManyClientInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findManyClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyClient_services_take?: number;
-	clientPortal_findManyClient_services_skip?: number;
-	clientPortal_findManyClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyClient_activities_take?: number;
-	clientPortal_findManyClient_activities_skip?: number;
-	clientPortal_findManyClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyServiceInputInternal {
@@ -11913,84 +8555,30 @@ export interface ClientPortalFindManyServiceInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyService_client_client_activities_take?: number;
-	clientPortal_findManyService_client_client_activities_skip?: number;
-	clientPortal_findManyService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityInputInternal {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_take?: number;
-	clientPortal_findUniqueActivity_client_client_services_skip?: number;
-	clientPortal_findUniqueActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityOrThrowInputInternal {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientInputInternal {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClient_services_take?: number;
-	clientPortal_findUniqueClient_services_skip?: number;
-	clientPortal_findUniqueClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClient_activities_take?: number;
-	clientPortal_findUniqueClient_activities_skip?: number;
-	clientPortal_findUniqueClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientOrThrowInputInternal {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_take?: number;
-	clientPortal_findUniqueClientOrThrow_services_skip?: number;
-	clientPortal_findUniqueClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_activities_take?: number;
-	clientPortal_findUniqueClientOrThrow_activities_skip?: number;
-	clientPortal_findUniqueClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceInputInternal {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_take?: number;
-	clientPortal_findUniqueService_client_client_activities_skip?: number;
-	clientPortal_findUniqueService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceOrThrowInputInternal {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalGroupByActivityInputInternal {
@@ -12048,82 +8636,34 @@ export interface ClientPortalUpdateManyServiceInputInternal {
 export interface ClientPortalUpdateOneActivityInputInternal {
 	data: clientPortal_ActivityUpdateInput;
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_take?: number;
-	clientPortal_updateOneActivity_client_client_services_skip?: number;
-	clientPortal_updateOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneClientInputInternal {
 	data: clientPortal_ClientUpdateInput;
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_updateOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneClient_services_take?: number;
-	clientPortal_updateOneClient_services_skip?: number;
-	clientPortal_updateOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_updateOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneClient_activities_take?: number;
-	clientPortal_updateOneClient_activities_skip?: number;
-	clientPortal_updateOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneServiceInputInternal {
 	data: clientPortal_ServiceUpdateInput;
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_take?: number;
-	clientPortal_updateOneService_client_client_activities_skip?: number;
-	clientPortal_updateOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneActivityInputInternal {
 	where: clientPortal_ActivityWhereUniqueInput;
 	create: clientPortal_ActivityCreateInput;
 	update: clientPortal_ActivityUpdateInput;
-	clientPortal_upsertOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneActivity_client_client_services_take?: number;
-	clientPortal_upsertOneActivity_client_client_services_skip?: number;
-	clientPortal_upsertOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneClientInputInternal {
 	where: clientPortal_ClientWhereUniqueInput;
 	create: clientPortal_ClientCreateInput;
 	update: clientPortal_ClientUpdateInput;
-	clientPortal_upsertOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneClient_services_take?: number;
-	clientPortal_upsertOneClient_services_skip?: number;
-	clientPortal_upsertOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_upsertOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneClient_activities_take?: number;
-	clientPortal_upsertOneClient_activities_skip?: number;
-	clientPortal_upsertOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneServiceInputInternal {
 	where: clientPortal_ServiceWhereUniqueInput;
 	create: clientPortal_ServiceCreateInput;
 	update: clientPortal_ServiceUpdateInput;
-	clientPortal_upsertOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneService_client_client_activities_take?: number;
-	clientPortal_upsertOneService_client_client_activities_skip?: number;
-	clientPortal_upsertOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface CountriesContinentInputInternal {
@@ -13457,38 +9997,14 @@ export interface GpacCreateManyUserInputInternal {
 
 export interface GpacCreateOneAdminActionInputInternal {
 	data: gpac_AdminActionCreateInput;
-	gpac_createOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneAdminAction_user_user_policies_take?: number;
-	gpac_createOneAdminAction_user_user_policies_skip?: number;
-	gpac_createOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOnePolicyInputInternal {
 	data: gpac_PolicyCreateInput;
-	gpac_createOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOnePolicy_user_user_actions_take?: number;
-	gpac_createOnePolicy_user_user_actions_skip?: number;
-	gpac_createOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOneUserInputInternal {
 	data: gpac_UserCreateInput;
-	gpac_createOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneUser_policies_take?: number;
-	gpac_createOneUser_policies_skip?: number;
-	gpac_createOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_createOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOneUser_actions_take?: number;
-	gpac_createOneUser_actions_skip?: number;
-	gpac_createOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteManyAdminActionInputInternal {
@@ -13505,38 +10021,14 @@ export interface GpacDeleteManyUserInputInternal {
 
 export interface GpacDeleteOneAdminActionInputInternal {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_take?: number;
-	gpac_deleteOneAdminAction_user_user_policies_skip?: number;
-	gpac_deleteOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOnePolicyInputInternal {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_take?: number;
-	gpac_deleteOnePolicy_user_user_actions_skip?: number;
-	gpac_deleteOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOneUserInputInternal {
 	where: gpac_UserWhereUniqueInput;
-	gpac_deleteOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneUser_policies_take?: number;
-	gpac_deleteOneUser_policies_skip?: number;
-	gpac_deleteOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_deleteOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneUser_actions_take?: number;
-	gpac_deleteOneUser_actions_skip?: number;
-	gpac_deleteOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacExecuteRawInputInternal {
@@ -13551,12 +10043,6 @@ export interface GpacFindFirstAdminActionInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminAction_user_user_policies_take?: number;
-	gpac_findFirstAdminAction_user_user_policies_skip?: number;
-	gpac_findFirstAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstAdminActionOrThrowInputInternal {
@@ -13566,12 +10052,6 @@ export interface GpacFindFirstAdminActionOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyInputInternal {
@@ -13581,12 +10061,6 @@ export interface GpacFindFirstPolicyInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicy_user_user_actions_take?: number;
-	gpac_findFirstPolicy_user_user_actions_skip?: number;
-	gpac_findFirstPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyOrThrowInputInternal {
@@ -13596,12 +10070,6 @@ export interface GpacFindFirstPolicyOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_take?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserInputInternal {
@@ -13611,18 +10079,6 @@ export interface GpacFindFirstUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUser_policies_take?: number;
-	gpac_findFirstUser_policies_skip?: number;
-	gpac_findFirstUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUser_actions_take?: number;
-	gpac_findFirstUser_actions_skip?: number;
-	gpac_findFirstUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserOrThrowInputInternal {
@@ -13632,18 +10088,6 @@ export interface GpacFindFirstUserOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUserOrThrow_policies_take?: number;
-	gpac_findFirstUserOrThrow_policies_skip?: number;
-	gpac_findFirstUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUserOrThrow_actions_take?: number;
-	gpac_findFirstUserOrThrow_actions_skip?: number;
-	gpac_findFirstUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyAdminActionInputInternal {
@@ -13653,12 +10097,6 @@ export interface GpacFindManyAdminActionInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findManyAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyAdminAction_user_user_policies_take?: number;
-	gpac_findManyAdminAction_user_user_policies_skip?: number;
-	gpac_findManyAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyPolicyInputInternal {
@@ -13668,12 +10106,6 @@ export interface GpacFindManyPolicyInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyPolicy_user_user_actions_take?: number;
-	gpac_findManyPolicy_user_user_actions_skip?: number;
-	gpac_findManyPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyUserInputInternal {
@@ -13683,90 +10115,30 @@ export interface GpacFindManyUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findManyUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyUser_policies_take?: number;
-	gpac_findManyUser_policies_skip?: number;
-	gpac_findManyUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyUser_actions_take?: number;
-	gpac_findManyUser_actions_skip?: number;
-	gpac_findManyUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionInputInternal {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_take?: number;
-	gpac_findUniqueAdminAction_user_user_policies_skip?: number;
-	gpac_findUniqueAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionOrThrowInputInternal {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyInputInternal {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_take?: number;
-	gpac_findUniquePolicy_user_user_actions_skip?: number;
-	gpac_findUniquePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyOrThrowInputInternal {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_take?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserInputInternal {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUser_policies_take?: number;
-	gpac_findUniqueUser_policies_skip?: number;
-	gpac_findUniqueUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUser_actions_take?: number;
-	gpac_findUniqueUser_actions_skip?: number;
-	gpac_findUniqueUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserOrThrowInputInternal {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_take?: number;
-	gpac_findUniqueUserOrThrow_policies_skip?: number;
-	gpac_findUniqueUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_actions_take?: number;
-	gpac_findUniqueUserOrThrow_actions_skip?: number;
-	gpac_findUniqueUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacGroupByAdminActionInputInternal {
@@ -13824,82 +10196,34 @@ export interface GpacUpdateManyUserInputInternal {
 export interface GpacUpdateOneAdminActionInputInternal {
 	data: gpac_AdminActionUpdateInput;
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_take?: number;
-	gpac_updateOneAdminAction_user_user_policies_skip?: number;
-	gpac_updateOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOnePolicyInputInternal {
 	data: gpac_PolicyUpdateInput;
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_take?: number;
-	gpac_updateOnePolicy_user_user_actions_skip?: number;
-	gpac_updateOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOneUserInputInternal {
 	data: gpac_UserUpdateInput;
 	where: gpac_UserWhereUniqueInput;
-	gpac_updateOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneUser_policies_take?: number;
-	gpac_updateOneUser_policies_skip?: number;
-	gpac_updateOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_updateOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneUser_actions_take?: number;
-	gpac_updateOneUser_actions_skip?: number;
-	gpac_updateOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneAdminActionInputInternal {
 	where: gpac_AdminActionWhereUniqueInput;
 	create: gpac_AdminActionCreateInput;
 	update: gpac_AdminActionUpdateInput;
-	gpac_upsertOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneAdminAction_user_user_policies_take?: number;
-	gpac_upsertOneAdminAction_user_user_policies_skip?: number;
-	gpac_upsertOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOnePolicyInputInternal {
 	where: gpac_PolicyWhereUniqueInput;
 	create: gpac_PolicyCreateInput;
 	update: gpac_PolicyUpdateInput;
-	gpac_upsertOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOnePolicy_user_user_actions_take?: number;
-	gpac_upsertOnePolicy_user_user_actions_skip?: number;
-	gpac_upsertOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneUserInputInternal {
 	where: gpac_UserWhereUniqueInput;
 	create: gpac_UserCreateInput;
 	update: gpac_UserUpdateInput;
-	gpac_upsertOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneUser_policies_take?: number;
-	gpac_upsertOneUser_policies_skip?: number;
-	gpac_upsertOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_upsertOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOneUser_actions_take?: number;
-	gpac_upsertOneUser_actions_skip?: number;
-	gpac_upsertOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineAggregateFeatureInputInternal {
@@ -13943,38 +10267,14 @@ export interface GuardianOnlineCreateManyUserLogInputInternal {
 
 export interface GuardianOnlineCreateOneFeatureInputInternal {
 	data: guardianOnline_FeatureCreateInput;
-	guardianOnline_createOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneFeature_user_user_logs_take?: number;
-	guardianOnline_createOneFeature_user_user_logs_skip?: number;
-	guardianOnline_createOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserInputInternal {
 	data: guardianOnline_UserCreateInput;
-	guardianOnline_createOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUser_features_take?: number;
-	guardianOnline_createOneUser_features_skip?: number;
-	guardianOnline_createOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_createOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneUser_logs_take?: number;
-	guardianOnline_createOneUser_logs_skip?: number;
-	guardianOnline_createOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserLogInputInternal {
 	data: guardianOnline_UserLogCreateInput;
-	guardianOnline_createOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUserLog_user_user_features_take?: number;
-	guardianOnline_createOneUserLog_user_user_features_skip?: number;
-	guardianOnline_createOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteManyFeatureInputInternal {
@@ -13991,38 +10291,14 @@ export interface GuardianOnlineDeleteManyUserLogInputInternal {
 
 export interface GuardianOnlineDeleteOneFeatureInputInternal {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_take?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_skip?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserInputInternal {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_take?: number;
-	guardianOnline_deleteOneUser_features_skip?: number;
-	guardianOnline_deleteOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_deleteOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUser_logs_take?: number;
-	guardianOnline_deleteOneUser_logs_skip?: number;
-	guardianOnline_deleteOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserLogInputInternal {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_take?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_skip?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineExecuteRawInputInternal {
@@ -14037,12 +10313,6 @@ export interface GuardianOnlineFindFirstFeatureInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeature_user_user_logs_take?: number;
-	guardianOnline_findFirstFeature_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstFeatureOrThrowInputInternal {
@@ -14052,12 +10322,6 @@ export interface GuardianOnlineFindFirstFeatureOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserInputInternal {
@@ -14067,18 +10331,6 @@ export interface GuardianOnlineFindFirstUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUser_features_take?: number;
-	guardianOnline_findFirstUser_features_skip?: number;
-	guardianOnline_findFirstUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUser_logs_take?: number;
-	guardianOnline_findFirstUser_logs_skip?: number;
-	guardianOnline_findFirstUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogInputInternal {
@@ -14088,12 +10340,6 @@ export interface GuardianOnlineFindFirstUserLogInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLog_user_user_features_take?: number;
-	guardianOnline_findFirstUserLog_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogOrThrowInputInternal {
@@ -14103,12 +10349,6 @@ export interface GuardianOnlineFindFirstUserLogOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserOrThrowInputInternal {
@@ -14118,18 +10358,6 @@ export interface GuardianOnlineFindFirstUserOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_features_take?: number;
-	guardianOnline_findFirstUserOrThrow_features_skip?: number;
-	guardianOnline_findFirstUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_logs_take?: number;
-	guardianOnline_findFirstUserOrThrow_logs_skip?: number;
-	guardianOnline_findFirstUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyFeatureInputInternal {
@@ -14139,12 +10367,6 @@ export interface GuardianOnlineFindManyFeatureInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyFeature_user_user_logs_take?: number;
-	guardianOnline_findManyFeature_user_user_logs_skip?: number;
-	guardianOnline_findManyFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserInputInternal {
@@ -14154,18 +10376,6 @@ export interface GuardianOnlineFindManyUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findManyUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUser_features_take?: number;
-	guardianOnline_findManyUser_features_skip?: number;
-	guardianOnline_findManyUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyUser_logs_take?: number;
-	guardianOnline_findManyUser_logs_skip?: number;
-	guardianOnline_findManyUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserLogInputInternal {
@@ -14175,84 +10385,30 @@ export interface GuardianOnlineFindManyUserLogInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findManyUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUserLog_user_user_features_take?: number;
-	guardianOnline_findManyUserLog_user_user_features_skip?: number;
-	guardianOnline_findManyUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureInputInternal {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureOrThrowInputInternal {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserInputInternal {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_take?: number;
-	guardianOnline_findUniqueUser_features_skip?: number;
-	guardianOnline_findUniqueUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUser_logs_take?: number;
-	guardianOnline_findUniqueUser_logs_skip?: number;
-	guardianOnline_findUniqueUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogInputInternal {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogOrThrowInputInternal {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserOrThrowInputInternal {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_take?: number;
-	guardianOnline_findUniqueUserOrThrow_features_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_logs_take?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineGroupByFeatureInputInternal {
@@ -14310,82 +10466,34 @@ export interface GuardianOnlineUpdateManyUserLogInputInternal {
 export interface GuardianOnlineUpdateOneFeatureInputInternal {
 	data: guardianOnline_FeatureUpdateInput;
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_take?: number;
-	guardianOnline_updateOneFeature_user_user_logs_skip?: number;
-	guardianOnline_updateOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserInputInternal {
 	data: guardianOnline_UserUpdateInput;
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_updateOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUser_features_take?: number;
-	guardianOnline_updateOneUser_features_skip?: number;
-	guardianOnline_updateOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_updateOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUser_logs_take?: number;
-	guardianOnline_updateOneUser_logs_skip?: number;
-	guardianOnline_updateOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserLogInputInternal {
 	data: guardianOnline_UserLogUpdateInput;
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_take?: number;
-	guardianOnline_updateOneUserLog_user_user_features_skip?: number;
-	guardianOnline_updateOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneFeatureInputInternal {
 	where: guardianOnline_FeatureWhereUniqueInput;
 	create: guardianOnline_FeatureCreateInput;
 	update: guardianOnline_FeatureUpdateInput;
-	guardianOnline_upsertOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneFeature_user_user_logs_take?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_skip?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserInputInternal {
 	where: guardianOnline_UserWhereUniqueInput;
 	create: guardianOnline_UserCreateInput;
 	update: guardianOnline_UserUpdateInput;
-	guardianOnline_upsertOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUser_features_take?: number;
-	guardianOnline_upsertOneUser_features_skip?: number;
-	guardianOnline_upsertOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_upsertOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneUser_logs_take?: number;
-	guardianOnline_upsertOneUser_logs_skip?: number;
-	guardianOnline_upsertOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserLogInputInternal {
 	where: guardianOnline_UserLogWhereUniqueInput;
 	create: guardianOnline_UserLogCreateInput;
 	update: guardianOnline_UserLogUpdateInput;
-	guardianOnline_upsertOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUserLog_user_user_features_take?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_skip?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetAggregateAssetInputInternal {
@@ -14442,72 +10550,18 @@ export interface LivingBalanceSheetCreateManyUserInputInternal {
 
 export interface LivingBalanceSheetCreateOneAssetInputInternal {
 	data: livingBalanceSheet_AssetCreateInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneFinancialGoalInputInternal {
 	data: livingBalanceSheet_FinancialGoalCreateInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneLiabilityInputInternal {
 	data: livingBalanceSheet_LiabilityCreateInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneUserInputInternal {
 	data: livingBalanceSheet_UserCreateInput;
-	livingBalanceSheet_createOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneUser_assets_take?: number;
-	livingBalanceSheet_createOneUser_assets_skip?: number;
-	livingBalanceSheet_createOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneUser_liabilities_take?: number;
-	livingBalanceSheet_createOneUser_liabilities_skip?: number;
-	livingBalanceSheet_createOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneUser_goals_take?: number;
-	livingBalanceSheet_createOneUser_goals_skip?: number;
-	livingBalanceSheet_createOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteManyAssetInputInternal {
@@ -14528,72 +10582,18 @@ export interface LivingBalanceSheetDeleteManyUserInputInternal {
 
 export interface LivingBalanceSheetDeleteOneAssetInputInternal {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneFinancialGoalInputInternal {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneLiabilityInputInternal {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneUserInputInternal {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_take?: number;
-	livingBalanceSheet_deleteOneUser_assets_skip?: number;
-	livingBalanceSheet_deleteOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_liabilities_take?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_goals_take?: number;
-	livingBalanceSheet_deleteOneUser_goals_skip?: number;
-	livingBalanceSheet_deleteOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetExecuteRawInputInternal {
@@ -14608,18 +10608,6 @@ export interface LivingBalanceSheetFindFirstAssetInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstAssetOrThrowInputInternal {
@@ -14629,18 +10617,6 @@ export interface LivingBalanceSheetFindFirstAssetOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalInputInternal {
@@ -14650,18 +10626,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInputInternal {
@@ -14671,18 +10635,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityInputInternal {
@@ -14692,18 +10644,6 @@ export interface LivingBalanceSheetFindFirstLiabilityInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityOrThrowInputInternal {
@@ -14713,18 +10653,6 @@ export interface LivingBalanceSheetFindFirstLiabilityOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserInputInternal {
@@ -14734,24 +10662,6 @@ export interface LivingBalanceSheetFindFirstUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_assets_take?: number;
-	livingBalanceSheet_findFirstUser_assets_skip?: number;
-	livingBalanceSheet_findFirstUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_liabilities_take?: number;
-	livingBalanceSheet_findFirstUser_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_goals_take?: number;
-	livingBalanceSheet_findFirstUser_goals_skip?: number;
-	livingBalanceSheet_findFirstUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserOrThrowInputInternal {
@@ -14761,24 +10671,6 @@ export interface LivingBalanceSheetFindFirstUserOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyAssetInputInternal {
@@ -14788,18 +10680,6 @@ export interface LivingBalanceSheetFindManyAssetInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyFinancialGoalInputInternal {
@@ -14809,18 +10689,6 @@ export interface LivingBalanceSheetFindManyFinancialGoalInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyLiabilityInputInternal {
@@ -14830,18 +10698,6 @@ export interface LivingBalanceSheetFindManyLiabilityInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyUserInputInternal {
@@ -14851,164 +10707,38 @@ export interface LivingBalanceSheetFindManyUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyUser_assets_take?: number;
-	livingBalanceSheet_findManyUser_assets_skip?: number;
-	livingBalanceSheet_findManyUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyUser_liabilities_take?: number;
-	livingBalanceSheet_findManyUser_liabilities_skip?: number;
-	livingBalanceSheet_findManyUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyUser_goals_take?: number;
-	livingBalanceSheet_findManyUser_goals_skip?: number;
-	livingBalanceSheet_findManyUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetInputInternal {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetOrThrowInputInternal {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalInputInternal {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalOrThrowInputInternal {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityInputInternal {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityOrThrowInputInternal {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserInputInternal {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_take?: number;
-	livingBalanceSheet_findUniqueUser_assets_skip?: number;
-	livingBalanceSheet_findUniqueUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_goals_take?: number;
-	livingBalanceSheet_findUniqueUser_goals_skip?: number;
-	livingBalanceSheet_findUniqueUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserOrThrowInputInternal {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetGroupByAssetInputInternal {
@@ -15080,153 +10810,45 @@ export interface LivingBalanceSheetUpdateManyUserInputInternal {
 export interface LivingBalanceSheetUpdateOneAssetInputInternal {
 	data: livingBalanceSheet_AssetUpdateInput;
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneFinancialGoalInputInternal {
 	data: livingBalanceSheet_FinancialGoalUpdateInput;
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneLiabilityInputInternal {
 	data: livingBalanceSheet_LiabilityUpdateInput;
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneUserInputInternal {
 	data: livingBalanceSheet_UserUpdateInput;
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_take?: number;
-	livingBalanceSheet_updateOneUser_assets_skip?: number;
-	livingBalanceSheet_updateOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_liabilities_take?: number;
-	livingBalanceSheet_updateOneUser_liabilities_skip?: number;
-	livingBalanceSheet_updateOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_goals_take?: number;
-	livingBalanceSheet_updateOneUser_goals_skip?: number;
-	livingBalanceSheet_updateOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneAssetInputInternal {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
 	create: livingBalanceSheet_AssetCreateInput;
 	update: livingBalanceSheet_AssetUpdateInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneFinancialGoalInputInternal {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
 	create: livingBalanceSheet_FinancialGoalCreateInput;
 	update: livingBalanceSheet_FinancialGoalUpdateInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneLiabilityInputInternal {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
 	create: livingBalanceSheet_LiabilityCreateInput;
 	update: livingBalanceSheet_LiabilityUpdateInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneUserInputInternal {
 	where: livingBalanceSheet_UserWhereUniqueInput;
 	create: livingBalanceSheet_UserCreateInput;
 	update: livingBalanceSheet_UserUpdateInput;
-	livingBalanceSheet_upsertOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_assets_take?: number;
-	livingBalanceSheet_upsertOneUser_assets_skip?: number;
-	livingBalanceSheet_upsertOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_liabilities_take?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_goals_take?: number;
-	livingBalanceSheet_upsertOneUser_goals_skip?: number;
-	livingBalanceSheet_upsertOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeAggregateClientInputInternal {
@@ -15283,72 +10905,18 @@ export interface SmartOfficeCreateManyUserInputInternal {
 
 export interface SmartOfficeCreateOneClientInputInternal {
 	data: smartOffice_ClientCreateInput;
-	smartOffice_createOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneClient_user_user_tasks_take?: number;
-	smartOffice_createOneClient_user_user_tasks_skip?: number;
-	smartOffice_createOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneClient_user_user_sales_take?: number;
-	smartOffice_createOneClient_user_user_sales_skip?: number;
-	smartOffice_createOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneSaleInputInternal {
 	data: smartOffice_SaleCreateInput;
-	smartOffice_createOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneSale_user_user_clients_take?: number;
-	smartOffice_createOneSale_user_user_clients_skip?: number;
-	smartOffice_createOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneSale_user_user_tasks_take?: number;
-	smartOffice_createOneSale_user_user_tasks_skip?: number;
-	smartOffice_createOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneTaskInputInternal {
 	data: smartOffice_TaskCreateInput;
-	smartOffice_createOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneTask_user_user_clients_take?: number;
-	smartOffice_createOneTask_user_user_clients_skip?: number;
-	smartOffice_createOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneTask_user_user_sales_take?: number;
-	smartOffice_createOneTask_user_user_sales_skip?: number;
-	smartOffice_createOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneUserInputInternal {
 	data: smartOffice_UserCreateInput;
-	smartOffice_createOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneUser_clients_take?: number;
-	smartOffice_createOneUser_clients_skip?: number;
-	smartOffice_createOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneUser_tasks_take?: number;
-	smartOffice_createOneUser_tasks_skip?: number;
-	smartOffice_createOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneUser_sales_take?: number;
-	smartOffice_createOneUser_sales_skip?: number;
-	smartOffice_createOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteManyClientInputInternal {
@@ -15369,72 +10937,18 @@ export interface SmartOfficeDeleteManyUserInputInternal {
 
 export interface SmartOfficeDeleteOneClientInputInternal {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_take?: number;
-	smartOffice_deleteOneClient_user_user_tasks_skip?: number;
-	smartOffice_deleteOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_sales_take?: number;
-	smartOffice_deleteOneClient_user_user_sales_skip?: number;
-	smartOffice_deleteOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneSaleInputInternal {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_take?: number;
-	smartOffice_deleteOneSale_user_user_clients_skip?: number;
-	smartOffice_deleteOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_tasks_take?: number;
-	smartOffice_deleteOneSale_user_user_tasks_skip?: number;
-	smartOffice_deleteOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneTaskInputInternal {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_take?: number;
-	smartOffice_deleteOneTask_user_user_clients_skip?: number;
-	smartOffice_deleteOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_sales_take?: number;
-	smartOffice_deleteOneTask_user_user_sales_skip?: number;
-	smartOffice_deleteOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneUserInputInternal {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_take?: number;
-	smartOffice_deleteOneUser_clients_skip?: number;
-	smartOffice_deleteOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneUser_tasks_take?: number;
-	smartOffice_deleteOneUser_tasks_skip?: number;
-	smartOffice_deleteOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneUser_sales_take?: number;
-	smartOffice_deleteOneUser_sales_skip?: number;
-	smartOffice_deleteOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeExecuteRawInputInternal {
@@ -15449,18 +10963,6 @@ export interface SmartOfficeFindFirstClientInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_tasks_take?: number;
-	smartOffice_findFirstClient_user_user_tasks_skip?: number;
-	smartOffice_findFirstClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_sales_take?: number;
-	smartOffice_findFirstClient_user_user_sales_skip?: number;
-	smartOffice_findFirstClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstClientOrThrowInputInternal {
@@ -15470,18 +10972,6 @@ export interface SmartOfficeFindFirstClientOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleInputInternal {
@@ -15491,18 +10981,6 @@ export interface SmartOfficeFindFirstSaleInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_clients_take?: number;
-	smartOffice_findFirstSale_user_user_clients_skip?: number;
-	smartOffice_findFirstSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_tasks_take?: number;
-	smartOffice_findFirstSale_user_user_tasks_skip?: number;
-	smartOffice_findFirstSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleOrThrowInputInternal {
@@ -15512,18 +10990,6 @@ export interface SmartOfficeFindFirstSaleOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskInputInternal {
@@ -15533,18 +10999,6 @@ export interface SmartOfficeFindFirstTaskInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_clients_take?: number;
-	smartOffice_findFirstTask_user_user_clients_skip?: number;
-	smartOffice_findFirstTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_sales_take?: number;
-	smartOffice_findFirstTask_user_user_sales_skip?: number;
-	smartOffice_findFirstTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskOrThrowInputInternal {
@@ -15554,18 +11008,6 @@ export interface SmartOfficeFindFirstTaskOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserInputInternal {
@@ -15575,24 +11017,6 @@ export interface SmartOfficeFindFirstUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUser_clients_take?: number;
-	smartOffice_findFirstUser_clients_skip?: number;
-	smartOffice_findFirstUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUser_tasks_take?: number;
-	smartOffice_findFirstUser_tasks_skip?: number;
-	smartOffice_findFirstUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUser_sales_take?: number;
-	smartOffice_findFirstUser_sales_skip?: number;
-	smartOffice_findFirstUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserOrThrowInputInternal {
@@ -15602,24 +11026,6 @@ export interface SmartOfficeFindFirstUserOrThrowInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_clients_take?: number;
-	smartOffice_findFirstUserOrThrow_clients_skip?: number;
-	smartOffice_findFirstUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_tasks_take?: number;
-	smartOffice_findFirstUserOrThrow_tasks_skip?: number;
-	smartOffice_findFirstUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_sales_take?: number;
-	smartOffice_findFirstUserOrThrow_sales_skip?: number;
-	smartOffice_findFirstUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyClientInputInternal {
@@ -15629,18 +11035,6 @@ export interface SmartOfficeFindManyClientInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyClient_user_user_tasks_take?: number;
-	smartOffice_findManyClient_user_user_tasks_skip?: number;
-	smartOffice_findManyClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyClient_user_user_sales_take?: number;
-	smartOffice_findManyClient_user_user_sales_skip?: number;
-	smartOffice_findManyClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManySaleInputInternal {
@@ -15650,18 +11044,6 @@ export interface SmartOfficeFindManySaleInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManySale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManySale_user_user_clients_take?: number;
-	smartOffice_findManySale_user_user_clients_skip?: number;
-	smartOffice_findManySale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManySale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManySale_user_user_tasks_take?: number;
-	smartOffice_findManySale_user_user_tasks_skip?: number;
-	smartOffice_findManySale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyTaskInputInternal {
@@ -15671,18 +11053,6 @@ export interface SmartOfficeFindManyTaskInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyTask_user_user_clients_take?: number;
-	smartOffice_findManyTask_user_user_clients_skip?: number;
-	smartOffice_findManyTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyTask_user_user_sales_take?: number;
-	smartOffice_findManyTask_user_user_sales_skip?: number;
-	smartOffice_findManyTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyUserInputInternal {
@@ -15692,164 +11062,38 @@ export interface SmartOfficeFindManyUserInputInternal {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findManyUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyUser_clients_take?: number;
-	smartOffice_findManyUser_clients_skip?: number;
-	smartOffice_findManyUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyUser_tasks_take?: number;
-	smartOffice_findManyUser_tasks_skip?: number;
-	smartOffice_findManyUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyUser_sales_take?: number;
-	smartOffice_findManyUser_sales_skip?: number;
-	smartOffice_findManyUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientInputInternal {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_take?: number;
-	smartOffice_findUniqueClient_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_sales_take?: number;
-	smartOffice_findUniqueClient_user_user_sales_skip?: number;
-	smartOffice_findUniqueClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientOrThrowInputInternal {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleInputInternal {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_take?: number;
-	smartOffice_findUniqueSale_user_user_clients_skip?: number;
-	smartOffice_findUniqueSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_tasks_take?: number;
-	smartOffice_findUniqueSale_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleOrThrowInputInternal {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskInputInternal {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_take?: number;
-	smartOffice_findUniqueTask_user_user_clients_skip?: number;
-	smartOffice_findUniqueTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_sales_take?: number;
-	smartOffice_findUniqueTask_user_user_sales_skip?: number;
-	smartOffice_findUniqueTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskOrThrowInputInternal {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserInputInternal {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_take?: number;
-	smartOffice_findUniqueUser_clients_skip?: number;
-	smartOffice_findUniqueUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUser_tasks_take?: number;
-	smartOffice_findUniqueUser_tasks_skip?: number;
-	smartOffice_findUniqueUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUser_sales_take?: number;
-	smartOffice_findUniqueUser_sales_skip?: number;
-	smartOffice_findUniqueUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserOrThrowInputInternal {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_take?: number;
-	smartOffice_findUniqueUserOrThrow_clients_skip?: number;
-	smartOffice_findUniqueUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_tasks_take?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_skip?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_sales_take?: number;
-	smartOffice_findUniqueUserOrThrow_sales_skip?: number;
-	smartOffice_findUniqueUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeGroupByClientInputInternal {
@@ -15921,153 +11165,45 @@ export interface SmartOfficeUpdateManyUserInputInternal {
 export interface SmartOfficeUpdateOneClientInputInternal {
 	data: smartOffice_ClientUpdateInput;
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_take?: number;
-	smartOffice_updateOneClient_user_user_tasks_skip?: number;
-	smartOffice_updateOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_sales_take?: number;
-	smartOffice_updateOneClient_user_user_sales_skip?: number;
-	smartOffice_updateOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneSaleInputInternal {
 	data: smartOffice_SaleUpdateInput;
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_take?: number;
-	smartOffice_updateOneSale_user_user_clients_skip?: number;
-	smartOffice_updateOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_tasks_take?: number;
-	smartOffice_updateOneSale_user_user_tasks_skip?: number;
-	smartOffice_updateOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneTaskInputInternal {
 	data: smartOffice_TaskUpdateInput;
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_take?: number;
-	smartOffice_updateOneTask_user_user_clients_skip?: number;
-	smartOffice_updateOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_sales_take?: number;
-	smartOffice_updateOneTask_user_user_sales_skip?: number;
-	smartOffice_updateOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneUserInputInternal {
 	data: smartOffice_UserUpdateInput;
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_updateOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneUser_clients_take?: number;
-	smartOffice_updateOneUser_clients_skip?: number;
-	smartOffice_updateOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneUser_tasks_take?: number;
-	smartOffice_updateOneUser_tasks_skip?: number;
-	smartOffice_updateOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneUser_sales_take?: number;
-	smartOffice_updateOneUser_sales_skip?: number;
-	smartOffice_updateOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneClientInputInternal {
 	where: smartOffice_ClientWhereUniqueInput;
 	create: smartOffice_ClientCreateInput;
 	update: smartOffice_ClientUpdateInput;
-	smartOffice_upsertOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_tasks_take?: number;
-	smartOffice_upsertOneClient_user_user_tasks_skip?: number;
-	smartOffice_upsertOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_sales_take?: number;
-	smartOffice_upsertOneClient_user_user_sales_skip?: number;
-	smartOffice_upsertOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneSaleInputInternal {
 	where: smartOffice_SaleWhereUniqueInput;
 	create: smartOffice_SaleCreateInput;
 	update: smartOffice_SaleUpdateInput;
-	smartOffice_upsertOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_clients_take?: number;
-	smartOffice_upsertOneSale_user_user_clients_skip?: number;
-	smartOffice_upsertOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_tasks_take?: number;
-	smartOffice_upsertOneSale_user_user_tasks_skip?: number;
-	smartOffice_upsertOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneTaskInputInternal {
 	where: smartOffice_TaskWhereUniqueInput;
 	create: smartOffice_TaskCreateInput;
 	update: smartOffice_TaskUpdateInput;
-	smartOffice_upsertOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_clients_take?: number;
-	smartOffice_upsertOneTask_user_user_clients_skip?: number;
-	smartOffice_upsertOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_sales_take?: number;
-	smartOffice_upsertOneTask_user_user_sales_skip?: number;
-	smartOffice_upsertOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneUserInputInternal {
 	where: smartOffice_UserWhereUniqueInput;
 	create: smartOffice_UserCreateInput;
 	update: smartOffice_UserUpdateInput;
-	smartOffice_upsertOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneUser_clients_take?: number;
-	smartOffice_upsertOneUser_clients_skip?: number;
-	smartOffice_upsertOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneUser_tasks_take?: number;
-	smartOffice_upsertOneUser_tasks_skip?: number;
-	smartOffice_upsertOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneUser_sales_take?: number;
-	smartOffice_upsertOneUser_sales_skip?: number;
-	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface WeatherGetCityByIdInputInternal {
@@ -16156,38 +11292,14 @@ export interface ClientPortalCreateManyServiceInputInjected {
 
 export interface ClientPortalCreateOneActivityInputInjected {
 	data: clientPortal_ActivityCreateInput;
-	clientPortal_createOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneActivity_client_client_services_take?: number;
-	clientPortal_createOneActivity_client_client_services_skip?: number;
-	clientPortal_createOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneClientInputInjected {
 	data: clientPortal_ClientCreateInput;
-	clientPortal_createOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_createOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_createOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_createOneClient_services_take?: number;
-	clientPortal_createOneClient_services_skip?: number;
-	clientPortal_createOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_createOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneClient_activities_take?: number;
-	clientPortal_createOneClient_activities_skip?: number;
-	clientPortal_createOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalCreateOneServiceInputInjected {
 	data: clientPortal_ServiceCreateInput;
-	clientPortal_createOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_createOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_createOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_createOneService_client_client_activities_take?: number;
-	clientPortal_createOneService_client_client_activities_skip?: number;
-	clientPortal_createOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteManyActivityInputInjected {
@@ -16204,38 +11316,14 @@ export interface ClientPortalDeleteManyServiceInputInjected {
 
 export interface ClientPortalDeleteOneActivityInputInjected {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneActivity_client_client_services_take?: number;
-	clientPortal_deleteOneActivity_client_client_services_skip?: number;
-	clientPortal_deleteOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneClientInputInjected {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_deleteOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_deleteOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneClient_services_take?: number;
-	clientPortal_deleteOneClient_services_skip?: number;
-	clientPortal_deleteOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_deleteOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneClient_activities_take?: number;
-	clientPortal_deleteOneClient_activities_skip?: number;
-	clientPortal_deleteOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalDeleteOneServiceInputInjected {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_deleteOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_deleteOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_deleteOneService_client_client_activities_take?: number;
-	clientPortal_deleteOneService_client_client_activities_skip?: number;
-	clientPortal_deleteOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalExecuteRawInputInjected {
@@ -16250,12 +11338,6 @@ export interface ClientPortalFindFirstActivityInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivity_client_client_services_take?: number;
-	clientPortal_findFirstActivity_client_client_services_skip?: number;
-	clientPortal_findFirstActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstActivityOrThrowInputInjected {
@@ -16265,12 +11347,6 @@ export interface ClientPortalFindFirstActivityOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findFirstActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientInputInjected {
@@ -16280,18 +11356,6 @@ export interface ClientPortalFindFirstClientInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClient_services_take?: number;
-	clientPortal_findFirstClient_services_skip?: number;
-	clientPortal_findFirstClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClient_activities_take?: number;
-	clientPortal_findFirstClient_activities_skip?: number;
-	clientPortal_findFirstClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstClientOrThrowInputInjected {
@@ -16301,18 +11365,6 @@ export interface ClientPortalFindFirstClientOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findFirstClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_services_take?: number;
-	clientPortal_findFirstClientOrThrow_services_skip?: number;
-	clientPortal_findFirstClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstClientOrThrow_activities_take?: number;
-	clientPortal_findFirstClientOrThrow_activities_skip?: number;
-	clientPortal_findFirstClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceInputInjected {
@@ -16322,12 +11374,6 @@ export interface ClientPortalFindFirstServiceInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstService_client_client_activities_take?: number;
-	clientPortal_findFirstService_client_client_activities_skip?: number;
-	clientPortal_findFirstService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindFirstServiceOrThrowInputInjected {
@@ -16337,12 +11383,6 @@ export interface ClientPortalFindFirstServiceOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findFirstServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findFirstServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyActivityInputInjected {
@@ -16352,12 +11392,6 @@ export interface ClientPortalFindManyActivityInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ActivityScalarFieldEnumValues[];
-	clientPortal_findManyActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyActivity_client_client_services_take?: number;
-	clientPortal_findManyActivity_client_client_services_skip?: number;
-	clientPortal_findManyActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyClientInputInjected {
@@ -16367,18 +11401,6 @@ export interface ClientPortalFindManyClientInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ClientScalarFieldEnumValues[];
-	clientPortal_findManyClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findManyClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findManyClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findManyClient_services_take?: number;
-	clientPortal_findManyClient_services_skip?: number;
-	clientPortal_findManyClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyClient_activities_take?: number;
-	clientPortal_findManyClient_activities_skip?: number;
-	clientPortal_findManyClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindManyServiceInputInjected {
@@ -16388,84 +11410,30 @@ export interface ClientPortalFindManyServiceInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findManyService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findManyService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findManyService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findManyService_client_client_activities_take?: number;
-	clientPortal_findManyService_client_client_activities_skip?: number;
-	clientPortal_findManyService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityInputInjected {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivity_client_client_services_take?: number;
-	clientPortal_findUniqueActivity_client_client_services_skip?: number;
-	clientPortal_findUniqueActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueActivityOrThrowInputInjected {
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueActivityOrThrow_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_take?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_skip?: number;
-	clientPortal_findUniqueActivityOrThrow_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientInputInjected {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClient_services_take?: number;
-	clientPortal_findUniqueClient_services_skip?: number;
-	clientPortal_findUniqueClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClient_activities_take?: number;
-	clientPortal_findUniqueClient_activities_skip?: number;
-	clientPortal_findUniqueClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueClientOrThrowInputInjected {
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_findUniqueClientOrThrow_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_services_take?: number;
-	clientPortal_findUniqueClientOrThrow_services_skip?: number;
-	clientPortal_findUniqueClientOrThrow_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_findUniqueClientOrThrow_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueClientOrThrow_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueClientOrThrow_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueClientOrThrow_activities_take?: number;
-	clientPortal_findUniqueClientOrThrow_activities_skip?: number;
-	clientPortal_findUniqueClientOrThrow_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceInputInjected {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueService_client_client_activities_take?: number;
-	clientPortal_findUniqueService_client_client_activities_skip?: number;
-	clientPortal_findUniqueService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalFindUniqueServiceOrThrowInputInjected {
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_take?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_skip?: number;
-	clientPortal_findUniqueServiceOrThrow_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalGroupByActivityInputInjected {
@@ -16523,82 +11491,34 @@ export interface ClientPortalUpdateManyServiceInputInjected {
 export interface ClientPortalUpdateOneActivityInputInjected {
 	data: clientPortal_ActivityUpdateInput;
 	where: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneActivity_client_client_services_take?: number;
-	clientPortal_updateOneActivity_client_client_services_skip?: number;
-	clientPortal_updateOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneClientInputInjected {
 	data: clientPortal_ClientUpdateInput;
 	where: clientPortal_ClientWhereUniqueInput;
-	clientPortal_updateOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_updateOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_updateOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneClient_services_take?: number;
-	clientPortal_updateOneClient_services_skip?: number;
-	clientPortal_updateOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_updateOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneClient_activities_take?: number;
-	clientPortal_updateOneClient_activities_skip?: number;
-	clientPortal_updateOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpdateOneServiceInputInjected {
 	data: clientPortal_ServiceUpdateInput;
 	where: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_updateOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_updateOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_updateOneService_client_client_activities_take?: number;
-	clientPortal_updateOneService_client_client_activities_skip?: number;
-	clientPortal_updateOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneActivityInputInjected {
 	where: clientPortal_ActivityWhereUniqueInput;
 	create: clientPortal_ActivityCreateInput;
 	update: clientPortal_ActivityUpdateInput;
-	clientPortal_upsertOneActivity_client_client_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneActivity_client_client_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneActivity_client_client_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneActivity_client_client_services_take?: number;
-	clientPortal_upsertOneActivity_client_client_services_skip?: number;
-	clientPortal_upsertOneActivity_client_client_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneClientInputInjected {
 	where: clientPortal_ClientWhereUniqueInput;
 	create: clientPortal_ClientCreateInput;
 	update: clientPortal_ClientUpdateInput;
-	clientPortal_upsertOneClient_services_where?: clientPortal_ServiceWhereInput;
-	clientPortal_upsertOneClient_services_orderBy?: clientPortal_ServiceOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_services_cursor?: clientPortal_ServiceWhereUniqueInput;
-	clientPortal_upsertOneClient_services_take?: number;
-	clientPortal_upsertOneClient_services_skip?: number;
-	clientPortal_upsertOneClient_services_distinct?: clientPortal_ServiceScalarFieldEnumValues[];
-	clientPortal_upsertOneClient_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneClient_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneClient_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneClient_activities_take?: number;
-	clientPortal_upsertOneClient_activities_skip?: number;
-	clientPortal_upsertOneClient_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface ClientPortalUpsertOneServiceInputInjected {
 	where: clientPortal_ServiceWhereUniqueInput;
 	create: clientPortal_ServiceCreateInput;
 	update: clientPortal_ServiceUpdateInput;
-	clientPortal_upsertOneService_client_client_activities_where?: clientPortal_ActivityWhereInput;
-	clientPortal_upsertOneService_client_client_activities_orderBy?: clientPortal_ActivityOrderByWithRelationInput[];
-	clientPortal_upsertOneService_client_client_activities_cursor?: clientPortal_ActivityWhereUniqueInput;
-	clientPortal_upsertOneService_client_client_activities_take?: number;
-	clientPortal_upsertOneService_client_client_activities_skip?: number;
-	clientPortal_upsertOneService_client_client_activities_distinct?: clientPortal_ActivityScalarFieldEnumValues[];
 }
 
 export interface CountriesContinentInputInjected {
@@ -17932,38 +12852,14 @@ export interface GpacCreateManyUserInputInjected {
 
 export interface GpacCreateOneAdminActionInputInjected {
 	data: gpac_AdminActionCreateInput;
-	gpac_createOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneAdminAction_user_user_policies_take?: number;
-	gpac_createOneAdminAction_user_user_policies_skip?: number;
-	gpac_createOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOnePolicyInputInjected {
 	data: gpac_PolicyCreateInput;
-	gpac_createOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOnePolicy_user_user_actions_take?: number;
-	gpac_createOnePolicy_user_user_actions_skip?: number;
-	gpac_createOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacCreateOneUserInputInjected {
 	data: gpac_UserCreateInput;
-	gpac_createOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_createOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_createOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_createOneUser_policies_take?: number;
-	gpac_createOneUser_policies_skip?: number;
-	gpac_createOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_createOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_createOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_createOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_createOneUser_actions_take?: number;
-	gpac_createOneUser_actions_skip?: number;
-	gpac_createOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteManyAdminActionInputInjected {
@@ -17980,38 +12876,14 @@ export interface GpacDeleteManyUserInputInjected {
 
 export interface GpacDeleteOneAdminActionInputInjected {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneAdminAction_user_user_policies_take?: number;
-	gpac_deleteOneAdminAction_user_user_policies_skip?: number;
-	gpac_deleteOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOnePolicyInputInjected {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOnePolicy_user_user_actions_take?: number;
-	gpac_deleteOnePolicy_user_user_actions_skip?: number;
-	gpac_deleteOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacDeleteOneUserInputInjected {
 	where: gpac_UserWhereUniqueInput;
-	gpac_deleteOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_deleteOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_deleteOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_deleteOneUser_policies_take?: number;
-	gpac_deleteOneUser_policies_skip?: number;
-	gpac_deleteOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_deleteOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_deleteOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_deleteOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_deleteOneUser_actions_take?: number;
-	gpac_deleteOneUser_actions_skip?: number;
-	gpac_deleteOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacExecuteRawInputInjected {
@@ -18026,12 +12898,6 @@ export interface GpacFindFirstAdminActionInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminAction_user_user_policies_take?: number;
-	gpac_findFirstAdminAction_user_user_policies_skip?: number;
-	gpac_findFirstAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstAdminActionOrThrowInputInjected {
@@ -18041,12 +12907,6 @@ export interface GpacFindFirstAdminActionOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findFirstAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyInputInjected {
@@ -18056,12 +12916,6 @@ export interface GpacFindFirstPolicyInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicy_user_user_actions_take?: number;
-	gpac_findFirstPolicy_user_user_actions_skip?: number;
-	gpac_findFirstPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstPolicyOrThrowInputInjected {
@@ -18071,12 +12925,6 @@ export interface GpacFindFirstPolicyOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstPolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstPolicyOrThrow_user_user_actions_take?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findFirstPolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserInputInjected {
@@ -18086,18 +12934,6 @@ export interface GpacFindFirstUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUser_policies_take?: number;
-	gpac_findFirstUser_policies_skip?: number;
-	gpac_findFirstUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUser_actions_take?: number;
-	gpac_findFirstUser_actions_skip?: number;
-	gpac_findFirstUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindFirstUserOrThrowInputInjected {
@@ -18107,18 +12943,6 @@ export interface GpacFindFirstUserOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findFirstUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findFirstUserOrThrow_policies_take?: number;
-	gpac_findFirstUserOrThrow_policies_skip?: number;
-	gpac_findFirstUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findFirstUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findFirstUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findFirstUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findFirstUserOrThrow_actions_take?: number;
-	gpac_findFirstUserOrThrow_actions_skip?: number;
-	gpac_findFirstUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyAdminActionInputInjected {
@@ -18128,12 +12952,6 @@ export interface GpacFindManyAdminActionInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_AdminActionScalarFieldEnumValues[];
-	gpac_findManyAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyAdminAction_user_user_policies_take?: number;
-	gpac_findManyAdminAction_user_user_policies_skip?: number;
-	gpac_findManyAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyPolicyInputInjected {
@@ -18143,12 +12961,6 @@ export interface GpacFindManyPolicyInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyPolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyPolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyPolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyPolicy_user_user_actions_take?: number;
-	gpac_findManyPolicy_user_user_actions_skip?: number;
-	gpac_findManyPolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindManyUserInputInjected {
@@ -18158,90 +12970,30 @@ export interface GpacFindManyUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: gpac_UserScalarFieldEnumValues[];
-	gpac_findManyUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findManyUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findManyUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findManyUser_policies_take?: number;
-	gpac_findManyUser_policies_skip?: number;
-	gpac_findManyUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findManyUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findManyUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findManyUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findManyUser_actions_take?: number;
-	gpac_findManyUser_actions_skip?: number;
-	gpac_findManyUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionInputInjected {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminAction_user_user_policies_take?: number;
-	gpac_findUniqueAdminAction_user_user_policies_skip?: number;
-	gpac_findUniqueAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueAdminActionOrThrowInputInjected {
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_take?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_skip?: number;
-	gpac_findUniqueAdminActionOrThrow_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyInputInjected {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicy_user_user_actions_take?: number;
-	gpac_findUniquePolicy_user_user_actions_skip?: number;
-	gpac_findUniquePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniquePolicyOrThrowInputInjected {
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniquePolicyOrThrow_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniquePolicyOrThrow_user_user_actions_take?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_skip?: number;
-	gpac_findUniquePolicyOrThrow_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserInputInjected {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUser_policies_take?: number;
-	gpac_findUniqueUser_policies_skip?: number;
-	gpac_findUniqueUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUser_actions_take?: number;
-	gpac_findUniqueUser_actions_skip?: number;
-	gpac_findUniqueUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacFindUniqueUserOrThrowInputInjected {
 	where: gpac_UserWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_where?: gpac_PolicyWhereInput;
-	gpac_findUniqueUserOrThrow_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_policies_take?: number;
-	gpac_findUniqueUserOrThrow_policies_skip?: number;
-	gpac_findUniqueUserOrThrow_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_findUniqueUserOrThrow_actions_where?: gpac_AdminActionWhereInput;
-	gpac_findUniqueUserOrThrow_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_findUniqueUserOrThrow_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_findUniqueUserOrThrow_actions_take?: number;
-	gpac_findUniqueUserOrThrow_actions_skip?: number;
-	gpac_findUniqueUserOrThrow_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacGroupByAdminActionInputInjected {
@@ -18299,82 +13051,34 @@ export interface GpacUpdateManyUserInputInjected {
 export interface GpacUpdateOneAdminActionInputInjected {
 	data: gpac_AdminActionUpdateInput;
 	where: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneAdminAction_user_user_policies_take?: number;
-	gpac_updateOneAdminAction_user_user_policies_skip?: number;
-	gpac_updateOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOnePolicyInputInjected {
 	data: gpac_PolicyUpdateInput;
 	where: gpac_PolicyWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOnePolicy_user_user_actions_take?: number;
-	gpac_updateOnePolicy_user_user_actions_skip?: number;
-	gpac_updateOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpdateOneUserInputInjected {
 	data: gpac_UserUpdateInput;
 	where: gpac_UserWhereUniqueInput;
-	gpac_updateOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_updateOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_updateOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_updateOneUser_policies_take?: number;
-	gpac_updateOneUser_policies_skip?: number;
-	gpac_updateOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_updateOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_updateOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_updateOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_updateOneUser_actions_take?: number;
-	gpac_updateOneUser_actions_skip?: number;
-	gpac_updateOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneAdminActionInputInjected {
 	where: gpac_AdminActionWhereUniqueInput;
 	create: gpac_AdminActionCreateInput;
 	update: gpac_AdminActionUpdateInput;
-	gpac_upsertOneAdminAction_user_user_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneAdminAction_user_user_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneAdminAction_user_user_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneAdminAction_user_user_policies_take?: number;
-	gpac_upsertOneAdminAction_user_user_policies_skip?: number;
-	gpac_upsertOneAdminAction_user_user_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOnePolicyInputInjected {
 	where: gpac_PolicyWhereUniqueInput;
 	create: gpac_PolicyCreateInput;
 	update: gpac_PolicyUpdateInput;
-	gpac_upsertOnePolicy_user_user_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOnePolicy_user_user_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOnePolicy_user_user_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOnePolicy_user_user_actions_take?: number;
-	gpac_upsertOnePolicy_user_user_actions_skip?: number;
-	gpac_upsertOnePolicy_user_user_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GpacUpsertOneUserInputInjected {
 	where: gpac_UserWhereUniqueInput;
 	create: gpac_UserCreateInput;
 	update: gpac_UserUpdateInput;
-	gpac_upsertOneUser_policies_where?: gpac_PolicyWhereInput;
-	gpac_upsertOneUser_policies_orderBy?: gpac_PolicyOrderByWithRelationInput[];
-	gpac_upsertOneUser_policies_cursor?: gpac_PolicyWhereUniqueInput;
-	gpac_upsertOneUser_policies_take?: number;
-	gpac_upsertOneUser_policies_skip?: number;
-	gpac_upsertOneUser_policies_distinct?: gpac_PolicyScalarFieldEnumValues[];
-	gpac_upsertOneUser_actions_where?: gpac_AdminActionWhereInput;
-	gpac_upsertOneUser_actions_orderBy?: gpac_AdminActionOrderByWithRelationInput[];
-	gpac_upsertOneUser_actions_cursor?: gpac_AdminActionWhereUniqueInput;
-	gpac_upsertOneUser_actions_take?: number;
-	gpac_upsertOneUser_actions_skip?: number;
-	gpac_upsertOneUser_actions_distinct?: gpac_AdminActionScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineAggregateFeatureInputInjected {
@@ -18418,38 +13122,14 @@ export interface GuardianOnlineCreateManyUserLogInputInjected {
 
 export interface GuardianOnlineCreateOneFeatureInputInjected {
 	data: guardianOnline_FeatureCreateInput;
-	guardianOnline_createOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneFeature_user_user_logs_take?: number;
-	guardianOnline_createOneFeature_user_user_logs_skip?: number;
-	guardianOnline_createOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserInputInjected {
 	data: guardianOnline_UserCreateInput;
-	guardianOnline_createOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUser_features_take?: number;
-	guardianOnline_createOneUser_features_skip?: number;
-	guardianOnline_createOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_createOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_createOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_createOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_createOneUser_logs_take?: number;
-	guardianOnline_createOneUser_logs_skip?: number;
-	guardianOnline_createOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineCreateOneUserLogInputInjected {
 	data: guardianOnline_UserLogCreateInput;
-	guardianOnline_createOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_createOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_createOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_createOneUserLog_user_user_features_take?: number;
-	guardianOnline_createOneUserLog_user_user_features_skip?: number;
-	guardianOnline_createOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteManyFeatureInputInjected {
@@ -18466,38 +13146,14 @@ export interface GuardianOnlineDeleteManyUserLogInputInjected {
 
 export interface GuardianOnlineDeleteOneFeatureInputInjected {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneFeature_user_user_logs_take?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_skip?: number;
-	guardianOnline_deleteOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserInputInjected {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUser_features_take?: number;
-	guardianOnline_deleteOneUser_features_skip?: number;
-	guardianOnline_deleteOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_deleteOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_deleteOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_deleteOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUser_logs_take?: number;
-	guardianOnline_deleteOneUser_logs_skip?: number;
-	guardianOnline_deleteOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineDeleteOneUserLogInputInjected {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_deleteOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_deleteOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_deleteOneUserLog_user_user_features_take?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_skip?: number;
-	guardianOnline_deleteOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineExecuteRawInputInjected {
@@ -18512,12 +13168,6 @@ export interface GuardianOnlineFindFirstFeatureInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeature_user_user_logs_take?: number;
-	guardianOnline_findFirstFeature_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstFeatureOrThrowInputInjected {
@@ -18527,12 +13177,6 @@ export interface GuardianOnlineFindFirstFeatureOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findFirstFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserInputInjected {
@@ -18542,18 +13186,6 @@ export interface GuardianOnlineFindFirstUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUser_features_take?: number;
-	guardianOnline_findFirstUser_features_skip?: number;
-	guardianOnline_findFirstUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUser_logs_take?: number;
-	guardianOnline_findFirstUser_logs_skip?: number;
-	guardianOnline_findFirstUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogInputInjected {
@@ -18563,12 +13195,6 @@ export interface GuardianOnlineFindFirstUserLogInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLog_user_user_features_take?: number;
-	guardianOnline_findFirstUserLog_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserLogOrThrowInputInjected {
@@ -18578,12 +13204,6 @@ export interface GuardianOnlineFindFirstUserLogOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findFirstUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindFirstUserOrThrowInputInjected {
@@ -18593,18 +13213,6 @@ export interface GuardianOnlineFindFirstUserOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findFirstUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_features_take?: number;
-	guardianOnline_findFirstUserOrThrow_features_skip?: number;
-	guardianOnline_findFirstUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findFirstUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findFirstUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findFirstUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findFirstUserOrThrow_logs_take?: number;
-	guardianOnline_findFirstUserOrThrow_logs_skip?: number;
-	guardianOnline_findFirstUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyFeatureInputInjected {
@@ -18614,12 +13222,6 @@ export interface GuardianOnlineFindManyFeatureInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyFeature_user_user_logs_take?: number;
-	guardianOnline_findManyFeature_user_user_logs_skip?: number;
-	guardianOnline_findManyFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserInputInjected {
@@ -18629,18 +13231,6 @@ export interface GuardianOnlineFindManyUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserScalarFieldEnumValues[];
-	guardianOnline_findManyUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUser_features_take?: number;
-	guardianOnline_findManyUser_features_skip?: number;
-	guardianOnline_findManyUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findManyUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findManyUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findManyUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findManyUser_logs_take?: number;
-	guardianOnline_findManyUser_logs_skip?: number;
-	guardianOnline_findManyUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindManyUserLogInputInjected {
@@ -18650,84 +13240,30 @@ export interface GuardianOnlineFindManyUserLogInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
-	guardianOnline_findManyUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findManyUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findManyUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findManyUserLog_user_user_features_take?: number;
-	guardianOnline_findManyUserLog_user_user_features_skip?: number;
-	guardianOnline_findManyUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureInputInjected {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeature_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueFeatureOrThrowInputInjected {
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_take?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_skip?: number;
-	guardianOnline_findUniqueFeatureOrThrow_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserInputInjected {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUser_features_take?: number;
-	guardianOnline_findUniqueUser_features_skip?: number;
-	guardianOnline_findUniqueUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUser_logs_take?: number;
-	guardianOnline_findUniqueUser_logs_skip?: number;
-	guardianOnline_findUniqueUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogInputInjected {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLog_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserLogOrThrowInputInjected {
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_take?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_skip?: number;
-	guardianOnline_findUniqueUserLogOrThrow_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineFindUniqueUserOrThrowInputInjected {
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_findUniqueUserOrThrow_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_features_take?: number;
-	guardianOnline_findUniqueUserOrThrow_features_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_findUniqueUserOrThrow_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_findUniqueUserOrThrow_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_findUniqueUserOrThrow_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_findUniqueUserOrThrow_logs_take?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_skip?: number;
-	guardianOnline_findUniqueUserOrThrow_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineGroupByFeatureInputInjected {
@@ -18785,82 +13321,34 @@ export interface GuardianOnlineUpdateManyUserLogInputInjected {
 export interface GuardianOnlineUpdateOneFeatureInputInjected {
 	data: guardianOnline_FeatureUpdateInput;
 	where: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneFeature_user_user_logs_take?: number;
-	guardianOnline_updateOneFeature_user_user_logs_skip?: number;
-	guardianOnline_updateOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserInputInjected {
 	data: guardianOnline_UserUpdateInput;
 	where: guardianOnline_UserWhereUniqueInput;
-	guardianOnline_updateOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUser_features_take?: number;
-	guardianOnline_updateOneUser_features_skip?: number;
-	guardianOnline_updateOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_updateOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_updateOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_updateOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUser_logs_take?: number;
-	guardianOnline_updateOneUser_logs_skip?: number;
-	guardianOnline_updateOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpdateOneUserLogInputInjected {
 	data: guardianOnline_UserLogUpdateInput;
 	where: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_updateOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_updateOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_updateOneUserLog_user_user_features_take?: number;
-	guardianOnline_updateOneUserLog_user_user_features_skip?: number;
-	guardianOnline_updateOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneFeatureInputInjected {
 	where: guardianOnline_FeatureWhereUniqueInput;
 	create: guardianOnline_FeatureCreateInput;
 	update: guardianOnline_FeatureUpdateInput;
-	guardianOnline_upsertOneFeature_user_user_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneFeature_user_user_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneFeature_user_user_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneFeature_user_user_logs_take?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_skip?: number;
-	guardianOnline_upsertOneFeature_user_user_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserInputInjected {
 	where: guardianOnline_UserWhereUniqueInput;
 	create: guardianOnline_UserCreateInput;
 	update: guardianOnline_UserUpdateInput;
-	guardianOnline_upsertOneUser_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUser_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUser_features_take?: number;
-	guardianOnline_upsertOneUser_features_skip?: number;
-	guardianOnline_upsertOneUser_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
-	guardianOnline_upsertOneUser_logs_where?: guardianOnline_UserLogWhereInput;
-	guardianOnline_upsertOneUser_logs_orderBy?: guardianOnline_UserLogOrderByWithRelationInput[];
-	guardianOnline_upsertOneUser_logs_cursor?: guardianOnline_UserLogWhereUniqueInput;
-	guardianOnline_upsertOneUser_logs_take?: number;
-	guardianOnline_upsertOneUser_logs_skip?: number;
-	guardianOnline_upsertOneUser_logs_distinct?: guardianOnline_UserLogScalarFieldEnumValues[];
 }
 
 export interface GuardianOnlineUpsertOneUserLogInputInjected {
 	where: guardianOnline_UserLogWhereUniqueInput;
 	create: guardianOnline_UserLogCreateInput;
 	update: guardianOnline_UserLogUpdateInput;
-	guardianOnline_upsertOneUserLog_user_user_features_where?: guardianOnline_FeatureWhereInput;
-	guardianOnline_upsertOneUserLog_user_user_features_orderBy?: guardianOnline_FeatureOrderByWithRelationInput[];
-	guardianOnline_upsertOneUserLog_user_user_features_cursor?: guardianOnline_FeatureWhereUniqueInput;
-	guardianOnline_upsertOneUserLog_user_user_features_take?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_skip?: number;
-	guardianOnline_upsertOneUserLog_user_user_features_distinct?: guardianOnline_FeatureScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetAggregateAssetInputInjected {
@@ -18917,72 +13405,18 @@ export interface LivingBalanceSheetCreateManyUserInputInjected {
 
 export interface LivingBalanceSheetCreateOneAssetInputInjected {
 	data: livingBalanceSheet_AssetCreateInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneFinancialGoalInputInjected {
 	data: livingBalanceSheet_FinancialGoalCreateInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_createOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneLiabilityInputInjected {
 	data: livingBalanceSheet_LiabilityCreateInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_createOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetCreateOneUserInputInjected {
 	data: livingBalanceSheet_UserCreateInput;
-	livingBalanceSheet_createOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_createOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_createOneUser_assets_take?: number;
-	livingBalanceSheet_createOneUser_assets_skip?: number;
-	livingBalanceSheet_createOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_createOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_createOneUser_liabilities_take?: number;
-	livingBalanceSheet_createOneUser_liabilities_skip?: number;
-	livingBalanceSheet_createOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_createOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_createOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_createOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_createOneUser_goals_take?: number;
-	livingBalanceSheet_createOneUser_goals_skip?: number;
-	livingBalanceSheet_createOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteManyAssetInputInjected {
@@ -19003,72 +13437,18 @@ export interface LivingBalanceSheetDeleteManyUserInputInjected {
 
 export interface LivingBalanceSheetDeleteOneAssetInputInjected {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneFinancialGoalInputInjected {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneLiabilityInputInjected {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_deleteOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetDeleteOneUserInputInjected {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_deleteOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_assets_take?: number;
-	livingBalanceSheet_deleteOneUser_assets_skip?: number;
-	livingBalanceSheet_deleteOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_deleteOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_liabilities_take?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_skip?: number;
-	livingBalanceSheet_deleteOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_deleteOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_deleteOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_deleteOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_deleteOneUser_goals_take?: number;
-	livingBalanceSheet_deleteOneUser_goals_skip?: number;
-	livingBalanceSheet_deleteOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetExecuteRawInputInjected {
@@ -19083,18 +13463,6 @@ export interface LivingBalanceSheetFindFirstAssetInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstAssetOrThrowInputInjected {
@@ -19104,18 +13472,6 @@ export interface LivingBalanceSheetFindFirstAssetOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalInputInjected {
@@ -19125,18 +13481,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInputInjected {
@@ -19146,18 +13490,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findFirstFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityInputInjected {
@@ -19167,18 +13499,6 @@ export interface LivingBalanceSheetFindFirstLiabilityInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstLiabilityOrThrowInputInjected {
@@ -19188,18 +13508,6 @@ export interface LivingBalanceSheetFindFirstLiabilityOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findFirstLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserInputInjected {
@@ -19209,24 +13517,6 @@ export interface LivingBalanceSheetFindFirstUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_assets_take?: number;
-	livingBalanceSheet_findFirstUser_assets_skip?: number;
-	livingBalanceSheet_findFirstUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_liabilities_take?: number;
-	livingBalanceSheet_findFirstUser_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUser_goals_take?: number;
-	livingBalanceSheet_findFirstUser_goals_skip?: number;
-	livingBalanceSheet_findFirstUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindFirstUserOrThrowInputInjected {
@@ -19236,24 +13526,6 @@ export interface LivingBalanceSheetFindFirstUserOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findFirstUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findFirstUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findFirstUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyAssetInputInjected {
@@ -19263,18 +13535,6 @@ export interface LivingBalanceSheetFindManyAssetInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyFinancialGoalInputInjected {
@@ -19284,18 +13544,6 @@ export interface LivingBalanceSheetFindManyFinancialGoalInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findManyFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyLiabilityInputInjected {
@@ -19305,18 +13553,6 @@ export interface LivingBalanceSheetFindManyLiabilityInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findManyLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindManyUserInputInjected {
@@ -19326,164 +13562,38 @@ export interface LivingBalanceSheetFindManyUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: livingBalanceSheet_UserScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findManyUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findManyUser_assets_take?: number;
-	livingBalanceSheet_findManyUser_assets_skip?: number;
-	livingBalanceSheet_findManyUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findManyUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findManyUser_liabilities_take?: number;
-	livingBalanceSheet_findManyUser_liabilities_skip?: number;
-	livingBalanceSheet_findManyUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findManyUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findManyUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findManyUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findManyUser_goals_take?: number;
-	livingBalanceSheet_findManyUser_goals_skip?: number;
-	livingBalanceSheet_findManyUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetInputInjected {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueAssetOrThrowInputInjected {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueAssetOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalInputInjected {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueFinancialGoalOrThrowInputInjected {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_take?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueFinancialGoalOrThrow_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityInputInjected {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueLiabilityOrThrowInputInjected {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_take?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_skip?: number;
-	livingBalanceSheet_findUniqueLiabilityOrThrow_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserInputInjected {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_assets_take?: number;
-	livingBalanceSheet_findUniqueUser_assets_skip?: number;
-	livingBalanceSheet_findUniqueUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUser_goals_take?: number;
-	livingBalanceSheet_findUniqueUser_goals_skip?: number;
-	livingBalanceSheet_findUniqueUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetFindUniqueUserOrThrowInputInjected {
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_findUniqueUserOrThrow_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_take?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_skip?: number;
-	livingBalanceSheet_findUniqueUserOrThrow_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetGroupByAssetInputInjected {
@@ -19555,153 +13665,45 @@ export interface LivingBalanceSheetUpdateManyUserInputInjected {
 export interface LivingBalanceSheetUpdateOneAssetInputInjected {
 	data: livingBalanceSheet_AssetUpdateInput;
 	where: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneFinancialGoalInputInjected {
 	data: livingBalanceSheet_FinancialGoalUpdateInput;
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_updateOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneLiabilityInputInjected {
 	data: livingBalanceSheet_LiabilityUpdateInput;
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_updateOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpdateOneUserInputInjected {
 	data: livingBalanceSheet_UserUpdateInput;
 	where: livingBalanceSheet_UserWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_updateOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_assets_take?: number;
-	livingBalanceSheet_updateOneUser_assets_skip?: number;
-	livingBalanceSheet_updateOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_updateOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_liabilities_take?: number;
-	livingBalanceSheet_updateOneUser_liabilities_skip?: number;
-	livingBalanceSheet_updateOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_updateOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_updateOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_updateOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_updateOneUser_goals_take?: number;
-	livingBalanceSheet_updateOneUser_goals_skip?: number;
-	livingBalanceSheet_updateOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneAssetInputInjected {
 	where: livingBalanceSheet_AssetWhereUniqueInput;
 	create: livingBalanceSheet_AssetCreateInput;
 	update: livingBalanceSheet_AssetUpdateInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneAsset_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneAsset_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneFinancialGoalInputInjected {
 	where: livingBalanceSheet_FinancialGoalWhereUniqueInput;
 	create: livingBalanceSheet_FinancialGoalCreateInput;
 	update: livingBalanceSheet_FinancialGoalUpdateInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_take?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneFinancialGoal_user_user_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneLiabilityInputInjected {
 	where: livingBalanceSheet_LiabilityWhereUniqueInput;
 	create: livingBalanceSheet_LiabilityCreateInput;
 	update: livingBalanceSheet_LiabilityUpdateInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneLiability_user_user_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_take?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_skip?: number;
-	livingBalanceSheet_upsertOneLiability_user_user_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface LivingBalanceSheetUpsertOneUserInputInjected {
 	where: livingBalanceSheet_UserWhereUniqueInput;
 	create: livingBalanceSheet_UserCreateInput;
 	update: livingBalanceSheet_UserUpdateInput;
-	livingBalanceSheet_upsertOneUser_assets_where?: livingBalanceSheet_AssetWhereInput;
-	livingBalanceSheet_upsertOneUser_assets_orderBy?: livingBalanceSheet_AssetOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_assets_cursor?: livingBalanceSheet_AssetWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_assets_take?: number;
-	livingBalanceSheet_upsertOneUser_assets_skip?: number;
-	livingBalanceSheet_upsertOneUser_assets_distinct?: livingBalanceSheet_AssetScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_liabilities_where?: livingBalanceSheet_LiabilityWhereInput;
-	livingBalanceSheet_upsertOneUser_liabilities_orderBy?: livingBalanceSheet_LiabilityOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_liabilities_cursor?: livingBalanceSheet_LiabilityWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_liabilities_take?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_skip?: number;
-	livingBalanceSheet_upsertOneUser_liabilities_distinct?: livingBalanceSheet_LiabilityScalarFieldEnumValues[];
-	livingBalanceSheet_upsertOneUser_goals_where?: livingBalanceSheet_FinancialGoalWhereInput;
-	livingBalanceSheet_upsertOneUser_goals_orderBy?: livingBalanceSheet_FinancialGoalOrderByWithRelationInput[];
-	livingBalanceSheet_upsertOneUser_goals_cursor?: livingBalanceSheet_FinancialGoalWhereUniqueInput;
-	livingBalanceSheet_upsertOneUser_goals_take?: number;
-	livingBalanceSheet_upsertOneUser_goals_skip?: number;
-	livingBalanceSheet_upsertOneUser_goals_distinct?: livingBalanceSheet_FinancialGoalScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeAggregateClientInputInjected {
@@ -19758,72 +13760,18 @@ export interface SmartOfficeCreateManyUserInputInjected {
 
 export interface SmartOfficeCreateOneClientInputInjected {
 	data: smartOffice_ClientCreateInput;
-	smartOffice_createOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneClient_user_user_tasks_take?: number;
-	smartOffice_createOneClient_user_user_tasks_skip?: number;
-	smartOffice_createOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneClient_user_user_sales_take?: number;
-	smartOffice_createOneClient_user_user_sales_skip?: number;
-	smartOffice_createOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneSaleInputInjected {
 	data: smartOffice_SaleCreateInput;
-	smartOffice_createOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneSale_user_user_clients_take?: number;
-	smartOffice_createOneSale_user_user_clients_skip?: number;
-	smartOffice_createOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneSale_user_user_tasks_take?: number;
-	smartOffice_createOneSale_user_user_tasks_skip?: number;
-	smartOffice_createOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneTaskInputInjected {
 	data: smartOffice_TaskCreateInput;
-	smartOffice_createOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneTask_user_user_clients_take?: number;
-	smartOffice_createOneTask_user_user_clients_skip?: number;
-	smartOffice_createOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneTask_user_user_sales_take?: number;
-	smartOffice_createOneTask_user_user_sales_skip?: number;
-	smartOffice_createOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeCreateOneUserInputInjected {
 	data: smartOffice_UserCreateInput;
-	smartOffice_createOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_createOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_createOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_createOneUser_clients_take?: number;
-	smartOffice_createOneUser_clients_skip?: number;
-	smartOffice_createOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_createOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_createOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_createOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_createOneUser_tasks_take?: number;
-	smartOffice_createOneUser_tasks_skip?: number;
-	smartOffice_createOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_createOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_createOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_createOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_createOneUser_sales_take?: number;
-	smartOffice_createOneUser_sales_skip?: number;
-	smartOffice_createOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteManyClientInputInjected {
@@ -19844,72 +13792,18 @@ export interface SmartOfficeDeleteManyUserInputInjected {
 
 export interface SmartOfficeDeleteOneClientInputInjected {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_tasks_take?: number;
-	smartOffice_deleteOneClient_user_user_tasks_skip?: number;
-	smartOffice_deleteOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneClient_user_user_sales_take?: number;
-	smartOffice_deleteOneClient_user_user_sales_skip?: number;
-	smartOffice_deleteOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneSaleInputInjected {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_clients_take?: number;
-	smartOffice_deleteOneSale_user_user_clients_skip?: number;
-	smartOffice_deleteOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneSale_user_user_tasks_take?: number;
-	smartOffice_deleteOneSale_user_user_tasks_skip?: number;
-	smartOffice_deleteOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneTaskInputInjected {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_clients_take?: number;
-	smartOffice_deleteOneTask_user_user_clients_skip?: number;
-	smartOffice_deleteOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneTask_user_user_sales_take?: number;
-	smartOffice_deleteOneTask_user_user_sales_skip?: number;
-	smartOffice_deleteOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeDeleteOneUserInputInjected {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_deleteOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_deleteOneUser_clients_take?: number;
-	smartOffice_deleteOneUser_clients_skip?: number;
-	smartOffice_deleteOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_deleteOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_deleteOneUser_tasks_take?: number;
-	smartOffice_deleteOneUser_tasks_skip?: number;
-	smartOffice_deleteOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_deleteOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_deleteOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_deleteOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_deleteOneUser_sales_take?: number;
-	smartOffice_deleteOneUser_sales_skip?: number;
-	smartOffice_deleteOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeExecuteRawInputInjected {
@@ -19924,18 +13818,6 @@ export interface SmartOfficeFindFirstClientInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_tasks_take?: number;
-	smartOffice_findFirstClient_user_user_tasks_skip?: number;
-	smartOffice_findFirstClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClient_user_user_sales_take?: number;
-	smartOffice_findFirstClient_user_user_sales_skip?: number;
-	smartOffice_findFirstClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstClientOrThrowInputInjected {
@@ -19945,18 +13827,6 @@ export interface SmartOfficeFindFirstClientOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleInputInjected {
@@ -19966,18 +13836,6 @@ export interface SmartOfficeFindFirstSaleInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_clients_take?: number;
-	smartOffice_findFirstSale_user_user_clients_skip?: number;
-	smartOffice_findFirstSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSale_user_user_tasks_take?: number;
-	smartOffice_findFirstSale_user_user_tasks_skip?: number;
-	smartOffice_findFirstSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstSaleOrThrowInputInjected {
@@ -19987,18 +13845,6 @@ export interface SmartOfficeFindFirstSaleOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findFirstSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskInputInjected {
@@ -20008,18 +13854,6 @@ export interface SmartOfficeFindFirstTaskInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_clients_take?: number;
-	smartOffice_findFirstTask_user_user_clients_skip?: number;
-	smartOffice_findFirstTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTask_user_user_sales_take?: number;
-	smartOffice_findFirstTask_user_user_sales_skip?: number;
-	smartOffice_findFirstTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstTaskOrThrowInputInjected {
@@ -20029,18 +13863,6 @@ export interface SmartOfficeFindFirstTaskOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findFirstTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserInputInjected {
@@ -20050,24 +13872,6 @@ export interface SmartOfficeFindFirstUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUser_clients_take?: number;
-	smartOffice_findFirstUser_clients_skip?: number;
-	smartOffice_findFirstUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUser_tasks_take?: number;
-	smartOffice_findFirstUser_tasks_skip?: number;
-	smartOffice_findFirstUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUser_sales_take?: number;
-	smartOffice_findFirstUser_sales_skip?: number;
-	smartOffice_findFirstUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindFirstUserOrThrowInputInjected {
@@ -20077,24 +13881,6 @@ export interface SmartOfficeFindFirstUserOrThrowInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findFirstUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_clients_take?: number;
-	smartOffice_findFirstUserOrThrow_clients_skip?: number;
-	smartOffice_findFirstUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findFirstUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_tasks_take?: number;
-	smartOffice_findFirstUserOrThrow_tasks_skip?: number;
-	smartOffice_findFirstUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findFirstUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findFirstUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findFirstUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findFirstUserOrThrow_sales_take?: number;
-	smartOffice_findFirstUserOrThrow_sales_skip?: number;
-	smartOffice_findFirstUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyClientInputInjected {
@@ -20104,18 +13890,6 @@ export interface SmartOfficeFindManyClientInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyClient_user_user_tasks_take?: number;
-	smartOffice_findManyClient_user_user_tasks_skip?: number;
-	smartOffice_findManyClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyClient_user_user_sales_take?: number;
-	smartOffice_findManyClient_user_user_sales_skip?: number;
-	smartOffice_findManyClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManySaleInputInjected {
@@ -20125,18 +13899,6 @@ export interface SmartOfficeFindManySaleInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_SaleScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManySale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManySale_user_user_clients_take?: number;
-	smartOffice_findManySale_user_user_clients_skip?: number;
-	smartOffice_findManySale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManySale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManySale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManySale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManySale_user_user_tasks_take?: number;
-	smartOffice_findManySale_user_user_tasks_skip?: number;
-	smartOffice_findManySale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyTaskInputInjected {
@@ -20146,18 +13908,6 @@ export interface SmartOfficeFindManyTaskInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyTask_user_user_clients_take?: number;
-	smartOffice_findManyTask_user_user_clients_skip?: number;
-	smartOffice_findManyTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyTask_user_user_sales_take?: number;
-	smartOffice_findManyTask_user_user_sales_skip?: number;
-	smartOffice_findManyTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindManyUserInputInjected {
@@ -20167,164 +13917,38 @@ export interface SmartOfficeFindManyUserInputInjected {
 	take?: number;
 	skip?: number;
 	distinct?: smartOffice_UserScalarFieldEnumValues[];
-	smartOffice_findManyUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findManyUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findManyUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findManyUser_clients_take?: number;
-	smartOffice_findManyUser_clients_skip?: number;
-	smartOffice_findManyUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findManyUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findManyUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findManyUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findManyUser_tasks_take?: number;
-	smartOffice_findManyUser_tasks_skip?: number;
-	smartOffice_findManyUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findManyUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findManyUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findManyUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findManyUser_sales_take?: number;
-	smartOffice_findManyUser_sales_skip?: number;
-	smartOffice_findManyUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientInputInjected {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_tasks_take?: number;
-	smartOffice_findUniqueClient_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClient_user_user_sales_take?: number;
-	smartOffice_findUniqueClient_user_user_sales_skip?: number;
-	smartOffice_findUniqueClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueClientOrThrowInputInjected {
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueClientOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueClientOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleInputInjected {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_clients_take?: number;
-	smartOffice_findUniqueSale_user_user_clients_skip?: number;
-	smartOffice_findUniqueSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSale_user_user_tasks_take?: number;
-	smartOffice_findUniqueSale_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueSaleOrThrowInputInjected {
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_take?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_skip?: number;
-	smartOffice_findUniqueSaleOrThrow_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskInputInjected {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_clients_take?: number;
-	smartOffice_findUniqueTask_user_user_clients_skip?: number;
-	smartOffice_findUniqueTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTask_user_user_sales_take?: number;
-	smartOffice_findUniqueTask_user_user_sales_skip?: number;
-	smartOffice_findUniqueTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueTaskOrThrowInputInjected {
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_take?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_skip?: number;
-	smartOffice_findUniqueTaskOrThrow_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserInputInjected {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUser_clients_take?: number;
-	smartOffice_findUniqueUser_clients_skip?: number;
-	smartOffice_findUniqueUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUser_tasks_take?: number;
-	smartOffice_findUniqueUser_tasks_skip?: number;
-	smartOffice_findUniqueUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUser_sales_take?: number;
-	smartOffice_findUniqueUser_sales_skip?: number;
-	smartOffice_findUniqueUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeFindUniqueUserOrThrowInputInjected {
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_findUniqueUserOrThrow_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_clients_take?: number;
-	smartOffice_findUniqueUserOrThrow_clients_skip?: number;
-	smartOffice_findUniqueUserOrThrow_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_findUniqueUserOrThrow_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_tasks_take?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_skip?: number;
-	smartOffice_findUniqueUserOrThrow_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_findUniqueUserOrThrow_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_findUniqueUserOrThrow_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_findUniqueUserOrThrow_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_findUniqueUserOrThrow_sales_take?: number;
-	smartOffice_findUniqueUserOrThrow_sales_skip?: number;
-	smartOffice_findUniqueUserOrThrow_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeGroupByClientInputInjected {
@@ -20396,153 +14020,45 @@ export interface SmartOfficeUpdateManyUserInputInjected {
 export interface SmartOfficeUpdateOneClientInputInjected {
 	data: smartOffice_ClientUpdateInput;
 	where: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_tasks_take?: number;
-	smartOffice_updateOneClient_user_user_tasks_skip?: number;
-	smartOffice_updateOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneClient_user_user_sales_take?: number;
-	smartOffice_updateOneClient_user_user_sales_skip?: number;
-	smartOffice_updateOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneSaleInputInjected {
 	data: smartOffice_SaleUpdateInput;
 	where: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_clients_take?: number;
-	smartOffice_updateOneSale_user_user_clients_skip?: number;
-	smartOffice_updateOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneSale_user_user_tasks_take?: number;
-	smartOffice_updateOneSale_user_user_tasks_skip?: number;
-	smartOffice_updateOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneTaskInputInjected {
 	data: smartOffice_TaskUpdateInput;
 	where: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_clients_take?: number;
-	smartOffice_updateOneTask_user_user_clients_skip?: number;
-	smartOffice_updateOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneTask_user_user_sales_take?: number;
-	smartOffice_updateOneTask_user_user_sales_skip?: number;
-	smartOffice_updateOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpdateOneUserInputInjected {
 	data: smartOffice_UserUpdateInput;
 	where: smartOffice_UserWhereUniqueInput;
-	smartOffice_updateOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_updateOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_updateOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_updateOneUser_clients_take?: number;
-	smartOffice_updateOneUser_clients_skip?: number;
-	smartOffice_updateOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_updateOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_updateOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_updateOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_updateOneUser_tasks_take?: number;
-	smartOffice_updateOneUser_tasks_skip?: number;
-	smartOffice_updateOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_updateOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_updateOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_updateOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_updateOneUser_sales_take?: number;
-	smartOffice_updateOneUser_sales_skip?: number;
-	smartOffice_updateOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneClientInputInjected {
 	where: smartOffice_ClientWhereUniqueInput;
 	create: smartOffice_ClientCreateInput;
 	update: smartOffice_ClientUpdateInput;
-	smartOffice_upsertOneClient_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneClient_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_tasks_take?: number;
-	smartOffice_upsertOneClient_user_user_tasks_skip?: number;
-	smartOffice_upsertOneClient_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneClient_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneClient_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneClient_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneClient_user_user_sales_take?: number;
-	smartOffice_upsertOneClient_user_user_sales_skip?: number;
-	smartOffice_upsertOneClient_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneSaleInputInjected {
 	where: smartOffice_SaleWhereUniqueInput;
 	create: smartOffice_SaleCreateInput;
 	update: smartOffice_SaleUpdateInput;
-	smartOffice_upsertOneSale_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneSale_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_clients_take?: number;
-	smartOffice_upsertOneSale_user_user_clients_skip?: number;
-	smartOffice_upsertOneSale_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneSale_user_user_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneSale_user_user_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneSale_user_user_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneSale_user_user_tasks_take?: number;
-	smartOffice_upsertOneSale_user_user_tasks_skip?: number;
-	smartOffice_upsertOneSale_user_user_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneTaskInputInjected {
 	where: smartOffice_TaskWhereUniqueInput;
 	create: smartOffice_TaskCreateInput;
 	update: smartOffice_TaskUpdateInput;
-	smartOffice_upsertOneTask_user_user_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneTask_user_user_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_clients_take?: number;
-	smartOffice_upsertOneTask_user_user_clients_skip?: number;
-	smartOffice_upsertOneTask_user_user_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneTask_user_user_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneTask_user_user_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneTask_user_user_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneTask_user_user_sales_take?: number;
-	smartOffice_upsertOneTask_user_user_sales_skip?: number;
-	smartOffice_upsertOneTask_user_user_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface SmartOfficeUpsertOneUserInputInjected {
 	where: smartOffice_UserWhereUniqueInput;
 	create: smartOffice_UserCreateInput;
 	update: smartOffice_UserUpdateInput;
-	smartOffice_upsertOneUser_clients_where?: smartOffice_ClientWhereInput;
-	smartOffice_upsertOneUser_clients_orderBy?: smartOffice_ClientOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_clients_cursor?: smartOffice_ClientWhereUniqueInput;
-	smartOffice_upsertOneUser_clients_take?: number;
-	smartOffice_upsertOneUser_clients_skip?: number;
-	smartOffice_upsertOneUser_clients_distinct?: smartOffice_ClientScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_tasks_where?: smartOffice_TaskWhereInput;
-	smartOffice_upsertOneUser_tasks_orderBy?: smartOffice_TaskOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_tasks_cursor?: smartOffice_TaskWhereUniqueInput;
-	smartOffice_upsertOneUser_tasks_take?: number;
-	smartOffice_upsertOneUser_tasks_skip?: number;
-	smartOffice_upsertOneUser_tasks_distinct?: smartOffice_TaskScalarFieldEnumValues[];
-	smartOffice_upsertOneUser_sales_where?: smartOffice_SaleWhereInput;
-	smartOffice_upsertOneUser_sales_orderBy?: smartOffice_SaleOrderByWithRelationInput[];
-	smartOffice_upsertOneUser_sales_cursor?: smartOffice_SaleWhereUniqueInput;
-	smartOffice_upsertOneUser_sales_take?: number;
-	smartOffice_upsertOneUser_sales_skip?: number;
-	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
 export interface WeatherGetCityByIdInputInjected {
@@ -22514,21 +16030,6 @@ export interface ClientPortalCreateOneActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22537,23 +16038,6 @@ export interface ClientPortalCreateOneClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -22563,22 +16047,6 @@ export interface ClientPortalCreateOneServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22607,21 +16075,6 @@ export interface ClientPortalDeleteOneActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22630,23 +16083,6 @@ export interface ClientPortalDeleteOneClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -22656,22 +16092,6 @@ export interface ClientPortalDeleteOneServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22686,21 +16106,6 @@ export interface ClientPortalFindFirstActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22711,21 +16116,6 @@ export interface ClientPortalFindFirstActivityOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22734,23 +16124,6 @@ export interface ClientPortalFindFirstClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -22759,23 +16132,6 @@ export interface ClientPortalFindFirstClientOrThrowResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -22785,22 +16141,6 @@ export interface ClientPortalFindFirstServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22810,22 +16150,6 @@ export interface ClientPortalFindFirstServiceOrThrowResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22836,21 +16160,6 @@ export interface ClientPortalFindManyActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	}[];
 }
 
@@ -22859,23 +16168,6 @@ export interface ClientPortalFindManyClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	}[];
 }
 
@@ -22885,22 +16177,6 @@ export interface ClientPortalFindManyServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	}[];
 }
 
@@ -22911,21 +16187,6 @@ export interface ClientPortalFindUniqueActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22936,21 +16197,6 @@ export interface ClientPortalFindUniqueActivityOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -22959,23 +16205,6 @@ export interface ClientPortalFindUniqueClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -22984,23 +16213,6 @@ export interface ClientPortalFindUniqueClientOrThrowResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -23010,22 +16222,6 @@ export interface ClientPortalFindUniqueServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -23035,22 +16231,6 @@ export interface ClientPortalFindUniqueServiceOrThrowResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -23246,21 +16426,6 @@ export interface ClientPortalUpdateOneActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -23269,23 +16434,6 @@ export interface ClientPortalUpdateOneClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -23295,22 +16443,6 @@ export interface ClientPortalUpdateOneServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -23321,21 +16453,6 @@ export interface ClientPortalUpsertOneActivityResponseData {
 		timestamp: string;
 		details: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			services?: {
-				id: string;
-				serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-				content: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -23344,23 +16461,6 @@ export interface ClientPortalUpsertOneClientResponseData {
 		id: string;
 		username: string;
 		password: string;
-		services?: {
-			id: string;
-			serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
-			content: JSONValue;
-			clientId: string;
-		}[];
-		activities?: {
-			id: string;
-			activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-			timestamp: string;
-			details: JSONValue;
-			clientId: string;
-		}[];
-		_count: {
-			services: number;
-			activities: number;
-		};
 	};
 }
 
@@ -23370,22 +16470,6 @@ export interface ClientPortalUpsertOneServiceResponseData {
 		serviceType: "GENERAL_ACCESS" | "QUOTES" | "TRANSACTIONS";
 		content: JSONValue;
 		clientId: string;
-		client: {
-			id: string;
-			username: string;
-			password: string;
-			activities?: {
-				id: string;
-				activityType: "LOGIN" | "LOGOUT" | "SERVICE_ACCESS" | "QUOTE_REQUEST" | "TRANSACTION";
-				timestamp: string;
-				details: JSONValue;
-				clientId: string;
-			}[];
-			_count: {
-				services: number;
-				activities: number;
-			};
-		};
 	};
 }
 
@@ -27671,23 +20755,6 @@ export interface GpacCreateOneAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27698,23 +20765,6 @@ export interface GpacCreateOnePolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27724,24 +20774,6 @@ export interface GpacCreateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -27770,23 +20802,6 @@ export interface GpacDeleteOneAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27797,23 +20812,6 @@ export interface GpacDeleteOnePolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27823,24 +20821,6 @@ export interface GpacDeleteOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -27855,23 +20835,6 @@ export interface GpacFindFirstAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27882,23 +20845,6 @@ export interface GpacFindFirstAdminActionOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27909,23 +20855,6 @@ export interface GpacFindFirstPolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27936,23 +20865,6 @@ export interface GpacFindFirstPolicyOrThrowResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -27962,24 +20874,6 @@ export interface GpacFindFirstUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -27989,24 +20883,6 @@ export interface GpacFindFirstUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -28017,23 +20893,6 @@ export interface GpacFindManyAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	}[];
 }
 
@@ -28044,23 +20903,6 @@ export interface GpacFindManyPolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	}[];
 }
 
@@ -28070,24 +20912,6 @@ export interface GpacFindManyUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	}[];
 }
 
@@ -28098,23 +20922,6 @@ export interface GpacFindUniqueAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28125,23 +20932,6 @@ export interface GpacFindUniqueAdminActionOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28152,23 +20942,6 @@ export interface GpacFindUniquePolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28179,23 +20952,6 @@ export interface GpacFindUniquePolicyOrThrowResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28205,24 +20961,6 @@ export interface GpacFindUniqueUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -28232,24 +20970,6 @@ export interface GpacFindUniqueUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -28453,23 +21173,6 @@ export interface GpacUpdateOneAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28480,23 +21183,6 @@ export interface GpacUpdateOnePolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28506,24 +21192,6 @@ export interface GpacUpdateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -28534,23 +21202,6 @@ export interface GpacUpsertOneAdminActionResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			policies?: {
-				id: string;
-				policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-				status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28561,23 +21212,6 @@ export interface GpacUpsertOnePolicyResponseData {
 		status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-			actions?: {
-				id: string;
-				actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				policies: number;
-				actions: number;
-			};
-		};
 	};
 }
 
@@ -28587,24 +21221,6 @@ export interface GpacUpsertOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "POLICY_HOLDER" | "AGENT" | "UNDERWRITER";
-		policies?: {
-			id: string;
-			policyType: "LIFE_INSURANCE" | "HEALTH_INSURANCE" | "AUTO_INSURANCE";
-			status: "ACTIVE" | "PENDING" | "LAPSED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		actions?: {
-			id: string;
-			actionType: "POLICY_CREATION" | "POLICY_MODIFICATION" | "POLICY_CANCELLATION" | "USER_REGISTRATION";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			policies: number;
-			actions: number;
-		};
 	};
 }
 
@@ -28722,32 +21338,6 @@ export interface GuardianOnlineCreateOneFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -28757,32 +21347,6 @@ export interface GuardianOnlineCreateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -28802,22 +21366,6 @@ export interface GuardianOnlineCreateOneUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -28845,32 +21393,6 @@ export interface GuardianOnlineDeleteOneFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -28880,32 +21402,6 @@ export interface GuardianOnlineDeleteOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -28925,22 +21421,6 @@ export interface GuardianOnlineDeleteOneUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -28954,32 +21434,6 @@ export interface GuardianOnlineFindFirstFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -28989,32 +21443,6 @@ export interface GuardianOnlineFindFirstFeatureOrThrowResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29024,32 +21452,6 @@ export interface GuardianOnlineFindFirstUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29069,22 +21471,6 @@ export interface GuardianOnlineFindFirstUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29104,22 +21490,6 @@ export interface GuardianOnlineFindFirstUserLogOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29129,32 +21499,6 @@ export interface GuardianOnlineFindFirstUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29164,32 +21508,6 @@ export interface GuardianOnlineFindManyFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	}[];
 }
 
@@ -29199,32 +21517,6 @@ export interface GuardianOnlineFindManyUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	}[];
 }
 
@@ -29244,22 +21536,6 @@ export interface GuardianOnlineFindManyUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	}[];
 }
 
@@ -29269,32 +21545,6 @@ export interface GuardianOnlineFindUniqueFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29304,32 +21554,6 @@ export interface GuardianOnlineFindUniqueFeatureOrThrowResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29339,32 +21563,6 @@ export interface GuardianOnlineFindUniqueUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29384,22 +21582,6 @@ export interface GuardianOnlineFindUniqueUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29419,22 +21601,6 @@ export interface GuardianOnlineFindUniqueUserLogOrThrowResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29444,32 +21610,6 @@ export interface GuardianOnlineFindUniqueUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29696,32 +21836,6 @@ export interface GuardianOnlineUpdateOneFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29731,32 +21845,6 @@ export interface GuardianOnlineUpdateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29776,22 +21864,6 @@ export interface GuardianOnlineUpdateOneUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29801,32 +21873,6 @@ export interface GuardianOnlineUpsertOneFeatureResponseData {
 		featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
 		content: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			logs?: {
-				id: string;
-				logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-				contentType:
-					| "CALL"
-					| "CHAT"
-					| "EMAIL"
-					| "WEB_USAGE"
-					| "IVR_HUGO_USAGE"
-					| "OUTBOUND_CORRESPONDENCE"
-					| "MARKETING_MATERIAL"
-					| "TEXT";
-				timestamp: string;
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -29836,32 +21882,6 @@ export interface GuardianOnlineUpsertOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-		features?: {
-			id: string;
-			featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-			content: JSONValue;
-			userId: string;
-		}[];
-		logs?: {
-			id: string;
-			logType: "LOGIN" | "LOGOUT" | "FEATURE_ACCESS" | "DOCUMENT_DOWNLOAD";
-			contentType:
-				| "CALL"
-				| "CHAT"
-				| "EMAIL"
-				| "WEB_USAGE"
-				| "IVR_HUGO_USAGE"
-				| "OUTBOUND_CORRESPONDENCE"
-				| "MARKETING_MATERIAL"
-				| "TEXT";
-			timestamp: string;
-			details: JSONValue;
-			userId: string;
-		}[];
-		_count: {
-			features: number;
-			logs: number;
-		};
 	};
 }
 
@@ -29881,22 +21901,6 @@ export interface GuardianOnlineUpsertOneUserLogResponseData {
 		timestamp: string;
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "CUSTOMER" | "FINANCIAL_REP";
-			features?: {
-				id: string;
-				featureType: "DASHBOARD" | "ACCOUNT_SUMMARY" | "NOTIFICATIONS" | "DOCUMENTS";
-				content: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				features: number;
-				logs: number;
-			};
-		};
 	};
 }
 
@@ -30047,30 +22051,6 @@ export interface LivingBalanceSheetCreateOneAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30081,29 +22061,6 @@ export interface LivingBalanceSheetCreateOneFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30113,30 +22070,6 @@ export interface LivingBalanceSheetCreateOneLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30146,30 +22079,6 @@ export interface LivingBalanceSheetCreateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -30203,30 +22112,6 @@ export interface LivingBalanceSheetDeleteOneAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30237,29 +22122,6 @@ export interface LivingBalanceSheetDeleteOneFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30269,30 +22131,6 @@ export interface LivingBalanceSheetDeleteOneLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30302,30 +22140,6 @@ export interface LivingBalanceSheetDeleteOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -30339,30 +22153,6 @@ export interface LivingBalanceSheetFindFirstAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30372,30 +22162,6 @@ export interface LivingBalanceSheetFindFirstAssetOrThrowResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30406,29 +22172,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30439,29 +22182,6 @@ export interface LivingBalanceSheetFindFirstFinancialGoalOrThrowResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30471,30 +22191,6 @@ export interface LivingBalanceSheetFindFirstLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30504,30 +22200,6 @@ export interface LivingBalanceSheetFindFirstLiabilityOrThrowResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30537,30 +22209,6 @@ export interface LivingBalanceSheetFindFirstUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -30570,30 +22218,6 @@ export interface LivingBalanceSheetFindFirstUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -30603,30 +22227,6 @@ export interface LivingBalanceSheetFindManyAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	}[];
 }
 
@@ -30637,29 +22237,6 @@ export interface LivingBalanceSheetFindManyFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	}[];
 }
 
@@ -30669,30 +22246,6 @@ export interface LivingBalanceSheetFindManyLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	}[];
 }
 
@@ -30702,30 +22255,6 @@ export interface LivingBalanceSheetFindManyUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	}[];
 }
 
@@ -30735,30 +22264,6 @@ export interface LivingBalanceSheetFindUniqueAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30768,30 +22273,6 @@ export interface LivingBalanceSheetFindUniqueAssetOrThrowResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30802,29 +22283,6 @@ export interface LivingBalanceSheetFindUniqueFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30835,29 +22293,6 @@ export interface LivingBalanceSheetFindUniqueFinancialGoalOrThrowResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30867,30 +22302,6 @@ export interface LivingBalanceSheetFindUniqueLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30900,30 +22311,6 @@ export interface LivingBalanceSheetFindUniqueLiabilityOrThrowResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -30933,30 +22320,6 @@ export interface LivingBalanceSheetFindUniqueUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -30966,30 +22329,6 @@ export interface LivingBalanceSheetFindUniqueUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -31244,30 +22583,6 @@ export interface LivingBalanceSheetUpdateOneAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31278,29 +22593,6 @@ export interface LivingBalanceSheetUpdateOneFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31310,30 +22602,6 @@ export interface LivingBalanceSheetUpdateOneLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31343,30 +22611,6 @@ export interface LivingBalanceSheetUpdateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -31376,30 +22620,6 @@ export interface LivingBalanceSheetUpsertOneAssetResponseData {
 		assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
 		value: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31410,29 +22630,6 @@ export interface LivingBalanceSheetUpsertOneFinancialGoalResponseData {
 		target: number;
 		deadline: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			liabilities?: {
-				id: string;
-				liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-				amount: number;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31442,30 +22639,6 @@ export interface LivingBalanceSheetUpsertOneLiabilityResponseData {
 		liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
 		amount: number;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-			assets?: {
-				id: string;
-				assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-				value: number;
-				userId: string;
-			}[];
-			goals?: {
-				id: string;
-				goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-				target: number;
-				deadline: string;
-				userId: string;
-			}[];
-			_count: {
-				assets: number;
-				liabilities: number;
-				goals: number;
-			};
-		};
 	};
 }
 
@@ -31475,30 +22648,6 @@ export interface LivingBalanceSheetUpsertOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "FINANCIAL_ADVISOR" | "CLIENT";
-		assets?: {
-			id: string;
-			assetType: "REAL_ESTATE" | "STOCKS" | "BONDS" | "CASH";
-			value: number;
-			userId: string;
-		}[];
-		liabilities?: {
-			id: string;
-			liabilityType: "MORTGAGE" | "LOAN" | "CREDIT_CARD_DEBT";
-			amount: number;
-			userId: string;
-		}[];
-		goals?: {
-			id: string;
-			goalType: "RETIREMENT" | "EDUCATION" | "VACATION" | "EMERGENCY_FUND";
-			target: number;
-			deadline: string;
-			userId: string;
-		}[];
-		_count: {
-			assets: number;
-			liabilities: number;
-			goals: number;
-		};
 	};
 }
 
@@ -31642,31 +22791,6 @@ export interface SmartOfficeCreateOneClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31677,31 +22801,6 @@ export interface SmartOfficeCreateOneSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31712,31 +22811,6 @@ export interface SmartOfficeCreateOneTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31746,32 +22820,6 @@ export interface SmartOfficeCreateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -31806,31 +22854,6 @@ export interface SmartOfficeDeleteOneClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31841,31 +22864,6 @@ export interface SmartOfficeDeleteOneSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31876,31 +22874,6 @@ export interface SmartOfficeDeleteOneTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31910,32 +22883,6 @@ export interface SmartOfficeDeleteOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -31950,31 +22897,6 @@ export interface SmartOfficeFindFirstClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -31985,31 +22907,6 @@ export interface SmartOfficeFindFirstClientOrThrowResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32020,31 +22917,6 @@ export interface SmartOfficeFindFirstSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32055,31 +22927,6 @@ export interface SmartOfficeFindFirstSaleOrThrowResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32090,31 +22937,6 @@ export interface SmartOfficeFindFirstTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32125,31 +22947,6 @@ export interface SmartOfficeFindFirstTaskOrThrowResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32159,32 +22956,6 @@ export interface SmartOfficeFindFirstUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -32194,32 +22965,6 @@ export interface SmartOfficeFindFirstUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -32230,31 +22975,6 @@ export interface SmartOfficeFindManyClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	}[];
 }
 
@@ -32265,31 +22985,6 @@ export interface SmartOfficeFindManySaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	}[];
 }
 
@@ -32300,31 +22995,6 @@ export interface SmartOfficeFindManyTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	}[];
 }
 
@@ -32334,32 +23004,6 @@ export interface SmartOfficeFindManyUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	}[];
 }
 
@@ -32370,31 +23014,6 @@ export interface SmartOfficeFindUniqueClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32405,31 +23024,6 @@ export interface SmartOfficeFindUniqueClientOrThrowResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32440,31 +23034,6 @@ export interface SmartOfficeFindUniqueSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32475,31 +23044,6 @@ export interface SmartOfficeFindUniqueSaleOrThrowResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32510,31 +23054,6 @@ export interface SmartOfficeFindUniqueTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32545,31 +23064,6 @@ export interface SmartOfficeFindUniqueTaskOrThrowResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32579,32 +23073,6 @@ export interface SmartOfficeFindUniqueUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -32614,32 +23082,6 @@ export interface SmartOfficeFindUniqueUserOrThrowResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -32889,31 +23331,6 @@ export interface SmartOfficeUpdateOneClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32924,31 +23341,6 @@ export interface SmartOfficeUpdateOneSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32959,31 +23351,6 @@ export interface SmartOfficeUpdateOneTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -32993,32 +23360,6 @@ export interface SmartOfficeUpdateOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 
@@ -33029,31 +23370,6 @@ export interface SmartOfficeUpsertOneClientResponseData {
 		email: string;
 		phone: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -33064,31 +23380,6 @@ export interface SmartOfficeUpsertOneSaleResponseData {
 		amount: number;
 		timestamp: string;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			tasks?: {
-				id: string;
-				taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-				status: "PENDING" | "COMPLETED" | "CANCELLED";
-				details: JSONValue;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -33099,31 +23390,6 @@ export interface SmartOfficeUpsertOneTaskResponseData {
 		status: "PENDING" | "COMPLETED" | "CANCELLED";
 		details: JSONValue;
 		userId: string;
-		user: {
-			id: string;
-			username: string;
-			password: string;
-			role: "ADMIN" | "AGENT" | "SALES_REP";
-			clients?: {
-				id: string;
-				name: string;
-				email: string;
-				phone: string;
-				userId: string;
-			}[];
-			sales?: {
-				id: string;
-				saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-				amount: number;
-				timestamp: string;
-				userId: string;
-			}[];
-			_count: {
-				clients: number;
-				tasks: number;
-				sales: number;
-			};
-		};
 	};
 }
 
@@ -33133,32 +23399,6 @@ export interface SmartOfficeUpsertOneUserResponseData {
 		username: string;
 		password: string;
 		role: "ADMIN" | "AGENT" | "SALES_REP";
-		clients?: {
-			id: string;
-			name: string;
-			email: string;
-			phone: string;
-			userId: string;
-		}[];
-		tasks?: {
-			id: string;
-			taskType: "MEETING" | "CALL" | "EMAIL" | "FOLLOW_UP";
-			status: "PENDING" | "COMPLETED" | "CANCELLED";
-			details: JSONValue;
-			userId: string;
-		}[];
-		sales?: {
-			id: string;
-			saleType: "NEW_POLICY" | "RENEWAL" | "UPGRADE";
-			amount: number;
-			timestamp: string;
-			userId: string;
-		}[];
-		_count: {
-			clients: number;
-			tasks: number;
-			sales: number;
-		};
 	};
 }
 

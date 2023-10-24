@@ -1,48 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation livingBalanceSheet_deleteOneAsset_mutation($where: livingBalanceSheet_AssetWhereUniqueInput!, $livingBalanceSheet_deleteOneAsset_user_user_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_deleteOneAsset_user_user_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_deleteOneAsset_user_user_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_deleteOneAsset_user_user_liabilities_take: Int, $livingBalanceSheet_deleteOneAsset_user_user_liabilities_skip: Int, $livingBalanceSheet_deleteOneAsset_user_user_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum], $livingBalanceSheet_deleteOneAsset_user_user_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_deleteOneAsset_user_user_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_deleteOneAsset_user_user_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_deleteOneAsset_user_user_goals_take: Int, $livingBalanceSheet_deleteOneAsset_user_user_goals_skip: Int, $livingBalanceSheet_deleteOneAsset_user_user_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+mutation livingBalanceSheet_deleteOneAsset_mutation($where: livingBalanceSheet_AssetWhereUniqueInput!) {
   livingBalanceSheet_deleteOneAsset(where: $where) {
     id
     assetType
     value
     userId
-    user {
-      id
-      username
-      password
-      role
-      liabilities(
-        where: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_where
-        orderBy: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_orderBy
-        cursor: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_cursor
-        take: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_take
-        skip: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_skip
-        distinct: $livingBalanceSheet_deleteOneAsset_user_user_liabilities_distinct
-      ) {
-        id
-        liabilityType
-        amount
-        userId
-      }
-      goals(
-        where: $livingBalanceSheet_deleteOneAsset_user_user_goals_where
-        orderBy: $livingBalanceSheet_deleteOneAsset_user_user_goals_orderBy
-        cursor: $livingBalanceSheet_deleteOneAsset_user_user_goals_cursor
-        take: $livingBalanceSheet_deleteOneAsset_user_user_goals_take
-        skip: $livingBalanceSheet_deleteOneAsset_user_user_goals_skip
-        distinct: $livingBalanceSheet_deleteOneAsset_user_user_goals_distinct
-      ) {
-        id
-        goalType
-        target
-        deadline
-        userId
-      }
-      _count {
-        assets
-        liabilities
-        goals
-      }
-    }
   }
 }

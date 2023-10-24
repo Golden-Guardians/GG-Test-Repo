@@ -1,42 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation gpac_upsertOneUser_mutation($where: gpac_UserWhereUniqueInput!, $create: gpac_UserCreateInput!, $update: gpac_UserUpdateInput!, $gpac_upsertOneUser_policies_where: gpac_PolicyWhereInput, $gpac_upsertOneUser_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_upsertOneUser_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_upsertOneUser_policies_take: Int, $gpac_upsertOneUser_policies_skip: Int, $gpac_upsertOneUser_policies_distinct: [gpac_PolicyScalarFieldEnum], $gpac_upsertOneUser_actions_where: gpac_AdminActionWhereInput, $gpac_upsertOneUser_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_upsertOneUser_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_upsertOneUser_actions_take: Int, $gpac_upsertOneUser_actions_skip: Int, $gpac_upsertOneUser_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+mutation gpac_upsertOneUser_mutation($where: gpac_UserWhereUniqueInput!, $create: gpac_UserCreateInput!, $update: gpac_UserUpdateInput!) {
   gpac_upsertOneUser(where: $where, create: $create, update: $update) {
     id
     username
     password
     role
-    policies(
-      where: $gpac_upsertOneUser_policies_where
-      orderBy: $gpac_upsertOneUser_policies_orderBy
-      cursor: $gpac_upsertOneUser_policies_cursor
-      take: $gpac_upsertOneUser_policies_take
-      skip: $gpac_upsertOneUser_policies_skip
-      distinct: $gpac_upsertOneUser_policies_distinct
-    ) {
-      id
-      policyType
-      status
-      details
-      userId
-    }
-    actions(
-      where: $gpac_upsertOneUser_actions_where
-      orderBy: $gpac_upsertOneUser_actions_orderBy
-      cursor: $gpac_upsertOneUser_actions_cursor
-      take: $gpac_upsertOneUser_actions_take
-      skip: $gpac_upsertOneUser_actions_skip
-      distinct: $gpac_upsertOneUser_actions_distinct
-    ) {
-      id
-      actionType
-      timestamp
-      details
-      userId
-    }
-    _count {
-      policies
-      actions
-    }
   }
 }

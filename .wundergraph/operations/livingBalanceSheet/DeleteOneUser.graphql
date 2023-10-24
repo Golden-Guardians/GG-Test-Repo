@@ -1,55 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation livingBalanceSheet_deleteOneUser_mutation($where: livingBalanceSheet_UserWhereUniqueInput!, $livingBalanceSheet_deleteOneUser_assets_where: livingBalanceSheet_AssetWhereInput, $livingBalanceSheet_deleteOneUser_assets_orderBy: [livingBalanceSheet_AssetOrderByWithRelationInput], $livingBalanceSheet_deleteOneUser_assets_cursor: livingBalanceSheet_AssetWhereUniqueInput, $livingBalanceSheet_deleteOneUser_assets_take: Int, $livingBalanceSheet_deleteOneUser_assets_skip: Int, $livingBalanceSheet_deleteOneUser_assets_distinct: [livingBalanceSheet_AssetScalarFieldEnum], $livingBalanceSheet_deleteOneUser_liabilities_where: livingBalanceSheet_LiabilityWhereInput, $livingBalanceSheet_deleteOneUser_liabilities_orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $livingBalanceSheet_deleteOneUser_liabilities_cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $livingBalanceSheet_deleteOneUser_liabilities_take: Int, $livingBalanceSheet_deleteOneUser_liabilities_skip: Int, $livingBalanceSheet_deleteOneUser_liabilities_distinct: [livingBalanceSheet_LiabilityScalarFieldEnum], $livingBalanceSheet_deleteOneUser_goals_where: livingBalanceSheet_FinancialGoalWhereInput, $livingBalanceSheet_deleteOneUser_goals_orderBy: [livingBalanceSheet_FinancialGoalOrderByWithRelationInput], $livingBalanceSheet_deleteOneUser_goals_cursor: livingBalanceSheet_FinancialGoalWhereUniqueInput, $livingBalanceSheet_deleteOneUser_goals_take: Int, $livingBalanceSheet_deleteOneUser_goals_skip: Int, $livingBalanceSheet_deleteOneUser_goals_distinct: [livingBalanceSheet_FinancialGoalScalarFieldEnum]) {
+mutation livingBalanceSheet_deleteOneUser_mutation($where: livingBalanceSheet_UserWhereUniqueInput!) {
   livingBalanceSheet_deleteOneUser(where: $where) {
     id
     username
     password
     role
-    assets(
-      where: $livingBalanceSheet_deleteOneUser_assets_where
-      orderBy: $livingBalanceSheet_deleteOneUser_assets_orderBy
-      cursor: $livingBalanceSheet_deleteOneUser_assets_cursor
-      take: $livingBalanceSheet_deleteOneUser_assets_take
-      skip: $livingBalanceSheet_deleteOneUser_assets_skip
-      distinct: $livingBalanceSheet_deleteOneUser_assets_distinct
-    ) {
-      id
-      assetType
-      value
-      userId
-    }
-    liabilities(
-      where: $livingBalanceSheet_deleteOneUser_liabilities_where
-      orderBy: $livingBalanceSheet_deleteOneUser_liabilities_orderBy
-      cursor: $livingBalanceSheet_deleteOneUser_liabilities_cursor
-      take: $livingBalanceSheet_deleteOneUser_liabilities_take
-      skip: $livingBalanceSheet_deleteOneUser_liabilities_skip
-      distinct: $livingBalanceSheet_deleteOneUser_liabilities_distinct
-    ) {
-      id
-      liabilityType
-      amount
-      userId
-    }
-    goals(
-      where: $livingBalanceSheet_deleteOneUser_goals_where
-      orderBy: $livingBalanceSheet_deleteOneUser_goals_orderBy
-      cursor: $livingBalanceSheet_deleteOneUser_goals_cursor
-      take: $livingBalanceSheet_deleteOneUser_goals_take
-      skip: $livingBalanceSheet_deleteOneUser_goals_skip
-      distinct: $livingBalanceSheet_deleteOneUser_goals_distinct
-    ) {
-      id
-      goalType
-      target
-      deadline
-      userId
-    }
-    _count {
-      assets
-      liabilities
-      goals
-    }
   }
 }

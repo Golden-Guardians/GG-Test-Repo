@@ -1,40 +1,9 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation clientPortal_deleteOneClient_mutation($where: clientPortal_ClientWhereUniqueInput!, $clientPortal_deleteOneClient_services_where: clientPortal_ServiceWhereInput, $clientPortal_deleteOneClient_services_orderBy: [clientPortal_ServiceOrderByWithRelationInput], $clientPortal_deleteOneClient_services_cursor: clientPortal_ServiceWhereUniqueInput, $clientPortal_deleteOneClient_services_take: Int, $clientPortal_deleteOneClient_services_skip: Int, $clientPortal_deleteOneClient_services_distinct: [clientPortal_ServiceScalarFieldEnum], $clientPortal_deleteOneClient_activities_where: clientPortal_ActivityWhereInput, $clientPortal_deleteOneClient_activities_orderBy: [clientPortal_ActivityOrderByWithRelationInput], $clientPortal_deleteOneClient_activities_cursor: clientPortal_ActivityWhereUniqueInput, $clientPortal_deleteOneClient_activities_take: Int, $clientPortal_deleteOneClient_activities_skip: Int, $clientPortal_deleteOneClient_activities_distinct: [clientPortal_ActivityScalarFieldEnum]) {
+mutation clientPortal_deleteOneClient_mutation($where: clientPortal_ClientWhereUniqueInput!) {
   clientPortal_deleteOneClient(where: $where) {
     id
     username
     password
-    services(
-      where: $clientPortal_deleteOneClient_services_where
-      orderBy: $clientPortal_deleteOneClient_services_orderBy
-      cursor: $clientPortal_deleteOneClient_services_cursor
-      take: $clientPortal_deleteOneClient_services_take
-      skip: $clientPortal_deleteOneClient_services_skip
-      distinct: $clientPortal_deleteOneClient_services_distinct
-    ) {
-      id
-      serviceType
-      content
-      clientId
-    }
-    activities(
-      where: $clientPortal_deleteOneClient_activities_where
-      orderBy: $clientPortal_deleteOneClient_activities_orderBy
-      cursor: $clientPortal_deleteOneClient_activities_cursor
-      take: $clientPortal_deleteOneClient_activities_take
-      skip: $clientPortal_deleteOneClient_activities_skip
-      distinct: $clientPortal_deleteOneClient_activities_distinct
-    ) {
-      id
-      activityType
-      timestamp
-      details
-      clientId
-    }
-    _count {
-      services
-      activities
-    }
   }
 }

@@ -17,7 +17,7 @@ RUN npm install -g pnpm
 # Copy files and install dependencies
 COPY pnpm-lock.yaml package.json /app/
 COPY ./prisma ./prisma
-RUN pnpm install --prefer-offline
+RUN pnpm install --prefer-offline --production
 
 # Copy the .wundergraph folder to the image
 COPY .wundergraph ./.wundergraph

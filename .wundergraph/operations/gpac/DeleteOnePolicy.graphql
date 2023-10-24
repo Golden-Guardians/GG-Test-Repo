@@ -1,35 +1,11 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation gpac_deleteOnePolicy_mutation($where: gpac_PolicyWhereUniqueInput!, $gpac_deleteOnePolicy_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_deleteOnePolicy_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_deleteOnePolicy_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_deleteOnePolicy_user_user_actions_take: Int, $gpac_deleteOnePolicy_user_user_actions_skip: Int, $gpac_deleteOnePolicy_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+mutation gpac_deleteOnePolicy_mutation($where: gpac_PolicyWhereUniqueInput!) {
   gpac_deleteOnePolicy(where: $where) {
     id
     policyType
     status
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      actions(
-        where: $gpac_deleteOnePolicy_user_user_actions_where
-        orderBy: $gpac_deleteOnePolicy_user_user_actions_orderBy
-        cursor: $gpac_deleteOnePolicy_user_user_actions_cursor
-        take: $gpac_deleteOnePolicy_user_user_actions_take
-        skip: $gpac_deleteOnePolicy_user_user_actions_skip
-        distinct: $gpac_deleteOnePolicy_user_user_actions_distinct
-      ) {
-        id
-        actionType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        policies
-        actions
-      }
-    }
   }
 }

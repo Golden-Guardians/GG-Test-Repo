@@ -1,33 +1,11 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query clientPortal_findUniqueActivity_query($where: clientPortal_ActivityWhereUniqueInput!, $clientPortal_findUniqueActivity_client_client_services_where: clientPortal_ServiceWhereInput, $clientPortal_findUniqueActivity_client_client_services_orderBy: [clientPortal_ServiceOrderByWithRelationInput], $clientPortal_findUniqueActivity_client_client_services_cursor: clientPortal_ServiceWhereUniqueInput, $clientPortal_findUniqueActivity_client_client_services_take: Int, $clientPortal_findUniqueActivity_client_client_services_skip: Int, $clientPortal_findUniqueActivity_client_client_services_distinct: [clientPortal_ServiceScalarFieldEnum]) {
+query clientPortal_findUniqueActivity_query($where: clientPortal_ActivityWhereUniqueInput!) {
   clientPortal_findUniqueActivity(where: $where) {
     id
     activityType
     timestamp
     details
     clientId
-    client {
-      id
-      username
-      password
-      services(
-        where: $clientPortal_findUniqueActivity_client_client_services_where
-        orderBy: $clientPortal_findUniqueActivity_client_client_services_orderBy
-        cursor: $clientPortal_findUniqueActivity_client_client_services_cursor
-        take: $clientPortal_findUniqueActivity_client_client_services_take
-        skip: $clientPortal_findUniqueActivity_client_client_services_skip
-        distinct: $clientPortal_findUniqueActivity_client_client_services_distinct
-      ) {
-        id
-        serviceType
-        content
-        clientId
-      }
-      _count {
-        services
-        activities
-      }
-    }
   }
 }

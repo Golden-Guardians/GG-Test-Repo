@@ -1,57 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query smartOffice_findUniqueUser_query($where: smartOffice_UserWhereUniqueInput!, $smartOffice_findUniqueUser_clients_where: smartOffice_ClientWhereInput, $smartOffice_findUniqueUser_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_findUniqueUser_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_findUniqueUser_clients_take: Int, $smartOffice_findUniqueUser_clients_skip: Int, $smartOffice_findUniqueUser_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_findUniqueUser_tasks_where: smartOffice_TaskWhereInput, $smartOffice_findUniqueUser_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_findUniqueUser_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_findUniqueUser_tasks_take: Int, $smartOffice_findUniqueUser_tasks_skip: Int, $smartOffice_findUniqueUser_tasks_distinct: [smartOffice_TaskScalarFieldEnum], $smartOffice_findUniqueUser_sales_where: smartOffice_SaleWhereInput, $smartOffice_findUniqueUser_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_findUniqueUser_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_findUniqueUser_sales_take: Int, $smartOffice_findUniqueUser_sales_skip: Int, $smartOffice_findUniqueUser_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+query smartOffice_findUniqueUser_query($where: smartOffice_UserWhereUniqueInput!) {
   smartOffice_findUniqueUser(where: $where) {
     id
     username
     password
     role
-    clients(
-      where: $smartOffice_findUniqueUser_clients_where
-      orderBy: $smartOffice_findUniqueUser_clients_orderBy
-      cursor: $smartOffice_findUniqueUser_clients_cursor
-      take: $smartOffice_findUniqueUser_clients_take
-      skip: $smartOffice_findUniqueUser_clients_skip
-      distinct: $smartOffice_findUniqueUser_clients_distinct
-    ) {
-      id
-      name
-      email
-      phone
-      userId
-    }
-    tasks(
-      where: $smartOffice_findUniqueUser_tasks_where
-      orderBy: $smartOffice_findUniqueUser_tasks_orderBy
-      cursor: $smartOffice_findUniqueUser_tasks_cursor
-      take: $smartOffice_findUniqueUser_tasks_take
-      skip: $smartOffice_findUniqueUser_tasks_skip
-      distinct: $smartOffice_findUniqueUser_tasks_distinct
-    ) {
-      id
-      taskType
-      status
-      details
-      userId
-    }
-    sales(
-      where: $smartOffice_findUniqueUser_sales_where
-      orderBy: $smartOffice_findUniqueUser_sales_orderBy
-      cursor: $smartOffice_findUniqueUser_sales_cursor
-      take: $smartOffice_findUniqueUser_sales_take
-      skip: $smartOffice_findUniqueUser_sales_skip
-      distinct: $smartOffice_findUniqueUser_sales_distinct
-    ) {
-      id
-      saleType
-      amount
-      timestamp
-      userId
-    }
-    _count {
-      clients
-      tasks
-      sales
-    }
   }
 }

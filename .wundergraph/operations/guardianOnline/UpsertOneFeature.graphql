@@ -1,35 +1,10 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-mutation guardianOnline_upsertOneFeature_mutation($where: guardianOnline_FeatureWhereUniqueInput!, $create: guardianOnline_FeatureCreateInput!, $update: guardianOnline_FeatureUpdateInput!, $guardianOnline_upsertOneFeature_user_user_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_upsertOneFeature_user_user_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_upsertOneFeature_user_user_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_upsertOneFeature_user_user_logs_take: Int, $guardianOnline_upsertOneFeature_user_user_logs_skip: Int, $guardianOnline_upsertOneFeature_user_user_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+mutation guardianOnline_upsertOneFeature_mutation($where: guardianOnline_FeatureWhereUniqueInput!, $create: guardianOnline_FeatureCreateInput!, $update: guardianOnline_FeatureUpdateInput!) {
   guardianOnline_upsertOneFeature(where: $where, create: $create, update: $update) {
     id
     featureType
     content
     userId
-    user {
-      id
-      username
-      password
-      role
-      logs(
-        where: $guardianOnline_upsertOneFeature_user_user_logs_where
-        orderBy: $guardianOnline_upsertOneFeature_user_user_logs_orderBy
-        cursor: $guardianOnline_upsertOneFeature_user_user_logs_cursor
-        take: $guardianOnline_upsertOneFeature_user_user_logs_take
-        skip: $guardianOnline_upsertOneFeature_user_user_logs_skip
-        distinct: $guardianOnline_upsertOneFeature_user_user_logs_distinct
-      ) {
-        id
-        logType
-        contentType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        features
-        logs
-      }
-    }
   }
 }

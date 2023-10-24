@@ -1,35 +1,11 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query gpac_findUniquePolicyOrThrow_query($where: gpac_PolicyWhereUniqueInput!, $gpac_findUniquePolicyOrThrow_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_findUniquePolicyOrThrow_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_findUniquePolicyOrThrow_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_findUniquePolicyOrThrow_user_user_actions_take: Int, $gpac_findUniquePolicyOrThrow_user_user_actions_skip: Int, $gpac_findUniquePolicyOrThrow_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+query gpac_findUniquePolicyOrThrow_query($where: gpac_PolicyWhereUniqueInput!) {
   gpac_findUniquePolicyOrThrow(where: $where) {
     id
     policyType
     status
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      actions(
-        where: $gpac_findUniquePolicyOrThrow_user_user_actions_where
-        orderBy: $gpac_findUniquePolicyOrThrow_user_user_actions_orderBy
-        cursor: $gpac_findUniquePolicyOrThrow_user_user_actions_cursor
-        take: $gpac_findUniquePolicyOrThrow_user_user_actions_take
-        skip: $gpac_findUniquePolicyOrThrow_user_user_actions_skip
-        distinct: $gpac_findUniquePolicyOrThrow_user_user_actions_distinct
-      ) {
-        id
-        actionType
-        timestamp
-        details
-        userId
-      }
-      _count {
-        policies
-        actions
-      }
-    }
   }
 }

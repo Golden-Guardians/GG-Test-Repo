@@ -1,6 +1,6 @@
 # This file is auto generated.
 # Remove/modify this header if you want to customize the operation.
-query guardianOnline_findFirstUserLog_query($where: guardianOnline_UserLogWhereInput, $orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $cursor: guardianOnline_UserLogWhereUniqueInput, $take: Int, $skip: Int, $distinct: [guardianOnline_UserLogScalarFieldEnum], $guardianOnline_findFirstUserLog_user_user_features_where: guardianOnline_FeatureWhereInput, $guardianOnline_findFirstUserLog_user_user_features_orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $guardianOnline_findFirstUserLog_user_user_features_cursor: guardianOnline_FeatureWhereUniqueInput, $guardianOnline_findFirstUserLog_user_user_features_take: Int, $guardianOnline_findFirstUserLog_user_user_features_skip: Int, $guardianOnline_findFirstUserLog_user_user_features_distinct: [guardianOnline_FeatureScalarFieldEnum]) {
+query guardianOnline_findFirstUserLog_query($where: guardianOnline_UserLogWhereInput, $orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $cursor: guardianOnline_UserLogWhereUniqueInput, $take: Int, $skip: Int, $distinct: [guardianOnline_UserLogScalarFieldEnum]) {
   guardianOnline_findFirstUserLog(
     where: $where
     orderBy: $orderBy
@@ -15,28 +15,5 @@ query guardianOnline_findFirstUserLog_query($where: guardianOnline_UserLogWhereI
     timestamp
     details
     userId
-    user {
-      id
-      username
-      password
-      role
-      features(
-        where: $guardianOnline_findFirstUserLog_user_user_features_where
-        orderBy: $guardianOnline_findFirstUserLog_user_user_features_orderBy
-        cursor: $guardianOnline_findFirstUserLog_user_user_features_cursor
-        take: $guardianOnline_findFirstUserLog_user_user_features_take
-        skip: $guardianOnline_findFirstUserLog_user_user_features_skip
-        distinct: $guardianOnline_findFirstUserLog_user_user_features_distinct
-      ) {
-        id
-        featureType
-        content
-        userId
-      }
-      _count {
-        features
-        logs
-      }
-    }
   }
 }

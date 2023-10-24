@@ -28,29 +28,41 @@ const customerCommunicationHub = introspect.prisma({
   prismaFilePath: "../prisma/customer-communication-hub.prisma",
 })
 
-const clientPortal = introspect.prisma({
+const clientPortal = introspect.planetscale({
   apiNamespace: "clientPortal",
-  prismaFilePath: "../prisma/simulated-services/client-portal.prisma",
+  databaseURL: new EnvironmentVariable("CLIENT_PORTAL_DATABASE_URL"),
+  introspection: {
+    pollingIntervalSeconds: 5,
+  },
 })
 
-const gpac = introspect.prisma({
+const gpac = introspect.planetscale({
   apiNamespace: "gpac",
-  prismaFilePath: "../prisma/simulated-services/gpac.prisma",
+  databaseURL: new EnvironmentVariable("GPAC_DATABASE_URL"),
+  introspection: {
+    pollingIntervalSeconds: 5,
+  },
 })
 
-const guardianOnline = introspect.prisma({
+const guardianOnline = introspect.planetscale({
   apiNamespace: "guardianOnline",
-  prismaFilePath: "../prisma/simulated-services/guardian-online.prisma",
+  databaseURL: new EnvironmentVariable("GUARDIAN_ONLINE_DATABASE_URL"),
+  introspection: {
+    pollingIntervalSeconds: 5,
+  },
 })
 
-const livingBalanceSheet = introspect.prisma({
+const livingBalanceSheet = introspect.planetscale({
   apiNamespace: "livingBalanceSheet",
-  prismaFilePath: "../prisma/simulated-services/living-balance-sheet.prisma",
+  databaseURL: new EnvironmentVariable("LIVING_BALANCE_DATABASE_URL"),
 })
 
-const smartOffice = introspect.prisma({
+const smartOffice = introspect.planetscale({
   apiNamespace: "smartOffice",
-  prismaFilePath: "../prisma/simulated-services/smart-office.prisma",
+  databaseURL: new EnvironmentVariable("SMART_OFFICE_DATABASE_URL"),
+  introspection: {
+    pollingIntervalSeconds: 5,
+  },
 })
 
 configureWunderGraphApplication({
