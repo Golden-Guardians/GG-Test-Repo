@@ -392,6 +392,8 @@ export interface OperationsConfiguration {
 		SmartOfficeUpsertOneUser?: CustomizeMutation;
 		UsersCountUsers?: CustomizeQuery;
 		UsersGetAllUsers?: CustomizeQuery;
+		WeatherGetCityById?: CustomizeQuery;
+		WeatherGetCityByName?: CustomizeQuery;
 		OpenaiExtract_website_metadata?: CustomizeQuery;
 		OpenaiLoad_url?: CustomizeQuery;
 		OpenaiSummarize_url_content?: CustomizeQuery;
@@ -768,6 +770,8 @@ declare module "@wundergraph/sdk" {
 		SmartOfficeUpsertOneUser?: Partial<MutationConfiguration>;
 		UsersCountUsers?: Partial<QueryConfiguration>;
 		UsersGetAllUsers?: Partial<QueryConfiguration>;
+		WeatherGetCityById?: Partial<QueryConfiguration>;
+		WeatherGetCityByName?: Partial<QueryConfiguration>;
 		OpenaiExtract_website_metadata?: Partial<QueryConfiguration>;
 		OpenaiLoad_url?: Partial<QueryConfiguration>;
 		OpenaiSummarize_url_content?: Partial<QueryConfiguration>;

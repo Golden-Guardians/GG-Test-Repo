@@ -3505,6 +3505,99 @@
         },
         {
           "_": {
+            "postman_id": "weather"
+          },
+          "id": "weather",
+          "name": "weather",
+          "item": [
+            {
+              "id": "weather/GetCityById",
+              "name": "GetCityById",
+              "request": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "weather",
+                    "GetCityById"
+                  ],
+                  "host": [
+                    "{{apiBaseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": true,
+                      "description": {
+                        "content": "Type any, Optional",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": []
+            },
+            {
+              "id": "weather/GetCityByName",
+              "name": "GetCityByName",
+              "request": {
+                "url": {
+                  "path": [
+                    "operations",
+                    "weather",
+                    "GetCityByName"
+                  ],
+                  "host": [
+                    "{{apiBaseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "disabled": true,
+                      "description": {
+                        "content": "Type any, Optional",
+                        "type": "text/plain"
+                      },
+                      "key": "country",
+                      "value": ""
+                    },
+                    {
+                      "disabled": true,
+                      "description": {
+                        "content": "Type string, Optional",
+                        "type": "text/plain"
+                      },
+                      "key": "name",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET"
+              },
+              "response": [],
+              "event": []
+            }
+          ],
+          "event": []
+        },
+        {
+          "_": {
             "postman_id": "countries"
           },
           "id": "countries",

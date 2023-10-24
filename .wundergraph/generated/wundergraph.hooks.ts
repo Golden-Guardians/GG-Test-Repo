@@ -1447,6 +1447,14 @@ import {
 	SmartOfficeUpsertOneUserInputInjected,
 	UsersCountUsersResponse,
 	UsersGetAllUsersResponse,
+	WeatherGetCityByIdResponse,
+	WeatherGetCityByIdInput,
+	WeatherGetCityByIdInputInternal,
+	WeatherGetCityByIdInputInjected,
+	WeatherGetCityByNameResponse,
+	WeatherGetCityByNameInput,
+	WeatherGetCityByNameInputInternal,
+	WeatherGetCityByNameInputInjected,
 } from "./models";
 import type {
 	BaseRequestContext,
@@ -2737,6 +2745,16 @@ export type QueryHooks<TCustomContext = any> = {
 	>;
 	UsersCountUsers?: QueryHookWithoutInput<UsersCountUsersResponse, HookContext<TCustomContext>>;
 	UsersGetAllUsers?: QueryHookWithoutInput<UsersGetAllUsersResponse, HookContext<TCustomContext>>;
+	WeatherGetCityById?: QueryHook<
+		WeatherGetCityByIdInputInjected,
+		WeatherGetCityByIdResponse,
+		HookContext<TCustomContext>
+	>;
+	WeatherGetCityByName?: QueryHook<
+		WeatherGetCityByNameInputInjected,
+		WeatherGetCityByNameResponse,
+		HookContext<TCustomContext>
+	>;
 };
 
 export type MutationHooks<TCustomContext = any> = {

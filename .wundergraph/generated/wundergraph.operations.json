@@ -2177,6 +2177,18 @@
 "api_mount_path": "users/GetAllUsers",
 "file_path": "users/GetAllUsers.graphql",
 "content": "query UsersGetAllUsers {customerCommunication_findManyUser {id name email emailVerified image createdAt updatedAt stripeCustomerId stripeSubscriptionId stripePriceId stripeCurrentPeriodEnd}}"
+},
+{
+"operation_name": "WeatherGetCityById",
+"api_mount_path": "weather/GetCityById",
+"file_path": "weather/GetCityById.graphql",
+"content": "query WeatherGetCityById($config: weather_ConfigInput, $id: [String!]){weather_getCityById(config: $config, id: $id){coord {lat lon} country id name weather {clouds {all humidity visibility} summary {description icon title} temperature {actual feelsLike max min} timestamp wind {deg speed}}}}"
+},
+{
+"operation_name": "WeatherGetCityByName",
+"api_mount_path": "weather/GetCityByName",
+"file_path": "weather/GetCityByName.graphql",
+"content": "query WeatherGetCityByName($config: weather_ConfigInput, $country: String, $name: String!){weather_getCityByName(config: $config, country: $country, name: $name){coord {lat lon} country id name weather {clouds {all humidity visibility} summary {description icon title} temperature {actual feelsLike max min} timestamp wind {deg speed}}}}"
 }
 ],
 "typescript_operation_files": [

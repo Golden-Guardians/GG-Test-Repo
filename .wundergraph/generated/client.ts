@@ -1109,6 +1109,12 @@ import type {
 	UsersCountUsersResponseData,
 	UsersGetAllUsersResponse,
 	UsersGetAllUsersResponseData,
+	WeatherGetCityByIdResponse,
+	WeatherGetCityByIdInput,
+	WeatherGetCityByIdResponseData,
+	WeatherGetCityByNameResponse,
+	WeatherGetCityByNameInput,
+	WeatherGetCityByNameResponseData,
 	OpenaiExtract_website_metadataResponse,
 	OpenaiExtract_website_metadataInput,
 	OpenaiExtract_website_metadataResponseData,
@@ -1140,7 +1146,7 @@ export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = false;
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "d89f5fdb",
+	applicationHash: "74148144",
 	baseURL: "https://d2vp238439bu7d.cloudfront.net",
 	sdkVersion: "0.179.3",
 };
@@ -2233,6 +2239,12 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	"users/GetAllUsers": {
+		requiresAuthentication: false,
+	},
+	"weather/GetCityById": {
+		requiresAuthentication: false,
+	},
+	"weather/GetCityByName": {
 		requiresAuthentication: false,
 	},
 	"openai/extract-website-metadata": {
@@ -3459,6 +3471,18 @@ export type Queries = {
 	"users/GetAllUsers": {
 		input?: undefined;
 		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"weather/GetCityById": {
+		input: WeatherGetCityByIdInput;
+		response: { data?: WeatherGetCityByIdResponse["data"]; error?: ClientOperationErrors };
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
+	"weather/GetCityByName": {
+		input: WeatherGetCityByNameInput;
+		response: { data?: WeatherGetCityByNameResponse["data"]; error?: ClientOperationErrors };
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -5551,6 +5575,18 @@ export type Subscriptions = {
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
+	"weather/GetCityById": {
+		input: WeatherGetCityByIdInput;
+		response: { data?: WeatherGetCityByIdResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"weather/GetCityByName": {
+		input: WeatherGetCityByNameInput;
+		response: { data?: WeatherGetCityByNameResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
 	"openai/extract-website-metadata": {
 		input: OpenaiExtract_website_metadataInput;
 		response: { data?: OpenaiExtract_website_metadataResponse["data"]; error?: ClientOperationErrors };
@@ -6739,6 +6775,18 @@ export type LiveQueries = {
 	"users/GetAllUsers": {
 		input?: undefined;
 		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"weather/GetCityById": {
+		input: WeatherGetCityByIdInput;
+		response: { data?: WeatherGetCityByIdResponse["data"]; error?: ClientOperationErrors };
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"weather/GetCityByName": {
+		input: WeatherGetCityByNameInput;
+		response: { data?: WeatherGetCityByNameResponse["data"]; error?: ClientOperationErrors };
 		liveQuery: true;
 		requiresAuthentication: false;
 	};

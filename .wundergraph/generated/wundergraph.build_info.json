@@ -19,7 +19,7 @@
   "stats": {
     "totalApis": 8,
     "hasUploadProvider": false,
-    "totalOperations": 371,
+    "totalOperations": 373,
     "totalWebhooks": 0,
     "hasAuthenticationProvider": false
   }

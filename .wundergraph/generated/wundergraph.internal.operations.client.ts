@@ -1813,6 +1813,16 @@ import {
 	UsersCountUsersResponseData,
 	UsersGetAllUsersResponse,
 	UsersGetAllUsersResponseData,
+	WeatherGetCityByIdResponse,
+	WeatherGetCityByIdInput,
+	WeatherGetCityByIdInputInternal,
+	WeatherGetCityByIdInputInjected,
+	WeatherGetCityByIdResponseData,
+	WeatherGetCityByNameResponse,
+	WeatherGetCityByNameInput,
+	WeatherGetCityByNameInputInternal,
+	WeatherGetCityByNameInputInjected,
+	WeatherGetCityByNameResponseData,
 	OpenaiExtract_website_metadataResponse,
 	OpenaiExtract_website_metadataInput,
 	OpenaiExtract_website_metadataInputInternal,
@@ -2621,6 +2631,14 @@ export type Queries = {
 	"users/GetAllUsers": {
 		input: undefined;
 		response: { data?: UsersGetAllUsersResponse["data"]; error?: ClientOperationErrors };
+	};
+	"weather/GetCityById": {
+		input: WeatherGetCityByIdInputInternal;
+		response: { data?: WeatherGetCityByIdResponse["data"]; error?: ClientOperationErrors };
+	};
+	"weather/GetCityByName": {
+		input: WeatherGetCityByNameInputInternal;
+		response: { data?: WeatherGetCityByNameResponse["data"]; error?: ClientOperationErrors };
 	};
 	"openai/extract-website-metadata": {
 		input: OpenaiExtract_website_metadataInputInternal;

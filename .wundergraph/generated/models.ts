@@ -6589,6 +6589,11 @@ export interface smartOffice_UserUpdateInput {
 	sales?: smartOffice_SaleUpdateManyWithoutUserNestedInput;
 }
 
+export interface weather_ConfigInput {
+	lang?: weather_LanguageValues;
+	units?: weather_UnitValues;
+}
+
 export type JSONValue = string | number | boolean | JSONObject | Array<JSONValue>;
 
 export type JSONObject = { [key: string]: JSONValue };
@@ -7115,6 +7120,68 @@ export const smartOffice_UserScalarFieldEnum = {
 
 export type smartOffice_UserScalarFieldEnumValues =
 	(typeof smartOffice_UserScalarFieldEnum)[keyof typeof smartOffice_UserScalarFieldEnum];
+
+export const weather_Language = {
+	af: "af",
+	al: "al",
+	ar: "ar",
+	az: "az",
+	bg: "bg",
+	ca: "ca",
+	cz: "cz",
+	da: "da",
+	de: "de",
+	el: "el",
+	en: "en",
+	es: "es",
+	eu: "eu",
+	fa: "fa",
+	fi: "fi",
+	fr: "fr",
+	gl: "gl",
+	he: "he",
+	hi: "hi",
+	hr: "hr",
+	hu: "hu",
+	id: "id",
+	it: "it",
+	ja: "ja",
+	kr: "kr",
+	la: "la",
+	lt: "lt",
+	mk: "mk",
+	nl: "nl",
+	no: "no",
+	pl: "pl",
+	pt: "pt",
+	pt_br: "pt_br",
+	ro: "ro",
+	ru: "ru",
+	se: "se",
+	sk: "sk",
+	sl: "sl",
+	sp: "sp",
+	sr: "sr",
+	sv: "sv",
+	th: "th",
+	tr: "tr",
+	ua: "ua",
+	uk: "uk",
+	vi: "vi",
+	zh_cn: "zh_cn",
+	zh_tw: "zh_tw",
+	zu: "zu",
+} as const;
+
+export type weather_LanguageValues = (typeof weather_Language)[keyof typeof weather_Language];
+
+export const weather_Unit = {
+	imperial: "imperial",
+	kelvin: "kelvin",
+	metric: "metric",
+} as const;
+
+export type weather_UnitValues = (typeof weather_Unit)[keyof typeof weather_Unit];
 
 export interface ClientPortalAggregateActivityInput {
 	where?: clientPortal_ActivityWhereInput;
@@ -11544,6 +11611,17 @@ export interface SmartOfficeUpsertOneUserInput {
 	smartOffice_upsertOneUser_sales_take?: number;
 	smartOffice_upsertOneUser_sales_skip?: number;
 	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
+}
+
+export interface WeatherGetCityByIdInput {
+	config?: weather_ConfigInput;
+	id?: string[];
+}
+
+export interface WeatherGetCityByNameInput {
+	config?: weather_ConfigInput;
+	country?: string;
+	name: string;
 }
 
 export type OpenaiExtract_website_metadataInput = ExtractInput<typeof function_OpenaiExtract_website_metadata>;
@@ -15990,6 +16068,17 @@ export interface SmartOfficeUpsertOneUserInputInternal {
 	smartOffice_upsertOneUser_sales_take?: number;
 	smartOffice_upsertOneUser_sales_skip?: number;
 	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
+}
+
+export interface WeatherGetCityByIdInputInternal {
+	config?: weather_ConfigInput;
+	id?: string[];
+}
+
+export interface WeatherGetCityByNameInputInternal {
+	config?: weather_ConfigInput;
+	country?: string;
+	name: string;
 }
 
 export interface OpenaiExtract_website_metadataInputInternal {
@@ -20456,6 +20545,17 @@ export interface SmartOfficeUpsertOneUserInputInjected {
 	smartOffice_upsertOneUser_sales_distinct?: smartOffice_SaleScalarFieldEnumValues[];
 }
 
+export interface WeatherGetCityByIdInputInjected {
+	config?: weather_ConfigInput;
+	id?: string[];
+}
+
+export interface WeatherGetCityByNameInputInjected {
+	config?: weather_ConfigInput;
+	country?: string;
+	name: string;
+}
+
 export interface ClientPortalAggregateActivityResponse {
 	data?: ClientPortalAggregateActivityResponseData;
 	errors?: GraphQLError[];
@@ -22268,6 +22368,16 @@ export interface UsersCountUsersResponse {
 
 export interface UsersGetAllUsersResponse {
 	data?: UsersGetAllUsersResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface WeatherGetCityByIdResponse {
+	data?: WeatherGetCityByIdResponseData;
+	errors?: GraphQLError[];
+}
+
+export interface WeatherGetCityByNameResponse {
+	data?: WeatherGetCityByNameResponseData;
 	errors?: GraphQLError[];
 }
 
@@ -33080,6 +33190,76 @@ export interface UsersGetAllUsersResponseData {
 		stripePriceId?: string;
 		stripeCurrentPeriodEnd?: string;
 	}[];
+}
+
+export interface WeatherGetCityByIdResponseData {
+	weather_getCityById?: {
+		coord?: {
+			lat?: number;
+			lon?: number;
+		};
+		country?: string;
+		id?: string;
+		name?: string;
+		weather?: {
+			clouds?: {
+				all?: number;
+				humidity?: number;
+				visibility?: number;
+			};
+			summary?: {
+				description?: string;
+				icon?: string;
+				title?: string;
+			};
+			temperature?: {
+				actual?: number;
+				feelsLike?: number;
+				max?: number;
+				min?: number;
+			};
+			timestamp?: number;
+			wind?: {
+				deg?: number;
+				speed?: number;
+			};
+		};
+	}[];
+}
+
+export interface WeatherGetCityByNameResponseData {
+	weather_getCityByName?: {
+		coord?: {
+			lat?: number;
+			lon?: number;
+		};
+		country?: string;
+		id?: string;
+		name?: string;
+		weather?: {
+			clouds?: {
+				all?: number;
+				humidity?: number;
+				visibility?: number;
+			};
+			summary?: {
+				description?: string;
+				icon?: string;
+				title?: string;
+			};
+			temperature?: {
+				actual?: number;
+				feelsLike?: number;
+				max?: number;
+				min?: number;
+			};
+			timestamp?: number;
+			wind?: {
+				deg?: number;
+				speed?: number;
+			};
+		};
+	};
 }
 
 export type OpenaiExtract_website_metadataResponseData = ExtractResponse<
