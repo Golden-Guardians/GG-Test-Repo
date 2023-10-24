@@ -1,0 +1,34 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query smartOffice_aggregateClient_query($where: smartOffice_ClientWhereInput, $orderBy: [smartOffice_ClientOrderByWithRelationInput], $cursor: smartOffice_ClientWhereUniqueInput, $take: Int, $skip: Int) {
+  smartOffice_aggregateClient(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      name
+      email
+      phone
+      userId
+      _all
+    }
+    _min {
+      id
+      name
+      email
+      phone
+      userId
+    }
+    _max {
+      id
+      name
+      email
+      phone
+      userId
+    }
+  }
+}

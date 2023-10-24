@@ -1,0 +1,42 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation gpac_deleteOneUser_mutation($where: gpac_UserWhereUniqueInput!, $gpac_deleteOneUser_policies_where: gpac_PolicyWhereInput, $gpac_deleteOneUser_policies_orderBy: [gpac_PolicyOrderByWithRelationInput], $gpac_deleteOneUser_policies_cursor: gpac_PolicyWhereUniqueInput, $gpac_deleteOneUser_policies_take: Int, $gpac_deleteOneUser_policies_skip: Int, $gpac_deleteOneUser_policies_distinct: [gpac_PolicyScalarFieldEnum], $gpac_deleteOneUser_actions_where: gpac_AdminActionWhereInput, $gpac_deleteOneUser_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_deleteOneUser_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_deleteOneUser_actions_take: Int, $gpac_deleteOneUser_actions_skip: Int, $gpac_deleteOneUser_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+  gpac_deleteOneUser(where: $where) {
+    id
+    username
+    password
+    role
+    policies(
+      where: $gpac_deleteOneUser_policies_where
+      orderBy: $gpac_deleteOneUser_policies_orderBy
+      cursor: $gpac_deleteOneUser_policies_cursor
+      take: $gpac_deleteOneUser_policies_take
+      skip: $gpac_deleteOneUser_policies_skip
+      distinct: $gpac_deleteOneUser_policies_distinct
+    ) {
+      id
+      policyType
+      status
+      details
+      userId
+    }
+    actions(
+      where: $gpac_deleteOneUser_actions_where
+      orderBy: $gpac_deleteOneUser_actions_orderBy
+      cursor: $gpac_deleteOneUser_actions_cursor
+      take: $gpac_deleteOneUser_actions_take
+      skip: $gpac_deleteOneUser_actions_skip
+      distinct: $gpac_deleteOneUser_actions_distinct
+    ) {
+      id
+      actionType
+      timestamp
+      details
+      userId
+    }
+    _count {
+      policies
+      actions
+    }
+  }
+}

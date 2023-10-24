@@ -17,9 +17,9 @@
     "release": "23.0.0"
   },
   "stats": {
-    "totalApis": 3,
+    "totalApis": 8,
     "hasUploadProvider": false,
-    "totalOperations": 78,
+    "totalOperations": 371,
     "totalWebhooks": 0,
     "hasAuthenticationProvider": false
   }

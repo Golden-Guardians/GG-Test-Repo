@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation gpac_createManyAdminAction_mutation($data: [gpac_AdminActionCreateManyInput]!, $skipDuplicates: Boolean) {
+  gpac_createManyAdminAction(data: $data, skipDuplicates: $skipDuplicates) {
+    count
+  }
+}

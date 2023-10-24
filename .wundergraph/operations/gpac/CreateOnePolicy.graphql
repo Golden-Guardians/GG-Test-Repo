@@ -1,0 +1,35 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation gpac_createOnePolicy_mutation($data: gpac_PolicyCreateInput!, $gpac_createOnePolicy_user_user_actions_where: gpac_AdminActionWhereInput, $gpac_createOnePolicy_user_user_actions_orderBy: [gpac_AdminActionOrderByWithRelationInput], $gpac_createOnePolicy_user_user_actions_cursor: gpac_AdminActionWhereUniqueInput, $gpac_createOnePolicy_user_user_actions_take: Int, $gpac_createOnePolicy_user_user_actions_skip: Int, $gpac_createOnePolicy_user_user_actions_distinct: [gpac_AdminActionScalarFieldEnum]) {
+  gpac_createOnePolicy(data: $data) {
+    id
+    policyType
+    status
+    details
+    userId
+    user {
+      id
+      username
+      password
+      role
+      actions(
+        where: $gpac_createOnePolicy_user_user_actions_where
+        orderBy: $gpac_createOnePolicy_user_user_actions_orderBy
+        cursor: $gpac_createOnePolicy_user_user_actions_cursor
+        take: $gpac_createOnePolicy_user_user_actions_take
+        skip: $gpac_createOnePolicy_user_user_actions_skip
+        distinct: $gpac_createOnePolicy_user_user_actions_distinct
+      ) {
+        id
+        actionType
+        timestamp
+        details
+        userId
+      }
+      _count {
+        policies
+        actions
+      }
+    }
+  }
+}

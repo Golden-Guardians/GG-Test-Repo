@@ -1,0 +1,32 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_groupByVerificationToken_query($where: customerCommunication_VerificationTokenWhereInput, $orderBy: [customerCommunication_VerificationTokenOrderByWithAggregationInput], $by: [customerCommunication_VerificationTokenScalarFieldEnum]!, $having: customerCommunication_VerificationTokenScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  customerCommunication_groupByVerificationToken(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    identifier
+    token
+    expires
+    _count {
+      identifier
+      token
+      expires
+      _all
+    }
+    _min {
+      identifier
+      token
+      expires
+    }
+    _max {
+      identifier
+      token
+      expires
+    }
+  }
+}

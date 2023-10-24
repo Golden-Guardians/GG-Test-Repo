@@ -1,0 +1,49 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query guardianOnline_findManyUser_query($where: guardianOnline_UserWhereInput, $orderBy: [guardianOnline_UserOrderByWithRelationInput], $cursor: guardianOnline_UserWhereUniqueInput, $take: Int, $skip: Int, $distinct: [guardianOnline_UserScalarFieldEnum], $guardianOnline_findManyUser_features_where: guardianOnline_FeatureWhereInput, $guardianOnline_findManyUser_features_orderBy: [guardianOnline_FeatureOrderByWithRelationInput], $guardianOnline_findManyUser_features_cursor: guardianOnline_FeatureWhereUniqueInput, $guardianOnline_findManyUser_features_take: Int, $guardianOnline_findManyUser_features_skip: Int, $guardianOnline_findManyUser_features_distinct: [guardianOnline_FeatureScalarFieldEnum], $guardianOnline_findManyUser_logs_where: guardianOnline_UserLogWhereInput, $guardianOnline_findManyUser_logs_orderBy: [guardianOnline_UserLogOrderByWithRelationInput], $guardianOnline_findManyUser_logs_cursor: guardianOnline_UserLogWhereUniqueInput, $guardianOnline_findManyUser_logs_take: Int, $guardianOnline_findManyUser_logs_skip: Int, $guardianOnline_findManyUser_logs_distinct: [guardianOnline_UserLogScalarFieldEnum]) {
+  guardianOnline_findManyUser(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    username
+    password
+    role
+    features(
+      where: $guardianOnline_findManyUser_features_where
+      orderBy: $guardianOnline_findManyUser_features_orderBy
+      cursor: $guardianOnline_findManyUser_features_cursor
+      take: $guardianOnline_findManyUser_features_take
+      skip: $guardianOnline_findManyUser_features_skip
+      distinct: $guardianOnline_findManyUser_features_distinct
+    ) {
+      id
+      featureType
+      content
+      userId
+    }
+    logs(
+      where: $guardianOnline_findManyUser_logs_where
+      orderBy: $guardianOnline_findManyUser_logs_orderBy
+      cursor: $guardianOnline_findManyUser_logs_cursor
+      take: $guardianOnline_findManyUser_logs_take
+      skip: $guardianOnline_findManyUser_logs_skip
+      distinct: $guardianOnline_findManyUser_logs_distinct
+    ) {
+      id
+      logType
+      contentType
+      timestamp
+      details
+      userId
+    }
+    _count {
+      features
+      logs
+    }
+  }
+}

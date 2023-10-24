@@ -1,0 +1,38 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query smartOffice_groupByTask_query($where: smartOffice_TaskWhereInput, $orderBy: [smartOffice_TaskOrderByWithAggregationInput], $by: [smartOffice_TaskScalarFieldEnum]!, $having: smartOffice_TaskScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  smartOffice_groupByTask(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    taskType
+    status
+    details
+    userId
+    _count {
+      id
+      taskType
+      status
+      details
+      userId
+      _all
+    }
+    _min {
+      id
+      taskType
+      status
+      userId
+    }
+    _max {
+      id
+      taskType
+      status
+      userId
+    }
+  }
+}

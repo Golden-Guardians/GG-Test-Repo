@@ -1,0 +1,85 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation customerCommunication_upsertOneUser_mutation($where: customerCommunication_UserWhereUniqueInput!, $create: customerCommunication_UserCreateInput!, $update: customerCommunication_UserUpdateInput!, $customerCommunication_upsertOneUser_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_upsertOneUser_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_upsertOneUser_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_upsertOneUser_interactions_take: Int, $customerCommunication_upsertOneUser_interactions_skip: Int, $customerCommunication_upsertOneUser_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_upsertOneUser_accounts_where: customerCommunication_AccountWhereInput, $customerCommunication_upsertOneUser_accounts_orderBy: [customerCommunication_AccountOrderByWithRelationInput], $customerCommunication_upsertOneUser_accounts_cursor: customerCommunication_AccountWhereUniqueInput, $customerCommunication_upsertOneUser_accounts_take: Int, $customerCommunication_upsertOneUser_accounts_skip: Int, $customerCommunication_upsertOneUser_accounts_distinct: [customerCommunication_AccountScalarFieldEnum], $customerCommunication_upsertOneUser_sessions_where: customerCommunication_SessionWhereInput, $customerCommunication_upsertOneUser_sessions_orderBy: [customerCommunication_SessionOrderByWithRelationInput], $customerCommunication_upsertOneUser_sessions_cursor: customerCommunication_SessionWhereUniqueInput, $customerCommunication_upsertOneUser_sessions_take: Int, $customerCommunication_upsertOneUser_sessions_skip: Int, $customerCommunication_upsertOneUser_sessions_distinct: [customerCommunication_SessionScalarFieldEnum]) {
+  customerCommunication_upsertOneUser(
+    where: $where
+    create: $create
+    update: $update
+  ) {
+    id
+    name
+    email
+    emailVerified
+    image
+    createdAt
+    updatedAt
+    userType
+    stripeCustomerId
+    stripeSubscriptionId
+    stripePriceId
+    stripeCurrentPeriodEnd
+    interactions(
+      where: $customerCommunication_upsertOneUser_interactions_where
+      orderBy: $customerCommunication_upsertOneUser_interactions_orderBy
+      cursor: $customerCommunication_upsertOneUser_interactions_cursor
+      take: $customerCommunication_upsertOneUser_interactions_take
+      skip: $customerCommunication_upsertOneUser_interactions_skip
+      distinct: $customerCommunication_upsertOneUser_interactions_distinct
+    ) {
+      id
+      interactionType
+      content
+      timestamp
+      userId
+      widgetId
+      Widget {
+        id
+        embeddedIn
+        _count {
+          interactions
+        }
+      }
+    }
+    accounts(
+      where: $customerCommunication_upsertOneUser_accounts_where
+      orderBy: $customerCommunication_upsertOneUser_accounts_orderBy
+      cursor: $customerCommunication_upsertOneUser_accounts_cursor
+      take: $customerCommunication_upsertOneUser_accounts_take
+      skip: $customerCommunication_upsertOneUser_accounts_skip
+      distinct: $customerCommunication_upsertOneUser_accounts_distinct
+    ) {
+      id
+      userId
+      type
+      provider
+      providerAccountId
+      refresh_token
+      access_token
+      expires_at
+      token_type
+      scope
+      id_token
+      session_state
+      createdAt
+      updatedAt
+    }
+    sessions(
+      where: $customerCommunication_upsertOneUser_sessions_where
+      orderBy: $customerCommunication_upsertOneUser_sessions_orderBy
+      cursor: $customerCommunication_upsertOneUser_sessions_cursor
+      take: $customerCommunication_upsertOneUser_sessions_take
+      skip: $customerCommunication_upsertOneUser_sessions_skip
+      distinct: $customerCommunication_upsertOneUser_sessions_distinct
+    ) {
+      id
+      sessionToken
+      userId
+      expires
+    }
+    _count {
+      interactions
+      accounts
+      sessions
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation customerCommunication_upsertOneFilter_mutation($where: customerCommunication_FilterWhereUniqueInput!, $create: customerCommunication_FilterCreateInput!, $update: customerCommunication_FilterUpdateInput!) {
+  customerCommunication_upsertOneFilter(
+    where: $where
+    create: $create
+    update: $update
+  ) {
+    id
+    audience
+    output
+  }
+}

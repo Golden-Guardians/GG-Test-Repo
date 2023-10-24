@@ -6,7 +6,14 @@ var import_sdk = require("@wundergraph/sdk");
 var wundergraph_generate_default = (0, import_sdk.configureWunderGraphGeneration)({
   codeGenerators: [],
   operationsGenerator: (config) => {
-    config.includeNamespaces("db");
+    config.includeNamespaces(
+      "customerCommunication",
+      "clientPortal",
+      "gpac",
+      "guardianOnline",
+      "livingBalanceSheet",
+      "smartOffice"
+    );
   }
 });
 
@@ -69,12 +76,41 @@ var weather = import_sdk3.introspect.graphql({
     pollingIntervalSeconds: 5
   }
 });
-var db = import_sdk3.introspect.prisma({
-  apiNamespace: "db",
-  prismaFilePath: "../prisma/schema.prisma"
+var customerCommunicationHub = import_sdk3.introspect.prisma({
+  apiNamespace: "customerCommunication",
+  prismaFilePath: "../prisma/customer-communication-hub.prisma"
+});
+var clientPortal = import_sdk3.introspect.prisma({
+  apiNamespace: "clientPortal",
+  prismaFilePath: "../prisma/simulated-services/client-portal.prisma"
+});
+var gpac = import_sdk3.introspect.prisma({
+  apiNamespace: "gpac",
+  prismaFilePath: "../prisma/simulated-services/gpac.prisma"
+});
+var guardianOnline = import_sdk3.introspect.prisma({
+  apiNamespace: "guardianOnline",
+  prismaFilePath: "../prisma/simulated-services/guardian-online.prisma"
+});
+var livingBalanceSheet = import_sdk3.introspect.prisma({
+  apiNamespace: "livingBalanceSheet",
+  prismaFilePath: "../prisma/simulated-services/living-balance-sheet.prisma"
+});
+var smartOffice = import_sdk3.introspect.prisma({
+  apiNamespace: "smartOffice",
+  prismaFilePath: "../prisma/simulated-services/smart-office.prisma"
 });
 (0, import_sdk3.configureWunderGraphApplication)({
-  apis: [countries, db, weather],
+  apis: [
+    countries,
+    customerCommunicationHub,
+    weather,
+    clientPortal,
+    gpac,
+    guardianOnline,
+    livingBalanceSheet,
+    smartOffice
+  ],
   server: wundergraph_server_default,
   operations: wundergraph_operations_default,
   generate: wundergraph_generate_default,

@@ -1,0 +1,50 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation smartOffice_deleteOneTask_mutation($where: smartOffice_TaskWhereUniqueInput!, $smartOffice_deleteOneTask_user_user_clients_where: smartOffice_ClientWhereInput, $smartOffice_deleteOneTask_user_user_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_deleteOneTask_user_user_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_deleteOneTask_user_user_clients_take: Int, $smartOffice_deleteOneTask_user_user_clients_skip: Int, $smartOffice_deleteOneTask_user_user_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_deleteOneTask_user_user_sales_where: smartOffice_SaleWhereInput, $smartOffice_deleteOneTask_user_user_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_deleteOneTask_user_user_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_deleteOneTask_user_user_sales_take: Int, $smartOffice_deleteOneTask_user_user_sales_skip: Int, $smartOffice_deleteOneTask_user_user_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+  smartOffice_deleteOneTask(where: $where) {
+    id
+    taskType
+    status
+    details
+    userId
+    user {
+      id
+      username
+      password
+      role
+      clients(
+        where: $smartOffice_deleteOneTask_user_user_clients_where
+        orderBy: $smartOffice_deleteOneTask_user_user_clients_orderBy
+        cursor: $smartOffice_deleteOneTask_user_user_clients_cursor
+        take: $smartOffice_deleteOneTask_user_user_clients_take
+        skip: $smartOffice_deleteOneTask_user_user_clients_skip
+        distinct: $smartOffice_deleteOneTask_user_user_clients_distinct
+      ) {
+        id
+        name
+        email
+        phone
+        userId
+      }
+      sales(
+        where: $smartOffice_deleteOneTask_user_user_sales_where
+        orderBy: $smartOffice_deleteOneTask_user_user_sales_orderBy
+        cursor: $smartOffice_deleteOneTask_user_user_sales_cursor
+        take: $smartOffice_deleteOneTask_user_user_sales_take
+        skip: $smartOffice_deleteOneTask_user_user_sales_skip
+        distinct: $smartOffice_deleteOneTask_user_user_sales_distinct
+      ) {
+        id
+        saleType
+        amount
+        timestamp
+        userId
+      }
+      _count {
+        clients
+        tasks
+        sales
+      }
+    }
+  }
+}

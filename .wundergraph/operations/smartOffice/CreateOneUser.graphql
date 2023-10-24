@@ -1,0 +1,57 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation smartOffice_createOneUser_mutation($data: smartOffice_UserCreateInput!, $smartOffice_createOneUser_clients_where: smartOffice_ClientWhereInput, $smartOffice_createOneUser_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_createOneUser_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_createOneUser_clients_take: Int, $smartOffice_createOneUser_clients_skip: Int, $smartOffice_createOneUser_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_createOneUser_tasks_where: smartOffice_TaskWhereInput, $smartOffice_createOneUser_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_createOneUser_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_createOneUser_tasks_take: Int, $smartOffice_createOneUser_tasks_skip: Int, $smartOffice_createOneUser_tasks_distinct: [smartOffice_TaskScalarFieldEnum], $smartOffice_createOneUser_sales_where: smartOffice_SaleWhereInput, $smartOffice_createOneUser_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_createOneUser_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_createOneUser_sales_take: Int, $smartOffice_createOneUser_sales_skip: Int, $smartOffice_createOneUser_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+  smartOffice_createOneUser(data: $data) {
+    id
+    username
+    password
+    role
+    clients(
+      where: $smartOffice_createOneUser_clients_where
+      orderBy: $smartOffice_createOneUser_clients_orderBy
+      cursor: $smartOffice_createOneUser_clients_cursor
+      take: $smartOffice_createOneUser_clients_take
+      skip: $smartOffice_createOneUser_clients_skip
+      distinct: $smartOffice_createOneUser_clients_distinct
+    ) {
+      id
+      name
+      email
+      phone
+      userId
+    }
+    tasks(
+      where: $smartOffice_createOneUser_tasks_where
+      orderBy: $smartOffice_createOneUser_tasks_orderBy
+      cursor: $smartOffice_createOneUser_tasks_cursor
+      take: $smartOffice_createOneUser_tasks_take
+      skip: $smartOffice_createOneUser_tasks_skip
+      distinct: $smartOffice_createOneUser_tasks_distinct
+    ) {
+      id
+      taskType
+      status
+      details
+      userId
+    }
+    sales(
+      where: $smartOffice_createOneUser_sales_where
+      orderBy: $smartOffice_createOneUser_sales_orderBy
+      cursor: $smartOffice_createOneUser_sales_cursor
+      take: $smartOffice_createOneUser_sales_take
+      skip: $smartOffice_createOneUser_sales_skip
+      distinct: $smartOffice_createOneUser_sales_distinct
+    ) {
+      id
+      saleType
+      amount
+      timestamp
+      userId
+    }
+    _count {
+      clients
+      tasks
+      sales
+    }
+  }
+}

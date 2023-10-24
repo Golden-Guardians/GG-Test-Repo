@@ -1,0 +1,74 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation customerCommunication_deleteOneSession_mutation($where: customerCommunication_SessionWhereUniqueInput!, $customerCommunication_deleteOneSession_user_user_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_deleteOneSession_user_user_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_deleteOneSession_user_user_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_deleteOneSession_user_user_interactions_take: Int, $customerCommunication_deleteOneSession_user_user_interactions_skip: Int, $customerCommunication_deleteOneSession_user_user_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_deleteOneSession_user_user_accounts_where: customerCommunication_AccountWhereInput, $customerCommunication_deleteOneSession_user_user_accounts_orderBy: [customerCommunication_AccountOrderByWithRelationInput], $customerCommunication_deleteOneSession_user_user_accounts_cursor: customerCommunication_AccountWhereUniqueInput, $customerCommunication_deleteOneSession_user_user_accounts_take: Int, $customerCommunication_deleteOneSession_user_user_accounts_skip: Int, $customerCommunication_deleteOneSession_user_user_accounts_distinct: [customerCommunication_AccountScalarFieldEnum]) {
+  customerCommunication_deleteOneSession(where: $where) {
+    id
+    sessionToken
+    userId
+    expires
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      interactions(
+        where: $customerCommunication_deleteOneSession_user_user_interactions_where
+        orderBy: $customerCommunication_deleteOneSession_user_user_interactions_orderBy
+        cursor: $customerCommunication_deleteOneSession_user_user_interactions_cursor
+        take: $customerCommunication_deleteOneSession_user_user_interactions_take
+        skip: $customerCommunication_deleteOneSession_user_user_interactions_skip
+        distinct: $customerCommunication_deleteOneSession_user_user_interactions_distinct
+      ) {
+        id
+        interactionType
+        content
+        timestamp
+        userId
+        widgetId
+        Widget {
+          id
+          embeddedIn
+          _count {
+            interactions
+          }
+        }
+      }
+      accounts(
+        where: $customerCommunication_deleteOneSession_user_user_accounts_where
+        orderBy: $customerCommunication_deleteOneSession_user_user_accounts_orderBy
+        cursor: $customerCommunication_deleteOneSession_user_user_accounts_cursor
+        take: $customerCommunication_deleteOneSession_user_user_accounts_take
+        skip: $customerCommunication_deleteOneSession_user_user_accounts_skip
+        distinct: $customerCommunication_deleteOneSession_user_user_accounts_distinct
+      ) {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        createdAt
+        updatedAt
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+  }
+}

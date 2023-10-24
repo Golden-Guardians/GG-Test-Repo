@@ -1,0 +1,37 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query livingBalanceSheet_aggregateLiability_query($where: livingBalanceSheet_LiabilityWhereInput, $orderBy: [livingBalanceSheet_LiabilityOrderByWithRelationInput], $cursor: livingBalanceSheet_LiabilityWhereUniqueInput, $take: Int, $skip: Int) {
+  livingBalanceSheet_aggregateLiability(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      liabilityType
+      amount
+      userId
+      _all
+    }
+    _avg {
+      amount
+    }
+    _sum {
+      amount
+    }
+    _min {
+      id
+      liabilityType
+      amount
+      userId
+    }
+    _max {
+      id
+      liabilityType
+      amount
+      userId
+    }
+  }
+}

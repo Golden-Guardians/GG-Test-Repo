@@ -1,0 +1,36 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_groupBySession_query($where: customerCommunication_SessionWhereInput, $orderBy: [customerCommunication_SessionOrderByWithAggregationInput], $by: [customerCommunication_SessionScalarFieldEnum]!, $having: customerCommunication_SessionScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  customerCommunication_groupBySession(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    sessionToken
+    userId
+    expires
+    _count {
+      id
+      sessionToken
+      userId
+      expires
+      _all
+    }
+    _min {
+      id
+      sessionToken
+      userId
+      expires
+    }
+    _max {
+      id
+      sessionToken
+      userId
+      expires
+    }
+  }
+}

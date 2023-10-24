@@ -1,0 +1,40 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation clientPortal_createOneClient_mutation($data: clientPortal_ClientCreateInput!, $clientPortal_createOneClient_services_where: clientPortal_ServiceWhereInput, $clientPortal_createOneClient_services_orderBy: [clientPortal_ServiceOrderByWithRelationInput], $clientPortal_createOneClient_services_cursor: clientPortal_ServiceWhereUniqueInput, $clientPortal_createOneClient_services_take: Int, $clientPortal_createOneClient_services_skip: Int, $clientPortal_createOneClient_services_distinct: [clientPortal_ServiceScalarFieldEnum], $clientPortal_createOneClient_activities_where: clientPortal_ActivityWhereInput, $clientPortal_createOneClient_activities_orderBy: [clientPortal_ActivityOrderByWithRelationInput], $clientPortal_createOneClient_activities_cursor: clientPortal_ActivityWhereUniqueInput, $clientPortal_createOneClient_activities_take: Int, $clientPortal_createOneClient_activities_skip: Int, $clientPortal_createOneClient_activities_distinct: [clientPortal_ActivityScalarFieldEnum]) {
+  clientPortal_createOneClient(data: $data) {
+    id
+    username
+    password
+    services(
+      where: $clientPortal_createOneClient_services_where
+      orderBy: $clientPortal_createOneClient_services_orderBy
+      cursor: $clientPortal_createOneClient_services_cursor
+      take: $clientPortal_createOneClient_services_take
+      skip: $clientPortal_createOneClient_services_skip
+      distinct: $clientPortal_createOneClient_services_distinct
+    ) {
+      id
+      serviceType
+      content
+      clientId
+    }
+    activities(
+      where: $clientPortal_createOneClient_activities_where
+      orderBy: $clientPortal_createOneClient_activities_orderBy
+      cursor: $clientPortal_createOneClient_activities_cursor
+      take: $clientPortal_createOneClient_activities_take
+      skip: $clientPortal_createOneClient_activities_skip
+      distinct: $clientPortal_createOneClient_activities_distinct
+    ) {
+      id
+      activityType
+      timestamp
+      details
+      clientId
+    }
+    _count {
+      services
+      activities
+    }
+  }
+}

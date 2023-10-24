@@ -1,0 +1,50 @@
+// npx prisma db push --schema prisma/simulated-services/client-portal.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("CLIENT_PORTAL_DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Client {
+  id         String     @id @default(cuid())
+  username   String
+  password   String
+  services   Service[]
+  activities Activity[]
+}
+
+model Service {
+  id          String      @id @default(cuid())
+  serviceType ServiceType
+  content     Json
+  clientId    String
+  client      Client      @relation(fields: [clientId], references: [id])
+}
+
+enum ServiceType {
+  GENERAL_ACCESS
+  QUOTES
+  TRANSACTIONS
+}
+
+model Activity {
+  id           String       @id @default(cuid())
+  activityType ActivityType
+  timestamp    DateTime
+  details      Json
+  clientId     String
+  client       Client       @relation(fields: [clientId], references: [id])
+}
+
+enum ActivityType {
+  LOGIN
+  LOGOUT
+  SERVICE_ACCESS
+  QUOTE_REQUEST
+  TRANSACTION
+}

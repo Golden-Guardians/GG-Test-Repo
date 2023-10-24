@@ -1,0 +1,32 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_groupByFilter_query($where: customerCommunication_FilterWhereInput, $orderBy: [customerCommunication_FilterOrderByWithAggregationInput], $by: [customerCommunication_FilterScalarFieldEnum]!, $having: customerCommunication_FilterScalarWhereWithAggregatesInput, $take: Int, $skip: Int) {
+  customerCommunication_groupByFilter(
+    where: $where
+    orderBy: $orderBy
+    by: $by
+    having: $having
+    take: $take
+    skip: $skip
+  ) {
+    id
+    audience
+    output
+    _count {
+      id
+      audience
+      output
+      _all
+    }
+    _min {
+      id
+      audience
+      output
+    }
+    _max {
+      id
+      audience
+      output
+    }
+  }
+}

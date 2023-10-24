@@ -1,0 +1,5 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation smartOffice_executeRaw_mutation($query: String!, $parameters: [String]) {
+  smartOffice_executeRaw(query: $query, parameters: $parameters)
+}

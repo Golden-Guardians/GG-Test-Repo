@@ -23,13 +23,47 @@ const weather = introspect.graphql({
   },
 })
 
-const db = introspect.prisma({
-  apiNamespace: "db",
-  prismaFilePath: "../prisma/schema.prisma",
+const customerCommunicationHub = introspect.prisma({
+  apiNamespace: "customerCommunication",
+  prismaFilePath: "../prisma/customer-communication-hub.prisma",
+})
+
+const clientPortal = introspect.prisma({
+  apiNamespace: "clientPortal",
+  prismaFilePath: "../prisma/simulated-services/client-portal.prisma",
+})
+
+const gpac = introspect.prisma({
+  apiNamespace: "gpac",
+  prismaFilePath: "../prisma/simulated-services/gpac.prisma",
+})
+
+const guardianOnline = introspect.prisma({
+  apiNamespace: "guardianOnline",
+  prismaFilePath: "../prisma/simulated-services/guardian-online.prisma",
+})
+
+const livingBalanceSheet = introspect.prisma({
+  apiNamespace: "livingBalanceSheet",
+  prismaFilePath: "../prisma/simulated-services/living-balance-sheet.prisma",
+})
+
+const smartOffice = introspect.prisma({
+  apiNamespace: "smartOffice",
+  prismaFilePath: "../prisma/simulated-services/smart-office.prisma",
 })
 
 configureWunderGraphApplication({
-  apis: [countries, db, weather],
+  apis: [
+    countries,
+    customerCommunicationHub,
+    weather,
+    clientPortal,
+    gpac,
+    guardianOnline,
+    livingBalanceSheet,
+    smartOffice,
+  ],
   server,
   operations,
   generate,

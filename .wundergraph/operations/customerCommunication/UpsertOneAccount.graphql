@@ -1,0 +1,78 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation customerCommunication_upsertOneAccount_mutation($where: customerCommunication_AccountWhereUniqueInput!, $create: customerCommunication_AccountCreateInput!, $update: customerCommunication_AccountUpdateInput!, $customerCommunication_upsertOneAccount_user_user_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_upsertOneAccount_user_user_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_upsertOneAccount_user_user_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_upsertOneAccount_user_user_interactions_take: Int, $customerCommunication_upsertOneAccount_user_user_interactions_skip: Int, $customerCommunication_upsertOneAccount_user_user_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_upsertOneAccount_user_user_sessions_where: customerCommunication_SessionWhereInput, $customerCommunication_upsertOneAccount_user_user_sessions_orderBy: [customerCommunication_SessionOrderByWithRelationInput], $customerCommunication_upsertOneAccount_user_user_sessions_cursor: customerCommunication_SessionWhereUniqueInput, $customerCommunication_upsertOneAccount_user_user_sessions_take: Int, $customerCommunication_upsertOneAccount_user_user_sessions_skip: Int, $customerCommunication_upsertOneAccount_user_user_sessions_distinct: [customerCommunication_SessionScalarFieldEnum]) {
+  customerCommunication_upsertOneAccount(
+    where: $where
+    create: $create
+    update: $update
+  ) {
+    id
+    userId
+    type
+    provider
+    providerAccountId
+    refresh_token
+    access_token
+    expires_at
+    token_type
+    scope
+    id_token
+    session_state
+    createdAt
+    updatedAt
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      interactions(
+        where: $customerCommunication_upsertOneAccount_user_user_interactions_where
+        orderBy: $customerCommunication_upsertOneAccount_user_user_interactions_orderBy
+        cursor: $customerCommunication_upsertOneAccount_user_user_interactions_cursor
+        take: $customerCommunication_upsertOneAccount_user_user_interactions_take
+        skip: $customerCommunication_upsertOneAccount_user_user_interactions_skip
+        distinct: $customerCommunication_upsertOneAccount_user_user_interactions_distinct
+      ) {
+        id
+        interactionType
+        content
+        timestamp
+        userId
+        widgetId
+        Widget {
+          id
+          embeddedIn
+          _count {
+            interactions
+          }
+        }
+      }
+      sessions(
+        where: $customerCommunication_upsertOneAccount_user_user_sessions_where
+        orderBy: $customerCommunication_upsertOneAccount_user_user_sessions_orderBy
+        cursor: $customerCommunication_upsertOneAccount_user_user_sessions_cursor
+        take: $customerCommunication_upsertOneAccount_user_user_sessions_take
+        skip: $customerCommunication_upsertOneAccount_user_user_sessions_skip
+        distinct: $customerCommunication_upsertOneAccount_user_user_sessions_distinct
+      ) {
+        id
+        sessionToken
+        userId
+        expires
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+  }
+}

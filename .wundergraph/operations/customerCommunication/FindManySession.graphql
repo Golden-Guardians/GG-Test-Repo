@@ -1,0 +1,81 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_findManySession_query($where: customerCommunication_SessionWhereInput, $orderBy: [customerCommunication_SessionOrderByWithRelationInput], $cursor: customerCommunication_SessionWhereUniqueInput, $take: Int, $skip: Int, $distinct: [customerCommunication_SessionScalarFieldEnum], $customerCommunication_findManySession_user_user_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_findManySession_user_user_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_findManySession_user_user_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_findManySession_user_user_interactions_take: Int, $customerCommunication_findManySession_user_user_interactions_skip: Int, $customerCommunication_findManySession_user_user_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_findManySession_user_user_accounts_where: customerCommunication_AccountWhereInput, $customerCommunication_findManySession_user_user_accounts_orderBy: [customerCommunication_AccountOrderByWithRelationInput], $customerCommunication_findManySession_user_user_accounts_cursor: customerCommunication_AccountWhereUniqueInput, $customerCommunication_findManySession_user_user_accounts_take: Int, $customerCommunication_findManySession_user_user_accounts_skip: Int, $customerCommunication_findManySession_user_user_accounts_distinct: [customerCommunication_AccountScalarFieldEnum]) {
+  customerCommunication_findManySession(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    sessionToken
+    userId
+    expires
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      interactions(
+        where: $customerCommunication_findManySession_user_user_interactions_where
+        orderBy: $customerCommunication_findManySession_user_user_interactions_orderBy
+        cursor: $customerCommunication_findManySession_user_user_interactions_cursor
+        take: $customerCommunication_findManySession_user_user_interactions_take
+        skip: $customerCommunication_findManySession_user_user_interactions_skip
+        distinct: $customerCommunication_findManySession_user_user_interactions_distinct
+      ) {
+        id
+        interactionType
+        content
+        timestamp
+        userId
+        widgetId
+        Widget {
+          id
+          embeddedIn
+          _count {
+            interactions
+          }
+        }
+      }
+      accounts(
+        where: $customerCommunication_findManySession_user_user_accounts_where
+        orderBy: $customerCommunication_findManySession_user_user_accounts_orderBy
+        cursor: $customerCommunication_findManySession_user_user_accounts_cursor
+        take: $customerCommunication_findManySession_user_user_accounts_take
+        skip: $customerCommunication_findManySession_user_user_accounts_skip
+        distinct: $customerCommunication_findManySession_user_user_accounts_distinct
+      ) {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        createdAt
+        updatedAt
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query smartOffice_findManyUser_query($where: smartOffice_UserWhereInput, $orderBy: [smartOffice_UserOrderByWithRelationInput], $cursor: smartOffice_UserWhereUniqueInput, $take: Int, $skip: Int, $distinct: [smartOffice_UserScalarFieldEnum], $smartOffice_findManyUser_clients_where: smartOffice_ClientWhereInput, $smartOffice_findManyUser_clients_orderBy: [smartOffice_ClientOrderByWithRelationInput], $smartOffice_findManyUser_clients_cursor: smartOffice_ClientWhereUniqueInput, $smartOffice_findManyUser_clients_take: Int, $smartOffice_findManyUser_clients_skip: Int, $smartOffice_findManyUser_clients_distinct: [smartOffice_ClientScalarFieldEnum], $smartOffice_findManyUser_tasks_where: smartOffice_TaskWhereInput, $smartOffice_findManyUser_tasks_orderBy: [smartOffice_TaskOrderByWithRelationInput], $smartOffice_findManyUser_tasks_cursor: smartOffice_TaskWhereUniqueInput, $smartOffice_findManyUser_tasks_take: Int, $smartOffice_findManyUser_tasks_skip: Int, $smartOffice_findManyUser_tasks_distinct: [smartOffice_TaskScalarFieldEnum], $smartOffice_findManyUser_sales_where: smartOffice_SaleWhereInput, $smartOffice_findManyUser_sales_orderBy: [smartOffice_SaleOrderByWithRelationInput], $smartOffice_findManyUser_sales_cursor: smartOffice_SaleWhereUniqueInput, $smartOffice_findManyUser_sales_take: Int, $smartOffice_findManyUser_sales_skip: Int, $smartOffice_findManyUser_sales_distinct: [smartOffice_SaleScalarFieldEnum]) {
+  smartOffice_findManyUser(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    username
+    password
+    role
+    clients(
+      where: $smartOffice_findManyUser_clients_where
+      orderBy: $smartOffice_findManyUser_clients_orderBy
+      cursor: $smartOffice_findManyUser_clients_cursor
+      take: $smartOffice_findManyUser_clients_take
+      skip: $smartOffice_findManyUser_clients_skip
+      distinct: $smartOffice_findManyUser_clients_distinct
+    ) {
+      id
+      name
+      email
+      phone
+      userId
+    }
+    tasks(
+      where: $smartOffice_findManyUser_tasks_where
+      orderBy: $smartOffice_findManyUser_tasks_orderBy
+      cursor: $smartOffice_findManyUser_tasks_cursor
+      take: $smartOffice_findManyUser_tasks_take
+      skip: $smartOffice_findManyUser_tasks_skip
+      distinct: $smartOffice_findManyUser_tasks_distinct
+    ) {
+      id
+      taskType
+      status
+      details
+      userId
+    }
+    sales(
+      where: $smartOffice_findManyUser_sales_where
+      orderBy: $smartOffice_findManyUser_sales_orderBy
+      cursor: $smartOffice_findManyUser_sales_cursor
+      take: $smartOffice_findManyUser_sales_take
+      skip: $smartOffice_findManyUser_sales_skip
+      distinct: $smartOffice_findManyUser_sales_distinct
+    ) {
+      id
+      saleType
+      amount
+      timestamp
+      userId
+    }
+    _count {
+      clients
+      tasks
+      sales
+    }
+  }
+}

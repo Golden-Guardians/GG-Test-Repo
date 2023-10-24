@@ -1,0 +1,81 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_findFirstInteraction_query($where: customerCommunication_InteractionWhereInput, $orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $cursor: customerCommunication_InteractionWhereUniqueInput, $take: Int, $skip: Int, $distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_findFirstInteraction_user_user_accounts_where: customerCommunication_AccountWhereInput, $customerCommunication_findFirstInteraction_user_user_accounts_orderBy: [customerCommunication_AccountOrderByWithRelationInput], $customerCommunication_findFirstInteraction_user_user_accounts_cursor: customerCommunication_AccountWhereUniqueInput, $customerCommunication_findFirstInteraction_user_user_accounts_take: Int, $customerCommunication_findFirstInteraction_user_user_accounts_skip: Int, $customerCommunication_findFirstInteraction_user_user_accounts_distinct: [customerCommunication_AccountScalarFieldEnum], $customerCommunication_findFirstInteraction_user_user_sessions_where: customerCommunication_SessionWhereInput, $customerCommunication_findFirstInteraction_user_user_sessions_orderBy: [customerCommunication_SessionOrderByWithRelationInput], $customerCommunication_findFirstInteraction_user_user_sessions_cursor: customerCommunication_SessionWhereUniqueInput, $customerCommunication_findFirstInteraction_user_user_sessions_take: Int, $customerCommunication_findFirstInteraction_user_user_sessions_skip: Int, $customerCommunication_findFirstInteraction_user_user_sessions_distinct: [customerCommunication_SessionScalarFieldEnum]) {
+  customerCommunication_findFirstInteraction(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    interactionType
+    content
+    timestamp
+    userId
+    widgetId
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      accounts(
+        where: $customerCommunication_findFirstInteraction_user_user_accounts_where
+        orderBy: $customerCommunication_findFirstInteraction_user_user_accounts_orderBy
+        cursor: $customerCommunication_findFirstInteraction_user_user_accounts_cursor
+        take: $customerCommunication_findFirstInteraction_user_user_accounts_take
+        skip: $customerCommunication_findFirstInteraction_user_user_accounts_skip
+        distinct: $customerCommunication_findFirstInteraction_user_user_accounts_distinct
+      ) {
+        id
+        userId
+        type
+        provider
+        providerAccountId
+        refresh_token
+        access_token
+        expires_at
+        token_type
+        scope
+        id_token
+        session_state
+        createdAt
+        updatedAt
+      }
+      sessions(
+        where: $customerCommunication_findFirstInteraction_user_user_sessions_where
+        orderBy: $customerCommunication_findFirstInteraction_user_user_sessions_orderBy
+        cursor: $customerCommunication_findFirstInteraction_user_user_sessions_cursor
+        take: $customerCommunication_findFirstInteraction_user_user_sessions_take
+        skip: $customerCommunication_findFirstInteraction_user_user_sessions_skip
+        distinct: $customerCommunication_findFirstInteraction_user_user_sessions_distinct
+      ) {
+        id
+        sessionToken
+        userId
+        expires
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+    Widget {
+      id
+      embeddedIn
+      _count {
+        interactions
+      }
+    }
+  }
+}

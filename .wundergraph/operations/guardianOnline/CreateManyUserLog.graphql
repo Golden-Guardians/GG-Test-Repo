@@ -1,0 +1,7 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+mutation guardianOnline_createManyUserLog_mutation($data: [guardianOnline_UserLogCreateManyInput]!, $skipDuplicates: Boolean) {
+  guardianOnline_createManyUserLog(data: $data, skipDuplicates: $skipDuplicates) {
+    count
+  }
+}

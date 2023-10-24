@@ -1,0 +1,40 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query smartOffice_aggregateSale_query($where: smartOffice_SaleWhereInput, $orderBy: [smartOffice_SaleOrderByWithRelationInput], $cursor: smartOffice_SaleWhereUniqueInput, $take: Int, $skip: Int) {
+  smartOffice_aggregateSale(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+  ) {
+    _count {
+      id
+      saleType
+      amount
+      timestamp
+      userId
+      _all
+    }
+    _avg {
+      amount
+    }
+    _sum {
+      amount
+    }
+    _min {
+      id
+      saleType
+      amount
+      timestamp
+      userId
+    }
+    _max {
+      id
+      saleType
+      amount
+      timestamp
+      userId
+    }
+  }
+}

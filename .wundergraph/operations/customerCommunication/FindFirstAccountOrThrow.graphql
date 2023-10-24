@@ -1,0 +1,81 @@
+# This file is auto generated.
+# Remove/modify this header if you want to customize the operation.
+query customerCommunication_findFirstAccountOrThrow_query($where: customerCommunication_AccountWhereInput, $orderBy: [customerCommunication_AccountOrderByWithRelationInput], $cursor: customerCommunication_AccountWhereUniqueInput, $take: Int, $skip: Int, $distinct: [customerCommunication_AccountScalarFieldEnum], $customerCommunication_findFirstAccountOrThrow_user_user_interactions_where: customerCommunication_InteractionWhereInput, $customerCommunication_findFirstAccountOrThrow_user_user_interactions_orderBy: [customerCommunication_InteractionOrderByWithRelationInput], $customerCommunication_findFirstAccountOrThrow_user_user_interactions_cursor: customerCommunication_InteractionWhereUniqueInput, $customerCommunication_findFirstAccountOrThrow_user_user_interactions_take: Int, $customerCommunication_findFirstAccountOrThrow_user_user_interactions_skip: Int, $customerCommunication_findFirstAccountOrThrow_user_user_interactions_distinct: [customerCommunication_InteractionScalarFieldEnum], $customerCommunication_findFirstAccountOrThrow_user_user_sessions_where: customerCommunication_SessionWhereInput, $customerCommunication_findFirstAccountOrThrow_user_user_sessions_orderBy: [customerCommunication_SessionOrderByWithRelationInput], $customerCommunication_findFirstAccountOrThrow_user_user_sessions_cursor: customerCommunication_SessionWhereUniqueInput, $customerCommunication_findFirstAccountOrThrow_user_user_sessions_take: Int, $customerCommunication_findFirstAccountOrThrow_user_user_sessions_skip: Int, $customerCommunication_findFirstAccountOrThrow_user_user_sessions_distinct: [customerCommunication_SessionScalarFieldEnum]) {
+  customerCommunication_findFirstAccountOrThrow(
+    where: $where
+    orderBy: $orderBy
+    cursor: $cursor
+    take: $take
+    skip: $skip
+    distinct: $distinct
+  ) {
+    id
+    userId
+    type
+    provider
+    providerAccountId
+    refresh_token
+    access_token
+    expires_at
+    token_type
+    scope
+    id_token
+    session_state
+    createdAt
+    updatedAt
+    user {
+      id
+      name
+      email
+      emailVerified
+      image
+      createdAt
+      updatedAt
+      userType
+      stripeCustomerId
+      stripeSubscriptionId
+      stripePriceId
+      stripeCurrentPeriodEnd
+      interactions(
+        where: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_where
+        orderBy: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_orderBy
+        cursor: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_cursor
+        take: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_take
+        skip: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_skip
+        distinct: $customerCommunication_findFirstAccountOrThrow_user_user_interactions_distinct
+      ) {
+        id
+        interactionType
+        content
+        timestamp
+        userId
+        widgetId
+        Widget {
+          id
+          embeddedIn
+          _count {
+            interactions
+          }
+        }
+      }
+      sessions(
+        where: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_where
+        orderBy: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_orderBy
+        cursor: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_cursor
+        take: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_take
+        skip: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_skip
+        distinct: $customerCommunication_findFirstAccountOrThrow_user_user_sessions_distinct
+      ) {
+        id
+        sessionToken
+        userId
+        expires
+      }
+      _count {
+        interactions
+        accounts
+        sessions
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+// npx prisma db push --schema prisma/simulated-services/smart-office.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("SMART_OFFICE_DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model User {
+  id       String   @id @default(cuid())
+  username String
+  password String
+  role     UserRole
+  clients  Client[]
+  tasks    Task[]
+  sales    Sale[]
+}
+
+enum UserRole {
+  ADMIN
+  AGENT
+  SALES_REP
+}
+
+model Client {
+  id     String @id @default(cuid())
+  name   String
+  email  String
+  phone  String
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model Task {
+  id       String     @id @default(cuid())
+  taskType TaskType
+  status   TaskStatus
+  details  Json
+  userId   String
+  user     User       @relation(fields: [userId], references: [id])
+}
+
+enum TaskType {
+  MEETING
+  CALL
+  EMAIL
+  FOLLOW_UP
+}
+
+enum TaskStatus {
+  PENDING
+  COMPLETED
+  CANCELLED
+}
+
+model Sale {
+  id        String   @id @default(cuid())
+  saleType  SaleType
+  amount    Float
+  timestamp DateTime
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+enum SaleType {
+  NEW_POLICY
+  RENEWAL
+  UPGRADE
+}
