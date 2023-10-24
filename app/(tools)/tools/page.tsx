@@ -56,15 +56,21 @@ export default async function DashboardPage() {
         <div className="p-4">
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              Users: {CountUsers.data?.db_aggregateUser?._count?._all}
+              Users:{" "}
+              {
+                CountUsers.data?.customerCommunication_aggregateUser?._count
+                  ?._all
+              }
             </p>
           </div>
         </div>
-        {getAllUsers.data?.db_findManyUser?.length ? (
+        {getAllUsers.data?.customerCommunication_findManyUser?.length ? (
           <div className="divide-y divide-border rounded-md border">
-            {getAllUsers.data?.db_findManyUser.map((user) => (
-              <UserItem key={user.id} user={user} />
-            ))}
+            {getAllUsers.data?.customerCommunication_findManyUser.map(
+              (user) => (
+                <UserItem key={user.id} user={user} />
+              )
+            )}
           </div>
         ) : (
           <EmptyPlaceholder>
