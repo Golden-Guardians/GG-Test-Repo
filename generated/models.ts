@@ -668,7 +668,7 @@ export interface customerCommunication_UserWhereInput {
 	image?: customerCommunication_StringNullableFilter;
 	createdAt?: customerCommunication_DateTimeFilter;
 	updatedAt?: customerCommunication_DateTimeFilter;
-	userType?: customerCommunication_EnumUserTypeFilter;
+	userType?: customerCommunication_EnumUserTypeNullableFilter;
 	stripeCustomerId?: customerCommunication_StringNullableFilter;
 	stripeSubscriptionId?: customerCommunication_StringNullableFilter;
 	stripePriceId?: customerCommunication_StringNullableFilter;
@@ -700,7 +700,7 @@ export interface customerCommunication_NestedDateTimeNullableFilter {
 	not?: customerCommunication_NestedDateTimeNullableFilter;
 }
 
-export interface customerCommunication_EnumUserTypeFilter {
+export interface customerCommunication_EnumUserTypeNullableFilter {
 	equals?: customerCommunication_UserTypeValues;
 	in?: customerCommunication_UserTypeValues[];
 	notIn?: customerCommunication_UserTypeValues[];
@@ -1255,7 +1255,7 @@ export interface customerCommunication_UserCreateInput {
 	image?: string;
 	createdAt?: string;
 	updatedAt?: string;
-	userType: customerCommunication_UserTypeValues;
+	userType?: customerCommunication_UserTypeValues;
 	stripeCustomerId?: string;
 	stripeSubscriptionId?: string;
 	stripePriceId?: string;
@@ -1814,7 +1814,7 @@ export interface customerCommunication_UserScalarWhereWithAggregatesInput {
 	image?: customerCommunication_StringNullableWithAggregatesFilter;
 	createdAt?: customerCommunication_DateTimeWithAggregatesFilter;
 	updatedAt?: customerCommunication_DateTimeWithAggregatesFilter;
-	userType?: customerCommunication_EnumUserTypeWithAggregatesFilter;
+	userType?: customerCommunication_EnumUserTypeNullableWithAggregatesFilter;
 	stripeCustomerId?: customerCommunication_StringNullableWithAggregatesFilter;
 	stripeSubscriptionId?: customerCommunication_StringNullableWithAggregatesFilter;
 	stripePriceId?: customerCommunication_StringNullableWithAggregatesFilter;
@@ -1849,17 +1849,17 @@ export interface customerCommunication_NestedDateTimeNullableWithAggregatesFilte
 	_max?: customerCommunication_NestedDateTimeNullableFilter;
 }
 
-export interface customerCommunication_EnumUserTypeWithAggregatesFilter {
+export interface customerCommunication_EnumUserTypeNullableWithAggregatesFilter {
 	equals?: customerCommunication_UserTypeValues;
 	in?: customerCommunication_UserTypeValues[];
 	notIn?: customerCommunication_UserTypeValues[];
 	not?: customerCommunication_UserTypeValues;
-	_count?: customerCommunication_NestedIntFilter;
-	_min?: customerCommunication_NestedEnumUserTypeFilter;
-	_max?: customerCommunication_NestedEnumUserTypeFilter;
+	_count?: customerCommunication_NestedIntNullableFilter;
+	_min?: customerCommunication_NestedEnumUserTypeNullableFilter;
+	_max?: customerCommunication_NestedEnumUserTypeNullableFilter;
 }
 
-export interface customerCommunication_NestedEnumUserTypeFilter {
+export interface customerCommunication_NestedEnumUserTypeNullableFilter {
 	equals?: customerCommunication_UserTypeValues;
 	in?: customerCommunication_UserTypeValues[];
 	notIn?: customerCommunication_UserTypeValues[];
@@ -16960,7 +16960,7 @@ export interface CustomerCommunicationCreateOneAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17043,7 +17043,7 @@ export interface CustomerCommunicationCreateOneInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17100,7 +17100,7 @@ export interface CustomerCommunicationCreateOneSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17162,7 +17162,7 @@ export interface CustomerCommunicationCreateOneUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -17255,7 +17255,7 @@ export interface CustomerCommunicationCreateOneWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -17361,7 +17361,7 @@ export interface CustomerCommunicationDeleteOneAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17444,7 +17444,7 @@ export interface CustomerCommunicationDeleteOneInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17501,7 +17501,7 @@ export interface CustomerCommunicationDeleteOneSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17563,7 +17563,7 @@ export interface CustomerCommunicationDeleteOneUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -17656,7 +17656,7 @@ export interface CustomerCommunicationDeleteOneWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -17724,7 +17724,7 @@ export interface CustomerCommunicationFindFirstAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17791,7 +17791,7 @@ export interface CustomerCommunicationFindFirstAccountOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17890,7 +17890,7 @@ export interface CustomerCommunicationFindFirstInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -17957,7 +17957,7 @@ export interface CustomerCommunicationFindFirstInteractionOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18014,7 +18014,7 @@ export interface CustomerCommunicationFindFirstSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18081,7 +18081,7 @@ export interface CustomerCommunicationFindFirstSessionOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18143,7 +18143,7 @@ export interface CustomerCommunicationFindFirstUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -18210,7 +18210,7 @@ export interface CustomerCommunicationFindFirstUserOrThrowResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -18311,7 +18311,7 @@ export interface CustomerCommunicationFindFirstWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -18378,7 +18378,7 @@ export interface CustomerCommunicationFindFirstWidgetOrThrowResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -18442,7 +18442,7 @@ export interface CustomerCommunicationFindManyAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18525,7 +18525,7 @@ export interface CustomerCommunicationFindManyInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18582,7 +18582,7 @@ export interface CustomerCommunicationFindManySessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18644,7 +18644,7 @@ export interface CustomerCommunicationFindManyUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -18737,7 +18737,7 @@ export interface CustomerCommunicationFindManyWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -18801,7 +18801,7 @@ export interface CustomerCommunicationFindUniqueAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18868,7 +18868,7 @@ export interface CustomerCommunicationFindUniqueAccountOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -18967,7 +18967,7 @@ export interface CustomerCommunicationFindUniqueInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -19034,7 +19034,7 @@ export interface CustomerCommunicationFindUniqueInteractionOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -19091,7 +19091,7 @@ export interface CustomerCommunicationFindUniqueSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -19158,7 +19158,7 @@ export interface CustomerCommunicationFindUniqueSessionOrThrowResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -19220,7 +19220,7 @@ export interface CustomerCommunicationFindUniqueUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -19287,7 +19287,7 @@ export interface CustomerCommunicationFindUniqueUserOrThrowResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -19388,7 +19388,7 @@ export interface CustomerCommunicationFindUniqueWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -19455,7 +19455,7 @@ export interface CustomerCommunicationFindUniqueWidgetOrThrowResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -19714,7 +19714,7 @@ export interface CustomerCommunicationGroupByUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -19962,7 +19962,7 @@ export interface CustomerCommunicationUpdateOneAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20045,7 +20045,7 @@ export interface CustomerCommunicationUpdateOneInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20102,7 +20102,7 @@ export interface CustomerCommunicationUpdateOneSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20164,7 +20164,7 @@ export interface CustomerCommunicationUpdateOneUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -20257,7 +20257,7 @@ export interface CustomerCommunicationUpdateOneWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;
@@ -20321,7 +20321,7 @@ export interface CustomerCommunicationUpsertOneAccountResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20404,7 +20404,7 @@ export interface CustomerCommunicationUpsertOneInteractionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20461,7 +20461,7 @@ export interface CustomerCommunicationUpsertOneSessionResponseData {
 			image?: string;
 			createdAt: string;
 			updatedAt: string;
-			userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+			userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 			stripeCustomerId?: string;
 			stripeSubscriptionId?: string;
 			stripePriceId?: string;
@@ -20523,7 +20523,7 @@ export interface CustomerCommunicationUpsertOneUserResponseData {
 		image?: string;
 		createdAt: string;
 		updatedAt: string;
-		userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+		userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 		stripeCustomerId?: string;
 		stripeSubscriptionId?: string;
 		stripePriceId?: string;
@@ -20616,7 +20616,7 @@ export interface CustomerCommunicationUpsertOneWidgetResponseData {
 				image?: string;
 				createdAt: string;
 				updatedAt: string;
-				userType: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
+				userType?: "CALL_CENTER_REP" | "CUSTOMER" | "FINANCIAL_REP";
 				stripeCustomerId?: string;
 				stripeSubscriptionId?: string;
 				stripePriceId?: string;

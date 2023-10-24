@@ -664,7 +664,7 @@ enum customerCommunication_UserType {
   FINANCIAL_REP
 }
 
-input customerCommunication_EnumUserTypeFilter {
+input customerCommunication_EnumUserTypeNullableFilter {
   equals: customerCommunication_UserType
   in: [customerCommunication_UserType]
   notIn: [customerCommunication_UserType]
@@ -757,7 +757,7 @@ input customerCommunication_UserWhereInput {
   image: customerCommunication_StringNullableFilter
   createdAt: customerCommunication_DateTimeFilter
   updatedAt: customerCommunication_DateTimeFilter
-  userType: customerCommunication_EnumUserTypeFilter
+  userType: customerCommunication_EnumUserTypeNullableFilter
   stripeCustomerId: customerCommunication_StringNullableFilter
   stripeSubscriptionId: customerCommunication_StringNullableFilter
   stripePriceId: customerCommunication_StringNullableFilter
@@ -972,7 +972,7 @@ type customerCommunication_User {
   image: String
   createdAt: DateTime!
   updatedAt: DateTime!
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -1717,21 +1717,21 @@ input customerCommunication_DateTimeNullableWithAggregatesFilter {
   _max: customerCommunication_NestedDateTimeNullableFilter
 }
 
-input customerCommunication_NestedEnumUserTypeFilter {
+input customerCommunication_NestedEnumUserTypeNullableFilter {
   equals: customerCommunication_UserType
   in: [customerCommunication_UserType]
   notIn: [customerCommunication_UserType]
   not: customerCommunication_UserType
 }
 
-input customerCommunication_EnumUserTypeWithAggregatesFilter {
+input customerCommunication_EnumUserTypeNullableWithAggregatesFilter {
   equals: customerCommunication_UserType
   in: [customerCommunication_UserType]
   notIn: [customerCommunication_UserType]
   not: customerCommunication_UserType
-  _count: customerCommunication_NestedIntFilter
-  _min: customerCommunication_NestedEnumUserTypeFilter
-  _max: customerCommunication_NestedEnumUserTypeFilter
+  _count: customerCommunication_NestedIntNullableFilter
+  _min: customerCommunication_NestedEnumUserTypeNullableFilter
+  _max: customerCommunication_NestedEnumUserTypeNullableFilter
 }
 
 input customerCommunication_UserScalarWhereWithAggregatesInput {
@@ -1745,7 +1745,7 @@ input customerCommunication_UserScalarWhereWithAggregatesInput {
   image: customerCommunication_StringNullableWithAggregatesFilter
   createdAt: customerCommunication_DateTimeWithAggregatesFilter
   updatedAt: customerCommunication_DateTimeWithAggregatesFilter
-  userType: customerCommunication_EnumUserTypeWithAggregatesFilter
+  userType: customerCommunication_EnumUserTypeNullableWithAggregatesFilter
   stripeCustomerId: customerCommunication_StringNullableWithAggregatesFilter
   stripeSubscriptionId: customerCommunication_StringNullableWithAggregatesFilter
   stripePriceId: customerCommunication_StringNullableWithAggregatesFilter
@@ -1760,7 +1760,7 @@ type customerCommunication_UserGroupByOutputType {
   image: String
   createdAt: DateTime!
   updatedAt: DateTime!
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -2226,7 +2226,7 @@ input customerCommunication_UserCreateWithoutAccountsInput {
   image: String
   createdAt: DateTime
   updatedAt: DateTime
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -2558,7 +2558,7 @@ input customerCommunication_UserCreateWithoutSessionsInput {
   image: String
   createdAt: DateTime
   updatedAt: DateTime
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -2727,7 +2727,7 @@ input customerCommunication_UserCreateInput {
   image: String
   createdAt: DateTime
   updatedAt: DateTime
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -2763,7 +2763,7 @@ input customerCommunication_UserCreateManyInput {
   image: String
   createdAt: DateTime
   updatedAt: DateTime
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String
@@ -2793,7 +2793,7 @@ input customerCommunication_UserCreateWithoutInteractionsInput {
   image: String
   createdAt: DateTime
   updatedAt: DateTime
-  userType: customerCommunication_UserType!
+  userType: customerCommunication_UserType
   stripeCustomerId: String
   stripeSubscriptionId: String
   stripePriceId: String

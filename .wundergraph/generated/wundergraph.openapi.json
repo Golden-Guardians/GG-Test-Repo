@@ -7945,7 +7945,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -8404,7 +8403,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -8827,7 +8825,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -9278,7 +9275,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -9765,7 +9761,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -10629,7 +10624,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -11088,7 +11082,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -11511,7 +11504,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -11962,7 +11954,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -12449,7 +12440,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -12971,7 +12961,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -13399,7 +13388,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -14060,7 +14048,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -14488,7 +14475,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -14946,7 +14932,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -15374,7 +15359,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -15866,7 +15850,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -16348,7 +16331,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -17023,7 +17005,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -17506,7 +17487,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -17955,7 +17935,6 @@
                                   "id",
                                   "createdAt",
                                   "updatedAt",
-                                  "userType",
                                   "_count"
                                 ]
                               }
@@ -18498,7 +18477,6 @@
                                   "id",
                                   "createdAt",
                                   "updatedAt",
-                                  "userType",
                                   "_count"
                                 ]
                               },
@@ -18962,7 +18940,6 @@
                                   "id",
                                   "createdAt",
                                   "updatedAt",
-                                  "userType",
                                   "_count"
                                 ]
                               }
@@ -19460,7 +19437,6 @@
                               "id",
                               "createdAt",
                               "updatedAt",
-                              "userType",
                               "_count"
                             ]
                           }
@@ -20035,7 +20011,6 @@
                                         "id",
                                         "createdAt",
                                         "updatedAt",
-                                        "userType",
                                         "_count"
                                       ]
                                     }
@@ -20434,7 +20409,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -20810,7 +20784,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -21313,7 +21286,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -21689,7 +21661,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -22095,7 +22066,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -22471,7 +22441,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -22911,7 +22880,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -23341,7 +23309,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -23858,7 +23825,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -24289,7 +24255,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -25614,8 +25579,7 @@
                             "required": [
                               "id",
                               "createdAt",
-                              "updatedAt",
-                              "userType"
+                              "updatedAt"
                             ]
                           }
                         }
@@ -27233,7 +27197,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -27700,7 +27663,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -28127,7 +28089,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -28582,7 +28543,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -29077,7 +29037,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -29487,7 +29446,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -29962,7 +29920,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             },
@@ -30393,7 +30350,6 @@
                                 "id",
                                 "createdAt",
                                 "updatedAt",
-                                "userType",
                                 "_count"
                               ]
                             }
@@ -30852,7 +30808,6 @@
                             "id",
                             "createdAt",
                             "updatedAt",
-                            "userType",
                             "_count"
                           ]
                         }
@@ -31355,7 +31310,6 @@
                                       "id",
                                       "createdAt",
                                       "updatedAt",
-                                      "userType",
                                       "_count"
                                     ]
                                   }
@@ -57637,7 +57591,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -57856,7 +57813,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -58930,7 +58890,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter"
@@ -59087,7 +59047,7 @@
           }
         }
       },
-      "customerCommunication_EnumUserTypeFilter": {
+      "customerCommunication_EnumUserTypeNullableFilter": {
         "additionalProperties": false,
         "type": [
           "object",
@@ -60030,7 +59990,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -61142,7 +61105,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_2"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_2"
@@ -61951,7 +61914,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -62775,7 +62741,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_3"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_3"
@@ -63752,7 +63718,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -63793,10 +63762,7 @@
           "sessions": {
             "$ref": "#/components/schemas/customerCommunication_SessionCreateNestedManyWithoutUserInput"
           }
-        },
-        "required": [
-          "userType"
-        ]
+        }
       },
       "customerCommunication_InteractionCreateNestedManyWithoutUserInput_3": {
         "additionalProperties": false,
@@ -64621,7 +64587,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_4"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_4"
@@ -65772,7 +65738,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -66599,7 +66568,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_5"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_5"
@@ -68313,7 +68282,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_6"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_6"
@@ -69605,7 +69574,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_7"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_7"
@@ -70502,7 +70471,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_8"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter"
@@ -71222,7 +71191,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter"
@@ -73211,7 +73180,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_11"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_10"
@@ -74249,7 +74218,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_12"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_11"
@@ -75845,7 +75814,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_13"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_12"
@@ -77156,7 +77125,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_14"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_13"
@@ -78679,7 +78648,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_15"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_14"
@@ -80288,7 +80257,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_16"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_15"
@@ -82149,7 +82118,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_17"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_16"
@@ -83344,7 +83313,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_18"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_17"
@@ -84256,7 +84225,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_19"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter"
@@ -85042,7 +85011,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter"
@@ -87058,7 +87027,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_22"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_20"
@@ -87628,7 +87597,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -88936,7 +88908,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_23"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_21"
@@ -89909,7 +89881,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -91361,7 +91336,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_24"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_22"
@@ -92171,7 +92146,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -93701,7 +93679,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_25"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_23"
@@ -96106,7 +96084,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_26"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_24"
@@ -97150,7 +97128,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -98714,7 +98695,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_27"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_25"
@@ -99732,7 +99713,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -101097,7 +101081,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_28"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_26"
@@ -102067,7 +102051,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -103599,7 +103586,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_29"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_27"
@@ -104408,7 +104395,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -105980,7 +105970,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_30"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_28"
@@ -106825,7 +106815,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -106866,10 +106859,7 @@
           "sessions": {
             "$ref": "#/components/schemas/customerCommunication_SessionCreateNestedManyWithoutUserInput"
           }
-        },
-        "required": [
-          "userType"
-        ]
+        }
       },
       "customerCommunication_InteractionCreateNestedManyWithoutUserInput_8": {
         "additionalProperties": false,
@@ -108541,7 +108531,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_31"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_29"
@@ -109570,7 +109560,10 @@
             ]
           },
           "userType": {
-            "type": "string",
+            "type": [
+              "string",
+              "null"
+            ],
             "x-graphql-enum-name": "customerCommunication_UserType",
             "enum": [
               "CALL_CENTER_REP",
@@ -111191,7 +111184,7 @@
             "$ref": "#/components/schemas/customerCommunication_DateTimeFilter_32"
           },
           "userType": {
-            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeFilter"
+            "$ref": "#/components/schemas/customerCommunication_EnumUserTypeNullableFilter"
           },
           "stripeCustomerId": {
             "$ref": "#/components/schemas/customerCommunication_StringNullableFilter_30"

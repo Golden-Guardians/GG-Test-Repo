@@ -6740,7 +6740,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -6778,7 +6778,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -7776,7 +7776,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -7814,7 +7814,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -8320,7 +8320,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -8392,7 +8392,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -8830,7 +8830,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -8964,7 +8964,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -9834,7 +9834,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -9872,7 +9872,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -10317,7 +10317,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -10355,7 +10355,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -10931,7 +10931,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -11194,7 +11194,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -11232,7 +11232,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -11808,7 +11808,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -12623,7 +12623,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -12661,7 +12661,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -13186,7 +13186,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -13500,7 +13500,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -13538,7 +13538,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -14063,7 +14063,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -14269,7 +14269,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -14341,7 +14341,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -14955,7 +14955,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -15146,7 +15146,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -15218,7 +15218,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -15832,7 +15832,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -15972,7 +15972,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -16106,7 +16106,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -16759,7 +16759,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -16895,7 +16895,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -17029,7 +17029,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -17682,7 +17682,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -18344,7 +18344,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -18382,7 +18382,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -18906,7 +18906,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -19265,7 +19265,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -19303,7 +19303,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -19827,7 +19827,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -20101,7 +20101,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -20139,7 +20139,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -20717,7 +20717,7 @@ const jsonSchema: Schema = {
 											},
 										},
 										additionalProperties: false,
-										required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+										required: ["id", "createdAt", "updatedAt", "_count"],
 									},
 								},
 								additionalProperties: false,
@@ -21280,7 +21280,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -21318,7 +21318,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -21845,7 +21845,7 @@ const jsonSchema: Schema = {
 											},
 										},
 										additionalProperties: false,
-										required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+										required: ["id", "createdAt", "updatedAt", "_count"],
 									},
 									Widget: {
 										type: "object",
@@ -22053,7 +22053,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -22125,7 +22125,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -22741,7 +22741,7 @@ const jsonSchema: Schema = {
 											},
 										},
 										additionalProperties: false,
-										required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+										required: ["id", "createdAt", "updatedAt", "_count"],
 									},
 								},
 								additionalProperties: false,
@@ -22883,7 +22883,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -23017,7 +23017,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -23672,7 +23672,7 @@ const jsonSchema: Schema = {
 									},
 								},
 								additionalProperties: false,
-								required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+								required: ["id", "createdAt", "updatedAt", "_count"],
 							},
 						},
 					},
@@ -24181,7 +24181,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -24219,7 +24219,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -24745,7 +24745,7 @@ const jsonSchema: Schema = {
 														},
 													},
 													additionalProperties: false,
-													required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+													required: ["id", "createdAt", "updatedAt", "_count"],
 												},
 											},
 											additionalProperties: false,
@@ -25043,7 +25043,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -25081,7 +25081,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -25529,7 +25529,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -25814,7 +25814,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -25852,7 +25852,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -26300,7 +26300,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -26676,7 +26676,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -26714,7 +26714,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -27215,7 +27215,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -27484,7 +27484,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -27522,7 +27522,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -28023,7 +28023,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -28328,7 +28328,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -28366,7 +28366,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -28874,7 +28874,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -29164,7 +29164,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -29202,7 +29202,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -29710,7 +29710,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -30025,7 +30025,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -30063,7 +30063,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -30610,7 +30610,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -30921,7 +30921,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -30959,7 +30959,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -31506,7 +31506,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -31910,7 +31910,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -31948,7 +31948,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -32488,7 +32488,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -32817,7 +32817,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -32855,7 +32855,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -33395,7 +33395,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -33629,7 +33629,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -33667,7 +33667,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -35441,7 +35441,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -35479,7 +35479,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -36286,7 +36286,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -36358,7 +36358,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -36903,7 +36903,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -37037,7 +37037,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -37562,7 +37562,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableWithAggregatesFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeWithAggregatesFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeWithAggregatesFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeWithAggregatesFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableWithAggregatesFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableWithAggregatesFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableWithAggregatesFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableWithAggregatesFilter" },
@@ -37733,7 +37733,7 @@ const jsonSchema: Schema = {
 						_max: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeWithAggregatesFilter: {
+				customerCommunication_EnumUserTypeNullableWithAggregatesFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -37763,12 +37763,12 @@ const jsonSchema: Schema = {
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
-						_count: { $ref: "#/definitions/customerCommunication_NestedIntFilter" },
-						_min: { $ref: "#/definitions/customerCommunication_NestedEnumUserTypeFilter" },
-						_max: { $ref: "#/definitions/customerCommunication_NestedEnumUserTypeFilter" },
+						_count: { $ref: "#/definitions/customerCommunication_NestedIntNullableFilter" },
+						_min: { $ref: "#/definitions/customerCommunication_NestedEnumUserTypeNullableFilter" },
+						_max: { $ref: "#/definitions/customerCommunication_NestedEnumUserTypeNullableFilter" },
 					},
 				},
-				customerCommunication_NestedEnumUserTypeFilter: {
+				customerCommunication_NestedEnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -37898,7 +37898,7 @@ const jsonSchema: Schema = {
 									},
 								},
 								additionalProperties: false,
-								required: ["id", "createdAt", "updatedAt", "userType"],
+								required: ["id", "createdAt", "updatedAt"],
 							},
 						},
 					},
@@ -38512,7 +38512,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -38550,7 +38550,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -60720,7 +60720,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -60923,7 +60923,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -61318,7 +61318,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -61356,7 +61356,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -61794,7 +61794,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -62005,7 +62005,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -62364,7 +62364,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -62402,7 +62402,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -62883,7 +62883,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -63009,7 +63009,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -63434,7 +63434,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -63472,7 +63472,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -63960,7 +63960,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -64071,7 +64071,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -64083,7 +64083,6 @@ const jsonSchema: Schema = {
 						accounts: { $ref: "#/definitions/customerCommunication_AccountCreateNestedManyWithoutUserInput" },
 						sessions: { $ref: "#/definitions/customerCommunication_SessionCreateNestedManyWithoutUserInput" },
 					},
-					required: ["userType"],
 				},
 				customerCommunication_InteractionCreateNestedManyWithoutUserInput: {
 					additionalProperties: false,
@@ -64530,7 +64529,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -64568,7 +64567,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -65090,7 +65089,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -65298,7 +65297,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -65710,7 +65709,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -65748,7 +65747,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -66263,7 +66262,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -66465,7 +66464,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -66503,7 +66502,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -67108,7 +67107,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -67146,7 +67145,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -67418,7 +67417,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -67490,7 +67489,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -67752,7 +67751,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -67886,7 +67885,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -68489,7 +68488,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -68527,7 +68526,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -68944,7 +68943,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -68982,7 +68981,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -69430,7 +69429,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -69745,7 +69744,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -69783,7 +69782,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -70284,7 +70283,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -70589,7 +70588,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -70627,7 +70626,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -71135,7 +71134,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -71450,7 +71449,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -71488,7 +71487,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -72035,7 +72034,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -72394,7 +72393,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -72432,7 +72431,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -72972,7 +72971,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -73248,7 +73247,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -73286,7 +73285,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -73963,7 +73962,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -74001,7 +74000,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -74296,7 +74295,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -74368,7 +74367,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -74680,7 +74679,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -74814,7 +74813,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -75457,7 +75456,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -75495,7 +75494,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -75761,7 +75760,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -76426,7 +76425,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -76464,7 +76463,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -76902,7 +76901,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -77137,7 +77136,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -77760,7 +77759,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -77798,7 +77797,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -78279,7 +78278,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -78417,7 +78416,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -79176,7 +79175,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -79214,7 +79213,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -79674,7 +79673,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -80607,7 +80606,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -80645,7 +80644,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -81139,7 +81138,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -81392,7 +81391,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -82184,7 +82183,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -82222,7 +82221,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -82709,7 +82708,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
@@ -82843,7 +82842,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -83550,7 +83549,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -83588,7 +83587,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -84026,7 +84025,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -84284,7 +84283,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -84961,7 +84960,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -84999,7 +84998,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -85480,7 +85479,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 								Widget: {
 									type: "object",
@@ -85613,7 +85612,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -86398,7 +86397,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -86436,7 +86435,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -86896,7 +86895,7 @@ const jsonSchema: Schema = {
 										},
 									},
 									additionalProperties: false,
-									required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+									required: ["id", "createdAt", "updatedAt", "_count"],
 								},
 							},
 							additionalProperties: false,
@@ -87019,7 +87018,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -87031,7 +87030,6 @@ const jsonSchema: Schema = {
 						accounts: { $ref: "#/definitions/customerCommunication_AccountCreateNestedManyWithoutUserInput" },
 						sessions: { $ref: "#/definitions/customerCommunication_SessionCreateNestedManyWithoutUserInput" },
 					},
-					required: ["userType"],
 				},
 				customerCommunication_InteractionCreateNestedManyWithoutUserInput: {
 					additionalProperties: false,
@@ -87886,7 +87884,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -87924,7 +87922,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -88418,7 +88416,7 @@ const jsonSchema: Schema = {
 								},
 							},
 							additionalProperties: false,
-							required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+							required: ["id", "createdAt", "updatedAt", "_count"],
 						},
 					},
 					additionalProperties: false,
@@ -88671,7 +88669,7 @@ const jsonSchema: Schema = {
 						createdAt: { type: ["string", "null"] },
 						updatedAt: { type: ["string", "null"] },
 						userType: {
-							type: "string",
+							type: ["string", "null"],
 							"x-graphql-enum-name": "customerCommunication_UserType",
 							enum: ["CALL_CENTER_REP", "CUSTOMER", "FINANCIAL_REP"],
 						},
@@ -89493,7 +89491,7 @@ const jsonSchema: Schema = {
 						image: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						createdAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
 						updatedAt: { $ref: "#/definitions/customerCommunication_DateTimeFilter" },
-						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeFilter" },
+						userType: { $ref: "#/definitions/customerCommunication_EnumUserTypeNullableFilter" },
 						stripeCustomerId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripeSubscriptionId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
 						stripePriceId: { $ref: "#/definitions/customerCommunication_StringNullableFilter" },
@@ -89531,7 +89529,7 @@ const jsonSchema: Schema = {
 						not: { $ref: "#/definitions/customerCommunication_NestedDateTimeNullableFilter" },
 					},
 				},
-				customerCommunication_EnumUserTypeFilter: {
+				customerCommunication_EnumUserTypeNullableFilter: {
 					additionalProperties: false,
 					type: ["object", "null"],
 					properties: {
@@ -90018,7 +90016,7 @@ const jsonSchema: Schema = {
 													},
 												},
 												additionalProperties: false,
-												required: ["id", "createdAt", "updatedAt", "userType", "_count"],
+												required: ["id", "createdAt", "updatedAt", "_count"],
 											},
 										},
 										additionalProperties: false,
