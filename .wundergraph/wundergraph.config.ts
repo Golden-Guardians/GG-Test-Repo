@@ -31,25 +31,16 @@ const customerCommunicationHub = introspect.prisma({
 const clientPortal = introspect.planetscale({
   apiNamespace: "clientPortal",
   databaseURL: new EnvironmentVariable("CLIENT_PORTAL_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5,
-  },
 })
 
 const gpac = introspect.planetscale({
   apiNamespace: "gpac",
   databaseURL: new EnvironmentVariable("GPAC_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5,
-  },
 })
 
 const guardianOnline = introspect.planetscale({
   apiNamespace: "guardianOnline",
   databaseURL: new EnvironmentVariable("GUARDIAN_ONLINE_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5,
-  },
 })
 
 const livingBalanceSheet = introspect.planetscale({
@@ -60,9 +51,6 @@ const livingBalanceSheet = introspect.planetscale({
 const smartOffice = introspect.planetscale({
   apiNamespace: "smartOffice",
   databaseURL: new EnvironmentVariable("SMART_OFFICE_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5,
-  },
 })
 
 configureWunderGraphApplication({

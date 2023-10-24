@@ -4,7 +4,12 @@ var import_sdk3 = require("@wundergraph/sdk");
 // wundergraph.generate.ts
 var import_sdk = require("@wundergraph/sdk");
 var wundergraph_generate_default = (0, import_sdk.configureWunderGraphGeneration)({
-  codeGenerators: [],
+  codeGenerators: [
+    {
+      templates: [import_sdk.templates.typescript.client],
+      path: "../generated"
+    }
+  ],
   operationsGenerator: (config) => {
     config.includeNamespaces(
       "customerCommunication",
@@ -82,24 +87,15 @@ var customerCommunicationHub = import_sdk3.introspect.prisma({
 });
 var clientPortal = import_sdk3.introspect.planetscale({
   apiNamespace: "clientPortal",
-  databaseURL: new import_sdk3.EnvironmentVariable("CLIENT_PORTAL_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5
-  }
+  databaseURL: new import_sdk3.EnvironmentVariable("CLIENT_PORTAL_DATABASE_URL")
 });
 var gpac = import_sdk3.introspect.planetscale({
   apiNamespace: "gpac",
-  databaseURL: new import_sdk3.EnvironmentVariable("GPAC_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5
-  }
+  databaseURL: new import_sdk3.EnvironmentVariable("GPAC_DATABASE_URL")
 });
 var guardianOnline = import_sdk3.introspect.planetscale({
   apiNamespace: "guardianOnline",
-  databaseURL: new import_sdk3.EnvironmentVariable("GUARDIAN_ONLINE_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5
-  }
+  databaseURL: new import_sdk3.EnvironmentVariable("GUARDIAN_ONLINE_DATABASE_URL")
 });
 var livingBalanceSheet = import_sdk3.introspect.planetscale({
   apiNamespace: "livingBalanceSheet",
@@ -107,10 +103,7 @@ var livingBalanceSheet = import_sdk3.introspect.planetscale({
 });
 var smartOffice = import_sdk3.introspect.planetscale({
   apiNamespace: "smartOffice",
-  databaseURL: new import_sdk3.EnvironmentVariable("SMART_OFFICE_DATABASE_URL"),
-  introspection: {
-    pollingIntervalSeconds: 5
-  }
+  databaseURL: new import_sdk3.EnvironmentVariable("SMART_OFFICE_DATABASE_URL")
 });
 (0, import_sdk3.configureWunderGraphApplication)({
   apis: [

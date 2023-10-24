@@ -1,7 +1,12 @@
-import { configureWunderGraphGeneration } from "@wundergraph/sdk"
+import { configureWunderGraphGeneration, templates } from "@wundergraph/sdk"
 
 export default configureWunderGraphGeneration({
-  codeGenerators: [],
+  codeGenerators: [
+    {
+      templates: [templates.typescript.client],
+      path: "../generated",
+    },
+  ],
   operationsGenerator: (config) => {
     config.includeNamespaces(
       "customerCommunication",

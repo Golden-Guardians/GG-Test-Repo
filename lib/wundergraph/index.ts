@@ -1,4 +1,4 @@
-import { createClient } from "@/.wundergraph/generated/client"
+import { createClient } from "@/generated/client"
 
 export const client = createClient({
   baseURL:
