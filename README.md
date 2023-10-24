@@ -11,14 +11,12 @@ A Next.js project configured to use SST for AWS deployments.
 - [gg-test-repo](#gg-test-repo)
   - [Table of Contents](#table-of-contents)
   - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Development](#development)
-  - [Features](#features)
+  - [Running Locally](#running-locally)
+  - [How to add more features with SST](#how-to-add-more-features-with-sst)
     - [File Uploads](#file-uploads)
     - [Cron Job](#cron-job)
   - [Deployment](#deployment)
-  - [Features](#features-1)
-  - [Running Locally](#running-locally)
+  - [Features](#features)
 
 ## Prerequisites
 
