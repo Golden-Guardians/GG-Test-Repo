@@ -27,38 +27,41 @@ A Next.js project configured to use SST for AWS deployments.
 - AWS account with configured AWS credentials
 - Install pnpm (`npm install -g pnpm`)
 
-## Installation
+## Running Locally
 
-1. Create a new Next.js app:
+1. Install dependencies using pnpm:
 
-   ```bash
-   pnpm create next-app
-   ```
+```sh
+pnpm install
+```
 
-2. Initialize SST in the root directory of your project:
+2. Copy `.env.example` to `.env.local` and update the variables.
 
-   ```bash
-   cd your-app-directory
-   pnpm create sst
-   ```
+```sh
+cp .env.example .env.local
+```
 
-## Development
+3. Start the development server:
 
-1. Start the local SST development environment:
+```sh
+pnpm dev
+```
 
-   ```bash
-   pnpm sst dev
-   ```
+4. Start WunderGraph:
 
-2. Start the Next.js development server:
+```sh
+pnpm wunderctl:up
+```
 
-   ```bash
-   pnpm run dev
-   ```
+> Note: Graphql end point is available at http://localhost:9991/graphql
 
-> Note: When running `sst dev`, SST does not deploy your Next.js app. You are meant to run Next.js locally.
+5. View/edit the database:
 
-## Features
+```sh
+pnpm prisma-studio
+```
+
+## How to add more features with SST
 
 ### File Uploads
 
@@ -122,37 +125,3 @@ pnpm sst deploy --stage prod
 - Styled using **Tailwind CSS**
 - Validations using **Zod**
 - Written in **TypeScript**
-
-## Running Locally
-
-1. Install dependencies using pnpm:
-
-```sh
-pnpm install
-```
-
-2. Copy `.env.example` to `.env.local` and update the variables.
-
-```sh
-cp .env.example .env.local
-```
-
-3. Start the development server:
-
-```sh
-pnpm dev
-```
-
-4. Start WunderGraph:
-
-```sh
-pnpm wunderctl:up
-```
-
-> Note: Graphql end point is available at http://localhost:9991/graphql
-
-5. View/edit the database:
-
-```sh
-pnpm prisma-studio
-```
