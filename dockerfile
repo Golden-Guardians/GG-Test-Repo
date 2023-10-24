@@ -3,6 +3,12 @@ FROM docker.io/node:18-alpine
 # These are the public node url and the database url of the wundergraph node you want to include in the generated client
 ARG wg_public_node_url
 ARG DATABASE_URL
+ARG SMART_OFFICE_DATABASE_URL
+ARG LIVING_BALANCE_DATABASE_URL
+ARG GUARDIAN_ONLINE_DATABASE_URL
+ARG GPAC_DATABASE_URL
+ARG CLIENT_PORTAL_DATABASE_URL
+
 
 # Set environment variables
 ENV DATABASE_URL=$DATABASE_URL
