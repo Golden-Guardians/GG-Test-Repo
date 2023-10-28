@@ -1146,9 +1146,9 @@ export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = false;
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "bfc869cb",
+	applicationHash: "bafd3c88",
 	baseURL: "https://d2vp238439bu7d.cloudfront.net",
-	sdkVersion: "0.179.3",
+	sdkVersion: "0.180.1",
 };
 
 export const operationMetadata: OperationMetadata = {

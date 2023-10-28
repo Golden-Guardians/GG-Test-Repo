@@ -1,3 +1,5 @@
+"use strict";
+
 // wundergraph.config.ts
 var import_sdk3 = require("@wundergraph/sdk");
 
@@ -35,8 +37,8 @@ var wundergraph_operations_default = (0, import_sdk2.configureWunderGraphOperati
       ...config,
       caching: {
         enable: false,
-        staleWhileRevalidate: 5,
-        maxAge: 10,
+        staleWhileRevalidate: 60,
+        maxAge: 60,
         public: true
       },
       liveQuery: {
