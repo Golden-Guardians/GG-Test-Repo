@@ -1,25 +1,38 @@
-'use client'
+"use client"
 
-import { useRef, useState, useEffect } from 'react'
-import { useTheme } from 'next-themes'
-import revolutIcon from '@/public/images/company-icon-01.svg'
-import hsbcIcon from '@/public/images/company-icon-02.svg'
-import qontoIcon from '@/public/images/company-icon-03.svg'
-import n26Icon from '@/public/images/company-icon-04.svg'
+import revolutIcon from "@/app/images/company-icon-01.svg"
+import hsbcIcon from "@/app/images/company-icon-02.svg"
+import qontoIcon from "@/app/images/company-icon-03.svg"
+import n26Icon from "@/app/images/company-icon-04.svg"
+import { useTheme } from "next-themes"
+import { useEffect, useRef, useState } from "react"
 
-import { chartColors } from '@/components/charts/chartjs-config'
-import '@/components/charts/chartjs-config'
+import "@/components/charts/chartjs-config"
+import { chartColors } from "@/components/charts/chartjs-config"
+import type { ChartData } from "chart.js"
 import {
-  Chart, BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend,
-} from 'chart.js'
-import type { ChartData } from 'chart.js'
-import 'chartjs-adapter-moment'
+  BarController,
+  BarElement,
+  CategoryScale,
+  Chart,
+  Legend,
+  LinearScale,
+  Tooltip,
+} from "chart.js"
+import "chartjs-adapter-moment"
 
 // Import utilities
-import { tailwindConfig, formatValue } from '@/components/utils/utils'
-import { StaticImageData } from 'next/image'
+import { formatValue, tailwindConfig } from "@/components/utils/utils"
+import { StaticImageData } from "next/image"
 
-Chart.register(BarController, BarElement, LinearScale, CategoryScale, Tooltip, Legend)
+Chart.register(
+  BarController,
+  BarElement,
+  LinearScale,
+  CategoryScale,
+  Tooltip,
+  Legend
+)
 
 interface BarChart06Props {
   data: ChartData
@@ -27,31 +40,32 @@ interface BarChart06Props {
   height: number
 }
 
-export default function BarChart06({
-  data,
-  width,
-  height
-}: BarChart06Props) {
-
+export default function BarChart06({ data, width, height }: BarChart06Props) {
   const [chart, setChart] = useState<Chart | null>(null)
   const canvas = useRef<HTMLCanvasElement>(null)
   const legend = useRef<HTMLUListElement>(null)
   const { theme } = useTheme()
-  const darkMode = theme === 'dark'
-  const { textColor, gridColor, tooltipBodyColor, tooltipBgColor, tooltipBorderColor } = chartColors 
+  const darkMode = theme === "dark"
+  const {
+    textColor,
+    gridColor,
+    tooltipBodyColor,
+    tooltipBgColor,
+    tooltipBorderColor,
+  } = chartColors
 
   const images: StaticImageData[] = [revolutIcon, hsbcIcon, qontoIcon, n26Icon]
   const imageEls: HTMLImageElement[] = []
 
-  useEffect(() => {    
+  useEffect(() => {
     const ctx = canvas.current
     if (!ctx) return
-    
+
     const newChart = new Chart(ctx, {
-      type: 'bar',
+      type: "bar",
       data: data,
       options: {
-        indexAxis: 'y',
+        indexAxis: "y",
         layout: {
           padding: {
             top: 12,
@@ -79,7 +93,7 @@ export default function BarChart06({
             },
             ticks: {
               maxTicksLimit: 3,
-              align: 'end',
+              align: "end",
               callback: (value) => formatValue(+value),
               color: darkMode ? textColor.dark : textColor.light,
             },
@@ -94,17 +108,23 @@ export default function BarChart06({
           },
           tooltip: {
             callbacks: {
-              title: () => '', // Disable tooltip title
+              title: () => "", // Disable tooltip title
               label: (context) => formatValue(context.parsed.x),
             },
-            bodyColor: darkMode ? tooltipBodyColor.dark : tooltipBodyColor.light,
-            backgroundColor: darkMode ? tooltipBgColor.dark : tooltipBgColor.light,
-            borderColor: darkMode ? tooltipBorderColor.dark : tooltipBorderColor.light,              
+            bodyColor: darkMode
+              ? tooltipBodyColor.dark
+              : tooltipBodyColor.light,
+            backgroundColor: darkMode
+              ? tooltipBgColor.dark
+              : tooltipBgColor.light,
+            borderColor: darkMode
+              ? tooltipBorderColor.dark
+              : tooltipBorderColor.light,
           },
         },
         interaction: {
           intersect: false,
-          mode: 'nearest',
+          mode: "nearest",
         },
         animation: {
           duration: 500,
@@ -114,7 +134,7 @@ export default function BarChart06({
       },
       plugins: [
         {
-          id: 'htmlLegend',
+          id: "htmlLegend",
           afterUpdate(c, args, options) {
             const ul = legend.current
             if (!ul) return
@@ -125,32 +145,36 @@ export default function BarChart06({
             // Reuse the built-in legendItems generator
             const items = c.options.plugins?.legend?.labels?.generateLabels?.(c)
             items?.forEach((item) => {
-              const li = document.createElement('li')
+              const li = document.createElement("li")
               li.style.marginRight = tailwindConfig.theme.margin[4]
               // Button element
-              const button = document.createElement('button')
-              button.style.display = 'inline-flex'
-              button.style.alignItems = 'center'
-              button.style.opacity = item.hidden ? '.3' : ''
+              const button = document.createElement("button")
+              button.style.display = "inline-flex"
+              button.style.alignItems = "center"
+              button.style.opacity = item.hidden ? ".3" : ""
               button.onclick = () => {
-                c.setDatasetVisibility(item.datasetIndex!, !c.isDatasetVisible(item.datasetIndex!))
+                c.setDatasetVisibility(
+                  item.datasetIndex!,
+                  !c.isDatasetVisible(item.datasetIndex!)
+                )
                 c.update()
               }
               // Color box
-              const box = document.createElement('span')
-              box.style.display = 'block'
+              const box = document.createElement("span")
+              box.style.display = "block"
               box.style.width = tailwindConfig.theme.width[3]
               box.style.height = tailwindConfig.theme.height[3]
               box.style.borderRadius = tailwindConfig.theme.borderRadius.full
               box.style.marginRight = tailwindConfig.theme.margin[2]
-              box.style.borderWidth = '3px'
+              box.style.borderWidth = "3px"
               box.style.borderColor = item.fillStyle as string
-              box.style.pointerEvents = 'none'
+              box.style.pointerEvents = "none"
               // Label
-              const label = document.createElement('span')
-              label.classList.add('text-slate-500', 'dark:text-slate-400')
+              const label = document.createElement("span")
+              label.classList.add("text-slate-500", "dark:text-slate-400")
               label.style.fontSize = tailwindConfig.theme.fontSize.sm[0]
-              label.style.lineHeight = tailwindConfig.theme.fontSize.sm[1].lineHeight
+              label.style.lineHeight =
+                tailwindConfig.theme.fontSize.sm[1].lineHeight
               const labelText = document.createTextNode(item.text)
               label.appendChild(labelText)
               li.appendChild(button)
@@ -159,7 +183,7 @@ export default function BarChart06({
               ul.appendChild(li)
             })
           },
-          beforeInit() {            
+          beforeInit() {
             images.forEach((image) => {
               const img = new Image()
               img.src = image.src
@@ -197,8 +221,8 @@ export default function BarChart06({
       chart.options.plugins!.tooltip!.backgroundColor = tooltipBgColor.light
       chart.options.plugins!.tooltip!.borderColor = tooltipBorderColor.light
     }
-    chart.update('none')
-  }, [theme])    
+    chart.update("none")
+  }, [theme])
 
   return (
     <>

@@ -1,31 +1,55 @@
-import User01 from '@/public/images/user-36-01.jpeg'
-import User02 from '@/public/images/user-36-02.jpeg'
-import User03 from '@/public/images/user-36-03.jpeg'
-import User04 from '@/public/images/user-36-04.jpeg'
-import Image from 'next/image'
-import Link from 'next/link'
+import User01 from "@/app/images/user-36-01.jpg"
+import User02 from "@/app/images/user-36-02.jpg"
+import User03 from "@/app/images/user-36-03.jpg"
+import User04 from "@/app/images/user-36-04.jpg"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function DashboardAvatars() {
   return (
     <ul className="-ml-px mb-8 flex flex-wrap justify-center -space-x-3 sm:mb-0 sm:justify-start">
       <li>
         <Link className="block" href="#0">
-          <Image className="h-9 w-9 rounded-full" src={User01} width={36} height={36} alt="User 01" />
+          <Image
+            className="h-9 w-9 rounded-full"
+            src={User01}
+            width={36}
+            height={36}
+            alt="User 01"
+          />
         </Link>
       </li>
       <li>
         <Link className="block" href="#0">
-          <Image className="h-9 w-9 rounded-full" src={User02} width={36} height={36} alt="User 02" />
+          <Image
+            className="h-9 w-9 rounded-full"
+            src={User02}
+            width={36}
+            height={36}
+            alt="User 02"
+          />
         </Link>
       </li>
       <li>
         <Link className="block" href="#0">
-          <Image className="h-9 w-9 rounded-full" src={User03} width={36} height={36} alt="User 03" />
+          <Image
+            className="h-9 w-9 rounded-full"
+            src={User03}
+            width={36}
+            height={36}
+            alt="User 03"
+          />
         </Link>
       </li>
       <li>
         <Link className="block" href="#0">
-          <Image className="h-9 w-9 rounded-full" src={User04} width={36} height={36} alt="User 04" />
+          <Image
+            className="h-9 w-9 rounded-full"
+            src={User04}
+            width={36}
+            height={36}
+            alt="User 04"
+          />
         </Link>
       </li>
       <li>

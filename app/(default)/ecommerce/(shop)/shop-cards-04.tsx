@@ -1,8 +1,8 @@
-import AppImage13 from '@/public/images/applications-image-13.jpeg'
-import AppImage14 from '@/public/images/applications-image-14.jpeg'
-import AppImage15 from '@/public/images/applications-image-15.jpeg'
-import AppImage16 from '@/public/images/applications-image-16.jpeg'
-import Image from 'next/image'
+import AppImage13 from "@/app/images/applications-image-13.jpg"
+import AppImage14 from "@/app/images/applications-image-14.jpg"
+import AppImage15 from "@/app/images/applications-image-15.jpg"
+import AppImage16 from "@/app/images/applications-image-16.jpg"
+import Image from "next/image"
 
 export default function ShopCards04() {
   return (
@@ -12,7 +12,13 @@ export default function ShopCards04() {
         <div className="flex h-full flex-col">
           {/* Image */}
           <div className="relative">
-            <Image className="w-full" src={AppImage13} width={286} height={160} alt="Application 13" />
+            <Image
+              className="w-full"
+              src={AppImage13}
+              width={286}
+              height={160}
+              alt="Application 13"
+            />
             {/* Like button */}
             <button className="absolute right-0 top-0 mr-4 mt-4">
               <div className="rounded-full bg-slate-900 bg-opacity-60 text-slate-100">
@@ -29,26 +35,48 @@ export default function ShopCards04() {
             <div className="grow">
               {/* Header */}
               <header className="mb-4">
-                <a className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600" href="#0">Funding</a>
-                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">SwiftNight Home Plus</h3>
-                <div className="text-sm">Lorem ipsum is placeholder text commonly used.</div>
+                <a
+                  className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600"
+                  href="#0"
+                >
+                  Funding
+                </a>
+                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">
+                  SwiftNight Home Plus
+                </h3>
+                <div className="text-sm">
+                  Lorem ipsum is placeholder text commonly used.
+                </div>
               </header>
               {/* Info */}
               <div className="mb-5">
                 <div className="mb-2 flex justify-between space-x-2 text-sm">
-                  <div><span className="font-semibold text-slate-800 dark:text-slate-100">$789,784</span> <span className="italic">raised</span></div>
+                  <div>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">
+                      $789,784
+                    </span>{" "}
+                    <span className="italic">raised</span>
+                  </div>
                   <div>64%</div>
                 </div>
                 {/* Bar */}
                 <div className="relative mb-2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div className="absolute inset-y-0 left-0 rounded-full bg-emerald-500" style={{width: '55%'}}></div>
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-emerald-500"
+                    style={{ width: "55%" }}
+                  ></div>
                 </div>
                 <div className="text-xs font-medium">30 Days Left</div>
               </div>
             </div>
             {/* Card footer */}
             <div>
-              <a className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600" href="#0">Back It</a>
+              <a
+                className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600"
+                href="#0"
+              >
+                Back It
+              </a>
             </div>
           </div>
         </div>
@@ -59,7 +87,13 @@ export default function ShopCards04() {
         <div className="flex h-full flex-col">
           {/* Image */}
           <div className="relative">
-            <Image className="w-full" src={AppImage14} width={286} height={160} alt="Application 14" />
+            <Image
+              className="w-full"
+              src={AppImage14}
+              width={286}
+              height={160}
+              alt="Application 14"
+            />
             {/* Like button */}
             <button className="absolute right-0 top-0 mr-4 mt-4">
               <div className="rounded-full bg-slate-900 bg-opacity-60 text-slate-100">
@@ -76,26 +110,48 @@ export default function ShopCards04() {
             <div className="grow">
               {/* Header */}
               <header className="mb-4">
-                <a className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600" href="#0">Funding</a>
-                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">SwiftNight Home Plus</h3>
-                <div className="text-sm">Lorem ipsum is placeholder text commonly used.</div>
+                <a
+                  className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600"
+                  href="#0"
+                >
+                  Funding
+                </a>
+                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">
+                  SwiftNight Home Plus
+                </h3>
+                <div className="text-sm">
+                  Lorem ipsum is placeholder text commonly used.
+                </div>
               </header>
               {/* Info */}
               <div className="mb-5">
                 <div className="mb-2 flex justify-between space-x-2 text-sm">
-                  <div><span className="font-semibold text-slate-800 dark:text-slate-100">$789,784</span> <span className="italic">raised</span></div>
+                  <div>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">
+                      $789,784
+                    </span>{" "}
+                    <span className="italic">raised</span>
+                  </div>
                   <div>64%</div>
                 </div>
                 {/* Bar */}
                 <div className="relative mb-2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div className="absolute inset-y-0 left-0 rounded-full bg-emerald-500" style={{width: '55%'}}></div>
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-emerald-500"
+                    style={{ width: "55%" }}
+                  ></div>
                 </div>
                 <div className="text-xs font-medium">30 Days Left</div>
               </div>
             </div>
             {/* Card footer */}
             <div>
-              <a className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600" href="#0">Back It</a>
+              <a
+                className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600"
+                href="#0"
+              >
+                Back It
+              </a>
             </div>
           </div>
         </div>
@@ -106,7 +162,13 @@ export default function ShopCards04() {
         <div className="flex h-full flex-col">
           {/* Image */}
           <div className="relative">
-            <Image className="w-full" src={AppImage15} width={286} height={160} alt="Application 15" />
+            <Image
+              className="w-full"
+              src={AppImage15}
+              width={286}
+              height={160}
+              alt="Application 15"
+            />
             {/* Like button */}
             <button className="absolute right-0 top-0 mr-4 mt-4">
               <div className="rounded-full bg-slate-900 bg-opacity-60 text-slate-100">
@@ -123,26 +185,48 @@ export default function ShopCards04() {
             <div className="grow">
               {/* Header */}
               <header className="mb-4">
-                <a className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600" href="#0">Funding</a>
-                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">SwiftNight Home Plus</h3>
-                <div className="text-sm">Lorem ipsum is placeholder text commonly used.</div>
+                <a
+                  className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600"
+                  href="#0"
+                >
+                  Funding
+                </a>
+                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">
+                  SwiftNight Home Plus
+                </h3>
+                <div className="text-sm">
+                  Lorem ipsum is placeholder text commonly used.
+                </div>
               </header>
               {/* Info */}
               <div className="mb-5">
                 <div className="mb-2 flex justify-between space-x-2 text-sm">
-                  <div><span className="font-semibold text-slate-800 dark:text-slate-100">$789,784</span> <span className="italic">raised</span></div>
+                  <div>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">
+                      $789,784
+                    </span>{" "}
+                    <span className="italic">raised</span>
+                  </div>
                   <div>64%</div>
                 </div>
                 {/* Bar */}
                 <div className="relative mb-2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div className="absolute inset-y-0 left-0 rounded-full bg-emerald-500" style={{width: '55%'}}></div>
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-emerald-500"
+                    style={{ width: "55%" }}
+                  ></div>
                 </div>
                 <div className="text-xs font-medium">30 Days Left</div>
               </div>
             </div>
             {/* Card footer */}
             <div>
-              <a className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600" href="#0">Back It</a>
+              <a
+                className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600"
+                href="#0"
+              >
+                Back It
+              </a>
             </div>
           </div>
         </div>
@@ -153,7 +237,13 @@ export default function ShopCards04() {
         <div className="flex h-full flex-col">
           {/* Image */}
           <div className="relative">
-            <Image className="w-full" src={AppImage16} width={286} height={160} alt="Application 16" />
+            <Image
+              className="w-full"
+              src={AppImage16}
+              width={286}
+              height={160}
+              alt="Application 16"
+            />
             {/* Like button */}
             <button className="absolute right-0 top-0 mr-4 mt-4">
               <div className="rounded-full bg-slate-900 bg-opacity-60 text-slate-100">
@@ -170,26 +260,48 @@ export default function ShopCards04() {
             <div className="grow">
               {/* Header */}
               <header className="mb-4">
-                <a className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600" href="#0">Funding</a>
-                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">SwiftNight Home Plus</h3>
-                <div className="text-sm">Lorem ipsum is placeholder text commonly used.</div>
+                <a
+                  className="mb-1 text-xs font-semibold uppercase tracking-widest text-emerald-500 hover:text-emerald-600"
+                  href="#0"
+                >
+                  Funding
+                </a>
+                <h3 className="mb-1 text-lg font-semibold text-slate-800 dark:text-slate-100">
+                  SwiftNight Home Plus
+                </h3>
+                <div className="text-sm">
+                  Lorem ipsum is placeholder text commonly used.
+                </div>
               </header>
               {/* Info */}
               <div className="mb-5">
                 <div className="mb-2 flex justify-between space-x-2 text-sm">
-                  <div><span className="font-semibold text-slate-800 dark:text-slate-100">$789,784</span> <span className="italic">raised</span></div>
+                  <div>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">
+                      $789,784
+                    </span>{" "}
+                    <span className="italic">raised</span>
+                  </div>
                   <div>64%</div>
                 </div>
                 {/* Bar */}
                 <div className="relative mb-2 h-2 w-full rounded-full bg-slate-200 dark:bg-slate-700">
-                  <div className="absolute inset-y-0 left-0 rounded-full bg-emerald-500" style={{width: '55%'}}></div>
+                  <div
+                    className="absolute inset-y-0 left-0 rounded-full bg-emerald-500"
+                    style={{ width: "55%" }}
+                  ></div>
                 </div>
                 <div className="text-xs font-medium">30 Days Left</div>
               </div>
             </div>
             {/* Card footer */}
             <div>
-              <a className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600" href="#0">Back It</a>
+              <a
+                className="btn-sm w-full bg-indigo-500 text-white hover:bg-indigo-600"
+                href="#0"
+              >
+                Back It
+              </a>
             </div>
           </div>
         </div>
