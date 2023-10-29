@@ -27,7 +27,7 @@ WORKDIR /app
 COPY package-lock.json package.json /app/
 COPY ./prisma ./prisma
 COPY ./generated ./generated
-RUN pnpm install --prefer-offline --production
+RUN npm install --prefer-offline --omit=dev
 
 # Copy the .wundergraph folder to the image
 COPY .wundergraph ./.wundergraph
