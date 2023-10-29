@@ -1,7 +1,9 @@
 import AppImage01 from "@/app/images/applications-image-01.jpg"
-import AppImage02 from "@/app/images/applications-image-02.jpg"
+import {
+  default as AppImage02,
+  default as AppImage04,
+} from "@/app/images/applications-image-02.jpg"
 import AppImage03 from "@/app/images/applications-image-03.jpg"
-import AppImage04 from "@/app/images/applications-image-04.jpg"
 import Image from "next/image"
 
 export default function ShopCards01() {

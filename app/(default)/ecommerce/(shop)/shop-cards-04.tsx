@@ -1,4 +1,4 @@
-import AppImage13 from "@/app/images/applications-image-13.jpg"
+import AppImage13 from "@/app/images/applications-image-02.jpg"
 import AppImage14 from "@/app/images/applications-image-14.jpg"
 import AppImage15 from "@/app/images/applications-image-15.jpg"
 import AppImage16 from "@/app/images/applications-image-16.jpg"
