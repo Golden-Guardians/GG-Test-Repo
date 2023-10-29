@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { useFlyoutContext } from '@/app/flyout-context'
+import ChatImage from '@/public/images/chat-image.png'
+import User01 from '@/public/images/user-40-11.png'
+import User02 from '@/public/images/user-40-12.png'
 import Image from 'next/image'
-import User01 from '@/public/images/user-40-11.jpg'
-import User02 from '@/public/images/user-40-12.jpg'
-import ChatImage from '@/public/images/chat-image.jpg'
+import { useEffect, useRef } from 'react'
 
 export default function MessagesChat() {
 

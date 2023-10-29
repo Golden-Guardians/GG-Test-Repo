@@ -1,17 +1,17 @@
 'use client'
 
 import { useFlyoutContext } from '@/app/flyout-context'
-import Image from 'next/image'
-import ProfileBg from '@/public/images/profile-bg.jpg'
-import UserAvatar from '@/public/images/user-128-01.jpg'
+import UserImage01 from '@/public/images/avatar-01.png'
+import UserImage02 from '@/public/images/avatar-02.png'
+import UserImage03 from '@/public/images/avatar-03.png'
+import UserImage04 from '@/public/images/avatar-04.png'
+import UserImage05 from '@/public/images/avatar-05.png'
+import UserImage06 from '@/public/images/avatar-06.png'
 import Icon02 from '@/public/images/icon-02.svg'
 import Icon03 from '@/public/images/icon-03.svg'
-import UserImage01 from '@/public/images/avatar-01.jpg'
-import UserImage02 from '@/public/images/avatar-02.jpg'
-import UserImage03 from '@/public/images/avatar-03.jpg'
-import UserImage04 from '@/public/images/avatar-04.jpg'
-import UserImage05 from '@/public/images/avatar-05.jpg'
-import UserImage06 from '@/public/images/avatar-06.jpg'
+import ProfileBg from '@/public/images/profile-bg.png'
+import UserAvatar from '@/public/images/user-128-01.png'
+import Image from 'next/image'
 
 export default function ProfileBody() {
   const { flyoutOpen, setFlyoutOpen } = useFlyoutContext()

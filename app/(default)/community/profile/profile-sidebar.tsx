@@ -1,15 +1,15 @@
 'use client'
 
 import { useFlyoutContext } from '@/app/flyout-context'
-import Image from 'next/image'
+import UserImage01 from '@/public/images/user-32-01.png'
+import UserImage02 from '@/public/images/user-32-02.png'
+import UserImage03 from '@/public/images/user-32-03.png'
+import UserImage04 from '@/public/images/user-32-04.png'
+import UserImage05 from '@/public/images/user-32-05.png'
+import UserImage06 from '@/public/images/user-32-06.png'
+import UserImage08 from '@/public/images/user-32-08.png'
 import ProfileImage from '@/public/images/user-avatar-32.png'
-import UserImage01 from '@/public/images/user-32-01.jpg'
-import UserImage02 from '@/public/images/user-32-02.jpg'
-import UserImage03 from '@/public/images/user-32-03.jpg'
-import UserImage04 from '@/public/images/user-32-04.jpg'
-import UserImage05 from '@/public/images/user-32-05.jpg'
-import UserImage06 from '@/public/images/user-32-06.jpg'
-import UserImage08 from '@/public/images/user-32-08.jpg'
+import Image from 'next/image'
 
 export default function ProfileSidebar() {
   const { flyoutOpen, setFlyoutOpen } = useFlyoutContext()

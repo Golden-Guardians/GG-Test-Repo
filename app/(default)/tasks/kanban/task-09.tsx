@@ -1,5 +1,5 @@
+import UserImage01 from '@/public/images/user-28-12.png'
 import Image from 'next/image'
-import UserImage01 from '@/public/images/user-28-12.jpg'
 
 export default function Task09() {
   return (

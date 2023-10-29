@@ -1,12 +1,12 @@
-import Image from 'next/image'
 import GroupAvatar01 from '@/public/images/group-avatar-01.png'
 import GroupAvatar02 from '@/public/images/group-avatar-02.png'
 import GroupAvatar03 from '@/public/images/group-avatar-03.png'
 import GroupAvatar04 from '@/public/images/group-avatar-04.png'
-import UserImage01 from '@/public/images/user-32-01.jpg'
-import UserImage02 from '@/public/images/user-32-02.jpg'
-import UserImage04 from '@/public/images/user-32-04.jpg'
-import UserImage05 from '@/public/images/user-32-05.jpg'
+import UserImage01 from '@/public/images/user-32-01.png'
+import UserImage02 from '@/public/images/user-32-02.png'
+import UserImage04 from '@/public/images/user-32-04.png'
+import UserImage05 from '@/public/images/user-32-05.png'
+import Image from 'next/image'
 
 export default function FeedRightContent() {
   return (

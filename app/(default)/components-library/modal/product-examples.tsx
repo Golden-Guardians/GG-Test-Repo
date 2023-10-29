@@ -5,7 +5,7 @@ import ModalBasic from '@/components/modal-basic'
 import ModalBlank from '@/components/modal-blank'
 import SearchModal from '@/components/search-modal'
 import AnnouncementIcon from '@/public/images/announcement-icon.svg'
-import ModalImage from '@/public/images/modal-image.jpg'
+import ModalImage from '@/public/images/modal-image.png'
 import Image from 'next/image'
 import { useState } from 'react'
 

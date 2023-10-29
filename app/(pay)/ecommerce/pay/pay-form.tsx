@@ -1,9 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import PayBg from '@/public/images/pay-bg.png'
+import User from '@/public/images/user-64-13.png'
 import Image from 'next/image'
-import PayBg from '@/public/images/pay-bg.jpg'
-import User from '@/public/images/user-64-13.jpg'
+import { useState } from 'react'
 
 export default function PayForm() {
   const [card, setCard] = useState<boolean>(true)

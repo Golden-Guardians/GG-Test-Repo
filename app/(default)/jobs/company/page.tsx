@@ -3,7 +3,7 @@ export const metadata = {
   description: 'Page description',
 }
 
-import CompanyBg from '@/public/images/company-bg.jpg'
+import CompanyBg from '@/public/images/company-bg.png'
 import CompanyImage from '@/public/images/company-icon-01.svg'
 import Image from 'next/image'
 import JobsItem from '../jobs-item'

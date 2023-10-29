@@ -3,9 +3,9 @@ export const metadata = {
   description: 'Page description',
 }
 
-import UserImage05 from '@/public/images/user-32-05.jpg'
-import UserImage07 from '@/public/images/user-32-07.jpg'
-import UserImage08 from '@/public/images/user-32-08.jpg'
+import UserImage05 from '@/public/images/user-32-05.png'
+import UserImage07 from '@/public/images/user-32-07.png'
+import UserImage08 from '@/public/images/user-32-08.png'
 import Image from 'next/image'
 
 export default function TasksList() {

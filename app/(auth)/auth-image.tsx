@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import AuthBg from '@/public/images/auth-image.jpg'
 import AuthDecoration from '@/public/images/auth-decoration.png'
+import AuthBg from '@/public/images/auth-image.png'
+import Image from 'next/image'
 
 export default function AuthImage() {
   return (

@@ -1,8 +1,8 @@
-import Link from 'next/link'
+import Related01 from '@/public/images/related-product-01.png'
+import Related02 from '@/public/images/related-product-02.png'
+import Related03 from '@/public/images/related-product-03.png'
 import Image from 'next/image'
-import Related01 from '@/public/images/related-product-01.jpg'
-import Related02 from '@/public/images/related-product-02.jpg'
-import Related03 from '@/public/images/related-product-03.jpg'
+import Link from 'next/link'
 
 export default function CartItems() {
   return (

@@ -3,12 +3,12 @@ export const metadata = {
   description: 'Page description',
 }
 
-import Avatar01 from '@/public/images/avatar-01.jpg'
-import Avatar02 from '@/public/images/avatar-02.jpg'
-import Avatar03 from '@/public/images/avatar-03.jpg'
-import Avatar04 from '@/public/images/avatar-04.jpg'
-import Avatar05 from '@/public/images/avatar-05.jpg'
-import Avatar06 from '@/public/images/avatar-06.jpg'
+import Avatar01 from '@/public/images/avatar-01.png'
+import Avatar02 from '@/public/images/avatar-02.png'
+import Avatar03 from '@/public/images/avatar-03.png'
+import Avatar04 from '@/public/images/avatar-04.png'
+import Avatar05 from '@/public/images/avatar-05.png'
+import Avatar06 from '@/public/images/avatar-06.png'
 import Image from 'next/image'
 
 export default function AvatarLibrary() {

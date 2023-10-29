@@ -3,14 +3,14 @@ export const metadata = {
   description: 'Page description',
 }
 
-import ProductImage from '@/public/images/product-image.jpg'
-import Related01 from '@/public/images/related-product-01.jpg'
-import Related02 from '@/public/images/related-product-02.jpg'
-import Related03 from '@/public/images/related-product-03.jpg'
-import User03 from '@/public/images/user-32-03.jpg'
-import User04 from '@/public/images/user-32-04.jpg'
-import User05 from '@/public/images/user-32-05.jpg'
-import User07 from '@/public/images/user-32-07.jpg'
+import ProductImage from '@/public/images/product-image.png'
+import Related01 from '@/public/images/related-product-01.png'
+import Related02 from '@/public/images/related-product-02.png'
+import Related03 from '@/public/images/related-product-03.png'
+import User03 from '@/public/images/user-32-03.png'
+import User04 from '@/public/images/user-32-04.png'
+import User05 from '@/public/images/user-32-05.png'
+import User07 from '@/public/images/user-32-07.png'
 import Image from 'next/image'
 import Link from 'next/link'
 

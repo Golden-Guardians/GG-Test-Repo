@@ -3,13 +3,13 @@ export const metadata = {
   description: 'Page description',
 }
 
-import User01 from '@/public/images/user-28-01.jpg'
-import User02 from '@/public/images/user-28-02.jpg'
-import User03 from '@/public/images/user-28-03.jpg'
-import User05 from '@/public/images/user-28-05.jpg'
-import User06 from '@/public/images/user-28-06.jpg'
-import User08 from '@/public/images/user-28-08.jpg'
-import User09 from '@/public/images/user-28-09.jpg'
+import User01 from '@/public/images/user-28-01.png'
+import User02 from '@/public/images/user-28-02.png'
+import User03 from '@/public/images/user-28-03.png'
+import User05 from '@/public/images/user-28-05.png'
+import User06 from '@/public/images/user-28-06.png'
+import User08 from '@/public/images/user-28-08.png'
+import User09 from '@/public/images/user-28-09.png'
 import Image from 'next/image'
 
 export default function Roadmap() {

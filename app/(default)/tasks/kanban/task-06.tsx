@@ -1,6 +1,6 @@
+import UserImage02 from '@/public/images/user-28-02.png'
+import UserImage01 from '@/public/images/user-28-12.png'
 import Image from 'next/image'
-import UserImage01 from '@/public/images/user-28-12.jpg'
-import UserImage02 from '@/public/images/user-28-02.jpg'
 
 export default function Task06() {
   return (

@@ -2,11 +2,11 @@
 
 import { useFlyoutContext } from '@/app/flyout-context'
 import ChannelMenu from '@/components/channel-menu'
-import UserImage01 from '@/public/images/user-32-01.jpg'
-import UserImage02 from '@/public/images/user-32-02.jpg'
-import UserImage04 from '@/public/images/user-32-04.jpg'
-import UserImage05 from '@/public/images/user-32-05.jpg'
-import UserImage06 from '@/public/images/user-32-06.jpg'
+import UserImage01 from '@/public/images/user-32-01.png'
+import UserImage02 from '@/public/images/user-32-02.png'
+import UserImage04 from '@/public/images/user-32-04.png'
+import UserImage05 from '@/public/images/user-32-05.png'
+import UserImage06 from '@/public/images/user-32-06.png'
 import Image from 'next/image'
 
 export default function InboxSidebar() {

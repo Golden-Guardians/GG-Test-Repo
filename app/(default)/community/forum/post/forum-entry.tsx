@@ -1,11 +1,11 @@
-import Link from 'next/link'
+import UserImage01 from '@/public/images/user-28-01.png'
+import UserImage02 from '@/public/images/user-28-02.png'
+import UserImage05 from '@/public/images/user-28-05.png'
+import UserImage09 from '@/public/images/user-28-09.png'
+import UserImage10 from '@/public/images/user-28-10.png'
+import UserAvatar from '@/public/images/user-40-02.png'
 import Image from 'next/image'
-import UserAvatar from '@/public/images/user-40-02.jpg'
-import UserImage01 from '@/public/images/user-28-01.jpg'
-import UserImage02 from '@/public/images/user-28-02.jpg'
-import UserImage05 from '@/public/images/user-28-05.jpg'
-import UserImage09 from '@/public/images/user-28-09.jpg'
-import UserImage10 from '@/public/images/user-28-10.jpg'
+import Link from 'next/link'
 
 export default function ForumEntry() {
   return (

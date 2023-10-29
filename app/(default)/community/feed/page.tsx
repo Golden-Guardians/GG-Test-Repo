@@ -3,7 +3,7 @@ export const metadata = {
   description: 'Page description',
 }
 
-import Avatar from '@/public/images/user-40-02.jpg'
+import Avatar from '@/public/images/user-40-02.png'
 import Image from 'next/image'
 import FeedLeftContent from './feed-left-content'
 import FeedPosts from './feed-posts'

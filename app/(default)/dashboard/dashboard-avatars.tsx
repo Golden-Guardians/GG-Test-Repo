@@ -1,9 +1,9 @@
+import User01 from '@/public/images/user-36-01.png'
+import User02 from '@/public/images/user-36-02.png'
+import User03 from '@/public/images/user-36-03.png'
+import User04 from '@/public/images/user-36-04.png'
 import Image from 'next/image'
 import Link from 'next/link'
-import User01 from '@/public/images/user-36-01.jpg'
-import User02 from '@/public/images/user-36-02.jpg'
-import User03 from '@/public/images/user-36-03.jpg'
-import User04 from '@/public/images/user-36-04.jpg'
 
 export default function DashboardAvatars() {
   return (

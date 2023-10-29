@@ -4,9 +4,9 @@ export const metadata = {
 }
 
 import PaginationClassic from '@/components/pagination-classic'
-import User01 from '@/public/images/user-32-01.jpg'
-import User02 from '@/public/images/user-32-02.jpg'
-import User07 from '@/public/images/user-32-07.jpg'
+import User01 from '@/public/images/user-32-01.png'
+import User02 from '@/public/images/user-32-02.png'
+import User07 from '@/public/images/user-32-07.png'
 import Image from 'next/image'
 
 export default function Roadmap() {

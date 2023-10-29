@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import OnboardingBg from '@/public/images/onboarding-image.jpg'
 import OnboardingDecoration from '@/public/images/auth-decoration.png'
+import OnboardingBg from '@/public/images/onboarding-image.png'
+import Image from 'next/image'
 
 export default function OnboardingImage() {
   return (

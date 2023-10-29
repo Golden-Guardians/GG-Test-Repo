@@ -21,7 +21,7 @@ import Image06 from '@/public/images/transactions-image-05.svg'
 import Image07 from '@/public/images/transactions-image-06.svg'
 import Image08 from '@/public/images/transactions-image-07.svg'
 import Image09 from '@/public/images/transactions-image-08.svg'
-import Image03 from '@/public/images/user-36-05.jpg'
+import Image03 from '@/public/images/user-36-05.png'
 
 function Transactions() {
 

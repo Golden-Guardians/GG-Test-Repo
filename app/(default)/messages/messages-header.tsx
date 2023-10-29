@@ -1,7 +1,7 @@
 import { useFlyoutContext } from '@/app/flyout-context'
+import User01 from '@/public/images/user-32-01.png'
+import User02 from '@/public/images/user-32-07.png'
 import Image from 'next/image'
-import User01 from '@/public/images/user-32-01.jpg'
-import User02 from '@/public/images/user-32-07.jpg'
 
 export default function MessagesHeader() {
   const { flyoutOpen, setFlyoutOpen } = useFlyoutContext()
