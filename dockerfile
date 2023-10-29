@@ -22,11 +22,9 @@ ENV WG_NODE_HOST=0.0.0.0 WG_PUBLIC_NODE_URL=${wg_public_node_url}
 
 WORKDIR /app
 
-# Install pnpm globally in your Docker image
-RUN npm install -g pnpm
 
 # Copy files and install dependencies
-COPY pnpm-lock.yaml package.json /app/
+COPY package-lock.json package.json /app/
 COPY ./prisma ./prisma
 COPY ./generated ./generated
 RUN pnpm install --prefer-offline --production
