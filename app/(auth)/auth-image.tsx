@@ -1,5 +1,5 @@
-import AuthDecoration from '@/public/images/auth-decoration.png'
-import AuthBg from '@/public/images/auth-image.png'
+import AuthDecoration from '@/public/images/auth-decoration.jpeg'
+import AuthBg from '@/public/images/auth-image.jpeg'
 import Image from 'next/image'
 
 export default function AuthImage() {

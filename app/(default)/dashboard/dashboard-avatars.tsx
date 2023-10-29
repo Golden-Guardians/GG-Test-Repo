@@ -1,7 +1,7 @@
-import User01 from '@/public/images/user-36-01.png'
-import User02 from '@/public/images/user-36-02.png'
-import User03 from '@/public/images/user-36-03.png'
-import User04 from '@/public/images/user-36-04.png'
+import User01 from '@/public/images/user-36-01.jpeg'
+import User02 from '@/public/images/user-36-02.jpeg'
+import User03 from '@/public/images/user-36-03.jpeg'
+import User04 from '@/public/images/user-36-04.jpeg'
 import Image from 'next/image'
 import Link from 'next/link'
 

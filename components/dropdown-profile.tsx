@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import Image from 'next/image'
+import UserAvatar from '@/public/images/user-avatar-32.jpeg'
 import { Menu, Transition } from '@headlessui/react'
-import UserAvatar from '@/public/images/user-avatar-32.png'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function DropdownProfile({ align }: {
   align?: 'left' | 'right'

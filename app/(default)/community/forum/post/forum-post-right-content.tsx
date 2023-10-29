@@ -1,4 +1,4 @@
-import UserImage from '@/public/images/user-40-04.png'
+import UserImage from '@/public/images/user-40-04.jpeg'
 import Image from 'next/image'
 
 export default function ForumPostRightContent() {

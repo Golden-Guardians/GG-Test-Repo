@@ -1,7 +1,7 @@
-import AppImage13 from '@/public/images/applications-image-13.png'
-import AppImage14 from '@/public/images/applications-image-14.png'
-import AppImage15 from '@/public/images/applications-image-15.png'
-import AppImage16 from '@/public/images/applications-image-16.png'
+import AppImage13 from '@/public/images/applications-image-13.jpeg'
+import AppImage14 from '@/public/images/applications-image-14.jpeg'
+import AppImage15 from '@/public/images/applications-image-15.jpeg'
+import AppImage16 from '@/public/images/applications-image-16.jpeg'
 import Image from 'next/image'
 
 export default function ShopCards04() {

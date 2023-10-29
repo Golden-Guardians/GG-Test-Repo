@@ -1,4 +1,4 @@
-import UserImage from '@/public/images/user-36-05.png'
+import UserImage from '@/public/images/user-36-05.jpeg'
 import Image from 'next/image'
 
 export default function FintechCard06() {

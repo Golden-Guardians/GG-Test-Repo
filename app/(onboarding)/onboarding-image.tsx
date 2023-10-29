@@ -1,5 +1,5 @@
-import OnboardingDecoration from '@/public/images/auth-decoration.png'
-import OnboardingBg from '@/public/images/onboarding-image.png'
+import OnboardingDecoration from '@/public/images/auth-decoration.jpeg'
+import OnboardingBg from '@/public/images/onboarding-image.jpeg'
 import Image from 'next/image'
 
 export default function OnboardingImage() {

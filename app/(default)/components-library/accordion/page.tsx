@@ -6,7 +6,7 @@ export const metadata = {
 import AccordionBasic from '@/components/accordion-basic'
 import AccordionTableItem from '@/components/accordion-table-item'
 import AccordionTableRichItem from '@/components/accordion-table-rich-item'
-import Image01 from '@/public/images/user-40-07.png'
+import Image01 from '@/public/images/user-40-07.jpeg'
 
 export default function AccordionLibrary() {
 

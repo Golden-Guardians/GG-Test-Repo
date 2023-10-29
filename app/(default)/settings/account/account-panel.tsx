@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import AccountImage from '@/public/images/user-avatar-80.jpeg'
 import Image from 'next/image'
-import AccountImage from '@/public/images/user-avatar-80.png'
+import { useState } from 'react'
 
 export default function AccountPanel() {
 

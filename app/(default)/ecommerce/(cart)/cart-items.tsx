@@ -1,6 +1,6 @@
-import Related01 from '@/public/images/related-product-01.png'
-import Related02 from '@/public/images/related-product-02.png'
-import Related03 from '@/public/images/related-product-03.png'
+import Related01 from '@/public/images/related-product-01.jpeg'
+import Related02 from '@/public/images/related-product-02.jpeg'
+import Related03 from '@/public/images/related-product-03.jpeg'
 import Image from 'next/image'
 import Link from 'next/link'
 

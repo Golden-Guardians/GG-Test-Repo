@@ -1,7 +1,7 @@
 'use client'
 
-import PayBg from '@/public/images/pay-bg.png'
-import User from '@/public/images/user-64-13.png'
+import PayBg from '@/public/images/pay-bg.jpeg'
+import User from '@/public/images/user-64-13.jpeg'
 import Image from 'next/image'
 import { useState } from 'react'
 

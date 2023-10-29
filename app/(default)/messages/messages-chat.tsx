@@ -1,9 +1,9 @@
 'use client'
 
 import { useFlyoutContext } from '@/app/flyout-context'
-import ChatImage from '@/public/images/chat-image.png'
-import User01 from '@/public/images/user-40-11.png'
-import User02 from '@/public/images/user-40-12.png'
+import ChatImage from '@/public/images/chat-image.jpeg'
+import User01 from '@/public/images/user-40-11.jpeg'
+import User02 from '@/public/images/user-40-12.jpeg'
 import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 

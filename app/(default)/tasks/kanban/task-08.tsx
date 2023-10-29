@@ -1,5 +1,5 @@
-import TaskImage from '@/public/images/task-image-02.png'
-import UserImage01 from '@/public/images/user-28-12.png'
+import TaskImage from '@/public/images/task-image-02.jpeg'
+import UserImage01 from '@/public/images/user-28-12.jpeg'
 import Image from 'next/image'
 
 export default function Task08() {

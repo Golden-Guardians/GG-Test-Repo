@@ -2,7 +2,7 @@ import FintechIcon01 from '@/public/images/company-icon-01.svg'
 import FintechIcon02 from '@/public/images/company-icon-02.svg'
 import FintechIcon03 from '@/public/images/company-icon-03.svg'
 import FintechIcon04 from '@/public/images/company-icon-04.svg'
-import UserImage from '@/public/images/user-64-14.png'
+import UserImage from '@/public/images/user-64-14.jpeg'
 import Image from 'next/image'
 
 export default function FintechIntro() {

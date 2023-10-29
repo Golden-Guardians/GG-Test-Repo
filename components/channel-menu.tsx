@@ -1,11 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import ChannelImage01 from '@/public/images/channel-01.jpeg'
+import ChannelImage02 from '@/public/images/channel-02.jpeg'
+import ChannelImage03 from '@/public/images/channel-03.jpeg'
 import { Menu, Transition } from '@headlessui/react'
 import Image from 'next/image'
-import ChannelImage01 from '@/public/images/channel-01.png'
-import ChannelImage02 from '@/public/images/channel-02.png'
-import ChannelImage03 from '@/public/images/channel-03.png'
+import { useState } from 'react'
 
 export default function ChannelMenu() {
 
