@@ -21,14 +21,13 @@ A Next.js project configured to use SST for AWS deployments.
 - Node.js version 16.6 or higher
 - npm version 7 or higher
 - AWS account with configured AWS credentials
-- Install pnpm (`npm install -g pnpm`)
 
 ## Running Locally
 
 1. Install dependencies using pnpm:
 
 ```sh
-pnpm install
+npm install
 ```
 
 2. Copy `.env.example` to `.env.local` and update the variables.
@@ -40,7 +39,7 @@ cp .env.example .env.local
 3. Start the development server:
 
 ```sh
-pnpm dev
+npm dev
 ```
 
 4. Start WunderGraph:
@@ -50,12 +49,6 @@ pnpm wunderctl:up
 ```
 
 > Note: Graphql end point is available at http://localhost:9991/graphql
-
-5. View/edit the database:
-
-```sh
-pnpm prisma-studio
-```
 
 ## How to add more features with SST
 
